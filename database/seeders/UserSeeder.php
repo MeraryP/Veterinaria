@@ -27,6 +27,19 @@ class UserSeeder extends Seeder
             ]
         );
 
+
+        User::create(
+            [
+                'username'=> 'Karla21',
+                'name' => 'Karla Galo',
+                'correo' => 'karlagalo@gmail.com',
+                'nacimiento' => '20020625',
+                'identidad' => '0704200300017',
+                'telefono' => '98764643',
+                'password' => bcrypt('mairena2021'),
+            ]
+        );
+
       
 
 

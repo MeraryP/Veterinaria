@@ -315,13 +315,14 @@ return [
         [
             'text' => 'Propietario',
             'icon'    => 'fa fa-id-card', 
-              
-            'icon_color'=>'yellow',
+            'route'=>'propietario.index',
+            'icon_color'=>'pink',
         ],
+
         [
             'text' => 'Paciente',
             'icon'    => '	fas fa-dog', 
-           
+            'route'=>'paciente.index',
             'icon_color'=>'green',
         ],
 
@@ -334,15 +335,15 @@ return [
         [
             'text' => 'Anamnesis',
             'icon'    => 'fa fa-stethoscope', 
-          
-            'icon_color'=>'red',  
+            'route'=>'anamnesi.index',
+            'icon_color'=>'purple',  
         ],
 
 
         [
             'text' => 'Resumen semologico',
             'icon'    => '	fas fa-file-alt', 
-            
+            'route'=>'resumen.index',
             'icon_color'=>'red',  
         ],
  

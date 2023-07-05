@@ -1,0 +1,132 @@
+@extends('layouts.madre')
+
+@section('title', 'Paciente')
+
+
+@section('content')
+
+<script>
+    var msg = '{{Session::get('mensaje')}}';
+    var exist = '{{Session::has('mensaje')}}';
+    if(exist){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: msg,
+            showConfirmButton: false,
+            toast: true,
+            background: '#0be004ab',
+            timer: 3500
+        })
+    }
+
+</script>
+
+
+
+<script>
+    function quitarerror(){
+    const elements = document.getElementsByClassName('alert');
+    while (elements[0]){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+setTimeout(quitarerror, 3000);
+</script>
+<br>
+<br>
+
+
+
+
+<div class="contrainer">
+</div>
+    <div align="right" style="float:right">
+    <a href="paciente/create" title="Crear Registro" class="btn btn-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    </div>
+<br>
+<br>
+<br>
+<table id="mitabla"  class = "table table-sm table-bordered ">
+<thead  class="thead-dark">
+
+<tr>
+            <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
+            <th style="font-size:15px;text-align:center; width:135px;"   scope="col">Identificacion</th>
+            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Raza</th>
+            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Color</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Edad_dias</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Edad_meses</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Edad_anio</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Peso</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Talla</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Aptitud</th>
+
+
+            <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+    @php $n=0; @endphp
+
+        @foreach ($pacientes as  $paciente)
+        <tr>
+            
+            <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
+            <td class="align-middle" style="font-size:15px" >{identificacion}}</td>
+            <td class="align-middle" style="font-size:15px" >{{especie}}</td>
+            <td class="align-middle" style="font-size:15px">{{raza}}</td>
+            <td class="align-middle" style="font-size:15px">{{color}}</td>
+            <td class="align-middle" style="font-size:15px">{{edad_dias}}</td>
+            <td class="align-middle" style="font-size:15px">{{edad_meses}}</td>
+            <td class="align-middle" style="font-size:15px">{{edad_anio}}</td>
+            <td class="align-middle" style="font-size:15px">{{peso}}</td>
+            <td class="align-middle" style="font-size:15px">{{talla}}</td>
+            <td class="align-middle" style="font-size:15px">{{aptitud}}</td>
+           
+
+            <td>
+            <a type="button"  title="Editar registro" href="./paciente/{{$paciente->id}}/edit" class="btn btn-info" >
+                <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                
+                <button type="bottom"  onClick="borrar{{$paciente->id}}()" title="Eliminar registro" class="btn btn-danger">
+               <i class="fa fa-window-close" aria-hidden="true"></i></button>
+                <form action="{{route ('paciente.destroy',$paciente->id)}}" method="POST" id="eliminar{{$paciente->id}}"> 
+                
+                @csrf
+                @method('DELETE')       
+               
+               <script>
+                function borrar{{$paciente->id}}(){
+                    Swal.fire({
+  title: 'Eliminar Registro',
+  text: '¿Desea eliminar el registro seleccionado?',
+  icon: 'error',
+  showCancelButton: true,
+  confirmButtonText: 'Si',
+  cancelButtonText: `No`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.value) {
+    document.getElementById('eliminar{{$paciente->id}}').submit();
+  } else {
+    
+  }
+})
+                }
+
+                </script>
+
+               </form>
+             </td>
+        </tr>
+
+        @endforeach
+    </tbody>
+
+  </table>
+
+  @endsection 
