@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('anamneses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('Carrera');
+        Schema::create('resumen_semologicos', function (Blueprint $table) {
+            $table->id();
+            $table->string('diagnostico');
+            $table->string('indicaciones_medicas');
+            $table->string('evolucion_curso');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anamneses'); 
+        Schema::dropIfExists('resumen_semologicos');
     }
 };
