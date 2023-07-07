@@ -10,7 +10,7 @@
 
     <div class="mb-3">
     <label for="" class="form-label">Diagnostico</label>
-    <input type="text"  maxlength="5" pattern="" 
+    <input type="text"  maxlength="200" 
     title="Ingrese el diagnostico" value="{{old('diagnostico')}}" 
     name="diagnostico" id="diagnostico" 
     class="form-control @error('diagnostico') is-invalid @enderror" placeholder=""
@@ -38,10 +38,10 @@
 
 
 <div class="mb-3">
-        <label for="" class="form-label">Evolucion_curso</label>
+        <label for="" class="form-label">Evoluciòn_curso</label>
         <input type="text"  maxlength="100"   value="{{old('evolucion_curso')}}"  name="evolucion_curso"  id="evolucion_curso"   
         class="form-control @error('raza') is-invalid @enderror" placeholder="Ingrese la evolucion_curso"
-        title="Ingrese la evolucion_curso">
+        title="Ingrese la evolución del curso">
         @error('evolucion_curso')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

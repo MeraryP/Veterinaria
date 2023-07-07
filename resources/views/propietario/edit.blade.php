@@ -35,6 +35,17 @@
       </div>
 
       <div class="mb-3">
+        <label for="" class="form-label">Direccion</label>
+        <input type="text" maxlength="300" name="direccion"  id="direccion"  class="form-control @error('direccion') is-invalid @enderror"   placeholder="Ingrese la direccion" value="{{ $propietario->direccion }}"
+        title="Ingrese la direccion">
+        @error('direccion')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      </div>
+
+      <div class="mb-3">
         <label for="" class="form-label">Telefono</label>
         <input type="text" name="telefono"  id="telefono"  class="form-control @error('telefono') is-invalid @enderror"   placeholder="0000-0000" value="{{ $propietario->telefono }}"
         title="Ingrese el número telefonico">
@@ -47,7 +58,7 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Correo</label>
-        <input type="text" name="correo"  id="correo"  class="form-control @error('correo') is-invalid @enderror"   placeholder="" value="{{ $propietario->correo }}"
+        <input type="text" name="correo"  id="correo"  class="form-control @error('correo') is-invalid @enderror"   placeholder="correo@gmail.com" value="{{ $propietario->correo }}"
         title="Ingrese el correo electronico">
         @error('correo')
                 <span class="invalid-feedback" role="alert">

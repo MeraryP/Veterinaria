@@ -10,8 +10,8 @@
 
     <div class="mb-3">
     <label for="" class="form-label">Tiempo_enfermedad</label>
-    <input type="text"  maxlength="5" pattern="" 
-    title="Ingrese la Identificacion" value="{{old('tiempo_enfermedad')}}" 
+    <input type="text"  maxlength="200"
+    title="Ingrese el tiempo de enfermedad" value="{{old('tiempo_enfermedad')}}" 
     name="tiempo_enfermedad" id="tiempo_enfermedad" 
     class="form-control @error('tiempo_enfermedad') is-invalid @enderror" placeholder=""
     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
@@ -23,22 +23,9 @@
             @enderror
   </div>
 
-      <div class="mb-3">
-        <label for="" class="form-label">Manifestaciones</label>
-        <input type="text"  maxlength="100"   value="{{old('especie')}}"  name="manifestaciones"  id="manifestaciones"   
-        class="form-control @error('manifestaciones') is-invalid @enderror" placeholder="Ingrese la manifestacion"
-        title="Ingrese la manifestacion">
-        @error('manifestaciones')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      
-      </div>
-
 
 <div class="mb-3">
-        <label for="" class="form-label">Funcion_organos</label>
+        <label for="" class="form-label">Función_organos</label>
         <input type="text"  maxlength="100"   value="{{old('raza')}}"  name="funcion_organos"  id="funcion_organos"   
         class="form-control @error('funcion_organos') is-invalid @enderror" placeholder="Ingrese la funcion_organos"
         title="Ingrese la funcion_organos">

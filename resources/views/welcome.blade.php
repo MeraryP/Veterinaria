@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'vista principal')
+@section('title', 'Vista principal')
 
 @section('content')
 

@@ -15,17 +15,13 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
-            $table->string('identificacion');
+            $table->integer('identificacion');
+            $table->string('nombre');
             $table->string('especie');
             $table->string('raza');
-            $table->string('color');
-            $table->string('genero');
-            $table->string('edad_dias');
-            $table->string('edad_meses');
-            $table->string('edad_anio');
+            $table->date('fecha');
             $table->string('peso');
-            $table->string('talla');
-            $table->string('aptitud');
+
             $table->timestamps();
         });
     }

@@ -10,19 +10,35 @@
         
 
     <div class="mb-3">
-    <label for="" class="form-label">Identificacion</label>
-    <input type="text"  maxlength="5" pattern="" 
+    <label for="" class="form-label">Identificación</label>
+    <input type="text"  maxlength="4" 
     title="Ingrese la Identificacion" value="{{old('identificacion')}}" 
     name="identificacion" id="identificacion" 
-    class="form-control @error('identificacion') is-invalid @enderror" placeholder=""
+    class="form-control @error('identificacion') is-invalid @enderror" placeholder="0000"
     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
 
+   
     @error('identificacion')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
   </div>
+  
+
+  <div class="mb-3">
+        <label for="" class="form-label">Nombre de la Mascota</label>
+        <input type="text" maxlength="100" value="{{old('nombre')}}"  name="nombre"  id="nombre"   
+        class="form-control @error('nombre') is-invalid @enderror" placeholder="Ingrese el nombre de la mascota"
+        title="Ingrese el nombre de la mascota">
+        @error('nombre')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      
+      </div>
+
 
       <div class="mb-3">
         <label for="" class="form-label">Especie</label>
@@ -53,54 +69,13 @@
 
 
       <div class="mb-3">
-        <label for="" class="form-label">Color</label>
-        <input type="text" value="{{old('color')}}" name="color"  id="color"  
-        class="form-control @error('color') is-invalid @enderror" placeholder="Ingrese el Color" 
-        title="Ingrese el Color" >
+        <label for="" class="form-label">Fecha de Nacimiento</label>
+        <input type="" value="{{old('fecha')}}" name="fecha"  id="fecha"  
+        class="form-control @error('fecha') is-invalid @enderror" placeholder="aa-mm-dd" 
+        title="Ingrese la fecha de nacimiento " autofocus>
 
       
-        @error('color')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-
-   
-
-    
-
-      <div class="mb-3">
-        <label for="">Edad_dias</label>
-        <input type="text"value="{{old('edad_dias')}}"  name="edad_dias"  id="edad_dias" 
-        class="form-control @error('edad_dias') is-invalid @enderror"   placeholder="Ingrese la Edad_dias"
-        title="Ingrese la Edad_dias ">
-      
-        @error('edad_dias')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-      <div class="mb-3">
-        <label for="">Edad_meses</label>
-        <input type="text"value="{{old('edad_meses')}}"  name="edad_meses"  id="edad_meses" 
-        class="form-control @error('edad_meses') is-invalid @enderror"   placeholder="Ingrese la Edad_meses"
-        title="Ingrese la Edad_meses">
-      
-        @error('edad_meses')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-      <div class="mb-3">
-        <label for="">Edad_anio</label>
-        <input type="text"value="{{old('edad_anio')}}"  name="edad_anio"  id="edad_anio" 
-        class="form-control @error('edad_anio') is-invalid @enderror"   placeholder="Ingrese la edad_anio"
-        title="Ingrese la edad_anio ">
-      
-        @error('edad_anio')
+        @error('fecha')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -120,33 +95,6 @@
             @enderror
       </div>
 
-      <div class="mb-3">
-        <label for="">Peso</label>
-        <input type="text"value="{{old('peso')}}"  name="peso"  id="peso" 
-        class="form-control @error('peso') is-invalid @enderror"   placeholder="Ingrese el peso"
-        title="Ingrese el peso ">
-      
-        @error('peso')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-
-      <div class="mb-3">
-        <label for="">Aptitud</label>
-        <input type="text"value="{{old('aptitud')}}"  name="aptitud"  id="aptitud" 
-        class="form-control @error('aptitud') is-invalid @enderror"   placeholder="Ingrese la Aptitud"
-        title="Ingrese la Aptitud ">
-      
-        @error('aptitud')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-
-    
 
       
 <link rel="stylesheet" type="text/css" href="css/fonts.css" >     

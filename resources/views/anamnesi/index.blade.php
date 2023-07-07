@@ -35,11 +35,6 @@
 setTimeout(quitarerror, 3000);
 </script>
 <br>
-<br>
-<br>
-<br>
-
-
 
 <div class="contrainer">
 </div>
@@ -55,12 +50,9 @@ setTimeout(quitarerror, 3000);
 <tr>
 
             <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:135px;"   scope="col">Tiempo_enfermedad</th>
-            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Manifestaciones</th>
-            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Funcion_organos</th>
+            <th style="font-size:15px;text-align:center; width:135px;" scope="col">Tiempo_enfermedad</th>
+            <th style="font-size:15px;text-align:center; width:100px;" scope="col">Función_organos</th>
             <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Causas_posibles</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Enfermo_antes</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Enfermos_multiples</th>
             <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Tratamiento</th>
             <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Vacuna</th>
            
@@ -80,14 +72,11 @@ setTimeout(quitarerror, 3000);
         
 
             <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px" >{tiempo_enfermedad}}</td>
-            <td class="align-middle" style="font-size:15px" >{{manifestaciones}}</td>
-            <td class="align-middle" style="font-size:15px">{{funcion_organos}}</td>
-            <td class="align-middle" style="font-size:15px">{{causas_posibles}}</td>
-            <td class="align-middle" style="font-size:15px">{{enfermo_antes}}</td>
-            <td class="align-middle" style="font-size:15px">{{enfermos_multiples}}</td>
-            <td class="align-middle" style="font-size:15px">{{tratamiento}}</td>
-            <td class="align-middle" style="font-size:15px">{{vacuna}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$anamnesi->tiempo_enfermedad}}</td>
+            <td class="align-middle" style="font-size:15px">{{$anamnesi->funcion_organos}}</td>
+            <td class="align-middle" style="font-size:15px">{{$anamnesi->causas_posibles}}</td>
+            <td class="align-middle" style="font-size:15px">{{$anamnesi->tratamiento}}</td>
+            <td class="align-middle" style="font-size:15px">{{$anamnesi->vacuna}}</td>
           
            
 

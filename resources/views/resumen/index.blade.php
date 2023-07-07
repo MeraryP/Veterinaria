@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Resumen')
+@section('title', 'Resumen Semológico')
 
 
 @section('content')
@@ -35,10 +35,6 @@
 setTimeout(quitarerror, 3000);
 </script>
 <br>
-<br>
-<br>
-<br>
-
 
 
 <div class="contrainer">
@@ -72,9 +68,9 @@ setTimeout(quitarerror, 3000);
         <tr>
             
             <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px" >{diagnostico}}</td>
-            <td class="align-middle" style="font-size:15px" >{{indicaciones_medicas}}</td>
-            <td class="align-middle" style="font-size:15px">{{evolucion_curso}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$resumen->diagnostico}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$resumen->indicaciones_medicas}}</td>
+            <td class="align-middle" style="font-size:15px">{{$resumen->evolucion_curso}}</td>
            
            
 

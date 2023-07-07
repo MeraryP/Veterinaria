@@ -11,7 +11,7 @@
 
     <div class="mb-3">
     <label for="" class="form-label">Tiempo_enfermedad</label>
-    <input type="text" maxlength="5" pattern="" 
+    <input type="text" maxlength="200" 
     title="Ingrese el Tiempo_enfermedad "
     name="tiempo_enfermedad" id="tiempo_enfermedad" class="form-control @error('tiempo_enfermedad') is-invalid @enderror"  placeholder="" 
     value="{{ $anamnesi->tiempo_enfermedad }}"
@@ -23,17 +23,7 @@
                 </span>
             @enderror
 </div>
-       <div class="mb-3">
-        <label for="" class="form-label">Manifestaciones</label>
-        <input type="text" name="manifestaciones"  id="manifestaciones"  class="form-control @error('manifestaciones') is-invalid @enderror"   placeholder="Ingrese la manifestacion" value="{{ $anamnesi->manifestaciones }}"
-        title="Ingrese la manifestacion">
-        @error('manifestaciones')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-
+     
       <div class="mb-3">
         <label for="" class="form-label">Funcion_organos</label>
         <input type="text" name="funcion_organos"  id="funcion_organos"  class="form-control @error('funcion_organos') is-invalid @enderror"   placeholder="" value="{{ $anamnesi->funcion_organos }}"
@@ -82,7 +72,7 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Tratamiento</label>
-        <input type="text" name="tratamiento"  id="tratamiento"  class="form-control @error('tratamiento') is-invalid @enderror"   placeholder="" value="{{ $anamnesis->tratamiento }}"
+        <input type="text" name="tratamiento"  id="tratamiento"  class="form-control @error('tratamiento') is-invalid @enderror"   placeholder="" value="{{ $anamnesi->tratamiento }}"
         title="Ingrese el tratamiento">
         @error('tratamiento')
                 <span class="invalid-feedback" role="alert">

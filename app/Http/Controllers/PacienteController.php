@@ -35,6 +35,37 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+           
+            'identificacion'=>'numeric|regex:([0-9])|unique:pacientes,identificacion',
+            'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'fecha'=>'required|date',
+            'peso'=>'required|max:50',
+            //'gene_id'=>'required|exists:generos,id',
+        
+            
+            
+           
+        ]);
+     
+        $pacientes = new Paciente();
+        $pacientes->identificacion = $request->get('identificacion');
+        $pacientes->nombre = $request->get('nombre');
+        $pacientes->especie = $request->get('especie');
+        //$pacientes->gene_id = $request->get('gene_id');
+        $pacientes->raza= $request->get('raza');
+        $pacientes->fecha = $request->get('fecha');
+        $pacientes->peso = $request->get('peso');
+        $pacientes->save();
+
+        if($pacientes){
+            return redirect('/paciente')->with('mensaje', 'El registro fue creado exitosamente.');
+        }else{
+            //retornar con un mensaje de error.
+        }
        
     }
 
@@ -58,7 +89,10 @@ class PacienteController extends Controller
     public function edit($id)
     {
 
-       
+        // $generos = Genero::all();
+        $paciente = Paciente::findOrfail($id);
+        return view('paciente.edit')->with('paciente', $paciente);
+    
     }
 
     /**
@@ -71,6 +105,36 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
 
     {
+        $this->validate($request,[
+           
+            'identificacion'=>'numeric|regex:([0-9])',
+            'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'fecha'=>'required|date',
+            'peso'=>'required|max:50',
+            //'gene_id'=>'required|exists:generos,id',
+        
+            
+            
+           
+        ]);
+     
+        $paciente = Paciente::find($id);
+        $paciente->identificacion = $request->get('identificacion');
+        $paciente->nombre = $request->get('nombre');
+        $paciente->especie = $request->get('especie');
+        //$paciente->gene_id = $request->get('gene_id');
+        $paciente->raza= $request->get('raza');
+        $paciente->fecha = $request->get('fecha');
+        $paciente->peso = $request->get('peso');
+        $paciente->save();
+
+        if($paciente){
+            return redirect('/paciente')->with('mensaje', 'El registro fue modificado exitosamente.');
+        }else{
+            //retornar con un mensaje de error.
+        }
        
     }
 
@@ -82,7 +146,9 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        
+        $paciente = Paciente::find($id);
+        $paciente->delete();
+        return redirect('/paciente')->with('mensaje', 'El Registro fue borrado exitosamente');
     }
 }
 

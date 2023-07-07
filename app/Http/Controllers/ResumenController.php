@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\ResumenSemologico;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +34,27 @@ class ResumenController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $this->validate($request,[
+           
+            'diagnostico'=>'required|max:300',
+            'indicaciones_medicas'=>'required|max:300',
+            'evolucion_curso'=>'required|max:300'
+  
+        
+        ]);
+     
+        $resumenes = new ResumenSemologico();
+        $resumenes->diagnostico = $request->get('diagnostico');
+        $resumenes->indicaciones_medicas = $request->get('indicaciones_medicas');
+        $resumenes->evolucion_curso = $request->get('evolucion_curso');
+        $resumenes->save();
+
+        if($resumenes){
+            return redirect('/resumen')->with('mensaje', 'El registro fue creado exitosamente.');
+        }else{
+            //retornar con un mensaje de error.
+        }
+
     }
 
     /**
@@ -58,7 +77,8 @@ class ResumenController extends Controller
     public function edit($id)
     {
 
-       
+        $resumen = ResumenSemologico::findOrfail($id);
+        return view('resumen.edit')->with('resumen', $resumen);
     }
 
     /**
@@ -71,7 +91,27 @@ class ResumenController extends Controller
     public function update(Request $request, $id)
 
     {
-       
+        $this->validate($request,[
+           
+            'diagnostico'=>'required|max:300',
+            'indicaciones_medicas'=>'required|max:300',
+            'evolucion_curso'=>'required|max:300'
+  
+        
+        ]);
+     
+        $resumen = ResumenSemologico::find($id);
+        $resumen->diagnostico = $request->get('diagnostico');
+        $resumen->indicaciones_medicas = $request->get('indicaciones_medicas');
+        $resumen->evolucion_curso = $request->get('evolucion_curso');
+        $resumen->save();
+
+        if($resumen){
+            return redirect('/resumen')->with('mensaje', 'El registro fue modificado exitosamente.');
+        }else{
+            //retornar con un mensaje de error.
+        }
+
     }
 
     /**
@@ -82,6 +122,8 @@ class ResumenController extends Controller
      */
     public function destroy($id)
     {
-        
+        $resumen = ResumenSemologico::find($id);
+        $resumen->delete();
+        return redirect('/resumen')->with('mensaje', 'El Registro fue borrado exitosamente');
     }
 }

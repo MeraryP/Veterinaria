@@ -26,7 +26,7 @@
 
 <div class="mb-3">
         <label for="" class="form-label">Nombre Completo</label>
-        <input type="text"  maxlength="100"   value="{{old('nombre')}}"  name="nombre"  id="nombre"   
+        <input type="text" maxlength="100" value="{{old('nombre')}}"  name="nombre"  id="nombre"   
         class="form-control @error('nombre') is-invalid @enderror" placeholder="Nombre Completo del Estudiante"
         title="Ingrese el nombre completo del egresado">
         @error('nombre')
@@ -40,7 +40,7 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Direccion</label>
-        <input type="text" value="{{old('direccion')}}" name="direccion"  id="direccion"  
+        <input type="text" maxlength="300" value="{{old('direccion')}}" name="direccion"  id="direccion"  
         class="form-control @error('direccion') is-invalid @enderror" placeholder="Direccion" 
         title="Ingrese la dirección " >
 
@@ -72,7 +72,7 @@
       <div class="mb-3">
         <label for="">Correo</label>
         <input type="text"value="{{old('correo')}}"  name="correo"  id="correo" 
-        class="form-control @error('correo') is-invalid @enderror"   placeholder=""
+        class="form-control @error('correo') is-invalid @enderror"   placeholder="correo@gmail.com"
         title="Ingrese el correo electronico">
       
         @error('correo')

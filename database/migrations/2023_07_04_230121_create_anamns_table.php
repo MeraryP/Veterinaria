@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('anamns', function (Blueprint $table) {
             $table->id();
             $table->string('tiempo_enfermedad');
-            $table->string('manifestaciones');
             $table->string('funcion_organos');
             $table->string('causas_posibles');
             $table->string('enfermo_antes');

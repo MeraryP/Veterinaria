@@ -11,7 +11,7 @@
 
     <div class="mb-3">
     <label for="" class="form-label">Diagnostico</label>
-    <input type="text" maxlength="5" pattern="" 
+    <input type="text" maxlength="200" 
     title="Ingrese el diagnostico"
     name="diagnostico" id="diagnostico" class="form-control @error('diagnostico') is-invalid @enderror"  placeholder="" 
     value="{{ $resumen->diagnostico }}"

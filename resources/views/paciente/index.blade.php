@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Paciente')
+@section('title', 'Mascota')
 
 
 @section('content')
@@ -54,16 +54,10 @@ setTimeout(quitarerror, 3000);
 <tr>
             <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
             <th style="font-size:15px;text-align:center; width:135px;"   scope="col">Identificacion</th>
+            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Nombre de la Mascota</th>
+            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Especie</th>
             <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Raza</th>
-            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Color</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Edad_dias</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Edad_meses</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Edad_anio</th>
             <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Peso</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Talla</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Aptitud</th>
-
-
             <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
             
         </tr>
@@ -76,18 +70,11 @@ setTimeout(quitarerror, 3000);
         <tr>
             
             <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px" >{identificacion}}</td>
-            <td class="align-middle" style="font-size:15px" >{{especie}}</td>
-            <td class="align-middle" style="font-size:15px">{{raza}}</td>
-            <td class="align-middle" style="font-size:15px">{{color}}</td>
-            <td class="align-middle" style="font-size:15px">{{edad_dias}}</td>
-            <td class="align-middle" style="font-size:15px">{{edad_meses}}</td>
-            <td class="align-middle" style="font-size:15px">{{edad_anio}}</td>
-            <td class="align-middle" style="font-size:15px">{{peso}}</td>
-            <td class="align-middle" style="font-size:15px">{{talla}}</td>
-            <td class="align-middle" style="font-size:15px">{{aptitud}}</td>
-           
-
+            <td class="align-middle" style="font-size:15px" >{{$paciente->identificacion}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$paciente->nombre}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$paciente->especie}}</td>
+            <td class="align-middle" style="font-size:15px">{{$paciente->raza}}</td> 
+            <td class="align-middle" style="font-size:15px">{{$paciente->peso}}</td>
             <td>
             <a type="button"  title="Editar registro" href="./paciente/{{$paciente->id}}/edit" class="btn btn-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>

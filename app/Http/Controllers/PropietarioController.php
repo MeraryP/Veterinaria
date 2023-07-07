@@ -27,9 +27,9 @@ class PropietarioController extends Controller
            
             'identidad'=>'unique:propietarios,identidad|max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'direccion'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'direccion'=>'required|max:300',
             'telefono'=>'max:9|regex:([0-9]{4}-[0-9]{4})',
-            'correo'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'correo'=>'required|max:100|email|unique:propietarios,correo',
             //'gene_id'=>'required|exists:generos,id',
         
             
@@ -71,9 +71,9 @@ class PropietarioController extends Controller
            
             'identidad'=>'max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'direccion'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'direccion'=>'required|max:300',
             'telefono'=>'max:9|regex:([0-9]{4}-[0-9]{4})',
-            'correo'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'correo'=>'required|max:100|email',
             //'gene_id'=>'required|exists:generos,id',
         
             

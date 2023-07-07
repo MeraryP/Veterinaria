@@ -62,13 +62,16 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
-
-    'logo' => 'Veterinaria',
-    'logo_img' => 'imagen/veterinaria.jpg',
+    'logo' => '',
+    'logo_img' => 'imagen/Kamaco1.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
+    
+   
+
+   
 
     /*
     |--------------------------------------------------------------------------
@@ -89,8 +92,8 @@ return [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 50,
-            'height' => 50,
+            'width' => 100,
+            'height' => 100,
         ],
     ],
 
@@ -109,7 +112,7 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'imagen/veterinaria.jpg',
+            'path' => 'imagen/logoveterinaria1.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 400,
@@ -320,7 +323,7 @@ return [
         ],
 
         [
-            'text' => 'Paciente',
+            'text' => 'Mascota',
             'icon'    => '	fas fa-dog', 
             'route'=>'paciente.index',
             'icon_color'=>'green',
