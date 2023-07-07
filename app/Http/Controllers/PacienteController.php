@@ -42,6 +42,8 @@ class PacienteController extends Controller
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'edad'=>'required|integer|max:50',
+            'color'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'fecha'=>'required|date',
             'peso'=>'required|max:50',
             //'gene_id'=>'required|exists:generos,id',
@@ -57,6 +59,8 @@ class PacienteController extends Controller
         $pacientes->especie = $request->get('especie');
         //$pacientes->gene_id = $request->get('gene_id');
         $pacientes->raza= $request->get('raza');
+        $pacientes->edad = $request->get('edad');
+        $pacientes->color= $request->get('color');
         $pacientes->fecha = $request->get('fecha');
         $pacientes->peso = $request->get('peso');
         $pacientes->save();
@@ -111,6 +115,8 @@ class PacienteController extends Controller
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'edad'=>'required|integer|max:50',
+            'color'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'fecha'=>'required|date',
             'peso'=>'required|max:50',
             //'gene_id'=>'required|exists:generos,id',
@@ -126,6 +132,8 @@ class PacienteController extends Controller
         $paciente->especie = $request->get('especie');
         //$paciente->gene_id = $request->get('gene_id');
         $paciente->raza= $request->get('raza');
+        $pacientes->edad = $request->get('edad');
+        $pacientes->color= $request->get('color');
         $paciente->fecha = $request->get('fecha');
         $paciente->peso = $request->get('peso');
         $paciente->save();

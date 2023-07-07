@@ -68,8 +68,8 @@
       </div>
 
       
-<button type="submit" class="btn btn-primary" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
-<a href="/propietario" class="btn btn-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+<button type="submit" class="btn btn-outline-info" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
+<a href="/propietario" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
 <br>
 <br>

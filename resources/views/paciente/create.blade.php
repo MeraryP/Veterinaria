@@ -67,6 +67,32 @@
       
       </div>
 
+      <div class="mb-3">
+        <label for="" class="form-label">Edad</label>
+        <input type="text"  maxlength="100"   value="{{old('raza')}}"  name="edad"  id="edad"   
+        class="form-control @error('edad') is-invalid @enderror" placeholder="Ingrese la edad"
+        title="Ingrese la edad">
+        @error('raza')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      
+      </div>
+
+      <div class="mb-3">
+        <label for="" class="form-label">Color</label>
+        <input type="text"  maxlength="100"   value="{{old('raza')}}"  name="color"  id="color"   
+        class="form-control @error('color') is-invalid @enderror" placeholder="Ingrese el color"
+        title="Ingrese el color ">
+        @error('raza')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      
+      </div>
+
 
       <div class="mb-3">
         <label for="" class="form-label">Fecha de Nacimiento</label>
@@ -98,9 +124,9 @@
 
       
 <link rel="stylesheet" type="text/css" href="css/fonts.css" >     
-<button type="submit"class="btn btn-primary" tabindex="4"><span class="fas fa-user-plus"></span> Guardar</button> 
+<button type="submit"class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar</button> 
 
-<a href="../paciente" class="btn btn-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+<a href="../paciente" class="btn btn-outline-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 <br>
 <br>
 

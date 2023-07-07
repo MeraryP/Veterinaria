@@ -43,7 +43,7 @@ setTimeout(quitarerror, 3000);
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="paciente/create" title="Crear Registro" class="btn btn-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="paciente/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>
@@ -73,13 +73,13 @@ setTimeout(quitarerror, 3000);
             <td class="align-middle" style="font-size:15px" >{{$paciente->identificacion}}</td>
             <td class="align-middle" style="font-size:15px" >{{$paciente->nombre}}</td>
             <td class="align-middle" style="font-size:15px" >{{$paciente->especie}}</td>
-            <td class="align-middle" style="font-size:15px">{{$paciente->raza}}</td> 
+            <td class="align-middle" style="font-size:15px">{{$paciente->raza}}</td>
             <td class="align-middle" style="font-size:15px">{{$paciente->peso}}</td>
             <td>
-            <a type="button"  title="Editar registro" href="./paciente/{{$paciente->id}}/edit" class="btn btn-info" >
+            <a type="button"  title="Editar registro" href="./paciente/{{$paciente->id}}/edit" class="btn btn-outline-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 
-                <button type="bottom"  onClick="borrar{{$paciente->id}}()" title="Eliminar registro" class="btn btn-danger">
+                <button type="bottom"  onClick="borrar{{$paciente->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
                <i class="fa fa-window-close" aria-hidden="true"></i></button>
                 <form action="{{route ('paciente.destroy',$paciente->id)}}" method="POST" id="eliminar{{$paciente->id}}"> 
                 

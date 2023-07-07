@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('especie');
             $table->string('raza');
+            $table->integer('edad');
+            $table->string('color');
             $table->date('fecha');
             $table->string('peso');
 

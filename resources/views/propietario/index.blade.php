@@ -39,7 +39,7 @@ setTimeout(quitarerror, 3000);
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="propietario/create" title="Crear Registro" class="btn btn-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="propietario/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>
@@ -73,10 +73,10 @@ setTimeout(quitarerror, 3000);
             <td class="align-middle" style="font-size:15px">{{$propietario->correo}}</td>
            
             <td>
-            <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-info" >
+            <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-outline-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 
-                <button type="bottom"  onClick="borrar{{$propietario->id}}()" title="Eliminar registro" class="btn btn-danger">
+                <button type="bottom"  onClick="borrar{{$propietario->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
                <i class="fa fa-window-close" aria-hidden="true"></i></button>
                 <form action="{{route ('propietario.destroy',$propietario->id)}}" method="POST" id="eliminar{{$propietario->id}}"> 
                 
