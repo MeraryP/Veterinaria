@@ -332,7 +332,7 @@ return [
         [
             'text' => 'Triada',
             'icon'    => 'fa fa-heartbeat', 
-             
+            'route'=>'triadas.index',
             'icon_color'=>'blue',  
         ],
         [

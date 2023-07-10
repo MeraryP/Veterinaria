@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('triadas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Carrera');
+            $table->string('frecuencia_respiratoria');
+            $table->string('frecuencia_pulso');
+            $table->string('femperatura_corporaral');
             $table->timestamps();
         });
     }

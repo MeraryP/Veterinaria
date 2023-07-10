@@ -5,7 +5,7 @@ use App\Http\Controllers\PropietarioController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\AnamnesisController;
 use App\Http\Controllers\ResumenController;
-
+use App\Http\Controllers\TriadaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 
@@ -28,7 +28,7 @@ use App\Http\Controllers\Controller;
 Route::middleware("auth")->group(function () {
     Route::middleware("desactivado")->group(function () {
 
-         //ruta propietario
+        //ruta propietario
         Route::resource('/propietario', 'App\Http\Controllers\PropietarioController');
 
         Route::put('/propietario/{id}/editar', [PropietarioController::class, 'update'])
@@ -39,7 +39,7 @@ Route::middleware("auth")->group(function () {
         Route::put('/paciente/{id}/editar', [PacienteController::class, 'update'])
         ->name('paciente.update')->where('id','[0-9]+');
        
-         //ruta anamnesis
+        //ruta anamnesis
         Route::resource('/anamnesi', 'App\Http\Controllers\AnamnesisController');
 
         Route::put('/anamnesi/{id}/editar', [AnamnesisController::class, 'update'])
@@ -51,6 +51,11 @@ Route::middleware("auth")->group(function () {
         Route::put('/resumen/{id}/editar', [ResumenController::class, 'update'])
         ->name('resumen.update')->where('id','[0-9]+');
 
+        //ruta triadas
+        Route::resource('triadas', 'App\Http\Controllers\TriadaController');
+
+        Route::put('/triadas/{id}/editar', [TriadaController::class, 'update'])
+        ->name('triada.update')->where('id','[0-9]+');
         
         
         
