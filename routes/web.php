@@ -3,18 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropietarioController;
 use App\Http\Controllers\PacienteController;
-<<<<<<< HEAD
-use App\Http\Controllers\AnamnesisController;
-use App\Http\Controllers\ResumenController;
-use App\Http\Controllers\DesparacitarController;
-=======
 use App\Http\Controllers\VacunaController;
 use App\Http\Controllers\ExamenController;
-use App\Http\Controllers\TriadaController;
->>>>>>> eed8e2bd77c2ed4d84de2783001b37767480247a
+use App\Http\Controllers\DesparacitarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\Controller;
 
 
