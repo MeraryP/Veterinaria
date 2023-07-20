@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('anamns', function (Blueprint $table) {
+        Schema::create('vacunas', function (Blueprint $table) {
             $table->id();
-            $table->string('tiempo_enfermedad');
-            $table->string('funcion_organos');
-            $table->string('causas_posibles');
-            $table->string('enfermo_antes');
-            $table->string('enfermos_multiples');
-            $table->string('tratamiento');
-            $table->string('vacuna');
+            $table->string('nombre_vacuna');
+            $table->date('fecha_aplicada');
+            $table->date('fecha_proximadosis');
+            $table->string('nombre_proximavacuna');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anamns');
+        Schema::dropIfExists('vacunas');
     }
 };

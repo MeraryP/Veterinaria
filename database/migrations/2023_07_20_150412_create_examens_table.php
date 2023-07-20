@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('resumen_semologicos', function (Blueprint $table) {
+        Schema::create('examens', function (Blueprint $table) {
             $table->id();
-            $table->string('diagnostico');
-            $table->string('indicaciones_medicas');
-            $table->string('evolucion_curso');
+            $table->string('temperatura');
+            $table->string('frecuencia_cardiaca');
+            $table->string('frecuencia_respiratoria');
+            $table->string('peso');
+            $table->string('pulso');
+            $table->string('gastrointestal');
+            $table->string('tratamiento');
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resumen_semologicos');
+        Schema::dropIfExists('examens');
     }
 };

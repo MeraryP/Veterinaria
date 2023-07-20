@@ -9,25 +9,11 @@
     @csrf
 
 
-    <div class="mb-3">
-    <label for="" class="form-label">Identificación</label>
-    <input type="text" maxlength="4"
-    title="Ingrese la Identificacion"
-    name="identificacion" id="identificacion" class="form-control @error('identificacion') is-invalid @enderror"  placeholder="0000" 
-    value="{{ $paciente->identificacion }}">
-   
-    @error('identificacion')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-</div>
-
 <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
-        <input type="text" name="nombre"  id="nombre"  class="form-control @error('nombre') is-invalid @enderror"   placeholder="Nombre Completo de la Mascota" value="{{ $paciente->nombre }}"
+        <input type="text" name="nombre_mascota"  id="nombre_mascota"  class="form-control @error('nombre_mascota') is-invalid @enderror"   placeholder="Nombre Completo de la Mascota" value="{{ $paciente->nombre_mascota }}"
         title="Ingrese el nombre de la mascota">
-        @error('nombre')
+        @error('nombre_mascota')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -39,6 +25,17 @@
         <input type="text" name="especie"  id="especie"  class="form-control @error('especie') is-invalid @enderror"   placeholder="Ingrese la especie" value="{{ $paciente->especie }}"
         title="Ingrese la especie">
         @error('especie')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      </div>
+
+      <div class="mb-3">
+        <label for="" class="form-label">Género</label>
+        <input type="text" name="genero"  id="genero"  class="form-control @error('genero') is-invalid @enderror"   placeholder="Ingrese el género" value="{{ $paciente->genero }}"
+        title="Ingrese el género">
+        @error('genero')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -67,24 +64,13 @@
             @enderror
       </div>
 
-      
-      <div class="mb-3">
-        <label for="" class="form-label">Color</label>
-        <input type="text" name="color"  id="color"  class="form-control @error('color') is-invalid @enderror"   placeholder="" value="{{ $paciente->color }}"
-        title="Ingrese el color">
-        @error('color')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
 
      
       <div class="mb-3">
         <label for="" class="form-label">Fecha de Nacimiento</label>
-        <input type="" name="fecha"  id="fecha"  class="form-control @error('fecha') is-invalid @enderror" placeholder="0000-00-00" value="{{ $paciente->fecha}}"
+        <input type="date" name="fecha_nacimiento"  id="fecha_nacimiento"  class="form-control @error('fecha_nacimiento') is-invalid @enderror" placeholder="0000-00-00" value="{{ $paciente->fecha_nacimiento}}"
         title="Ingrese la fecha de nacimiento ">
-        @error('fecha')
+        @error('fecha_nacimiento')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -92,10 +78,10 @@
       </div>
 
       <div class="mb-3">
-        <label for="" class="form-label">Peso</label>
-        <input type="text" name="peso"  id="peso"  class="form-control @error('peso') is-invalid @enderror"   placeholder="" value="{{ $paciente->peso }}"
-        title="Ingrese el peso">
-        @error('peso')
+        <label for="" class="form-label">Ultima visita</label>
+        <input type="date" name="ultima_visita"  id="ultima_visita"  class="form-control @error('ultima_visita') is-invalid @enderror"   placeholder="" value="{{ $paciente->ultima_visita }}"
+        title="Ingrese la última pagina">
+        @error('ultima_visita')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

@@ -3,9 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropietarioController;
 use App\Http\Controllers\PacienteController;
+<<<<<<< HEAD
 use App\Http\Controllers\AnamnesisController;
 use App\Http\Controllers\ResumenController;
 use App\Http\Controllers\DesparacitarController;
+=======
+use App\Http\Controllers\VacunaController;
+use App\Http\Controllers\ExamenController;
+use App\Http\Controllers\TriadaController;
+>>>>>>> eed8e2bd77c2ed4d84de2783001b37767480247a
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 
@@ -39,17 +45,17 @@ Route::middleware("auth")->group(function () {
         Route::put('/paciente/{id}/editar', [PacienteController::class, 'update'])
         ->name('paciente.update')->where('id','[0-9]+');
        
-        //ruta anamnesis
-        Route::resource('/anamnesi', 'App\Http\Controllers\AnamnesisController');
+        //ruta vacuna
+        Route::resource('/vacuna', 'App\Http\Controllers\VacunaController');
 
-        Route::put('/anamnesi/{id}/editar', [AnamnesisController::class, 'update'])
-        ->name('anamnesi.update')->where('id','[0-9]+');
+        Route::put('/vacuna/{id}/editar', [VacunaController::class, 'update'])
+        ->name('vacuna.update')->where('id','[0-9]+');
 
         //ruta resumen
-        Route::resource('/resumen', 'App\Http\Controllers\ResumenController');
+        Route::resource('/examen', 'App\Http\Controllers\ExamenController');
 
-        Route::put('/resumen/{id}/editar', [ResumenController::class, 'update'])
-        ->name('resumen.update')->where('id','[0-9]+');
+        Route::put('/examen/{id}/editar', [ExamenController::class, 'update'])
+        ->name('examen.update')->where('id','[0-9]+');
 
         //ruta triadas
         Route::resource('desparacitar', 'App\Http\Controllers\DesparacitarController');

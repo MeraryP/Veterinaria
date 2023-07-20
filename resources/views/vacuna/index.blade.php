@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Resumen Semológico')
+@section('title', 'Vacunas')
 
 
 @section('content')
@@ -36,11 +36,10 @@ setTimeout(quitarerror, 3000);
 </script>
 <br>
 
-
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="resumen/create" title="Crear Registro" class="btn btn-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="vacuna/create" title="Crear Registro" class="btn btn-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>
@@ -50,13 +49,15 @@ setTimeout(quitarerror, 3000);
 
 <tr>
 
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:0px;"   scope="col">Diagnostico</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Indicaciones_medicas</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Evolucion_curso</th>
-        
+            <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
+            <th style="font-size:15px;text-align:center; width:135px;" scope="col">Nombre de la vacuna</th>
+            <th style="font-size:15px;text-align:center; width:100px;" scope="col">Fecha aplicada</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Nombre de la proxima dosis</th>
+            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Fecha de la proxima dosis</th>
+           
 
-            <th style="font-size:15px;text-align:center;width:0px;"  scope="col">Acciones</th>
+
+            <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
             
         </tr>
     </thead>
@@ -64,29 +65,31 @@ setTimeout(quitarerror, 3000);
     <tbody>
     @php $n=0; @endphp
 
-        @foreach ($resumenes as  $resumen)
+        @foreach ($vacunas as  $vacuna)
         <tr>
-            
+     
+
             <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$resumen->diagnostico}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$resumen->indicaciones_medicas}}</td>
-            <td class="align-middle" style="font-size:15px">{{$resumen->evolucion_curso}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$vacuna->nombre_vacuna}}</td>
+            <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
+            <td class="align-middle" style="font-size:15px">{{$vacuna->nombre_proximavacuna}}</td>
+            <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_proximadosis}}</td>
            
            
 
             <td>
-            <a type="button"  title="Editar registro" href="./resumen/{{$resumen->id}}/edit" class="btn btn-info" >
+            <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 
-                <button type="bottom"  onClick="borrar{{$resumen->id}}()" title="Eliminar registro" class="btn btn-danger">
+                <button type="bottom"  onClick="borrar{{$vacuna->id}}()" title="Eliminar registro" class="btn btn-danger">
                <i class="fa fa-window-close" aria-hidden="true"></i></button>
-                <form action="{{route ('resumen.destroy',$resumen->id)}}" method="POST" id="eliminar{{$resumen->id}}"> 
+                <form action="{{route ('vacuna.destroy',$vacuna->id)}}" method="POST" id="eliminar{{$vacuna->id}}"> 
                 
                 @csrf
                 @method('DELETE')       
                
                <script>
-                function borrar{{$resumen->id}}(){
+                function borrar{{$vacuna->id}}(){
                     Swal.fire({
   title: 'Eliminar Registro',
   text: '¿Desea eliminar el registro seleccionado?',
@@ -97,7 +100,7 @@ setTimeout(quitarerror, 3000);
 }).then((result) => {
   /* Read more about isConfirmed, isDenied below */
   if (result.value) {
-    document.getElementById('eliminar{{$resumen->id}}').submit();
+    document.getElementById('eliminar{{$vacuna->id}}').submit();
   } else {
     
   }
