@@ -330,10 +330,10 @@ return [
         ],
 
         [
-            'text' => 'Triada',
-            'icon'    => 'fa fa-heartbeat', 
-            'route'=>'triadas.index',
-            'icon_color'=>'blue',  
+            'text' => 'Desparacitar',
+            'icon'    => 'fa fa-capsules', 
+            'route'=>'desparacitar.index',
+            'icon_color'=>'yellow',  
         ],
         [
             'text' => 'Anamnesis',

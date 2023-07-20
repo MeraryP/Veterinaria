@@ -5,7 +5,7 @@ use App\Http\Controllers\PropietarioController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\AnamnesisController;
 use App\Http\Controllers\ResumenController;
-use App\Http\Controllers\TriadaController;
+use App\Http\Controllers\DesparacitarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 
@@ -52,10 +52,10 @@ Route::middleware("auth")->group(function () {
         ->name('resumen.update')->where('id','[0-9]+');
 
         //ruta triadas
-        Route::resource('triadas', 'App\Http\Controllers\TriadaController');
+        Route::resource('desparacitar', 'App\Http\Controllers\DesparacitarController');
 
-        Route::put('/triadas/{id}/editar', [TriadaController::class, 'update'])
-        ->name('triada.update')->where('id','[0-9]+');
+        Route::put('/desparacitar/{id}/editar', [DesparacitarController::class, 'update'])
+        ->name('desparacitar.update')->where('id','[0-9]+');
         
         
         

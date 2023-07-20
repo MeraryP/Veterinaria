@@ -11,13 +11,12 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('triadas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('frecuencia_respiratoria');
-            $table->string('frecuencia_pulso');
-            $table->string('femperatura_corporaral');
+    public function up(){
+        Schema::create('desparacitars', function (Blueprint $table) {
+            $table->id();
+            $table->string('antiparacitario');
+            $table->string('fecha_desparacitacion');
+            $table->string('fecha_volverDesparacitar');
             $table->timestamps();
         });
     }
@@ -27,8 +26,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('triadas'); 
+    public function down(){
+        Schema::dropIfExists('desparacitars');
     }
 };
