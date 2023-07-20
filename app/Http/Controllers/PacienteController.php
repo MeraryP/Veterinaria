@@ -36,16 +36,16 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
 
+    
         $this->validate($request,[
            
-            'identificacion'=>'numeric|regex:([0-9])|unique:pacientes,identificacion',
-            'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'genero'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'edad'=>'required|integer|max:50',
-            'color'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'fecha'=>'required|date',
-            'peso'=>'required|max:50',
+            'fecha_nacimiento'=>'required|date',
+            'ultima_visita'=>'required|date',
             //'gene_id'=>'required|exists:generos,id',
         
             
@@ -54,15 +54,14 @@ class PacienteController extends Controller
         ]);
      
         $pacientes = new Paciente();
-        $pacientes->identificacion = $request->get('identificacion');
-        $pacientes->nombre = $request->get('nombre');
+        $pacientes->nombre_mascota = $request->get('nombre_mascota');
         $pacientes->especie = $request->get('especie');
+        $pacientes->genero = $request->get('genero');
         //$pacientes->gene_id = $request->get('gene_id');
         $pacientes->raza= $request->get('raza');
         $pacientes->edad = $request->get('edad');
-        $pacientes->color= $request->get('color');
-        $pacientes->fecha = $request->get('fecha');
-        $pacientes->peso = $request->get('peso');
+        $pacientes->fecha_nacimiento = $request->get('fecha_nacimiento');
+        $pacientes->ultima_visita = $request->get('ultima_visita');
         $pacientes->save();
 
         if($pacientes){
@@ -109,16 +108,19 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
 
     {
+
+
         $this->validate($request,[
            
-            'identificacion'=>'numeric|regex:([0-9])',
-            'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+          
+            'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'genero'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'edad'=>'required|integer|max:50',
-            'color'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'fecha'=>'required|date',
-            'peso'=>'required|max:50',
+            'fecha_nacimiento'=>'required|date',
+            'ultima_visita'=>'required|date',
+          
             //'gene_id'=>'required|exists:generos,id',
         
             
@@ -127,15 +129,14 @@ class PacienteController extends Controller
         ]);
      
         $paciente = Paciente::find($id);
-        $paciente->identificacion = $request->get('identificacion');
-        $paciente->nombre = $request->get('nombre');
+        $paciente->nombre_mascota = $request->get('nombre_mascota');
         $paciente->especie = $request->get('especie');
+        $paciente->genero = $request->get('genero');
         //$paciente->gene_id = $request->get('gene_id');
         $paciente->raza= $request->get('raza');
         $pacientes->edad = $request->get('edad');
-        $pacientes->color= $request->get('color');
-        $paciente->fecha = $request->get('fecha');
-        $paciente->peso = $request->get('peso');
+        $paciente->fecha_nacimiento = $request->get('fecha_nacimiento');
+        $paciente->ultima_visita = $request->get('ultima_visita');
         $paciente->save();
 
         if($paciente){

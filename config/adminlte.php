@@ -336,17 +336,17 @@ return [
             'icon_color'=>'blue',  
         ],
         [
-            'text' => 'Anamnesis',
-            'icon'    => 'fa fa-stethoscope', 
-            'route'=>'anamnesi.index',
+            'text' => 'Vacuna',
+            'icon'    => 'fas fa-syringe', 
+            'route'=>'vacuna.index',
             'icon_color'=>'purple',  
         ],
 
 
         [
-            'text' => 'Resumen semologico',
+            'text' => 'Examen físico',
             'icon'    => '	fas fa-file-alt', 
-            'route'=>'resumen.index',
+            'route'=>'examen.index',
             'icon_color'=>'red',  
         ],
  
