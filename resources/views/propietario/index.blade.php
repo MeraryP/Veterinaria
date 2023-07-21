@@ -24,6 +24,9 @@
 
 
 
+
+
+
 <script>
     function quitarerror(){
     const elements = document.getElementsByClassName('alert');
@@ -50,7 +53,6 @@ setTimeout(quitarerror, 3000);
             <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
             <th style="font-size:15px;text-align:center; width:135px;"   scope="col">Identidad</th>
             <th style="font-size:15px;text-align:center; width:250px;"  scope="col">Nombre Completo</th>
-            <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Genero</th>
             <th style="font-size:15px;text-align:center; width:70px;"  scope="col">Telefono</th>
             <th style="font-size:15px;text-align:center; width:150px;"  scope="col">Correo</th>
 
@@ -68,7 +70,6 @@ setTimeout(quitarerror, 3000);
             <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
             <td class="align-middle" style="font-size:15px" >{{$propietario->identidad}}</td>
             <td class="align-middle" style="font-size:15px" >{{$propietario->nombre}}</td>
-            <td class="align-middle" style="font-size:15px">{{$propietario->genero}}</td>
             <td class="align-middle" style="font-size:15px">{{$propietario->telefono}}</td>
             <td class="align-middle" style="font-size:15px">{{$propietario->correo}}</td>
            

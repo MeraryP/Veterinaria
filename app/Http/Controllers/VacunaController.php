@@ -24,6 +24,7 @@ class VacunaController extends Controller
     {
        
         //$generos = Genero::all();
+     
         return view ('vacuna.create');
     }
 
@@ -39,16 +40,20 @@ class VacunaController extends Controller
 
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
-            'fecha_proximadosis'=>'date|max:200',
             'nombre_proximavacuna'=>'required|max:200',
+            'fecha_proximadosis'=>'date|max:200',
+            
+            
+            
            
         ]);
      
         $vacunas = new Vacuna();
         $vacunas->nombre_vacuna = $request->get('nombre_vacuna');
         $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
-        $vacunas->fecha_proximadosis = $request->get('fecha_proximadosis');
         $vacunas->nombre_proximavacuna= $request->get('nombre_proximavacuna');
+        $vacunas->fecha_proximadosis = $request->get('fecha_proximadosis');
+        
         $vacunas->save();
 
         if($vacunas){
@@ -80,6 +85,7 @@ class VacunaController extends Controller
     {
 
          // $generos = Genero::all();
+        
          $vacuna = Vacuna::findOrfail($id);
          return view('vacuna.edit')->with('vacuna', $vacuna);
     }
@@ -98,8 +104,10 @@ class VacunaController extends Controller
            
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
-            'fecha_proximadosis'=>'date|max:200',
             'nombre_proximavacuna'=>'required|max:200',
+            'fecha_proximadosis'=>'date|max:200',
+            
+           
 
            
         ]);
@@ -107,8 +115,9 @@ class VacunaController extends Controller
         $vacuna = Vacuna::find($id);
         $vacuna->nombre_vacuna = $request->get('nombre_vacuna');
         $vacuna->fecha_aplicada = $request->get('fecha_aplicada');
-        $vacuna->fecha_proximadosis = $request->get('fecha_proximadosis');
         $vacuna->nombre_proximavacuna= $request->get('nombre_proximavacuna');
+        $vacuna->fecha_proximadosis = $request->get('fecha_proximadosis');
+       
         $vacuna->save();
 
         if($vacuna){

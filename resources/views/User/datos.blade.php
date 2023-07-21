@@ -38,12 +38,12 @@
 
         
         <br>
-        <a type="button" class="btn btn-warning"href="/contrasenia" ><i class="fa fa-key" aria-hidden="true"></i>
+        <a type="button" class="btn btn-outline-success"href="/contrasenia" ><i class="fa fa-key" aria-hidden="true"></i>
           Cambiar Contraseña
         </a>
         
        
-       <a type="button" class="btn btn-warning" href="../"   ><i class="fa fa-reply-all" aria-hidden="true"></i>
+       <a type="button" class="btn btn-outline-warning" href="../"   ><i class="fa fa-reply-all" aria-hidden="true"></i>
             Volver a inicio
         </a>
 

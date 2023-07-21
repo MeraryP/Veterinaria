@@ -32,7 +32,7 @@
 
     <br>
         <div align="right">
-            <a href="desparacitar/create" title="Crear registro" class="btn btn-info">
+            <a href="desparacitar/create" title="Crear registro" class="btn btn-outline-info">
                 <i class='fas fa-file-medical'></i> Crear
             </a>
         </div>

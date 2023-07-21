@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vacunas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre_vacuna');
-            $table->date('fecha_aplicada');
-            $table->string('nombre_proximavacuna');
-            $table->date('fecha_proximadosis');
-            $table->timestamps();
-
-           
-        });
+        Schema::table('pacientes', function (Blueprint $table) {
+            $table->unsignedInteger('vacuna_id');
+    
+            $table->foreign('vacuna_id')->references('id')->on('vacunas')->onDelete('cascade');
+        }); 
     }
 
     /**
@@ -32,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vacunas');
+        Schema::table('pacientes', function (Blueprint $table) {
+            //
+        });
     }
 };

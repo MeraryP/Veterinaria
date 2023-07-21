@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
+use App\Models\Vacuna;
+use App\Models\Genero;
+//use App\Models\Desparacitar;
+
 
 class PacienteController extends Controller
 {
@@ -22,9 +26,10 @@ class PacienteController extends Controller
      */
     public function create()
     {
-       
-        //$generos = Genero::all();
-        return view ('paciente.create');
+        $generos = Genero::all();
+        $vacunas = Vacuna::all();
+        //$desparacitars = Desparacitar::all();
+        return view ('paciente.create', compact('generos'),compact('vacunas'));
     }
 
     /**
@@ -41,11 +46,13 @@ class PacienteController extends Controller
            
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'genero'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'gene_id'=>'required|exists:generos,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'edad'=>'required|integer|max:50',
+            'vacuna_id'=>'required|exists:vacunas,id',
+            //'desp_id'=>'required|exists:desparacitars,id',
             'fecha_nacimiento'=>'required|date',
-            'ultima_visita'=>'required|date',
+            
             //'gene_id'=>'required|exists:generos,id',
         
             
@@ -56,12 +63,12 @@ class PacienteController extends Controller
         $pacientes = new Paciente();
         $pacientes->nombre_mascota = $request->get('nombre_mascota');
         $pacientes->especie = $request->get('especie');
-        $pacientes->genero = $request->get('genero');
-        //$pacientes->gene_id = $request->get('gene_id');
+        $pacientes->gene_id = $request->get('gene_id');
         $pacientes->raza= $request->get('raza');
         $pacientes->edad = $request->get('edad');
+        $pacientes->vacuna_id = $request->get('vacuna_id');
+       // $pacientes->desp_id = $request->get('desp_id');
         $pacientes->fecha_nacimiento = $request->get('fecha_nacimiento');
-        $pacientes->ultima_visita = $request->get('ultima_visita');
         $pacientes->save();
 
         if($pacientes){
@@ -91,10 +98,11 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-
-        // $generos = Genero::all();
+        $generos = Genero::all();
+        $vacunas = Vacuna::all();
+        //$desparacitars = Desparacitar::all();
         $paciente = Paciente::findOrfail($id);
-        return view('paciente.edit')->with('paciente', $paciente);
+        return view('paciente.edit', compact('generos'),compact('vacunas'))->with('paciente', $paciente);
     
     }
 
@@ -115,11 +123,13 @@ class PacienteController extends Controller
           
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'genero'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'gene_id'=>'required|exists:generos,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'edad'=>'required|integer|max:50',
+            'vacuna_id'=>'required|exists:vacunas,id',
+           // 'desp_id'=>'required|exists:desparacitars,id',
             'fecha_nacimiento'=>'required|date',
-            'ultima_visita'=>'required|date',
+           
           
             //'gene_id'=>'required|exists:generos,id',
         
@@ -131,12 +141,12 @@ class PacienteController extends Controller
         $paciente = Paciente::find($id);
         $paciente->nombre_mascota = $request->get('nombre_mascota');
         $paciente->especie = $request->get('especie');
-        $paciente->genero = $request->get('genero');
-        //$paciente->gene_id = $request->get('gene_id');
+        $paciente->gene_id = $request->get('gene_id');
         $paciente->raza= $request->get('raza');
-        $pacientes->edad = $request->get('edad');
+        $paciente->edad = $request->get('edad');
+        $paciente->vacuna_id = $request->get('vacuna_id');
+       // $paciente->desp_id = $request->get('desp_id');
         $paciente->fecha_nacimiento = $request->get('fecha_nacimiento');
-        $paciente->ultima_visita = $request->get('ultima_visita');
         $paciente->save();
 
         if($paciente){

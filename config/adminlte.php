@@ -332,13 +332,13 @@ return [
         [
             'text' => 'Desparacitar',
             'icon'    => 'fa fa-capsules', 
-            'route'=>'desparacitar.index',
+            
             'icon_color'=>'yellow',  
         ],
         [
             'text' => 'Vacuna',
             'icon'    => 'fas fa-syringe', 
-            'route'=>'vacuna.index',
+            'route'=> 'vacuna.index',
             'icon_color'=>'purple',  
         ],
 
@@ -346,7 +346,7 @@ return [
         [
             'text' => 'Examen físico',
             'icon'    => '	fas fa-file-alt', 
-            'route'=>'examen.index',
+            
             'icon_color'=>'red',  
         ],
  

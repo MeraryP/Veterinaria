@@ -45,6 +45,19 @@
             @enderror
       </div>
 
+      
+      <div class="for-group">
+        <label for="">Género</label>
+        <select class="form-control" name="gene_id">
+        <option  value="{{$propietario->gene_id}}"> {{$propietario->genero->name}}</option>   
+        @foreach ($generos as $genero)
+        <option value="{{$genero->id}}">{{$genero->name}}</option>
+        @endforeach      
+      </select>
+      </div>
+
+     
+
       <div class="mb-3">
         <label for="" class="form-label">Telefono</label>
         <input type="text" name="telefono"  id="telefono"  class="form-control @error('telefono') is-invalid @enderror"   placeholder="0000-0000" value="{{ $propietario->telefono }}"
@@ -68,7 +81,7 @@
       </div>
 
       
-<button type="submit" class="btn btn-outline-info" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
+<button type="submit" class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
 <a href="/propietario" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
 <br>

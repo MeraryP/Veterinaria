@@ -27,14 +27,14 @@ class DesparacitarController extends Controller{
             'fecha_volverDesparacitar'=>'required|date|before:'.$maxima.'|after:'.$minima,  
         ]);
 
-        $Desparacitars = new Desparacitar();
-        $Desparacitars->antiparacitario = $request->get('antiparacitario');
-        $Desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
-        $Desparacitars->fecha_volverDesparacitar = $request->get('fecha_volverDesparacitar');
+        $desparacitars = new Desparacitar();
+        $desparacitars->antiparacitario = $request->get('antiparacitario');
+        $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
+        $desparacitars->fecha_volverDesparacitar = $request->get('fecha_volverDesparacitar');
 
-        $Desparacitars->save();
+        $desparacitars->save();
 
-        if($Desparacitars){
+        if($desparacitars){
             return redirect('/desparacitar')->with('mensaje', 'La triada fue creada exitosamente.');
         }else{
             //retornar con un mensaje de error.

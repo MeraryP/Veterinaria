@@ -36,18 +36,14 @@
 
    
 
-<div class="mb-3">
-  <label for="" class="form-label">Género</label>
-  <input type="text"  maxlength="100"   value="{{old('genero')}}"  name="genero"  id="genero"   
-  class="form-control @error('genero') is-invalid @enderror" placeholder="Ingrese el género"
-  title="Ingrese el género">
-  @error('genero')
-          <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-      @enderror
-
-</div>
+      <div class="for-group">
+        <label for="">Género</label>
+        <select class="form-control" name="gene_id">
+        @foreach ($generos as $genero)
+        <option value="{{$genero->id}}">{{$genero->name}}</option>
+        @endforeach      
+      </select>
+      </div>
    
       
 
@@ -78,7 +74,17 @@
       
       </div>
 
+      <div class="mb-3">
+      <label for="">Vacunas</label>
+      <select class="form-control" name="vacuna_id">
+        @foreach ($vacunas as $vacuna)
+        <option value="{{$vacuna->id}}">{{$vacuna->nombre_vacuna}}</option>
+        @endforeach      
+      </select>
+      </div> 
 
+
+     
 
       <div class="mb-3">
         <label for="" class="form-label">Fecha de Nacimiento</label>
@@ -94,18 +100,7 @@
             @enderror
       </div>
 
-      <div class="mb-3">
-        <label for="">Fecha última visita</label>
-        <input type="date"value="{{old('ultima_visita')}}"  name="ultima_visita"  id="ultima_visita" 
-        class="form-control @error('ultima_visita') is-invalid @enderror"   placeholder="Ingrese la fecha de la última visita"
-        title="Ingrese la fecha de la última visita ">
-      
-        @error('ultima_visita')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
+     
 
 
       

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Propietario;
 use Illuminate\Support\Facades\DB;
+use App\Models\Genero;
 
 class PropietarioController extends Controller
 {
@@ -16,8 +17,8 @@ class PropietarioController extends Controller
     public function create()
     {
        
-       // $generos = Genero::all();
-        return view ('propietario.create');
+        $generos = Genero::all();
+        return view ('propietario.create',compact('generos'));
     }
 
     public function store(Request $request)
@@ -28,12 +29,9 @@ class PropietarioController extends Controller
             'identidad'=>'unique:propietarios,identidad|max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
-            'telefono'=>'max:9|regex:([0-9]{4}-[0-9]{4})',
-            'correo'=>'required|max:100|email|unique:propietarios,correo',
-            //'gene_id'=>'required|exists:generos,id',
-        
-            
-            
+            'gene_id'=>'required|exists:generos,id',
+            'telefono'=>'required|regex:/^\d{8}$/',
+            'correo'=>'required|max:100|email|unique:propietarios,correo',    
            
         ]);
      
@@ -41,7 +39,7 @@ class PropietarioController extends Controller
         $propietarios->identidad = $request->get('identidad');
         $propietarios->nombre = $request->get('nombre');
         $propietarios->direccion = $request->get('direccion');
-        //$propietarios->gene_id = $request->get('gene_id');
+        $propietarios->gene_id = $request->get('gene_id');
         $propietarios->telefono= $request->get('telefono');
         $propietarios->correo = $request->get('correo');
         $propietarios->save();
@@ -58,13 +56,29 @@ class PropietarioController extends Controller
         //
     }
 
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
     public function edit($id)
     {
-       // $generos = Genero::all();
+        $generos = Genero::all();
         $propietario = Propietario::findOrfail($id);
-        return view('propietario.edit')->with('propietario', $propietario);
+        return view('propietario.edit',compact('generos'))->with('propietario', $propietario);
     
     }
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
 
     public function update(Request $request, $id){
         $this->validate($request,[
@@ -72,12 +86,9 @@ class PropietarioController extends Controller
             'identidad'=>'max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
-            'telefono'=>'max:9|regex:([0-9]{4}-[0-9]{4})',
-            'correo'=>'required|max:100|email',
-            //'gene_id'=>'required|exists:generos,id',
-        
-            
-            
+            'gene_id'=>'required|exists:generos,id',
+            'telefono'=>'required|regex:/^\d{8}$/',
+            'correo'=>'required|max:100|email',     
            
         ]);
      
@@ -85,7 +96,7 @@ class PropietarioController extends Controller
         $propietario->identidad = $request->get('identidad');
         $propietario->nombre = $request->get('nombre');
         $propietario->direccion = $request->get('direccion');
-        //$propietarios->gene_id = $request->get('gene_id');
+        $propietario->gene_id = $request->get('gene_id');
         $propietario->telefono= $request->get('telefono');
         $propietario->correo = $request->get('correo');
         $propietario->save();

@@ -39,7 +39,7 @@ setTimeout(quitarerror, 3000);
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="vacuna/create" title="Crear Registro" class="btn btn-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="vacuna/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>
@@ -78,10 +78,10 @@ setTimeout(quitarerror, 3000);
            
 
             <td>
-            <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-info" >
+            <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-outline-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 
-                <button type="bottom"  onClick="borrar{{$vacuna->id}}()" title="Eliminar registro" class="btn btn-danger">
+                <button type="bottom"  onClick="borrar{{$vacuna->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
                <i class="fa fa-window-close" aria-hidden="true"></i></button>
                 <form action="{{route ('vacuna.destroy',$vacuna->id)}}" method="POST" id="eliminar{{$vacuna->id}}"> 
                 

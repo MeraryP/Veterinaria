@@ -69,12 +69,12 @@
         </div>
 
         {{-- Register button --}}
-        <button type="submit"  class="btn btn-primary" >
+        <button type="submit"  class="btn btn-outline-success " >
             <span class="fas fa-user-plus"></span>
             Guardar cambios
         </button>
         
-        <a type="button" class="btn btn-danger" href="./usuario" ><i class="fa fa-times" aria-hidden="true"></i>
+        <a type="button" class="btn btn-outline-danger" href="./usuario" ><i class="fa fa-times" aria-hidden="true"></i>
             Cancelar
         </a>
 

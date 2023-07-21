@@ -5,6 +5,11 @@
 
 @section('content')
 
+
+
+
+
+
 <script>
     var msg = '{{Session::get('mensaje')}}';
     var exist = '{{Session::has('mensaje')}}';

@@ -17,11 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre_mascota');
             $table->string('especie');
-            $table->string('genero');
             $table->string('raza');
             $table->string('edad');
             $table->date('fecha_nacimiento');
-            $table->date('ultima_visita');
+           
 
            
 

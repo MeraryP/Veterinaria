@@ -31,15 +31,14 @@
             @enderror
       </div>
 
-      <div class="mb-3">
-        <label for="" class="form-label">Género</label>
-        <input type="text" name="genero"  id="genero"  class="form-control @error('genero') is-invalid @enderror"   placeholder="Ingrese el género" value="{{ $paciente->genero }}"
-        title="Ingrese el género">
-        @error('genero')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+      <div class="for-group">
+        <label for="">Género</label>
+        <select class="form-control" name="gene_id">
+        <option style="display:none" value="{{$paciente->gene_id}}"> {{$paciente->genero->name}}</option>    
+        @foreach ($generos as $genero)
+        <option value="{{$genero->id}}">{{$genero->name}}</option>
+        @endforeach      
+      </select>
       </div>
 
       <div class="mb-3">
@@ -65,6 +64,16 @@
       </div>
 
 
+      <div class="mb-3">
+      <label for="">Vacunas</label>
+      <select class="form-control" name="vacuna_id">
+        @foreach ($vacunas as $vacuna)
+        <option value="{{$vacuna->id}}">{{$vacuna->nombre_vacuna}}</option>
+        @endforeach      
+      </select>
+      </div> 
+
+      
      
       <div class="mb-3">
         <label for="" class="form-label">Fecha de Nacimiento</label>

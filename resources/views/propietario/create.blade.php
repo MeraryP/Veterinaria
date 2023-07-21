@@ -54,6 +54,15 @@
 
    
 
+
+      <div class="for-group">
+        <label for="">Género</label>
+        <select class="form-control" name="gene_id">
+        @foreach ($generos as $genero)
+        <option value="{{$genero->id}}">{{$genero->name}}</option>
+        @endforeach      
+      </select>
+      </div>
     
 
       <div class="mb-3">
@@ -84,7 +93,7 @@
 
       
 <link rel="stylesheet" type="text/css" href="css/fonts.css" >     
-<button type="submit"class="btn btn-outline-info" tabindex="4"><span class="fas fa-user-plus"></span> Guardar</button> 
+<button type="submit"class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar</button> 
 
 <a href="../propietario" class="btn btn-outline-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 <br>

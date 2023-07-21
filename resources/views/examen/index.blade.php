@@ -40,7 +40,7 @@ setTimeout(quitarerror, 3000);
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="examen/create" title="Crear Registro" class="btn btn-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="examen/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>

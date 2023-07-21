@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Propietario extends Model
 {
     use HasFactory;
+
+
+     
+    public function genero()
+    {
+        return $this->belongsTo( Genero::class,'gene_id',"id");
+    }
 }
