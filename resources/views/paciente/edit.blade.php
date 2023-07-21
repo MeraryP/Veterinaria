@@ -7,6 +7,17 @@
 <form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
     @method('put')
     @csrf
+    
+    <div class="mb-3">
+        <label for="" class="form-label">Edad</label>
+        <input type="number" name="numero_expediente"  id="numero_expediente"  class="form-control @error('numero_expediente') is-invalid @enderror"   placeholder="" value="{{ $paciente->numero_expediente }}"
+        title="Ingrese el número de expediente">
+        @error('numero_expediente')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      </div>
 
 
 <div class="mb-3">

@@ -38,12 +38,25 @@
 setTimeout(quitarerror, 3000);
 </script>
 <br>
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Propietario</h3>
+  </nav>
 
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
     <a href="propietario/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
+
+    
 <br>
 <br>
 <br>

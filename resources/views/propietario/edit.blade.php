@@ -10,6 +10,18 @@
 
 
     <div class="mb-3">
+        <label for="" class="form-label">Código del propietario</label>
+        <input type="number" name="cod_propietario"  id="cod_propietario"  class="form-control @error('cod_propietario') is-invalid @enderror"   placeholder="0000" value="{{ $propietario->cod_propietario }}"
+        title="Ingrese el código del propietario">
+        @error('cod_propietario')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      </div>
+
+
+    <div class="mb-3">
     <label for="" class="form-label">Identidad</label>
     <input type="text" maxlength="15" pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" 
     title="Ingrese número de Identidad separado por guiones"

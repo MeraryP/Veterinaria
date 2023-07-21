@@ -15,15 +15,13 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
+            $table->integer('numero_expediente');
             $table->string('nombre_mascota');
             $table->string('especie');
             $table->string('raza');
             $table->string('edad');
             $table->date('fecha_nacimiento');
-           
-
-           
-
+        
             $table->timestamps();
         });
     }

@@ -49,10 +49,48 @@ setTimeout(quitarerror, 3000);
 </div>
     <div align="right" style="float:right">
     <a href="paciente/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
-    </div>
+
+</div>
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Mascotas</h3>
+    
+<lu class="nav-item" style="margin-left: 170px; border: 1px solid purple; border-radius: 20px; " >
+    <a href="{{ route('vacuna.index') }}" class="nav-link"style="color: purple;">
+       <div > 
+       <p ><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+       </div>
+    </a>
+</lu>
+
+<lu class="nav-item" style="margin-left: 50px; border: 1px solid red; border-radius: 20px; " >
+    <a href="{{ route('desparacitar.index') }}" class="nav-link"style="color: red;">
+       <div > 
+       <p ><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparasitar</p>
+       </div>
+    </a>
+</lu>
+
+<lu class="nav-item" style="margin-left: 50px; border: 1px solid green; border-radius: 20px;" >
+    <a href="{{ route('examen.index') }}" class="nav-link"style="color: green;">
+       <div > 
+       <p ><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Examen Fisico</p>
+       </div>
+    </a>
+</lu>
+</nav>
+    
 <br>
 <br>
 <br>
+
 <table id="mitabla"  class = "table table-sm table-bordered ">
 <thead  class="thead-dark">
 

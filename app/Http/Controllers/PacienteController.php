@@ -43,7 +43,7 @@ class PacienteController extends Controller
 
     
         $this->validate($request,[
-           
+            'numero_expediente'=>'unique:pacientes,numero_expediente|numeric|regex:([0-9]{4})',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'gene_id'=>'required|exists:generos,id',
@@ -61,6 +61,8 @@ class PacienteController extends Controller
         ]);
      
         $pacientes = new Paciente();
+    
+        $pacientes->numero_expediente = $request->get('numero_expediente');
         $pacientes->nombre_mascota = $request->get('nombre_mascota');
         $pacientes->especie = $request->get('especie');
         $pacientes->gene_id = $request->get('gene_id');
@@ -119,8 +121,8 @@ class PacienteController extends Controller
 
 
         $this->validate($request,[
-           
-          
+            
+            'numero_expediente'=>'numeric|regex:([0-9]{4})',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'gene_id'=>'required|exists:generos,id',
@@ -139,6 +141,7 @@ class PacienteController extends Controller
         ]);
      
         $paciente = Paciente::find($id);
+        $paciente->numero_expediente = $request->get('numero_expediente');
         $paciente->nombre_mascota = $request->get('nombre_mascota');
         $paciente->especie = $request->get('especie');
         $paciente->gene_id = $request->get('gene_id');

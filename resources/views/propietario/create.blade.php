@@ -3,10 +3,37 @@
 @section('title', 'Crear Propietario')
 
 
+
 @section('content')
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Datos del Propietario</h3>
+  </nav>
 <form action ="../propietario"  method="POST">
     @csrf
 
+
+    <div class="mb-3">
+        <label for="">Código del propietario</label>
+        <input type="number"value="{{old('cod_propietario')}}"  name="cod_propietario"  id="cod_propietario" 
+        class="form-control @error('cod_propietario') is-invalid @enderror"   placeholder="0000"
+        title="Ingrese el código del propietario ">
+      
+        @error('cod_propietario')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      </div>
+
+      
     <div class="mb-3">
     <label for="" class="form-label">Identidad</label>
     <input type="text"  maxlength="15" pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" 
