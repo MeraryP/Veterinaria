@@ -1,12 +1,39 @@
 @extends('layouts.madre')
 
-@section('title', 'Paciente')
+@section('title', 'Datos del Examen Fisico')
 
 
 @section('content')
+
+
+
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Datos del Examen Fisico</h3>
+  </nav>
 <form  method="POST" action="{{ route('examen.update',['id'=>$examen->id])}}">
     @method('put')
     @csrf
+
+    <br>
+
+    <div class="mb-3">
+        <label for="" class="form-label">codigo de Examen</label>
+        <input type="number" name="cod_examen"  id="cod_examen"  class="form-control @error('cod_examen') is-invalid @enderror"   placeholder="" value="{{ $examen->cod_examen }}"
+        title="Ingrese el codigo de examen">
+        @error('cod_examen')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      </div>
 
     <div class="mb-3">
     <label for="" class="form-label">Temperatura</label>

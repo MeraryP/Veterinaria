@@ -4,12 +4,27 @@
 
 
 @section('content')
+
+
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Datos del Paciente</h3>
+  </nav>
 <form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
     @method('put')
     @csrf
+
+    <br>
     
     <div class="mb-3">
-        <label for="" class="form-label">Edad</label>
+        <label for="" class="form-label">numero de expediente</label>
         <input type="number" name="numero_expediente"  id="numero_expediente"  class="form-control @error('numero_expediente') is-invalid @enderror"   placeholder="" value="{{ $paciente->numero_expediente }}"
         title="Ingrese el número de expediente">
         @error('numero_expediente')
@@ -29,6 +44,17 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
+      </div>
+
+
+      <div class="mb-3">
+      <label for="">codigo del propietario</label>
+      <select class="form-control" name="pro_id">
+      <option style="display:none" value="{{$paciente->pro_id}}"> {{$paciente->propietario->cod_propietario}}</option> 
+        @foreach ($propietarios as $propietario)
+        <option value="{{$propietario->id}}">{{$propietario->cod_propietario}}</option>
+        @endforeach      
+      </select>
       </div>
 
        <div class="mb-3">
@@ -78,8 +104,9 @@
       <div class="mb-3">
       <label for="">Vacunas</label>
       <select class="form-control" name="vacuna_id">
+      <option style="display:none" value="{{$paciente->vacuna_id}}"> {{$paciente->vacuna->cod_vacuna}}</option>
         @foreach ($vacunas as $vacuna)
-        <option value="{{$vacuna->id}}">{{$vacuna->nombre_vacuna}}</option>
+        <option value="{{$vacuna->id}}">{{$vacuna->cod_vacuna}}</option>
         @endforeach      
       </select>
       </div> 
@@ -97,16 +124,18 @@
             @enderror
       </div>
 
+
       <div class="mb-3">
-        <label for="" class="form-label">Ultima visita</label>
-        <input type="date" name="ultima_visita"  id="ultima_visita"  class="form-control @error('ultima_visita') is-invalid @enderror"   placeholder="" value="{{ $paciente->ultima_visita }}"
-        title="Ingrese la última pagina">
-        @error('ultima_visita')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+      <label for="">codigo de Examen Fisico </label>
+      <select class="form-control" name="exa_id">
+      <option style="display:none" value="{{$paciente->exa_id}}"> {{$paciente->examen->cod_examen}}</option> 
+        @foreach ($examens as $examen)
+        <option value="{{$examen->id}}">{{$examen->cod_examen}}</option>
+        @endforeach      
+      </select>
       </div>
+
+     
 
 
 

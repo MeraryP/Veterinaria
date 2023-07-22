@@ -4,9 +4,22 @@
 
 
 @section('content')
+
+
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Paciente</h3>
+  </nav>
 <form action ="../paciente"  method="POST">
     @csrf
-    
+    <br>
     <div class="mb-3">
         <label for="" class="form-label">Número de expediente</label>
         <input type="text"  maxlength="100"   value="{{old('numero_expediente')}}"  name="numero_expediente"  id="numero_expediente"   
@@ -30,6 +43,16 @@
                 </span>
             @enderror
       
+      </div>
+
+
+      <div class="mb-3">
+      <label for="">codigo del propietario</label>
+      <select class="form-control" name="pro_id"> 
+       @foreach ($propietarios as  $propietario)
+        <option value="{{$propietario->id}}">{{$propietario->cod_propietario}}</option>
+        @endforeach   
+      </select>
       </div>
 
       <div class="mb-3">
@@ -74,10 +97,10 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Edad</label>
-        <input type="text"  maxlength="100"   value="{{old('raza')}}"  name="edad"  id="edad"   
+        <input type="text"  maxlength="100"   value="{{old('edad')}}"  name="edad"  id="edad"   
         class="form-control @error('edad') is-invalid @enderror" placeholder="Ingrese la edad"
         title="Ingrese la edad">
-        @error('raza')
+        @error('edad')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -89,7 +112,7 @@
       <label for="">Vacunas</label>
       <select class="form-control" name="vacuna_id">
         @foreach ($vacunas as $vacuna)
-        <option value="{{$vacuna->id}}">{{$vacuna->nombre_vacuna}}</option>
+        <option value="{{$vacuna->id}}">{{$vacuna->cod_vacuna}}</option>
         @endforeach      
       </select>
       </div> 
@@ -111,7 +134,14 @@
             @enderror
       </div>
 
-     
+      <div class="mb-3">
+      <label for="">codigo de Examen Fisico</label>
+      <select class="form-control" name="exa_id">
+        @foreach ($examens as $examen)
+        <option value="{{$examen->id}}">{{$examen->cod_examen}}</option>
+        @endforeach      
+      </select>
+      </div> 
 
 
       

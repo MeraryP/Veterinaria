@@ -4,11 +4,24 @@
 
 
 @section('content')
+
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Datos del Propietario</h3>
+  </nav>
 <form  method="POST" action="{{ route('propietario.update',['id'=>$propietario->id])}}">
-    @method('put')
+    @method('PUT')
     @csrf
 
 
+    <br>
     <div class="mb-3">
         <label for="" class="form-label">Código del propietario</label>
         <input type="number" name="cod_propietario"  id="cod_propietario"  class="form-control @error('cod_propietario') is-invalid @enderror"   placeholder="0000" value="{{ $propietario->cod_propietario }}"
@@ -57,19 +70,14 @@
             @enderror
       </div>
 
-      
       <div class="for-group">
-        <label for="">Género</label>
-        <select class="form-control" name="gene_id">
-        <option  value="{{$propietario->gene_id}}"> {{$propietario->genero->name}}</option>   
+    <label for="">Género</label>
+    <select class="form-control" name="gene_id">
         @foreach ($generos as $genero)
-        <option value="{{$genero->id}}">{{$genero->name}}</option>
+            <option value="{{$genero->id}}" @if($genero->id === $propietario->gene_id) selected @endif>{{$genero->name}}</option>
         @endforeach      
-      </select>
-      </div>
-
-     
-
+    </select>
+    </div>
       <div class="mb-3">
         <label for="" class="form-label">Telefono</label>
         <input type="text" name="telefono"  id="telefono"  class="form-control @error('telefono') is-invalid @enderror"   placeholder="0000-0000" value="{{ $propietario->telefono }}"

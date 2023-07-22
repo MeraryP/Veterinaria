@@ -18,7 +18,9 @@
 
 
     <form action ="../desparacitar"  method="POST">
+    
         @csrf
+        <br>
         <div class="mb-3">
             <label for="" class="form-label">Antiparacitario</label>
             <input type="text" value="{{old('antiparacitario')}}"  name="antiparacitario" id="antiparacitario"  class="form-control @error('antiparacitario') is-invalid @enderror"  tabindex="1"

@@ -4,9 +4,38 @@
 
 
 @section('content')
+
+
+<nav class="main-header navbar
+    navbar-expand
+    navbar-white navbar-light">
+
+    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
+        <i class="fas fa-bars"></i>
+        <span class="sr-only">Alternar barra de navegación</span>
+    </a>  
+
+  <h3>Vacuna</h3>
+  </nav>
 <form action ="../vacuna"  method="POST">
     @csrf
    
+ <br>
+
+
+    
+<div class="mb-3">
+        <label for="" class="form-label">codigo de Vacuna</label>
+        <input type="number"  maxlength="100"   value="{{old('cod_vacuna')}}"  name="cod_vacuna"  id="cod_vacuna"   
+        class="form-control @error('cod_vacuna') is-invalid @enderror" placeholder="0000"
+        title="Ingrese el codigo de vacuna">
+        @error('cod_vacuna')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      
+      </div>
 
     <div class="mb-3">
     <label for="" class="form-label">Nombre de la vacuna</label>

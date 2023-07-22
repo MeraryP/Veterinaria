@@ -15,4 +15,7 @@ class Propietario extends Model
     {
         return $this->belongsTo( Genero::class,'gene_id',"id");
     }
+
+
+    
 }

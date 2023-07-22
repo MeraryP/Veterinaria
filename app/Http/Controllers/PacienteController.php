@@ -7,6 +7,8 @@ use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 use App\Models\Vacuna;
 use App\Models\Genero;
+use App\Models\Propietario;
+use App\Models\Examen;
 //use App\Models\Desparacitar;
 
 
@@ -14,7 +16,7 @@ class PacienteController extends Controller
 {
     public function index(Request $request)
     {
-       $pacientes= Paciente::all();
+       $pacientes = Paciente::all();
         return view ('paciente/index',compact('pacientes'));
     }
 
@@ -26,10 +28,13 @@ class PacienteController extends Controller
      */
     public function create()
     {
+       
         $generos = Genero::all();
         $vacunas = Vacuna::all();
+        $propietarios = Propietario::all(); 
+        $examens = Examen::all();
         //$desparacitars = Desparacitar::all();
-        return view ('paciente.create', compact('generos'),compact('vacunas'));
+        return view ('paciente.create', compact('generos','vacunas','propietarios','examens'));
     }
 
     /**
@@ -45,6 +50,7 @@ class PacienteController extends Controller
         $this->validate($request,[
             'numero_expediente'=>'unique:pacientes,numero_expediente|numeric|regex:([0-9]{4})',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'pro_id'=>'required|exists:propietarios,id',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'gene_id'=>'required|exists:generos,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
@@ -52,6 +58,7 @@ class PacienteController extends Controller
             'vacuna_id'=>'required|exists:vacunas,id',
             //'desp_id'=>'required|exists:desparacitars,id',
             'fecha_nacimiento'=>'required|date',
+            'exa_id'=>'required|exists:examens,id',
             
             //'gene_id'=>'required|exists:generos,id',
         
@@ -64,6 +71,7 @@ class PacienteController extends Controller
     
         $pacientes->numero_expediente = $request->get('numero_expediente');
         $pacientes->nombre_mascota = $request->get('nombre_mascota');
+        $pacientes->pro_id = $request->get('pro_id');
         $pacientes->especie = $request->get('especie');
         $pacientes->gene_id = $request->get('gene_id');
         $pacientes->raza= $request->get('raza');
@@ -71,6 +79,7 @@ class PacienteController extends Controller
         $pacientes->vacuna_id = $request->get('vacuna_id');
        // $pacientes->desp_id = $request->get('desp_id');
         $pacientes->fecha_nacimiento = $request->get('fecha_nacimiento');
+        $pacientes->exa_id = $request->get('exa_id');
         $pacientes->save();
 
         if($pacientes){
@@ -100,11 +109,14 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
+        
         $generos = Genero::all();
         $vacunas = Vacuna::all();
+        $propietarios = Propietario::all();
+        $examens = Examen::all();
         //$desparacitars = Desparacitar::all();
         $paciente = Paciente::findOrfail($id);
-        return view('paciente.edit', compact('generos'),compact('vacunas'))->with('paciente', $paciente);
+        return view('paciente.edit', compact('generos','vacunas','propietarios','examens'))->with('paciente', $paciente);
     
     }
 
@@ -124,6 +136,7 @@ class PacienteController extends Controller
             
             'numero_expediente'=>'numeric|regex:([0-9]{4})',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'pro_id'=>'required|exists:propietarios,id',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'gene_id'=>'required|exists:generos,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
@@ -131,6 +144,7 @@ class PacienteController extends Controller
             'vacuna_id'=>'required|exists:vacunas,id',
            // 'desp_id'=>'required|exists:desparacitars,id',
             'fecha_nacimiento'=>'required|date',
+            'exa_id'=>'required|exists:examens,id', 
            
           
             //'gene_id'=>'required|exists:generos,id',
@@ -143,6 +157,7 @@ class PacienteController extends Controller
         $paciente = Paciente::find($id);
         $paciente->numero_expediente = $request->get('numero_expediente');
         $paciente->nombre_mascota = $request->get('nombre_mascota');
+        $paciente->pro_id = $request->get('pro_id');
         $paciente->especie = $request->get('especie');
         $paciente->gene_id = $request->get('gene_id');
         $paciente->raza= $request->get('raza');
@@ -150,6 +165,7 @@ class PacienteController extends Controller
         $paciente->vacuna_id = $request->get('vacuna_id');
        // $paciente->desp_id = $request->get('desp_id');
         $paciente->fecha_nacimiento = $request->get('fecha_nacimiento');
+        $paciente->exa_id = $request->get('exa_id');
         $paciente->save();
 
         if($paciente){

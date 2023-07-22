@@ -10,10 +10,16 @@ class PropietarioController extends Controller
 {
     public function index(Request $request)
     {
-        $propietarios= Propietario::all();
+        $propietarios = Propietario::all();
         return view ('propietario/index',compact('propietarios'));
     }
-    //
+    
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
        
@@ -21,6 +27,13 @@ class PropietarioController extends Controller
         return view ('propietario.create',compact('generos'));
     }
 
+
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
      

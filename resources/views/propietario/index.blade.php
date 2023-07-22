@@ -47,7 +47,7 @@ setTimeout(quitarerror, 3000);
         <span class="sr-only">Alternar barra de navegación</span>
     </a>  
 
-  <h3>Propietario</h3>
+  <h3>Propietarios</h3>
   </nav>
 
 <div class="contrainer">
@@ -63,12 +63,12 @@ setTimeout(quitarerror, 3000);
 <table id="mitabla"  class = "table table-sm table-bordered ">
 <thead  class="thead-dark">
 <tr>
+
             <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
             <th style="font-size:15px;text-align:center; width:135px;"   scope="col">Identidad</th>
             <th style="font-size:15px;text-align:center; width:250px;"  scope="col">Nombre Completo</th>
             <th style="font-size:15px;text-align:center; width:70px;"  scope="col">Telefono</th>
             <th style="font-size:15px;text-align:center; width:150px;"  scope="col">Correo</th>
-
             <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
             
         </tr>

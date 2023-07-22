@@ -14,11 +14,12 @@
         <span class="sr-only">Alternar barra de navegación</span>
     </a>  
 
-  <h3>Datos del Propietario</h3>
+  <h3>Propietario</h3>
   </nav>
 <form action ="../propietario"  method="POST">
     @csrf
 
+    <br>
 
     <div class="mb-3">
         <label for="">Código del propietario</label>

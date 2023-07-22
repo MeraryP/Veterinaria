@@ -22,6 +22,18 @@ class Paciente extends Model
     }
 
 
+    public function propietario()
+    {
+        return $this->belongsTo( Propietario::class,'pro_id',"id");
+    }
+
+
+    public function Examen()
+    {
+        return $this->belongsTo( Examen::class,'exa_id',"id");
+    }
+
+
 
     use HasFactory;
 }

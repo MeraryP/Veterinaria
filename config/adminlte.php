@@ -338,7 +338,7 @@ return [
         [
             'text' => 'Vacuna',
             'icon'    => 'fas fa-syringe', 
-            'route'=> 'vacuna.index',
+            
             'icon_color'=>'purple',  
         ],
 
