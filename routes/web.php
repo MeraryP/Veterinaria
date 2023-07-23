@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,6 +44,7 @@ Route::middleware("auth")->group(function () {
 
         Route::put('/vacuna/{id}/editar', [VacunaController::class, 'update'])
         ->name('vacuna.update')->where('id','[0-9]+');
+
 
         //ruta resumen
         Route::resource('/examen', 'App\Http\Controllers\ExamenController');

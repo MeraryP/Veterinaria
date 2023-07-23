@@ -37,34 +37,6 @@
       
       </div>
 
-    <div class="mb-3">
-    <label for="" class="form-label">Nombre de la vacuna</label>
-    <input type="text"  maxlength="200"
-    title="Ingrese el nombre de la vacuna" value="{{old('nombre_vacuna')}}" 
-    name="nombre_vacuna" id="nombre_vacuna" 
-    class="form-control @error('nombre_vacuna') is-invalid @enderror" placeholder="Ingrese el nombre de la vacuna"
-    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-
-    @error('nombre_vacuna')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-  </div>
-
-
-<div class="mb-3">
-        <label for="" class="form-label">Fecha aplicada</label>
-        <input type="date"  maxlength="100"   value="{{old('fecha_aplicada')}}"  name="fecha_aplicada"  id="fecha_aplicada"   
-        class="form-control @error('fecha_aplicada') is-invalid @enderror" placeholder="Ingrese la fecha aplicada"
-        title="Ingrese la fecha aplicada">
-        @error('fecha_aplicada')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      
-      </div>
 
 
       <div class="mb-3">
@@ -99,7 +71,7 @@
       </div>
 
       
-      </div> 
+  
       
       
     

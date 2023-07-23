@@ -20,6 +20,7 @@
 <form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
     @method('put')
     @csrf
+    
 
     <br>
     

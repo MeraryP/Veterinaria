@@ -63,12 +63,12 @@ setTimeout(quitarerror, 3000);
 
 
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Temperatura</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Temperatura Corporal</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Frecuencia Cardíaca</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Frecuencia Respiratoria</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Peso</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Pulso</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Gastrointestal</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Enfermedad Gastrointestal</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Tratamiento</th>
 
             <th style="font-size:15px;text-align:center;width:0px;"  scope="col">Acciones</th>

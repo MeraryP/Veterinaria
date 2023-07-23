@@ -63,29 +63,7 @@
       </div>
 
 
-      <div class="mb-3">
-        <label for="" class="form-label">Nombre de la proxima vacuna</label>
-        <input type="text" name="nombre_proximavacuna"  id="nombre_proximavacuna"  class="form-control @error('nombre_proximavacuna') is-invalid @enderror"   placeholder="" value="{{ $vacuna->nombre_proximavacuna }}"
-        title="Ingrese el nombre de la proxima vacuna">
-        @error('nombre_proximavacuna')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-
-
-      <div class="mb-3">
-        <label for="" class="form-label">Fecha de la proxima vacuna</label>
-        <input type="date" name="fecha_proximadosis"  id="fecha_proximadosis"  class="form-control @error('fecha_proximadosis') is-invalid @enderror"   placeholder="" value="{{ $vacuna->fecha_proximadosis }}"
-        title="Ingrese la fecha de la proxima dosis">
-        @error('fecha_proximadosis')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-
+  
 
       
 <button type="submit" class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     

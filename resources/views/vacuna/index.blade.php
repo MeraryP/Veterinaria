@@ -51,20 +51,21 @@ setTimeout(quitarerror, 3000);
   
 <div class="contrainer">
 </div>
-    <div align="right" style="float:right">
-    <a href="vacuna/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
+
+<br>
+<br>
+<div align="right" style="float:right">
+    <a href="vacuna/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
     </div>
 <br>
 <br>
-<br>
+
 <table id="mitabla"  class = "table table-sm table-bordered ">
 <thead  class="thead-dark">
 
 <tr>
 
-            <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:135px;" scope="col">Nombre de la vacuna</th>
-            <th style="font-size:15px;text-align:center; width:100px;" scope="col">Fecha aplicada</th>
+<th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
             <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Nombre de la proxima dosis</th>
             <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Fecha de la proxima dosis</th>
            
@@ -83,15 +84,13 @@ setTimeout(quitarerror, 3000);
      
 
             <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$vacuna->nombre_vacuna}}</td>
-            <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
             <td class="align-middle" style="font-size:15px">{{$vacuna->nombre_proximavacuna}}</td>
             <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_proximadosis}}</td>
            
            
 
             <td>
-            <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-outline-info" >
+            <a type="button"  title="Editar registro" href="./agregar/{{$vacuna->id}}/edit" class="btn btn-outline-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 
                 <button type="bottom"  onClick="borrar{{$vacuna->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
@@ -128,6 +127,9 @@ setTimeout(quitarerror, 3000);
 
         @endforeach
     </tbody>
+
+
+    
 
   </table>
   @endsection 
