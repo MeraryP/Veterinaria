@@ -1,22 +1,12 @@
 @extends('layouts.madre')
 
-@section('title', 'Paciente')
+@section('title', 'Editar Registro de Maskota')
 
 
 @section('content')
 
 
-<nav class="main-header navbar
-    navbar-expand
-    navbar-white navbar-light">
 
-    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
-        <i class="fas fa-bars"></i>
-        <span class="sr-only">Alternar barra de navegación</span>
-    </a>  
-
-  <h3>Datos del Paciente</h3>
-  </nav>
 <form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
     @method('put')
     @csrf
@@ -51,23 +41,30 @@
       <div class="mb-3">
       <label for="">codigo del propietario</label>
       <select class="form-control" name="pro_id">
-      <option style="display:none" value="{{$paciente->pro_id}}"> {{$paciente->propietario->cod_propietario}}</option> 
+      <option style="display:none" value="{{$paciente->pro_id}}"> {{$paciente->propietario->codigo_propietario}}</option> 
         @foreach ($propietarios as $propietario)
-        <option value="{{$propietario->id}}">{{$propietario->cod_propietario}}</option>
+        <option value="{{$propietario->id}}">{{$propietario->codigo_propietario}}</option>
         @endforeach      
       </select>
       </div>
 
-       <div class="mb-3">
-        <label for="" class="form-label">Especie</label>
-        <input type="text" name="especie"  id="especie"  class="form-control @error('especie') is-invalid @enderror"   placeholder="Ingrese la especie" value="{{ $paciente->especie }}"
-        title="Ingrese la especie">
-        @error('especie')
+
+      <div class="mb-3">
+        <label for="" class="form-label">Especie</label> 
+        <select onfocus="this.blur();"value="{{old('especie')}}" name="especie"  id="especie"  class="form-control @error('especie') is-invalid @enderror" placeholder="seleccione la especie" value="{{ $paciente->especie }}"
+        title="seleccione la especie" >
+        <option>Cannino</option> 
+        <option>Equino</option> 
+        <option>Felino</option>  
+        <option>Otra</option>   
+      </select>
+      @error('especie')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-      </div>
+      
+      </div> 
 
       <div class="for-group">
         <label for="">Género</label>
@@ -103,11 +100,21 @@
 
 
       <div class="mb-3">
-      <label for="">Vacunas</label>
+      <label for="">codigo de vacuna</label>
       <select class="form-control" name="vacuna_id">
-      <option style="display:none" value="{{$paciente->vacuna_id}}"> {{$paciente->vacuna->cod_vacuna}}</option>
+      <option style="display:none" value="{{$paciente->vacuna_id}}"> {{$paciente->vacuna->codigo_vacuna}}</option>
         @foreach ($vacunas as $vacuna)
-        <option value="{{$vacuna->id}}">{{$vacuna->cod_vacuna}}</option>
+        <option value="{{$vacuna->id}}">{{$vacuna->codigo_vacuna}}</option>
+        @endforeach      
+      </select>
+      </div> 
+
+      <div class="mb-3">
+      <label for="">codigo de desparasitar</label>
+      <select class="form-control" name="desp_id">
+      <option style="display:none" value="{{$paciente->desp_id}}"> {{$paciente->desparacitar->codigo_desparasitar}}</option>
+        @foreach ($desparacitars as $desparacitar)
+        <option value="{{$desparacitar->id}}">{{$desparacitar->codigo_desparasitar}}</option>
         @endforeach      
       </select>
       </div> 
@@ -129,9 +136,9 @@
       <div class="mb-3">
       <label for="">codigo de Examen Fisico </label>
       <select class="form-control" name="exa_id">
-      <option style="display:none" value="{{$paciente->exa_id}}"> {{$paciente->examen->cod_examen}}</option> 
+      <option style="display:none" value="{{$paciente->exa_id}}"> {{$paciente->examen->codigo_examen}}</option> 
         @foreach ($examens as $examen)
-        <option value="{{$examen->id}}">{{$examen->cod_examen}}</option>
+        <option value="{{$examen->id}}">{{$examen->codigo_examen}}</option>
         @endforeach      
       </select>
       </div>

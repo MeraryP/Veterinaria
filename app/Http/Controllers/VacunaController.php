@@ -24,7 +24,7 @@ class VacunaController extends Controller
     {
        
         //$generos = Genero::all();
-     
+       
         return view ('vacuna.create');
     }
 
@@ -38,7 +38,7 @@ class VacunaController extends Controller
     {
         $this->validate($request,[
 
-            'cod_vacuna'=>'required|regex:/^\d{4}$/',
+            'codigo_vacuna'=>'required|numeric|regex:/^\d{4}$/|unique:vacunas,codigo_vacuna',
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
             'nombre_proximavacuna'=>'required|max:200',
@@ -50,7 +50,7 @@ class VacunaController extends Controller
         ]);
      
         $vacunas = new Vacuna();
-        $vacunas->cod_vacuna= $request->get('cod_vacuna');
+        $vacunas->codigo_vacuna= $request->get('codigo_vacuna');
         $vacunas->nombre_vacuna = $request->get('nombre_vacuna');
         $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
         $vacunas->nombre_proximavacuna= $request->get('nombre_proximavacuna');
@@ -105,7 +105,7 @@ class VacunaController extends Controller
         $this->validate($request,[
 
 
-           'cod_vacuna'=>'required|regex:/^\d{4}$/',
+           'codigo_vacuna'=>'required|numeric|regex:/^\d{4}$/',
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
             'nombre_proximavacuna'=>'required|max:200',
@@ -117,7 +117,7 @@ class VacunaController extends Controller
         ]);
      
         $vacuna = Vacuna::find($id);
-        $vacuna->cod_vacuna= $request->get('cod_vacuna');
+        $vacuna->codigo_vacuna= $request->get('codigo_vacuna');
         $vacuna->nombre_vacuna = $request->get('nombre_vacuna');
         $vacuna->fecha_aplicada = $request->get('fecha_aplicada');
         $vacuna->nombre_proximavacuna= $request->get('nombre_proximavacuna');

@@ -39,7 +39,7 @@ class PropietarioController extends Controller
      
         $this->validate($request,[
            
-            'cod_propietario'=>'required|regex:/^\d{4}$/',
+            'codigo_propietario'=>'required|numeric|regex:/^\d{4}$/|unique:propietarios,codigo_propietario',
             'identidad'=>'unique:propietarios,identidad|max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
@@ -50,7 +50,7 @@ class PropietarioController extends Controller
         ]);
      
         $propietarios = new Propietario();
-        $propietarios->cod_propietario= $request->get('cod_propietario');
+        $propietarios->codigo_propietario= $request->get('codigo_propietario');
         $propietarios->identidad = $request->get('identidad');
         $propietarios->nombre = $request->get('nombre');
         $propietarios->direccion = $request->get('direccion');
@@ -98,7 +98,7 @@ class PropietarioController extends Controller
     public function update(Request $request, $id){
         $this->validate($request,[
            
-            'cod_propietario'=>'required|regex:/^\d{4}$/',
+            'codigo_propietario'=>'required|numeric|regex:/^\d{4}$/',
             'identidad'=>'max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
@@ -109,7 +109,7 @@ class PropietarioController extends Controller
         ]);
      
         $propietario = Propietario::find($id);
-        $propietario->cod_propietario= $request->get('cod_propietario');
+        $propietario->codigo_propietario= $request->get('codigo_propietario');
         $propietario->identidad = $request->get('identidad');
         $propietario->nombre = $request->get('nombre');
         $propietario->direccion = $request->get('direccion');

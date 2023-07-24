@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('propietarios', function (Blueprint $table) {
        
                 $table->increments('id');
-                $table->integer('cod_propietario');
+                $table->integer('codigo_propietario');
                 $table->string('identidad');
                 $table->string('nombre');
                 $table->string('direccion');

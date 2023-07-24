@@ -1,22 +1,10 @@
 @extends('layouts.madre')
 
-@section('title', 'Vacuna')
+@section('title', 'Editar Registro de Vacuna')
 
 
 @section('content')
 
-
-<nav class="main-header navbar
-    navbar-expand
-    navbar-white navbar-light">
-
-    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
-        <i class="fas fa-bars"></i>
-        <span class="sr-only">Alternar barra de navegación</span>
-    </a>  
-
-  <h3>Datos de la Vacuna</h3>
-  </nav>
 <form  method="POST" action="{{ route('vacuna.update',['id'=>$vacuna->id])}}">
     @method('put')
     @csrf
@@ -25,9 +13,9 @@
 
     <div class="mb-3">
         <label for="" class="form-label">codigo de vacuna</label>
-        <input type="number" name="cod_vacuna"  id="cod_vacuna"  class="form-control @error('cod_vacuna') is-invalid @enderror"   placeholder="" value="{{ $vacuna->cod_vacuna }}"
+        <input type="number" name="codigo_vacuna"  id="codigo_vacuna"  class="form-control @error('codigo_vacuna') is-invalid @enderror"   placeholder="" value="{{ $vacuna->codigo_vacuna }}"
         title="Ingrese la fecha aplicada">
-        @error('cod_vacuna')
+        @error('codigo_vacuna')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

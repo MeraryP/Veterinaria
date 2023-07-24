@@ -1,21 +1,11 @@
 @extends('layouts.madre')
 
-@section('title', 'Propietario')
+@section('title', 'Editar  Propietario')
 
 
 @section('content')
 
-<nav class="main-header navbar
-    navbar-expand
-    navbar-white navbar-light">
 
-    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
-        <i class="fas fa-bars"></i>
-        <span class="sr-only">Alternar barra de navegación</span>
-    </a>  
-
-  <h3>Datos del Propietario</h3>
-  </nav>
 <form  method="POST" action="{{ route('propietario.update',['id'=>$propietario->id])}}">
     @method('PUT')
     @csrf
@@ -24,9 +14,9 @@
     <br>
     <div class="mb-3">
         <label for="" class="form-label">Código del propietario</label>
-        <input type="number" name="cod_propietario"  id="cod_propietario"  class="form-control @error('cod_propietario') is-invalid @enderror"   placeholder="0000" value="{{ $propietario->cod_propietario }}"
+        <input type="number" name="codigo_propietario"  id="codigo_propietario"  class="form-control @error('codigo_propietario') is-invalid @enderror"   placeholder="0000" value="{{ $propietario->codigo_propietario }}"
         title="Ingrese el código del propietario">
-        @error('cod_propietario')
+        @error('codigo_propietario')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

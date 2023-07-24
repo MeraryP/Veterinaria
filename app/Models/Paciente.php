@@ -34,6 +34,11 @@ class Paciente extends Model
     }
 
 
+    public function Desparacitar()
+    {
+        return $this->belongsTo( Desparacitar::class,'desp_id',"id");
+    }
+
 
     use HasFactory;
 }

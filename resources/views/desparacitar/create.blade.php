@@ -1,28 +1,30 @@
 @extends('layouts.madre')
 
-@section('title', 'Desparasitar')
+@section('title', 'Registro de desparasitar')
 
 @section('content')
 
-<nav class="main-header navbar
-    navbar-expand
-    navbar-white navbar-light">
 
-    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
-        <i class="fas fa-bars"></i>
-        <span class="sr-only">Alternar barra de navegación</span>
-    </a>  
-
-  <h3>Desparasitante</h3>
-  </nav>
 
 
     <form action ="../desparacitar"  method="POST">
     
         @csrf
         <br>
+
         <div class="mb-3">
-            <label for="" class="form-label">Antiparacitario</label>
+            <label for="" class="form-label">codigo Desparasitar</label>
+            <input type="text" value="{{old('codigo_desparasitar')}}"  name="codigo_desparasitar" id="codigo_desparasitar"  class="form-control @error('codigo_desparasitar') is-invalid @enderror"  tabindex="1"
+            title="codigo desparasitar">
+
+            @error('codigo_desparasitar')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Desparasitante</label>
             <input type="text" value="{{old('antiparacitario')}}"  name="antiparacitario" id="antiparacitario"  class="form-control @error('antiparacitario') is-invalid @enderror"  tabindex="1"
             title="Antiparacitario">
 

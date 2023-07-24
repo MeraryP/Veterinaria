@@ -9,7 +9,7 @@ use App\Models\Vacuna;
 use App\Models\Genero;
 use App\Models\Propietario;
 use App\Models\Examen;
-//use App\Models\Desparacitar;
+use App\Models\Desparacitar;
 
 
 class PacienteController extends Controller
@@ -33,8 +33,8 @@ class PacienteController extends Controller
         $vacunas = Vacuna::all();
         $propietarios = Propietario::all(); 
         $examens = Examen::all();
-        //$desparacitars = Desparacitar::all();
-        return view ('paciente.create', compact('generos','vacunas','propietarios','examens'));
+        $desparacitars = Desparacitar::all();
+        return view ('paciente.create', compact('generos','vacunas','propietarios','examens','desparacitars'));
     }
 
     /**
@@ -56,6 +56,7 @@ class PacienteController extends Controller
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'edad'=>'required|integer|max:50',
             'vacuna_id'=>'required|exists:vacunas,id',
+            'desp_id'=>'required|exists:desparacitars,id',
             //'desp_id'=>'required|exists:desparacitars,id',
             'fecha_nacimiento'=>'required|date',
             'exa_id'=>'required|exists:examens,id',
@@ -77,7 +78,7 @@ class PacienteController extends Controller
         $pacientes->raza= $request->get('raza');
         $pacientes->edad = $request->get('edad');
         $pacientes->vacuna_id = $request->get('vacuna_id');
-       // $pacientes->desp_id = $request->get('desp_id');
+        $pacientes->desp_id = $request->get('desp_id');
         $pacientes->fecha_nacimiento = $request->get('fecha_nacimiento');
         $pacientes->exa_id = $request->get('exa_id');
         $pacientes->save();
@@ -114,9 +115,9 @@ class PacienteController extends Controller
         $vacunas = Vacuna::all();
         $propietarios = Propietario::all();
         $examens = Examen::all();
-        //$desparacitars = Desparacitar::all();
+        $desparacitars = Desparacitar::all();
         $paciente = Paciente::findOrfail($id);
-        return view('paciente.edit', compact('generos','vacunas','propietarios','examens'))->with('paciente', $paciente);
+        return view('paciente.edit', compact('generos','vacunas','propietarios','examens','desparacitars'))->with('paciente', $paciente);
     
     }
 
@@ -142,7 +143,7 @@ class PacienteController extends Controller
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'edad'=>'required|integer|max:50',
             'vacuna_id'=>'required|exists:vacunas,id',
-           // 'desp_id'=>'required|exists:desparacitars,id',
+            'desp_id'=>'required|exists:desparacitars,id',
             'fecha_nacimiento'=>'required|date',
             'exa_id'=>'required|exists:examens,id', 
            
@@ -163,7 +164,7 @@ class PacienteController extends Controller
         $paciente->raza= $request->get('raza');
         $paciente->edad = $request->get('edad');
         $paciente->vacuna_id = $request->get('vacuna_id');
-       // $paciente->desp_id = $request->get('desp_id');
+        $paciente->desp_id = $request->get('desp_id');
         $paciente->fecha_nacimiento = $request->get('fecha_nacimiento');
         $paciente->exa_id = $request->get('exa_id');
         $paciente->save();

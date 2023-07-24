@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('examens', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cod_examen');
+            $table->integer('codigo_examen');
             $table->string('temperatura');
             $table->string('frecuencia_cardiaca');
             $table->string('frecuencia_respiratoria');

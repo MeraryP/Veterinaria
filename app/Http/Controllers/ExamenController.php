@@ -37,7 +37,7 @@ class ExamenController extends Controller
 
         $this->validate($request,[
            
-            'cod_examen'=>'required|regex:/^\d{4}$/',
+            'codigo_examen'=>'required|numeric|regex:/^\d{4}$/|unique:examens,codigo_examen',
             'temperatura'=>'required|max:300',
             'frecuencia_cardiaca'=>'required|max:300',
             'frecuencia_respiratoria'=>'required|max:300',
@@ -50,7 +50,7 @@ class ExamenController extends Controller
         ]);
      
         $examens = new Examen();
-        $examens->cod_examen= $request->get('cod_examen');
+        $examens->codigo_examen= $request->get('codigo_examen');
         $examens->temperatura = $request->get('temperatura');
         $examens->frecuencia_cardiaca = $request->get('frecuencia_cardiaca');
         $examens->frecuencia_respiratoria = $request->get('frecuencia_respiratoria');
@@ -104,7 +104,7 @@ class ExamenController extends Controller
     {
         $this->validate($request,[
            
-            'cod_examen'=>'required|regex:/^\d{4}$/',
+            'codigo_examen'=>'required|numeric|regex:/^\d{4}$/',
             'temperatura'=>'required|max:300',
             'frecuencia_cardiaca'=>'required|max:300',
             'frecuencia_respiratoria'=>'required|max:300',
@@ -117,7 +117,7 @@ class ExamenController extends Controller
         ]);
      
         $examen = Examen::find($id);
-        $examen->cod_examen= $request->get('cod_examen');
+        $examen->codigo_examen= $request->get('codigo_examen');
         $examen->temperatura = $request->get('temperatura');
         $examen->frecuencia_cardiaca = $request->get('frecuencia_cardiaca');
         $examen->frecuencia_respiratoria = $request->get('frecuencia_respiratoria');

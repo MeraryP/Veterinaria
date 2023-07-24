@@ -1,22 +1,12 @@
 @extends('layouts.madre')
 
-@section('title', 'Vacunas')
+@section('title', 'Registrar vacuna')
 
 
 @section('content')
 
 
-<nav class="main-header navbar
-    navbar-expand
-    navbar-white navbar-light">
 
-    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
-        <i class="fas fa-bars"></i>
-        <span class="sr-only">Alternar barra de navegación</span>
-    </a>  
-
-  <h3>Vacuna</h3>
-  </nav>
 <form action ="../vacuna"  method="POST">
     @csrf
    
@@ -26,10 +16,10 @@
     
 <div class="mb-3">
         <label for="" class="form-label">codigo de Vacuna</label>
-        <input type="number"  maxlength="100"   value="{{old('cod_vacuna')}}"  name="cod_vacuna"  id="cod_vacuna"   
-        class="form-control @error('cod_vacuna') is-invalid @enderror" placeholder="0000"
+        <input type="number"  maxlength="100"   value="{{old('codigo_vacuna')}}"  name="codigo_vacuna"  id="codigo_vacuna"   
+        class="form-control @error('codigo_vacuna') is-invalid @enderror" placeholder="0000"
         title="Ingrese el codigo de vacuna">
-        @error('cod_vacuna')
+        @error('codigo_vacuna')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -39,11 +29,17 @@
 
 
 
+
       <div class="mb-3">
-        <label for="" class="form-label">Nombre de la proxima vacuna</label>
-        <input type="text" value="{{old('nombre_proximavacuna')}}" name="nombre_proximavacuna"  id="nombre_proximavacuna"  
-        class="form-control @error('nombre_proximavacuna') is-invalid @enderror" placeholder="Ingrese la nombre_proximavacuna" 
+        <label for="" class="form-label">Nombre de la proxima vacuna</label> 
+        <select onfocus="this.blur();"value="{{old('nombre_proximavacuna')}}" name="nombre_proximavacuna"  id="nombre_proximavacuna"  class="form-control @error('nombre_proximavacuna') is-invalid @enderror" placeholder="Ingrese la nombre_proximavacuna" 
         title="Ingrese la nombre de la proxima vacuna" >
+        <option>Rabia</option> 
+        <option>Tos MSD</option> 
+        <option>Quintuple</option>  
+        <option>Helmican Suspension</option> 
+        <option>Cuadruple</option>   
+      </select>
 
       
         @error('nombre_proximavacuna')
