@@ -10,17 +10,16 @@
 
     <br>
 
-    <div class="mb-3">
-        <label for="">Código del propietario</label>
-        <input type="number"value="{{old('codigo_propietario')}}"  name="codigo_propietario"  id="codigo_propietario" 
-        class="form-control @error('codigo_propietario') is-invalid @enderror"   placeholder="0000"
-        title="Ingrese el código del propietario ">
-      
-        @error('codigo_propietario')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+   
+
+
+      <div class="mb-3">
+      <label for="">Numero de expediente</label>
+      <select class="form-control" name="num_id"> 
+       @foreach ($pacientes as  $paciente)
+        <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+        @endforeach   
+      </select>
       </div>
 
       

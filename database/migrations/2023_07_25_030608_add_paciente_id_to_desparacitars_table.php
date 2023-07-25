@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('pacientes', function (Blueprint $table) {
-            $table->unsignedInteger('vacuna_id');
+        Schema::table('desparacitars', function (Blueprint $table) {
+            $table->unsignedInteger('num_id');
     
-            $table->foreign('vacuna_id')->references('id')->on('vacunas')->onDelete('cascade');
-        }); 
+            $table->foreign('num_id')->references('id')->on('pacientes')->onDelete('cascade');
+        });
     }
 
     /**
@@ -27,7 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('pacientes', function (Blueprint $table) {
+        Schema::table('desparacitars', function (Blueprint $table) {
             //
         });
     }

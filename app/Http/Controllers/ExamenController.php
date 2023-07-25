@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Examen;
+use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 
 class ExamenController extends Controller
@@ -21,9 +22,9 @@ class ExamenController extends Controller
      */
     public function create()
     {
-       
+        $pacientes = Paciente::all(); 
         //$generos = Genero::all();
-        return view ('examen.create');
+        return view ('examen.create',compact('pacientes'));
     }
 
     /**
@@ -37,7 +38,8 @@ class ExamenController extends Controller
 
         $this->validate($request,[
            
-            'codigo_examen'=>'required|numeric|regex:/^\d{4}$/|unique:examens,codigo_examen',
+         
+            'num_id'=>'required|exists:pacientes,id',
             'temperatura'=>'required|max:300',
             'frecuencia_cardiaca'=>'required|max:300',
             'frecuencia_respiratoria'=>'required|max:300',
@@ -50,7 +52,7 @@ class ExamenController extends Controller
         ]);
      
         $examens = new Examen();
-        $examens->codigo_examen= $request->get('codigo_examen');
+        $examens->num_id = $request->get('num_id');
         $examens->temperatura = $request->get('temperatura');
         $examens->frecuencia_cardiaca = $request->get('frecuencia_cardiaca');
         $examens->frecuencia_respiratoria = $request->get('frecuencia_respiratoria');
@@ -87,9 +89,9 @@ class ExamenController extends Controller
      */
     public function edit($id)
     {
-
+        $pacientes = Paciente::all(); 
         $examen = Examen::findOrfail($id);
-        return view('examen.edit')->with('examen', $examen);
+        return view('examen.edit',compact('pacientes'))->with('examen', $examen);
     }
 
     /**
@@ -104,7 +106,8 @@ class ExamenController extends Controller
     {
         $this->validate($request,[
            
-            'codigo_examen'=>'required|numeric|regex:/^\d{4}$/',
+            
+            'num_id'=>'required|exists:pacientes,id',
             'temperatura'=>'required|max:300',
             'frecuencia_cardiaca'=>'required|max:300',
             'frecuencia_respiratoria'=>'required|max:300',
@@ -117,7 +120,7 @@ class ExamenController extends Controller
         ]);
      
         $examen = Examen::find($id);
-        $examen->codigo_examen= $request->get('codigo_examen');
+        $examen->num_id = $request->get('num_id');
         $examen->temperatura = $request->get('temperatura');
         $examen->frecuencia_cardiaca = $request->get('frecuencia_cardiaca');
         $examen->frecuencia_respiratoria = $request->get('frecuencia_respiratoria');

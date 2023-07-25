@@ -14,20 +14,18 @@
 
 
     
-<div class="mb-3">
-        <label for="" class="form-label">codigo de Vacuna</label>
-        <input type="number"  maxlength="100"   value="{{old('codigo_vacuna')}}"  name="codigo_vacuna"  id="codigo_vacuna"   
-        class="form-control @error('codigo_vacuna') is-invalid @enderror" placeholder="0000"
-        title="Ingrese el codigo de vacuna">
-        @error('codigo_vacuna')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      
+
+
+
+
+      <div class="mb-3">
+      <label for="">Numero de expediente</label>
+      <select class="form-control" name="num_id"> 
+       @foreach ($pacientes as  $paciente)
+        <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+        @endforeach   
+      </select>
       </div>
-
-
 
 
       <div class="mb-3">

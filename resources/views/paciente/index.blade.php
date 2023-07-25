@@ -57,16 +57,16 @@ setTimeout(quitarerror, 3000);
 <br>
 <br>
 
-<table id="mitabla"  class = "table table-sm table-bordered ">
-<thead  class="thead-dark">
+<table id="mitabla"  class = "table table-sm table-bordered border-black">
+<thead class="thead-dark" >
 
 <tr>
 
-            <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
+            <th style="font-size:15px;text-align:center; width:45px;" scope="col">No</th>
+            <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No de expediente</th>
             <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Nombre de la Mascota</th>
             <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Especie</th>
             <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Raza</th>
-            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Edad</th>
             <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
             
         </tr>
@@ -78,12 +78,13 @@ setTimeout(quitarerror, 3000);
         @foreach ($pacientes as  $paciente)
         <tr>
             
-            <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$paciente->nombre_mascota}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$paciente->especie}}</td>
-            <td class="align-middle" style="font-size:15px">{{$paciente->raza}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$paciente->edad}}</td>
-            <td>
+            <td class="align-middle" style="font-size:15px; text-align:right;" scope="row">{{++ $n}}</td>
+            <td class="align-middle" style="font-size:15px;" >{{$paciente->numero_expediente}}</td>
+            <td class="align-middle" style="font-size:15px;" >{{$paciente->nombre_mascota}}</td>
+            <td class="align-middle" style="font-size:15px;" >{{$paciente->especie}}</td>
+            <td class="align-middle" style="font-size:15px;">{{$paciente->raza}}</td>
+         
+            <td >
             <a type="button"  title="Editar registro" href="./paciente/{{$paciente->id}}/edit" class="btn btn-outline-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 

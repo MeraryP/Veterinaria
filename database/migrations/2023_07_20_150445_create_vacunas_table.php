@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('vacunas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('codigo_vacuna');
             $table->string('nombre_vacuna');
             $table->date('fecha_aplicada');
             $table->string('nombre_proximavacuna');

@@ -30,6 +30,17 @@
             @enderror
         </div>
 
+
+        <div class="mb-3">
+      <label for="">Numero de expediente</label>
+      <select class="form-control" name="num_id">
+      <option style="display:none" value="{{$desparacitar->num_id}}"> {{$desparacitar->paciente->numero_expediente}}</option> 
+        @foreach ($pacientes as $paciente)
+        <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+        @endforeach      
+      </select>
+      </div>
+
         <div class="mb-3">
             <label for="" class="form-label">Fecha de desparasitacion</label>
             <input type="date" class="form-control @error('fecha_desparacitacion') is-invalid @enderror" name="fecha_desparacitacion" id="fecha_desparacitacion" 

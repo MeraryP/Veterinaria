@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vacuna;
+use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 
 class VacunaController extends Controller
@@ -23,9 +24,10 @@ class VacunaController extends Controller
     public function create()
     {
        
+
         //$generos = Genero::all();
-       
-        return view ('vacuna.create');
+       $pacientes = Paciente::all();
+        return view ('vacuna.create',compact('pacientes'));
     }
 
     /**
@@ -38,7 +40,8 @@ class VacunaController extends Controller
     {
         $this->validate($request,[
 
-            'codigo_vacuna'=>'required|numeric|regex:/^\d{4}$/|unique:vacunas,codigo_vacuna',
+           
+            'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
             'nombre_proximavacuna'=>'required|max:200',
@@ -50,7 +53,7 @@ class VacunaController extends Controller
         ]);
      
         $vacunas = new Vacuna();
-        $vacunas->codigo_vacuna= $request->get('codigo_vacuna');
+        $vacunas->num_id = $request->get('num_id');
         $vacunas->nombre_vacuna = $request->get('nombre_vacuna');
         $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
         $vacunas->nombre_proximavacuna= $request->get('nombre_proximavacuna');
@@ -87,9 +90,9 @@ class VacunaController extends Controller
     {
 
          // $generos = Genero::all();
-        
+         $pacientes = Paciente::all(); 
          $vacuna = Vacuna::findOrfail($id);
-         return view('vacuna.edit')->with('vacuna', $vacuna);
+         return view('vacuna.edit',compact('pacientes'))->with('vacuna', $vacuna);
     }
 
     /**
@@ -105,7 +108,8 @@ class VacunaController extends Controller
         $this->validate($request,[
 
 
-           'codigo_vacuna'=>'required|numeric|regex:/^\d{4}$/',
+        
+           'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
             'nombre_proximavacuna'=>'required|max:200',
@@ -117,7 +121,7 @@ class VacunaController extends Controller
         ]);
      
         $vacuna = Vacuna::find($id);
-        $vacuna->codigo_vacuna= $request->get('codigo_vacuna');
+        $vacuna->num_id = $request->get('num_id');
         $vacuna->nombre_vacuna = $request->get('nombre_vacuna');
         $vacuna->fecha_aplicada = $request->get('fecha_aplicada');
         $vacuna->nombre_proximavacuna= $request->get('nombre_proximavacuna');

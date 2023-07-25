@@ -38,16 +38,6 @@
       </div>
 
 
-      <div class="mb-3">
-      <label for="">codigo del propietario</label>
-      <select class="form-control" name="pro_id">
-      <option style="display:none" value="{{$paciente->pro_id}}"> {{$paciente->propietario->codigo_propietario}}</option> 
-        @foreach ($propietarios as $propietario)
-        <option value="{{$propietario->id}}">{{$propietario->codigo_propietario}}</option>
-        @endforeach      
-      </select>
-      </div>
-
 
       <div class="mb-3">
         <label for="" class="form-label">Especie</label> 
@@ -87,39 +77,7 @@
             @enderror
       </div>
 
-      <div class="mb-3">
-        <label for="" class="form-label">Edad</label>
-        <input type="number" name="edad"  id="edad"  class="form-control @error('edad') is-invalid @enderror"   placeholder="" value="{{ $paciente->edad }}"
-        title="Ingrese la edad">
-        @error('edad')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
-
-
-      <div class="mb-3">
-      <label for="">codigo de vacuna</label>
-      <select class="form-control" name="vacuna_id">
-      <option style="display:none" value="{{$paciente->vacuna_id}}"> {{$paciente->vacuna->codigo_vacuna}}</option>
-        @foreach ($vacunas as $vacuna)
-        <option value="{{$vacuna->id}}">{{$vacuna->codigo_vacuna}}</option>
-        @endforeach      
-      </select>
-      </div> 
-
-      <div class="mb-3">
-      <label for="">codigo de desparasitar</label>
-      <select class="form-control" name="desp_id">
-      <option style="display:none" value="{{$paciente->desp_id}}"> {{$paciente->desparacitar->codigo_desparasitar}}</option>
-        @foreach ($desparacitars as $desparacitar)
-        <option value="{{$desparacitar->id}}">{{$desparacitar->codigo_desparasitar}}</option>
-        @endforeach      
-      </select>
-      </div> 
-
-      
+   
      
       <div class="mb-3">
         <label for="" class="form-label">Fecha de Nacimiento</label>
@@ -133,15 +91,7 @@
       </div>
 
 
-      <div class="mb-3">
-      <label for="">codigo de Examen Fisico </label>
-      <select class="form-control" name="exa_id">
-      <option style="display:none" value="{{$paciente->exa_id}}"> {{$paciente->examen->codigo_examen}}</option> 
-        @foreach ($examens as $examen)
-        <option value="{{$examen->id}}">{{$examen->codigo_examen}}</option>
-        @endforeach      
-      </select>
-      </div>
+    
 
      
 

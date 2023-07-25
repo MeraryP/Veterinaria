@@ -14,18 +14,15 @@
     @csrf
            
    <br> 
-    
-    <div class="mb-3">
-        <label for="" class="form-label">Codigo</label>
-        <input type="text"  maxlength="100"   value="{{old('codigo_examen')}}"  name="codigo_examen"  id="codigo_examen"   
-        class="form-control @error('codigo_examen') is-invalid @enderror" placeholder="0000"
-        title="ingrese el codigo">
-        @error('codigo_examen')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      
+   
+   
+      <div class="mb-3">
+      <label for="">Numero de expediente</label>
+      <select class="form-control" name="num_id"> 
+       @foreach ($pacientes as  $paciente)
+        <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+        @endforeach   
+      </select>
       </div>
 
     <div class="mb-3">

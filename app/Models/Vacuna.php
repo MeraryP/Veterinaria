@@ -10,4 +10,9 @@ class Vacuna extends Model
 
     
     use HasFactory;
+
+    public function Paciente()
+    {
+        return $this->belongsTo( Paciente::class,'num_id',"id");
+    }
 }

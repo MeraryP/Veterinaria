@@ -13,15 +13,17 @@
 
     <br>
 
-    <div class="mb-3">
-        <label for="" class="form-label">codigo de Examen</label>
-        <input type="number" name="codigo_examen"  id="codigo_examen"  class="form-control @error('codigo_examen') is-invalid @enderror"   placeholder="" value="{{ $examen->codigo_examen }}"
-        title="Ingrese el codigo de examen">
-        @error('codigo_examen')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+   
+   
+
+      <div class="mb-3">
+      <label for="">Numero de expediente</label>
+      <select class="form-control" name="num_id">
+      <option style="display:none" value="{{$examen->num_id}}"> {{$examen->paciente->numero_expediente}}</option> 
+        @foreach ($pacientes as $paciente)
+        <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+        @endforeach      
+      </select>
       </div>
 
     <div class="mb-3">

@@ -11,18 +11,6 @@
     
         @csrf
         <br>
-
-        <div class="mb-3">
-            <label for="" class="form-label">codigo Desparasitar</label>
-            <input type="text" value="{{old('codigo_desparasitar')}}"  name="codigo_desparasitar" id="codigo_desparasitar"  class="form-control @error('codigo_desparasitar') is-invalid @enderror"  tabindex="1"
-            title="codigo desparasitar">
-
-            @error('codigo_desparasitar')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-        </div>
         <div class="mb-3">
             <label for="" class="form-label">Desparasitante</label>
             <input type="text" value="{{old('antiparacitario')}}"  name="antiparacitario" id="antiparacitario"  class="form-control @error('antiparacitario') is-invalid @enderror"  tabindex="1"
@@ -34,6 +22,17 @@
                         </span>
                     @enderror
         </div>
+
+
+        <div class="mb-3">
+      <label for="">Numero de expediente</label>
+      <select class="form-control" name="num_id"> 
+       @foreach ($pacientes as  $paciente)
+        <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+        @endforeach   
+      </select>
+      </div>
+     
 
         <div class="mb-3">
             <label for="" class="form-label">Fecha de desparacitacion</label>

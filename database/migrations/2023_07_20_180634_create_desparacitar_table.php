@@ -14,7 +14,6 @@ return new class extends Migration
     public function up(){
         Schema::create('desparacitars', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('codigo_desparasitar');
             $table->string('antiparacitario');
             $table->string('fecha_desparacitacion');
             $table->string('fecha_volverDesparacitar');

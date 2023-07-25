@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Desparacitar;
+use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 
 class DesparacitarController extends Controller{
@@ -12,7 +13,8 @@ class DesparacitarController extends Controller{
     }
 
     public function create(){
-        return view('desparacitar.create');
+        $pacientes = Paciente::all(); 
+        return view('desparacitar.create',compact('pacientes'));
     }
 
     public function store(Request $request) {
@@ -22,15 +24,15 @@ class DesparacitarController extends Controller{
         $maxima = date("Y-m-d",strtotime($max."+ 100 days"));
         $anio = date("Y");
         $this->validate($request,[
-            'codigo_desparasitar'=>'required|numeric|regex:/^\d{4}$/|unique:desparacitars,codigo_desparasitar',
             'antiparacitario'=>'required|max:200',
+            'num_id'=>'required|exists:pacientes,id',
             'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima,
             'fecha_volverDesparacitar'=>'required|date|before:'.$maxima.'|after:'.$minima,  
         ]);
 
         $desparacitars = new Desparacitar();
-        $desparacitars->codigo_desparasitar = $request->get('codigo_desparasitar');
         $desparacitars->antiparacitario = $request->get('antiparacitario');
+        $desparacitars->num_id = $request->get('num_id');
         $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
         $desparacitars->fecha_volverDesparacitar = $request->get('fecha_volverDesparacitar');
 
@@ -51,8 +53,9 @@ class DesparacitarController extends Controller{
     
     public function edit($id)
     {
+        $pacientes = Paciente::all(); 
         $desparacitar = Desparacitar::findOrfail($id);
-        return view('desparacitar.edit')->with('desparacitar',$desparacitar);
+        return view('desparacitar.edit',compact('pacientes'))->with('desparacitar',$desparacitar);
     }
 
    
@@ -65,15 +68,16 @@ class DesparacitarController extends Controller{
         $anio = date("Y");
         $this->validate($request,[
 
-            'codigo_desparasitar'=>'required|numeric|regex:/^\d{4}$/',
+            
             'antiparacitario'=>'required|max:200',
+            'num_id'=>'required|exists:pacientes,id',
             'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima,
             'fecha_volverDesparacitar'=>'required|date|before:'.$maxima.'|after:'.$minima,  
         ]);
 
         $desparacitars = Desparacitar::find($id);
-        $desparacitars->codigo_desparasitar = $request->get('codigo_desparasitar');
         $desparacitars->antiparacitario = $request->get('antiparacitario');
+        $desparacitars->num_id = $request->get('num_id');
         $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
         $desparacitars->fecha_volverDesparacitar = $request->get('fecha_volverDesparacitar');
 
