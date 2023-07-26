@@ -7,6 +7,42 @@
 
 
 
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+<a href="/paciente/{{$paciente->id}}/edit" class="nav-link">
+     <div> 
+       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+       </div>
+     </a>
+  </li>
+  <li class="nav-item" role="presentation">
+   <a href="{{ route('vacuna.index') }}" class="nav-link">
+     <div> 
+       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+       </div>
+     </a>
+  </li>
+  <li class="nav-item" role="presentation">
+  <a href="{{ route('desparacitar.index') }}"class="nav-link">
+     <div> 
+       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
+       </div>
+     </a>
+      </li>
+
+      <li class="nav-item" role="presentation">
+  <a href="{{ route('examen.index') }}"class="nav-link">
+     <div> 
+       <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+       </div>
+     </a>
+      </li>
+  
+</ul>
+
+
+
+
 <form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
     @method('put')
     @csrf
@@ -15,7 +51,7 @@
     <br>
     
     <div class="mb-3">
-        <label for="" class="form-label">numero de expediente</label>
+        <label for="" class="form-label">Número de expediente</label>
         <input type="number" name="numero_expediente"  id="numero_expediente"  class="form-control @error('numero_expediente') is-invalid @enderror"   placeholder="" value="{{ $paciente->numero_expediente }}"
         title="Ingrese el número de expediente">
         @error('numero_expediente')

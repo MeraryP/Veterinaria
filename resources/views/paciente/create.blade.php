@@ -5,36 +5,11 @@
 
 @section('content')
 
-  
-
-
 
  <br>
  <br> 
 
-    <div style="overflow: auto;">
-
-    <a href="{{ route('vacuna.index') }}" class="nav-link"style="color: purple;margin-left: 210px; border: 1px solid purple; border-radius: 20px;margin-right: 30px ;float: left;border-radius: 15px  15px;">
-       <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
-       </div>
-    </a>
-
-
-    <a href="{{ route('desparacitar.index') }}" class="nav-link"style="color: red;margin-left: 50px; border: 1px solid red; border-radius: 20px;margin-right: 5px ;float: left;border-radius: 15px  15px;">
-       <div > 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparasitar</p>
-       </div>
-    </a>
-
-
-    <a href="{{ route('examen.index') }}" class="nav-link"style="color: green;margin-left: 70px; border: 1px solid green; border-radius: 20px;margin-right: 5px;float: left;border-radius: 15px  15px;">
-       <div > 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Examen Fisico</p>
-       </div>
-    </a>
-</div>  
-
+   
 <br>
 <form action ="../paciente"  method="POST">
     @csrf
