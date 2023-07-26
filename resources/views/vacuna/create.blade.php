@@ -18,8 +18,9 @@
             </select>   
         </div>
 
+
         <div class="mb-3">
-            <label for="" class="form-label">Nombre de la vacuna</label> 
+            <label for="" class="form-label">Vacuna</label> 
             <select onfocus="this.blur();"value="{{old('nombre_vacuna')}}" name="nombre_vacuna"  id="nombre_vacuna"  
             class="form-control @error('nombre_vacuna') is-invalid @enderror" placeholder="Ingrese el nombre de la vacuna" 
                 title="Ingrese la nombre de la vacuna" >
@@ -38,10 +39,16 @@
         </div>
 
         <div class="mb-3">
-            <label for="">Fecha de aplicacion de la vacuna</label>
+            <label for="">Fecha de Aplicación</label>
             <input type="date"value="{{old('fecha_aplicada')}}"  name="fecha_aplicada"  id="fecha_aplicada" 
             class="form-control @error('fecha_aplicada') is-invalid @enderror"   placeholder="Ingrese la fecha de la aplicacion de la vacuna"
             title="Ingrese la fecha de la aplicacion de la vacuna ">
+
+
+
+
+
+
         
             @error('fecha_aplicada')
                 <span class="invalid-feedback" role="alert">

@@ -83,7 +83,7 @@
 
       <div class="mb-3">
         <label for="">Telefono</label>
-        <input type="text"value="{{old('telefono')}}"  name="telefono"  id="telefono" 
+        <input type="text"value="{{old('telefono')}}"  name="telefono"  id="telefono" maxlength="9"  pattern="[0-9]{4}-[0-9]{4}" 
         class="form-control @error('telefono') is-invalid @enderror"   placeholder="0000-0000"
         title="Ingrese el número telefonico ">
       

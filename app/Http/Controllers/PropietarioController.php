@@ -46,7 +46,7 @@ class PropietarioController extends Controller
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
             'gene_id'=>'required|exists:generos,id',
-            'telefono'=>'required|regex:/^\d{8}$/',
+            'telefono'=>'required|max:9|regex:([0-9]{4}-[0-9]{4})',
             'correo'=>'required|max:100|email|unique:propietarios,correo',    
            
         ]);
@@ -107,7 +107,7 @@ class PropietarioController extends Controller
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
             'gene_id'=>'required|exists:generos,id',
-            'telefono'=>'required|regex:/^\d{8}$/',
+            'telefono'=>'required|max:9|regex:([0-9]{4}-[0-9]{4})',
             'correo'=>'required|max:100|email',     
            
         ]);

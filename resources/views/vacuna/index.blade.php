@@ -45,13 +45,13 @@
     <br>
 
     <table id="mitabla"  class = "table table-sm table-bordered ">
-        <thead  class="thead-dark">
+        <thead   style="width: 100%; border-collapse: collapse; background-color: #228B22; tabla color ">
 
             <tr>
                 <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
-                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">codigo de la vacuna</th>
-                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Nombre de la vacuna</th>
-                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Fecha de aplicacion de la vacuna </th>
+                
+                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Vacuna</th>
+                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Fecha de Aplicación </th>
       
                 <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>           
             </tr>
@@ -99,6 +99,7 @@
                             </script>
                         </form>
                     </td>
+                    
                 </tr>
             @endforeach
         </tbody>

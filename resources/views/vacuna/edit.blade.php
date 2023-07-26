@@ -34,7 +34,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Nombre de la vacuna</label>
+            <label for="" class="form-label">Vacuna</label>
             <input type="text" maxlength="200" title="Ingrese el nombre de la vacuna" name="nombre_vacuna" id="nombre_vacuna" 
             class="form-control @error('nombre_vacuna') is-invalid @enderror"  placeholder="Ingrese el nombre de la vacuna" 
             value="{{ $vacuna->nombre_vacuna }}"
@@ -48,7 +48,7 @@
         </div>
             
         <div class="mb-3">
-            <label for="" class="form-label">Fecha apliacada</label>
+            <label for="" class="form-label">Fecha de Aplicación</label>
             <input type="date" name="fecha_aplicada"  id="fecha_aplicada"  class="form-control @error('fecha_aplicada') is-invalid @enderror"   placeholder="" value="{{ $vacuna->fecha_aplicada }}"
             title="Ingrese la fecha aplicada">
             @error('fecha_aplicada')
