@@ -19,19 +19,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="">codigo de la vacuna</label>
-            <input type="text"value="{{old('num_id')}}"  name="num_id"  id="num_id" 
-            class="form-control @error('num_id') is-invalid @enderror"   placeholder="codigo vacuna"
-            title="Ingrese la fecha de la aplicacion de la vacuna ">
-        
-            @error('num_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-
-        <div class="mb-3">
             <label for="" class="form-label">Nombre de la vacuna</label> 
             <select onfocus="this.blur();"value="{{old('nombre_vacuna')}}" name="nombre_vacuna"  id="nombre_vacuna"  
             class="form-control @error('nombre_vacuna') is-invalid @enderror" placeholder="Ingrese el nombre de la vacuna" 
