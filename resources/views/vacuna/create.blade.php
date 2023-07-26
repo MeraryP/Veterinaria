@@ -26,7 +26,6 @@
      </a>
       </li>
 
-<<<<<<< HEAD
       <li class="nav-item" role="presentation">
   <a href="{{ route('examen.index') }}"class="nav-link">
      <div> 
@@ -38,16 +37,8 @@
 </ul>
 
 
-<form action ="../vacuna"  method="POST">
-    @csrf
-   
- <br>
-
-
-=======
     <form action ="../vacuna"  method="POST">
         @csrf
->>>>>>> 8338cd8e0b171364e43840f2c4c9a6b650e1bbf7
     
         <br>
 
