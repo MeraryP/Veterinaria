@@ -4,7 +4,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="../paciente.edit" class="nav-link">
@@ -52,22 +51,6 @@
             timer: 3500
         })
     }
-=======
-    <script>
-        var msg = '{{Session::get('mensaje')}}';
-        var exist = '{{Session::has('mensaje')}}';
-        if(exist){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: msg,
-                showConfirmButton: false,
-                toast: true,
-                background: '#0be004ab',
-                timer: 3500
-            })
-        }
->>>>>>> 8338cd8e0b171364e43840f2c4c9a6b650e1bbf7
 
     </script>
 
@@ -149,7 +132,7 @@
                             </script>
                         </form>
                     </td>
-                    
+
                 </tr>
             @endforeach
         </tbody>
