@@ -23,8 +23,6 @@ class VacunaController extends Controller
      */
     public function create()
     {
-       
-
         //$generos = Genero::all();
        $pacientes = Paciente::all();
         return view ('vacuna.create',compact('pacientes'));
@@ -39,25 +37,19 @@ class VacunaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-
-           
             'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
-            'nombre_proximavacuna'=>'required|max:200',
-            'fecha_proximadosis'=>'date|max:200',
-            
-            
-            
-           
+            //'nombre_proximavacuna'=>'required|max:200',
+            //'fecha_proximadosis'=>'date|max:200',
         ]);
      
         $vacunas = new Vacuna();
         $vacunas->num_id = $request->get('num_id');
         $vacunas->nombre_vacuna = $request->get('nombre_vacuna');
         $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
-        $vacunas->nombre_proximavacuna= $request->get('nombre_proximavacuna');
-        $vacunas->fecha_proximadosis = $request->get('fecha_proximadosis');
+        //$vacunas->nombre_proximavacuna= $request->get('nombre_proximavacuna');
+        //$vacunas->fecha_proximadosis = $request->get('fecha_proximadosis');
         
         $vacunas->save();
 
@@ -88,11 +80,10 @@ class VacunaController extends Controller
      */
     public function edit($id)
     {
-
-         // $generos = Genero::all();
-         $pacientes = Paciente::all(); 
-         $vacuna = Vacuna::findOrfail($id);
-         return view('vacuna.edit',compact('pacientes'))->with('vacuna', $vacuna);
+        //$generos = Genero::all();
+        $pacientes = Paciente::all(); 
+        $vacuna = Vacuna::findOrfail($id);
+        return view('vacuna.edit',compact('pacientes'))->with('vacuna', $vacuna);
     }
 
     /**
@@ -103,29 +94,21 @@ class VacunaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-
     {
         $this->validate($request,[
-
-
-        
-           'num_id'=>'required|exists:pacientes,id',
+            'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
             'fecha_aplicada'=>'date|max:200',
-            'nombre_proximavacuna'=>'required|max:200',
-            'fecha_proximadosis'=>'date|max:200',
-            
-           
-
-           
+            //'nombre_proximavacuna'=>'required|max:200',
+            //'fecha_proximadosis'=>'date|max:200',  
         ]);
      
         $vacuna = Vacuna::find($id);
         $vacuna->num_id = $request->get('num_id');
         $vacuna->nombre_vacuna = $request->get('nombre_vacuna');
         $vacuna->fecha_aplicada = $request->get('fecha_aplicada');
-        $vacuna->nombre_proximavacuna= $request->get('nombre_proximavacuna');
-        $vacuna->fecha_proximadosis = $request->get('fecha_proximadosis');
+        //$vacuna->nombre_proximavacuna= $request->get('nombre_proximavacuna');
+        //$vacuna->fecha_proximadosis = $request->get('fecha_proximadosis');
        
         $vacuna->save();
 

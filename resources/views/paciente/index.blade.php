@@ -57,17 +57,17 @@ setTimeout(quitarerror, 3000);
 <br>
 <br>
 
-<table id="mitabla"  class = "table table-sm table-bordered border-black">
-<thead class="thead-dark" >
+<table id="mitabla"  class = "table table-sm table-bordered border-black"style="margin: 0 auto; width: 100%; text-align: center; ">
+<thead style="width: 100%; border-collapse: collapse; background-color: #228B22; tabla color ">
 
 <tr>
 
-            <th style="font-size:15px;text-align:center; width:45px;" scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No de expediente</th>
-            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Nombre de la Mascota</th>
-            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Especie</th>
-            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Raza</th>
-            <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
+            <th style="font-size:15px;text-align:center; width:45px;color: white; th"style="margin-left: 50px;margin-right: 20px;" scope="col">No</th>
+            <th style="font-size:15px;text-align:center; width:45px;color: white; th"  scope="col">No de expediente</th>
+            <th style="font-size:15px;text-align:center; width:100px;color: white; th"  scope="col">Nombre de la Mascota</th>
+            <th style="font-size:15px;text-align:center; width:100px;color: white; th"  scope="col">Especie</th>
+            <th style="font-size:15px;text-align:center; width:100px;color: white; th"  scope="col">Raza</th>
+            <th style="font-size:15px;text-align:center;width:125px;color: white; th"  scope="col">Acciones</th>
             
         </tr>
     </thead>
@@ -84,8 +84,8 @@ setTimeout(quitarerror, 3000);
             <td class="align-middle" style="font-size:15px;" >{{$paciente->especie}}</td>
             <td class="align-middle" style="font-size:15px;">{{$paciente->raza}}</td>
          
-            <td >
-            <a type="button"  title="Editar registro" href="./paciente/{{$paciente->id}}/edit" class="btn btn-outline-info" >
+            <td style="margin-left: 50px;margin-right: 30px;">
+            <a type="button"  title="Editar registro" href="./paciente/{{$paciente->id}}/edit" class="btn btn-outline-info"style="margin-left: 10px;margin-right: 20px;" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 
                 <button type="bottom"  onClick="borrar{{$paciente->id}}()" title="Eliminar registro" class="btn btn-outline-danger">

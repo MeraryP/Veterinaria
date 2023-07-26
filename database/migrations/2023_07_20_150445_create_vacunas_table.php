@@ -17,11 +17,9 @@ return new class extends Migration
             $table->increments('id');
             $table->string('nombre_vacuna');
             $table->date('fecha_aplicada');
-            $table->string('nombre_proximavacuna');
-            $table->date('fecha_proximadosis');
+            //$table->string('nombre_proximavacuna');
+            //$table->date('fecha_proximadosis');
             $table->timestamps();
-
-           
         });
     }
 

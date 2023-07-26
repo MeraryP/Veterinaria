@@ -51,14 +51,14 @@ setTimeout(quitarerror, 3000);
 <br>
 <br>
 <table id="mitabla"  class = "table table-sm table-bordered ">
-<thead  class="thead-dark">
+<thead   style="width: 100%; border-collapse: collapse; background-color: #228B22; tabla color ">
 <tr>
 
             <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
             <th style="font-size:15px;text-align:center; width:135px;"   scope="col">Identidad</th>
             <th style="font-size:15px;text-align:center; width:250px;"  scope="col">Nombre Completo</th>
-            <th style="font-size:15px;text-align:center; width:70px;"  scope="col">Telefono</th>
-            <th style="font-size:15px;text-align:center; width:150px;"  scope="col">Correo</th>
+            <th style="font-size:15px;text-align:center; width:70px;"  scope="col">Teléfono</th>
+            <th style="font-size:15px;text-align:center; width:150px;"  scope="col">Correo Electrónico</th>
             <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
             
         </tr>

@@ -71,7 +71,7 @@
     </div>
       <div class="mb-3">
         <label for="" class="form-label">Telefono</label>
-        <input type="text" name="telefono"  id="telefono"  class="form-control @error('telefono') is-invalid @enderror"   placeholder="0000-0000" value="{{ $propietario->telefono }}"
+        <input type="text" name="telefono"  id="telefono" maxlength="9"  pattern="[0-9]{4}-[0-9]{4}"  class="form-control @error('telefono') is-invalid @enderror"   placeholder="0000-0000" value="{{ $propietario->telefono }}"
         title="Ingrese el número telefonico">
         @error('telefono')
                 <span class="invalid-feedback" role="alert">
