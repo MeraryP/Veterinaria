@@ -77,15 +77,14 @@
     <br>
     <br>
 
-    <table id="mitabla"  class = "table table-sm table-bordered ">
-        <thead   style="width: 100%; border-collapse: collapse; background-color: #228B22; tabla color ">
+    <table id="mitabla"  class = "table table-sm table-bordered " style="margin: 0 auto; width: 100%; text-align: center; ">
+        <thead   style="width: 100%; border-collapse: collapse; background-color: pink; tabla color ">
 
             <tr>
                 <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
-                
+                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">No de expediente</th>
                 <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Vacuna</th>
                 <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Fecha de Aplicación </th>
-      
                 <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>           
             </tr>
         </thead>
@@ -132,7 +131,6 @@
                             </script>
                         </form>
                     </td>
-
                 </tr>
             @endforeach
         </tbody>

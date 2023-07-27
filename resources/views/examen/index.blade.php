@@ -88,8 +88,8 @@ setTimeout(quitarerror, 3000);
 <br>
 <br>
 <br>
-<table id="mitabla"  class = "table table-sm table-bordered ">
-<thead  class="thead-dark">
+<table id="mitabla"  class = "table table-sm table-bordered " style="margin: 0 auto; width: 100%; text-align: center; ">
+<thead  style="width: 100%; border-collapse: collapse; background-color:pink; tabla color ">
 
 <tr>
 

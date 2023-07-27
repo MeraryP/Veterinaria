@@ -45,25 +45,14 @@
         <div class="mb-3">
             <label for="">Numero de expediente</label>
             <select class="form-control" name="num_id">
-              <option style="display:none" value=""> </option> 
+              <option style="display:none" value="{{$vacuna->num_id}}"> {{$vacuna->paciente->numero_expediente}} </option> 
                 @foreach ($pacientes as $paciente)
                 <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
                 @endforeach      
             </select>
         </div>        
         
-        <div class="mb-3">
-            <label for="" class="form-label">codigo de la vacuna</label>
-            <input type="text" maxlength="4" value="{{ $vacuna->num_id }}"  name="num_id"  id="num_id" 
-            class="form-control @error('num_id') is-invalid @enderror"   placeholder="codigo vacuna"
-            title="Ingrese la fecha de la aplicacion de la vacuna ">
-        
-            @error('num_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
+ 
 
         <div class="mb-3">
             <label for="" class="form-label">Vacuna</label>

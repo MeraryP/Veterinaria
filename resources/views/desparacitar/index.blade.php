@@ -84,9 +84,9 @@
     <br>
 
 
-    <table class = "table table-sm table-bordered">
+    <table class = "table table-sm table-bordered" style="margin: 0 auto; width: 100%; text-align: center; ">
 
-        <thead class="thead-dark"  >
+        <thead style="width: 100%; border-collapse: collapse; background-color:pink; tabla color ">
             <tr>
                 <th style="font-size:15px; text-align:center" scope="col">Antiparacitario</th>
                 <th style="font-size:15px; text-align:center" scope="col">Fecha de desparacitacion</th>
