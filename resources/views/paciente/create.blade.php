@@ -62,9 +62,9 @@
 
       <div class="for-group">
         <label for="">Género</label>
-        <select class="form-control" name="gene_id">
-        @foreach ($generos as $genero)
-        <option value="{{$genero->id}}">{{$genero->name}}</option>
+        <select class="form-control" name="genero_id">
+        @foreach ($genero_mascotas as $genero_mascota)
+        <option value="{{$genero_mascota->id}}">{{$genero_mascota->name}}</option>
         @endforeach      
       </select>
       </div>

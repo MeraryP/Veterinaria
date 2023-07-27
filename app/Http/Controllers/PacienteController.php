@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Genero;
+use App\Models\GeneroMascota;
 
 
 class PacienteController extends Controller
@@ -26,10 +26,10 @@ class PacienteController extends Controller
     public function create()
     {
        
-        $generos = Genero::all();
+        $genero_mascotas = GeneroMascota::all();
        
       
-        return view ('paciente.create', compact('generos'));
+        return view ('paciente.create', compact('genero_mascotas'));
     }
 
     /**
@@ -46,7 +46,7 @@ class PacienteController extends Controller
             'numero_expediente'=>'unique:pacientes,numero_expediente|numeric|regex:([0-9]{4})',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'gene_id'=>'required|exists:generos,id',
+            'genero_id'=>'required|exists:genero_mascotas,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'fecha_nacimiento'=>'required|date',
            
@@ -63,7 +63,7 @@ class PacienteController extends Controller
         $pacientes->numero_expediente = $request->get('numero_expediente');
         $pacientes->nombre_mascota = $request->get('nombre_mascota');
         $pacientes->especie = $request->get('especie');
-        $pacientes->gene_id = $request->get('gene_id');
+        $pacientes->genero_id = $request->get('genero_id');
         $pacientes->raza= $request->get('raza');
         $pacientes->fecha_nacimiento = $request->get('fecha_nacimiento');
         $pacientes->save();
@@ -96,9 +96,9 @@ class PacienteController extends Controller
     public function edit($id)
     {
         
-        $generos = Genero::all();
+        $genero_mascotas = GeneroMascota::all();
         $paciente = Paciente::findOrfail($id);
-        return view('paciente.edit', compact('generos'))->with('paciente', $paciente);
+        return view('paciente.edit', compact('genero_mascotas'))->with('paciente', $paciente);
     
     }
 
@@ -119,7 +119,7 @@ class PacienteController extends Controller
             'numero_expediente'=>'numeric|regex:([0-9]{4})',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'gene_id'=>'required|exists:generos,id',
+            'genero_id'=>'required|exists:genero_mascotas,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'fecha_nacimiento'=>'required|date',
            
@@ -135,7 +135,7 @@ class PacienteController extends Controller
         $paciente->numero_expediente = $request->get('numero_expediente');
         $paciente->nombre_mascota = $request->get('nombre_mascota');
         $paciente->especie = $request->get('especie');
-        $paciente->gene_id = $request->get('gene_id');
+        $paciente->genero_id = $request->get('genero_id');
         $paciente->raza= $request->get('raza');
         $paciente->fecha_nacimiento = $request->get('fecha_nacimiento');
         $paciente->save();

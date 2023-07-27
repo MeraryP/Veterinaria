@@ -12,9 +12,9 @@ class Paciente extends Model
 
 
     
-    public function genero()
+    public function genero_mascota()
     {
-        return $this->belongsTo( Genero::class,'gene_id',"id");
+        return $this->belongsTo( GeneroMascota::class,'genero_id',"id");
     }
 
 
