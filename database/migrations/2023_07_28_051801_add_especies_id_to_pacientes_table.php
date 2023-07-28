@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pacientes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre_mascota');
-            $table->string('raza');
-            $table->date('fecha_nacimiento');
-        
-            $table->timestamps();
+        Schema::table('pacientes', function (Blueprint $table) {
+            $table->unsignedInteger('especie_id');
+    
+            $table->foreign('especie_id')->references('id')->on('especies')->onDelete('cascade');  
         });
     }
 
@@ -30,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pacientes');
+        Schema::table('pacientes', function (Blueprint $table) {
+            //
+        });
     }
 };

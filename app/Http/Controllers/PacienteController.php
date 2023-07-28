@@ -7,6 +7,8 @@ use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 use App\Models\Propietario;
 use App\Models\GeneroMascota;
+use App\Models\Especie;
+
 
 
 class PacienteController extends Controller
@@ -26,10 +28,11 @@ class PacienteController extends Controller
     public function create()
     {
        
+        $especies=Especie::all();
         $genero_mascotas = GeneroMascota::all();
         $propietarios = Propietario::all();
       
-        return view ('paciente.create', compact('genero_mascotas','propietarios'));
+        return view ('paciente.create', compact('genero_mascotas','propietarios','especies'));
     }
 
     /**
@@ -46,7 +49,7 @@ class PacienteController extends Controller
            
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'pro_id'=>'required|exists:propietarios,id',
-            'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'especie_id'=>'required|exists:especies,id',
             'genero_id'=>'required|exists:genero_mascotas,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'fecha_nacimiento'=>'required|date',
@@ -63,7 +66,7 @@ class PacienteController extends Controller
     
         $pacientes->nombre_mascota = $request->get('nombre_mascota');
         $pacientes->pro_id = $request->get('pro_id');
-        $pacientes->especie = $request->get('especie');
+        $pacientes->especie_id = $request->get('especie_id');
         $pacientes->genero_id = $request->get('genero_id');
         $pacientes->raza= $request->get('raza');
         $pacientes->fecha_nacimiento = $request->get('fecha_nacimiento');
@@ -96,10 +99,11 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
+        $especies = Especie::all();
         $propietarios=Propietario::all();
         $genero_mascotas = GeneroMascota::all();
         $paciente = Paciente::findOrfail($id);
-        return view('paciente.edit', compact('genero_mascotas','propietarios'))->with('paciente', $paciente);
+        return view('paciente.edit', compact('genero_mascotas','propietarios','especies'))->with('paciente', $paciente);
     
     }
 
@@ -120,7 +124,7 @@ class PacienteController extends Controller
             
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'pro_id'=>'required|exists:propietarios,id',
-            'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'especie_id'=>'required|exists:especies,id',
             'genero_id'=>'required|exists:genero_mascotas,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'fecha_nacimiento'=>'required|date',
@@ -136,7 +140,7 @@ class PacienteController extends Controller
         $paciente = Paciente::find($id);
         $paciente->nombre_mascota = $request->get('nombre_mascota');
         $paciente->pro_id = $request->get('pro_id');
-        $paciente->especie = $request->get('especie');
+        $paciente->especie_id = $request->get('especie_id');
         $paciente->genero_id = $request->get('genero_id');
         $paciente->raza= $request->get('raza');
         $paciente->fecha_nacimiento = $request->get('fecha_nacimiento');

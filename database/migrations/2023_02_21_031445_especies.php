@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pacientes', function (Blueprint $table) {
+        Schema::create('especies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre_mascota');
-            $table->string('raza');
-            $table->date('fecha_nacimiento');
-        
+            $table->string('nombre_especie');
             $table->timestamps();
-        });
+            
+         });
     }
 
     /**
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pacientes');
+        Schema::dropIfExists('especies');
     }
 };

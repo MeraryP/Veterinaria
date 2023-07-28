@@ -17,6 +17,12 @@ class Paciente extends Model
         return $this->belongsTo( GeneroMascota::class,'genero_id',"id");
     }
 
+
+    public function especie()
+    {
+        return $this->belongsTo( Especie::class,'especie_id',"id");
+    }
+
     public function propietario()
     {
         return $this->belongsTo( Propietario::class,'pro_id',"id");

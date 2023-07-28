@@ -10,7 +10,7 @@
  <br> 
 
    
-<br>
+
 <form action ="../paciente"  method="POST">
     @csrf
     
@@ -28,6 +28,7 @@
       
       </div>
 
+      
       <div class="for-group">
         <label for="">Nombre del Propietario</label>
         <select class="form-control" name="pro_id">
@@ -37,26 +38,17 @@
       </select>
 
 
+      <br>
 
-      <div class="mb-3">
-        <label for="" class="form-label">Especie</label> 
-        <select onfocus="this.blur();"value="{{old('especie')}}" name="especie"  id="especie"  class="form-control @error('especie') is-invalid @enderror" placeholder="seleccione la especie" 
-        title="seleccione la especie" >
-        <option>Cannino</option> 
-        <option>Equino</option> 
-        <option>Felino</option>  
-        <option>Otra</option>   
+      <div class="for-group">
+        <label for="">Especie</label>
+        <select class="form-control" name="especie_id">
+        @foreach ($especies as $especie)
+        <option value="{{$especie->id}}">{{$especie->nombre_especie}}</option>
+        @endforeach      
       </select>
-      @error('especie')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      
-      </div> 
 
-   
-
+     <br>
       <div class="for-group">
         <label for="">Género</label>
         <select class="form-control" name="genero_id">
@@ -67,7 +59,7 @@
       </div>
    
       
-
+  <br>
 
 <div class="mb-3">
         <label for="" class="form-label">Raza</label>

@@ -7,6 +7,7 @@
 
 
 
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="/paciente/{{$paciente->id}}/edit" class="nav-link">
@@ -41,6 +42,7 @@
 </ul>
 
 
+<br>
 
 
 <form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
@@ -75,23 +77,18 @@
         </div> 
 
 
+        <div class="mb-3">
+            <label for="">Especie</label>
+            <select class="form-control" name="especie_id">
+            <option style="display:none" value="{{$paciente->especie_id}}"> {{$paciente->especie->nombre_especie}}</option> 
+                @foreach ($especies as $especie)
+                <option value="{{$especie->id}}">{{$especie->nombre_especie}}</option>
+                @endforeach      
+            </select>
+        </div> 
 
-      <div class="mb-3">
-        <label for="" class="form-label">Especie</label> 
-        <select onfocus="this.blur();"value="{{old('especie')}}" name="especie"  id="especie"  class="form-control @error('especie') is-invalid @enderror" placeholder="seleccione la especie" value="{{ $paciente->especie }}"
-        title="seleccione la especie" >
-        <option>Cannino</option> 
-        <option>Equino</option> 
-        <option>Felino</option>  
-        <option>Otra</option>   
-      </select>
-      @error('especie')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      
-      </div> 
+
+       
 
       <div class="for-group">
         <label for="">Género</label>
@@ -135,7 +132,7 @@
 
 
       
-<button type="submit" class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
+<button type="submit" class="btn btn-outline-success" tabindex="4"style="margin-left: 300px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
 <a href="/paciente" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
 <br>

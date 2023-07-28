@@ -63,11 +63,11 @@ setTimeout(quitarerror, 3000);
 <tr>
 
             <th style="font-size:15px;text-align:center; width:45px;"style="margin-left: 50px;margin-right: 20px;" scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No de expediente</th>
+            <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Nombre del propietario</th>
             <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Nombre de la Mascota</th>
             <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Especie</th>
             <th style="font-size:15px;text-align:center; width:100px;"  scope="col">Raza</th>
-            <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>
+            <th style="font-size:15px;text-align:center;width:100px;"  scope="col">Acciones</th>
             
         </tr>
     </thead>
@@ -79,9 +79,9 @@ setTimeout(quitarerror, 3000);
         <tr>
             
             <td class="align-middle" style="font-size:15px; text-align:right;" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px;" >{{$paciente->numero_expediente}}</td>
+            <td class="align-middle" style="font-size:15px;" >{{$paciente->propietario->nombre}}</td>
             <td class="align-middle" style="font-size:15px;" >{{$paciente->nombre_mascota}}</td>
-            <td class="align-middle" style="font-size:15px;" >{{$paciente->especie}}</td>
+            <td class="align-middle" style="font-size:15px;" >{{$paciente->especie->nombre_especie}}</td>
             <td class="align-middle" style="font-size:15px;">{{$paciente->raza}}</td>
          
             <td style="margin-left: 50px;margin-right: 30px;">
