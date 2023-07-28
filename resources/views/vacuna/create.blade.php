@@ -43,10 +43,10 @@
         <br>
 
         <div class="mb-3">
-            <label for="">Numero de expediente</label>
+            <label for="">Nombre de la Maskota</label>
             <select class="form-control" name="num_id"> 
                 @foreach ($pacientes as  $paciente)
-                    <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+                    <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
                 @endforeach   
             </select>   
         </div>

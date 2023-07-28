@@ -43,11 +43,11 @@
         <br>
 
         <div class="mb-3">
-            <label for="">Numero de expediente</label>
+            <label for="">Nombre de la Maskota</label>
             <select class="form-control" name="num_id">
-              <option style="display:none" value="{{$vacuna->num_id}}"> {{$vacuna->paciente->numero_expediente}} </option> 
+              <option style="display:none" value="{{$vacuna->num_id}}"> {{$vacuna->paciente->nombre_mascota}} </option> 
                 @foreach ($pacientes as $paciente)
-                <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
+                <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
                 @endforeach      
             </select>
         </div>        

@@ -14,18 +14,7 @@
 <form action ="../paciente"  method="POST">
     @csrf
     
-    <div class="mb-3">
-        <label for="" class="form-label">Número de expediente</label>
-        <input type="text"  maxlength="100"   value="{{old('numero_expediente')}}"  name="numero_expediente"  id="numero_expediente"   
-        class="form-control @error('numero_expediente') is-invalid @enderror" placeholder="Ingrese el número de expediente"
-        title="Ingrese el número de expediente">
-        @error('numero_expediente')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      
-      </div>
+    
   <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
         <input type="text" maxlength="100" value="{{old('nombre_mascota')}}"  name="nombre_mascota"  id="nombre_mascota"   
@@ -38,6 +27,14 @@
             @enderror
       
       </div>
+
+      <div class="for-group">
+        <label for="">Nombre del Propietario</label>
+        <select class="form-control" name="pro_id">
+        @foreach ($propietarios as $propietario)
+        <option value="{{$propietario->id}}">{{$propietario->nombre}}</option>
+        @endforeach      
+      </select>
 
 
 

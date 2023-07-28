@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('propietarios', function (Blueprint $table) {
-            $table->unsignedInteger('num_id');
+        
+        Schema::table('pacientes', function (Blueprint $table) {
+            $table->unsignedInteger('pro_id');
     
-            $table->foreign('num_id')->references('id')->on('pacientes')->onDelete('cascade');
+            $table->foreign('pro_id')->references('id')->on('propietarios')->onDelete('cascade');
         });
+       
     }
 
     /**
@@ -27,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('propietarios', function (Blueprint $table) {
+        Schema::table('pacientes', function (Blueprint $table) {
             //
         });
     }

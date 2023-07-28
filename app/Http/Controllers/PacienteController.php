@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Propietario;
 use App\Models\GeneroMascota;
 
 
@@ -27,9 +27,9 @@ class PacienteController extends Controller
     {
        
         $genero_mascotas = GeneroMascota::all();
-       
+        $propietarios = Propietario::all();
       
-        return view ('paciente.create', compact('genero_mascotas'));
+        return view ('paciente.create', compact('genero_mascotas','propietarios'));
     }
 
     /**
@@ -43,8 +43,9 @@ class PacienteController extends Controller
 
     
         $this->validate($request,[
-            'numero_expediente'=>'unique:pacientes,numero_expediente|numeric|regex:([0-9]{4})',
+           
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'pro_id'=>'required|exists:propietarios,id',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'genero_id'=>'required|exists:genero_mascotas,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
@@ -60,8 +61,8 @@ class PacienteController extends Controller
      
         $pacientes = new Paciente();
     
-        $pacientes->numero_expediente = $request->get('numero_expediente');
         $pacientes->nombre_mascota = $request->get('nombre_mascota');
+        $pacientes->pro_id = $request->get('pro_id');
         $pacientes->especie = $request->get('especie');
         $pacientes->genero_id = $request->get('genero_id');
         $pacientes->raza= $request->get('raza');
@@ -95,10 +96,10 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        
+        $propietarios=Propietario::all();
         $genero_mascotas = GeneroMascota::all();
         $paciente = Paciente::findOrfail($id);
-        return view('paciente.edit', compact('genero_mascotas'))->with('paciente', $paciente);
+        return view('paciente.edit', compact('genero_mascotas','propietarios'))->with('paciente', $paciente);
     
     }
 
@@ -116,8 +117,9 @@ class PacienteController extends Controller
 
         $this->validate($request,[
             
-            'numero_expediente'=>'numeric|regex:([0-9]{4})',
+            
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'pro_id'=>'required|exists:propietarios,id',
             'especie'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'genero_id'=>'required|exists:genero_mascotas,id',
             'raza'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
@@ -132,8 +134,8 @@ class PacienteController extends Controller
         ]);
      
         $paciente = Paciente::find($id);
-        $paciente->numero_expediente = $request->get('numero_expediente');
         $paciente->nombre_mascota = $request->get('nombre_mascota');
+        $paciente->pro_id = $request->get('pro_id');
         $paciente->especie = $request->get('especie');
         $paciente->genero_id = $request->get('genero_id');
         $paciente->raza= $request->get('raza');

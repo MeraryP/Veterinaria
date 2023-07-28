@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Propietario;
-use App\Models\Paciente;
 use Illuminate\Support\Facades\DB;
 use App\Models\Genero;
 
@@ -23,9 +22,9 @@ class PropietarioController extends Controller
      */
     public function create()
     {
-        $pacientes = Paciente::all();
+        
         $generos = Genero::all();
-        return view ('propietario.create',compact('generos','pacientes'));
+        return view ('propietario.create',compact('generos'));
     }
 
 
@@ -41,7 +40,7 @@ class PropietarioController extends Controller
         $this->validate($request,[
            
           
-            'num_id'=>'required|exists:pacientes,id',
+           
             'identidad'=>'unique:propietarios,identidad|max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
@@ -52,7 +51,6 @@ class PropietarioController extends Controller
         ]);
      
         $propietarios = new Propietario();
-        $propietarios->num_id = $request->get('num_id');
         $propietarios->identidad = $request->get('identidad');
         $propietarios->nombre = $request->get('nombre');
         $propietarios->direccion = $request->get('direccion');
@@ -84,9 +82,9 @@ class PropietarioController extends Controller
     public function edit($id)
     {
         $generos = Genero::all();
-        $pacientes = Paciente::all(); 
+        
         $propietario = Propietario::findOrfail($id);
-        return view('propietario.edit',compact('generos','pacientes'))->with('propietario', $propietario);
+        return view('propietario.edit',compact('generos'))->with('propietario', $propietario);
     
     }
 
@@ -102,7 +100,7 @@ class PropietarioController extends Controller
         $this->validate($request,[
            
             
-            'num_id'=>'required|exists:pacientes,id',
+            
             'identidad'=>'max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
@@ -113,7 +111,6 @@ class PropietarioController extends Controller
         ]);
      
         $propietario = Propietario::find($id);
-        $propietario->num_id = $request->get('num_id');
         $propietario->identidad = $request->get('identidad');
         $propietario->nombre = $request->get('nombre');
         $propietario->direccion = $request->get('direccion');

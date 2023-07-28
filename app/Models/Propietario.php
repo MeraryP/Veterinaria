@@ -16,10 +16,7 @@ class Propietario extends Model
         return $this->belongsTo( Genero::class,'gene_id',"id");
     }
 
-    public function Paciente()
-    {
-        return $this->belongsTo( Paciente::class,'num_id',"id");
-    }
+    
 
 
     

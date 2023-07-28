@@ -50,16 +50,7 @@
 
     <br>
     
-    <div class="mb-3">
-        <label for="" class="form-label">Número de expediente</label>
-        <input type="number" name="numero_expediente"  id="numero_expediente"  class="form-control @error('numero_expediente') is-invalid @enderror"   placeholder="" value="{{ $paciente->numero_expediente }}"
-        title="Ingrese el número de expediente">
-        @error('numero_expediente')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-      </div>
+   
 
 
 <div class="mb-3">
@@ -72,6 +63,16 @@
                 </span>
             @enderror
       </div>
+
+      <div class="mb-3">
+            <label for="">Nombre del propietario</label>
+            <select class="form-control" name="pro_id">
+            <option style="display:none" value="{{$paciente->pro_id}}"> {{$paciente->propietario->nombre}}</option> 
+                @foreach ($propietarios as $propietario)
+                <option value="{{$propietario->id}}">{{$propietario->nombre}}</option>
+                @endforeach      
+            </select>
+        </div> 
 
 
 
@@ -134,7 +135,7 @@
 
 
       
-<button type="submit" class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
+<button type="submit" class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
 <a href="/paciente" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
 <br>

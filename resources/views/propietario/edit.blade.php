@@ -14,15 +14,7 @@
     <br>
    
 
-      <div class="mb-3">
-      <label for="">Numero de expediente</label>
-      <select class="form-control" name="num_id">
-      <option style="display:none" value="{{$examen->num_id}}"> {{$examen->paciente->numero_expediente}}</option> 
-        @foreach ($pacientes as $paciente)
-        <option value="{{$paciente->id}}">{{$paciente->numero_expediente}}</option>
-        @endforeach      
-      </select>
-      </div>
+     
 
 
     <div class="mb-3">
