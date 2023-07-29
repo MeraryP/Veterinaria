@@ -43,7 +43,7 @@
 <br>
 
 
-<form  method="POST" action="{{ action('paciente.update',['id'=>$paciente->id])}}">
+<form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
     @method('put')
     @csrf
     
