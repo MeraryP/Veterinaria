@@ -31,7 +31,7 @@
 
         {{-- Email field --}}
         <div class="input-group mb-3">
-        <input class="form-control{{ $errors->has('correo') ? ' is-invalid' : '' }}" placeholder="{{ __('Correo electronico') }}" 
+        <input class="form-control{{ $errors->has('correo') ? ' is-invalid' : '' }}" placeholder="{{ __('Correo electrónico') }}" 
         type="email" name="correo" value="{{ old('correo') }}" value="Correo electronico" required autofocus>
 
             <div class="input-group-append">

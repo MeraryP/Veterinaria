@@ -66,6 +66,63 @@ class UserController extends Controller
         return view('User.datos');
     }
 
+    public function editar(){
+
+        return view('User.editardatos');
+    }
+
+    public function actualizar(Request $request){
+        //$fecha_actual = date("d-m-Y");
+        //$max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
+        //$minima = date('d-m-Y',strtotime($fecha_actual."- 65 year"));
+        //$maxima = date("d-m-Y",strtotime($max."+ 1 days"));
+
+        $rules=[
+           
+                'name' =>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+                'username' => 'required|min:8|max:50',
+                'correo' => 'required|max:100|email|',
+                //'nacimiento'=>'required|date|before:'.$maxima.'|after:'.$minima,
+                'identidad'=> 'required|max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
+                'telefono'=> 'required|regex:([0-9]{4}-[0-9]{4})',
+        ];
+
+        $mensaje=[
+            'name.required' => 'El nombre no puede estar vacío',
+
+            'username.required' => 'El nombre de usuario no puede estar vacío',
+            'username.min' => 'El nombre de usuario debe de tener mas de 8 caracteres',
+            
+
+            'correo.required' => 'El correo electronico no puede estar vacío',
+            'correo.max' => 'El correo electronico debe de tener menos de 100 caracteres',
+            
+
+            //'nacimiento.required' => 'La fecha de nacimiento no puede estar vacío',
+            //'nacimiento.date' => 'La fecha de nacimiento debe de ser una fecha',
+            //'nacimiento.before' => 'La fecha de nacimiento debe de ser anterior a '.$maxima,
+            //'nacimiento.after' => 'La fecha de nacimiento debe de ser posterior a '.$minima,
+
+            'identidad.required' => 'La identidad no puede estar vacío',
+            
+
+            'telefono.required' => 'El telefono no puede estar vacío',
+            
+        ];
+
+        $this->validate($request,$rules,$mensaje);
+
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->input('name');
+        $user->correo = $request->input('correo');
+        //$user->nacimiento = $request->input('nacimiento');
+        $user->identidad = $request->input('identidad');
+        $user->telefono = $request->input('telefono');
+        $user->username = $request->input('username');
+        $user->save();
+
+        return redirect('/usuario')->with('mensaje', 'El perfil fue modificado exitosamente');
+    }
    
 
     

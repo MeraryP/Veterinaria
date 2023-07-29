@@ -1,12 +1,10 @@
 @extends('layouts.madre')
 
-@section('title', 'Editar Registro de Maskota')
+@section('title', '')
+
 
 
 @section('content')
-
-
-
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
@@ -45,7 +43,7 @@
 <br>
 
 
-<form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
+<form  method="POST" action="{{ action('paciente.update',['id'=>$paciente->id])}}">
     @method('put')
     @csrf
     

@@ -4,6 +4,7 @@
 
 @section('content')
 
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="../paciente.edit" class="nav-link">

@@ -69,7 +69,12 @@ Route::middleware("auth")->group(function () {
     
         Route::get('/usuario',[UserController::class, 'usuario'])
         ->name('usuario.datos');
+
+        Route::get('/usuario/editar',[UserController::class, 'editar'])
+        ->name('usuario.editar');
     
+        Route::put('/usuario/editar',[UserController::class, 'actualizar'])
+        ->name('usuario.actualizar'); 
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
               
  

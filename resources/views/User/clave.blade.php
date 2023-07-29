@@ -1,9 +1,18 @@
 @extends('layouts.madre')
 
-@section('title', 'Cambio contraseña')
+@section('title', 'Cambiar contraseña')
 
 @section('content')
 
+<style>
+    .form-control{
+        border-top-left-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+        border-top-right-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        padding-left: 5px !important;
+    }
+</style>
 
 
 <form action="" method="post">
@@ -11,10 +20,11 @@
 
     <center><h4></h4></center>
     <br>
-    <br>
+    
     <div class="input-group mb-3">
+    <label for="" style="width:15%">Contraseña Actual:</label>
             <input type="password" name="viejapassword" class="form-control @error('viejapassword') is-invalid @enderror"
-                   placeholder="contraseña actual">
+                   placeholder="Ingresar la contraseña actual">
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -33,8 +43,9 @@
 
     {{-- Password field --}}
         <div class="input-group mb-3">
+        <label for="" style="width:15%">Contraseña Nueva:</label>
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                   placeholder="Contraseña nueva">
+                   placeholder="Ingresar la contraseña nueva">
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -51,9 +62,10 @@
 
         {{-- Confirm password field --}}
         <div class="input-group mb-3">
+        <label for="" style="width:15%">Confirmar Contraseña:</label>
             <input type="password" name="password_confirmation"
                    class="form-control @error('password_confirmation') is-invalid @enderror"
-                   placeholder="{{ __('adminlte::adminlte.retype_password') }}">
+                   placeholder=" Confirme la contraseña nueva">
 
             <div class="input-group-append">
                 <div class="input-group-text">

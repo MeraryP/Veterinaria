@@ -349,6 +349,15 @@ return [
             
             'icon_color'=>'red',  
         ],
+
+        [
+            'text' => 'Cambiar Contraseña',
+            'icon'    => 'fa fa-key', 
+            //'route'=>'contrasenia.cambiar',
+            'icon_color'=>'red',  
+        ],
+
+      
  
  
 
