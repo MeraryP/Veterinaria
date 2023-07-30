@@ -15,13 +15,11 @@ return new class extends Migration
     {
         Schema::create('examens', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('temperatura');
-            $table->string('frecuencia_cardiaca');
-            $table->string('frecuencia_respiratoria');
-            $table->string('peso');
-            $table->string('pulso');
-            $table->string('gastrointestal');
-            $table->string('tratamiento');
+            $table->integer('temperatura');
+            $table->integer('frecuencia_cardiaca');
+            $table->integer('frecuencia_respiratoria');
+            $table->integer('peso');
+            $table->integer('pulso');
             $table->timestamps();
         });
     }

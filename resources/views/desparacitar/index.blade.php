@@ -3,19 +3,18 @@
 @section('title', 'Desparacitar')
 
 @section('content')
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a href="../paciente.edit" class="nav-link">
-                <div> 
-                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-                </div>
-            </a>
-        </li>
-
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+<a href="{{ route('paciente.edit', ['paciente' => $paciente->id]) }}" class="nav-link">
+     <div> 
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+       </div>
+     </a>
+  </li>
         <li class="nav-item" role="presentation">
             <a href="{{ route('vacuna.index') }}" class="nav-link">
                 <div> 
-                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
                 </div>
             </a>
         </li>
@@ -23,7 +22,7 @@
         <li class="nav-item" role="presentation">
             <a href="{{ route('desparacitar.index') }}"class="nav-link">
                 <div> 
-                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
                 </div>
             </a>
         </li>
@@ -31,7 +30,7 @@
         <li class="nav-item" role="presentation">
             <a href="{{ route('examen.index') }}"class="nav-link">
                 <div> 
-                    <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
                 </div>
             </a>
         </li>

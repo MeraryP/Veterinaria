@@ -40,14 +40,11 @@ class ExamenController extends Controller
            
          
             'num_id'=>'required|exists:pacientes,id',
-            'temperatura'=>'required|max:300',
-            'frecuencia_cardiaca'=>'required|max:300',
-            'frecuencia_respiratoria'=>'required|max:300',
-            'peso'=>'required|max:300',
-            'pulso'=>'required|max:300',
-            'gastrointestal'=>'required|max:300',
-            'tratamiento'=>'required|max:300',
-  
+            'temperatura'=>'required|numeric',
+            'frecuencia_cardiaca'=>'required|numeric',
+            'frecuencia_respiratoria'=>'required|numeric',
+            'peso'=>'required|numeric',
+            'pulso'=>'required|numeric',
         
         ]);
      
@@ -58,8 +55,6 @@ class ExamenController extends Controller
         $examens->frecuencia_respiratoria = $request->get('frecuencia_respiratoria');
         $examens->peso = $request->get('peso');
         $examens->pulso = $request->get('pulso');
-        $examens->gastrointestal = $request->get('gastrointestal');
-        $examens->tratamiento = $request->get('tratamiento');
         $examens->save();
 
         if($examens){
@@ -108,13 +103,12 @@ class ExamenController extends Controller
            
             
             'num_id'=>'required|exists:pacientes,id',
-            'temperatura'=>'required|max:300',
-            'frecuencia_cardiaca'=>'required|max:300',
-            'frecuencia_respiratoria'=>'required|max:300',
-            'peso'=>'required|max:300',
-            'pulso'=>'required|max:300',
-            'gastrointestal'=>'required|max:300',
-            'tratamiento'=>'required|max:300',
+            'temperatura'=>'required|numeric',
+            'frecuencia_cardiaca'=>'required|numeric',
+            'frecuencia_respiratoria'=>'required|numeric',
+            'peso'=>'required|numeric',
+            'pulso'=>'required|numeric',
+           
   
         
         ]);
@@ -126,8 +120,6 @@ class ExamenController extends Controller
         $examen->frecuencia_respiratoria = $request->get('frecuencia_respiratoria');
         $examen->peso = $request->get('peso');
         $examen->pulso = $request->get('pulso');
-        $examen->gastrointestal = $request->get('gastrointestal');
-        $examen->tratamiento = $request->get('tratamiento');
         $examen->save();
 
         if($examen){

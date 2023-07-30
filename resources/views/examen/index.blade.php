@@ -6,23 +6,24 @@
 @section('content')
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-<a href="../paciente.edit" class="nav-link">
+<a href="{{ route('paciente.edit', ['paciente' => $paciente->id]) }}" class="nav-link">
      <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
        </div>
      </a>
   </li>
+
   <li class="nav-item" role="presentation">
    <a href="{{ route('vacuna.index') }}" class="nav-link">
      <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
        </div>
      </a>
   </li>
   <li class="nav-item" role="presentation">
   <a href="{{ route('desparacitar.index') }}"class="nav-link">
      <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
        </div>
      </a>
       </li>
@@ -30,7 +31,7 @@
       <li class="nav-item" role="presentation">
   <a href="{{ route('examen.index') }}"class="nav-link">
      <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
        </div>
      </a>
       </li>
@@ -95,13 +96,11 @@ setTimeout(quitarerror, 3000);
 
 
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Temperatura Corporal</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Frecuencia Cardíaca</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Frecuencia Respiratoria</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Peso</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Pulso</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Enfermedad Gastrointestal</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Tratamiento</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Temperatura °C</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">F.C /minuto</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">F.R /minuto</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Peso Kg</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Pulso /minuto</th>
 
             <th style="font-size:15px;text-align:center;width:0px;"  scope="col">Acciones</th>
             
@@ -121,8 +120,6 @@ setTimeout(quitarerror, 3000);
             <td class="align-middle" style="font-size:15px">{{$examen->frecuencia_respiratoria}}</td>
             <td class="align-middle" style="font-size:15px">{{$examen->peso}}</td>
             <td class="align-middle" style="font-size:15px">{{$examen->pulso}}</td>
-            <td class="align-middle" style="font-size:15px">{{$examen->gastrointestal}}</td>
-            <td class="align-middle" style="font-size:15px">{{$examen->tratamiento}}</td>
            
            
 
