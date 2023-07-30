@@ -93,7 +93,7 @@
                 <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
                 <th style="font-size:15px; text-align:center" scope="col">Antiparacitario</th>
                 <th style="font-size:15px; text-align:center" scope="col">Dosis</th>
-                <th style="font-size:15px; text-align:center" scope="col">Fecha de desparacitacion</th>
+                <th style="font-size:15px; text-align:center" scope="col">Fecha de desparasitar</th>
                 <th style="font-size:15px; text-align:center" scope="col">Opciones</th>
             </tr>
         </thead>
@@ -108,7 +108,7 @@
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->fecha_desparacitacion}}</td>
                     
                     <td>
-                    <a type="button"  title="Editar registro" href="./desparacitar/{{$desparacitar->id}}/edit" class="btn btn-outline-info" >
+                    <a type="button"  title="Editar registro" href="./desparacitar/{{$desparacitar->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             

@@ -77,8 +77,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Cantidad Aplicada</label>
-            <input type="text"  name="cantidad"  id="cantidad" class="form-control @error('cantidad') is-invalid @enderror"   
+            <label for="" class="form-label">Cantidad aplicada</label>
+            <input type="number" minlength="4" name="cantidad"  id="cantidad" class="form-control @error('cantidad') is-invalid @enderror"   
             placeholder="Ingrese la cantidad aplicada de la vacuna" value="{{ $vacuna->cantidad}}"
             title="Ingrese la cantidad aplicada de la vacuna ">
             

@@ -71,8 +71,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="">Cantidad Aplicada</label>
-            <input type="text" value="{{old('cantidad')}}"  name="cantidad"  id="cantidad" 
+            <label for="">Cantidad aplicada</label>
+            <input type="number" maxlength="4" pattern="[0-9]{4}" value="{{old('cantidad')}}"  name="cantidad"  id="cantidad" 
             class="form-control @error('cantidad') is-invalid @enderror"   placeholder="Ingrese la cantidad aplicada de la vacuna"
             title="Ingrese la cantidad aplicada de la vacuna ">
             
@@ -84,7 +84,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="">Fecha de Aplicación</label>
+            <label for="">Fecha de aplicación</label>
             <input type="date"value="{{old('fecha_aplicada')}}"  name="fecha_aplicada"  id="fecha_aplicada" 
             class="form-control @error('fecha_aplicada') is-invalid @enderror"   placeholder="Ingrese la fecha de la aplicacion de la vacuna"
             title="Ingrese la fecha de la aplicacion de la vacuna ">

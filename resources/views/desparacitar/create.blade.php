@@ -68,7 +68,7 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Dosis de Desparasitante</label>
-            <input type="text" value="{{old('dosis')}}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  
+            <input type="number" value="{{old('dosis')}}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  
             tabindex="1" title="dosis">
 
             @error('dosis')
@@ -79,7 +79,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Fecha de desparacitacion</label>
+            <label for="" class="form-label">Fecha de desparasitar</label>
             <input type="date" value="{{old('fecha_desparacitacion')}}"  name="fecha_desparacitacion" id="fecha_desparacitacion"  class="form-control @error('fecha_desparacitacion') is-invalid @enderror"  tabindex="1"
             title="fecha desparacitacion">
 

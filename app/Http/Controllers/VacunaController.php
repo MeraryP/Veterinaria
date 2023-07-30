@@ -36,10 +36,10 @@ class VacunaController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $request->validate([
             'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
-            'cantidad'=>'required',
+            'cantidad'=>'required|numeric|regex:([0-9])',
             'fecha_aplicada'=>'date|max:200',
         ]);
      
@@ -48,8 +48,6 @@ class VacunaController extends Controller
         $vacunas->nombre_vacuna = $request->get('nombre_vacuna');
         $vacunas->cantidad = $request->get('cantidad');
         $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
-        //$vacunas->nombre_proximavacuna= $request->get('nombre_proximavacuna');
-        //$vacunas->fecha_proximadosis = $request->get('fecha_proximadosis');
         
         $vacunas->save();
 
@@ -98,7 +96,7 @@ class VacunaController extends Controller
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
-            'cantidad'=>'required',
+            'cantidad'=>'required|numeric|regex:([0-9])',
             'fecha_aplicada'=>'date|max:200',  
         ]);
      

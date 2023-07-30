@@ -83,7 +83,7 @@
                 <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
                 <th style="font-size:15px; text-align:center" scope="col">Vacuna</th>
                 <th style="font-size:15px; text-align:center" scope="col">Cantidad</th>
-                <th style="font-size:15px; text-align:center" scope="col">Fecha de Aplicación </th>
+                <th style="font-size:15px; text-align:center" scope="col">Fecha de aplicación </th>
                 <th style="font-size:15px; text-align:center" scope="col">Acciones</th>           
             </tr>
         </thead>
@@ -99,7 +99,7 @@
                     <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
  
                     <td>
-                        <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-outline-info" >
+                        <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             

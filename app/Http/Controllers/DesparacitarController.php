@@ -26,7 +26,7 @@ class DesparacitarController extends Controller{
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'antiparacitario'=>'required|max:200',
-            'dosis'=>'required',
+            'dosis'=>'required|numeric|regex:([0-9])',
             'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
         ]);
 
@@ -69,7 +69,7 @@ class DesparacitarController extends Controller{
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'antiparacitario'=>'required|max:200',
-            
+            'dosis'=>'required|numeric|regex:([0-9])',
             'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
         ]);
 
