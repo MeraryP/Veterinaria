@@ -3,45 +3,45 @@
 @section('title', 'Registrar vacuna')
 
 @section('content')
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="../paciente.edit" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-   <a href="{{ route('vacuna.index') }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-  <a href="{{ route('desparacitar.index') }}"class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
-       </div>
-     </a>
-      </li>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a href="../paciente.edit" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+                </div>
+            </a>
+        </li>
 
-      <li class="nav-item" role="presentation">
-  <a href="{{ route('examen.index') }}"class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
-       </div>
-     </a>
-      </li>
-  
-</ul>
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('vacuna.index') }}" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('desparacitar.index') }}"class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('examen.index') }}"class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+                </div>
+            </a>
+        </li>
+    </ul>
 
 
     <form action ="../vacuna"  method="POST">
         @csrf
     
         <br>
-
         <div class="mb-3">
             <label for="">Nombre de la Maskota</label>
             <select class="form-control" name="num_id"> 
@@ -50,7 +50,6 @@
                 @endforeach   
             </select>   
         </div>
-
 
         <div class="mb-3">
             <label for="" class="form-label">Vacuna</label> 
@@ -72,17 +71,24 @@
         </div>
 
         <div class="mb-3">
+            <label for="">Cantidad Aplicada</label>
+            <input type="text" value="{{old('cantidad')}}"  name="cantidad"  id="cantidad" 
+            class="form-control @error('cantidad') is-invalid @enderror"   placeholder="Ingrese la cantidad aplicada de la vacuna"
+            title="Ingrese la cantidad aplicada de la vacuna ">
+            
+            @error('cantidad')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="">Fecha de Aplicación</label>
             <input type="date"value="{{old('fecha_aplicada')}}"  name="fecha_aplicada"  id="fecha_aplicada" 
             class="form-control @error('fecha_aplicada') is-invalid @enderror"   placeholder="Ingrese la fecha de la aplicacion de la vacuna"
             title="Ingrese la fecha de la aplicacion de la vacuna ">
 
-
-
-
-
-
-        
             @error('fecha_aplicada')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

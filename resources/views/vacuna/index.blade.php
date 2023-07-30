@@ -4,55 +4,54 @@
 
 @section('content')
 
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a href="../paciente.edit" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+                </div>
+            </a>
+        </li>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="../paciente.edit" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-   <a href="{{ route('vacuna.index') }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-  <a href="{{ route('desparacitar.index') }}"class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
-       </div>
-     </a>
-      </li>
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('vacuna.index') }}" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+                </div>
+            </a>
+        </li>
 
-      <li class="nav-item" role="presentation">
-  <a href="{{ route('examen.index') }}"class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
-       </div>
-     </a>
-      </li>
-  
-</ul>
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('desparacitar.index') }}"class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
+                </div>
+            </a>
+        </li>
 
-<script>
-    var msg = '{{Session::get('mensaje')}}';
-    var exist = '{{Session::has('mensaje')}}';
-    if(exist){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: msg,
-            showConfirmButton: false,
-            toast: true,
-            background: '#0be004ab',
-            timer: 3500
-        })
-    }
+        <li class="nav-item" role="presentation">
+            <a href="{{ route('examen.index') }}"class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+                </div>
+            </a>
+        </li>
+    </ul>
 
+    <script>
+        var msg = '{{Session::get('mensaje')}}';
+        var exist = '{{Session::has('mensaje')}}';
+        if(exist){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: msg,
+                showConfirmButton: false,
+                toast: true,
+                background: '#0be004ab',
+                timer: 3500
+            })
+        }
     </script>
 
     <script>
@@ -71,7 +70,6 @@
     </div>
 
     <br>
-    <br>
     <div align="right" style="float:right">
         <a href="vacuna/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
     </div>
@@ -79,14 +77,14 @@
     <br>
 
     <table id="mitabla"  class = "table table-sm table-bordered " style="margin: 0 auto; width: 100%; text-align: center; ">
-        <thead   style="width: 100%; border-collapse: collapse; background-color: pink; tabla color ">
+        <thead   style="width: 100%; border-collapse: collapse; background-color:pink; tabla color ">
 
             <tr>
-                <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
-                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">No de expediente</th>
-                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Vacuna</th>
-                <th style="font-size:15px;text-align:center; width:40px;"  scope="col">Fecha de Aplicación </th>
-                <th style="font-size:15px;text-align:center;width:125px;"  scope="col">Acciones</th>           
+                <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
+                <th style="font-size:15px; text-align:center" scope="col">Vacuna</th>
+                <th style="font-size:15px; text-align:center" scope="col">Cantidad</th>
+                <th style="font-size:15px; text-align:center" scope="col">Fecha de Aplicación </th>
+                <th style="font-size:15px; text-align:center" scope="col">Acciones</th>           
             </tr>
         </thead>
 
@@ -95,8 +93,9 @@
             @foreach ($vacunas as  $vacuna)
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->num_id}}</td>
+                    
                     <td class="align-middle" style="font-size:15px">{{$vacuna->nombre_vacuna}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$vacuna->cantidad}}</td>
                     <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
  
                     <td>

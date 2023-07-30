@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('desparacitars', function (Blueprint $table) {
             $table->increments('id');
             $table->string('antiparacitario');
+            $table->string('dosis');
             $table->string('fecha_desparacitacion');
-            $table->string('fecha_volverDesparacitar');
             $table->timestamps();
         });
     }

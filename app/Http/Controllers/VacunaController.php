@@ -39,14 +39,14 @@ class VacunaController extends Controller
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
+            'cantidad'=>'required',
             'fecha_aplicada'=>'date|max:200',
-            //'nombre_proximavacuna'=>'required|max:200',
-            //'fecha_proximadosis'=>'date|max:200',
         ]);
      
         $vacunas = new Vacuna();
         $vacunas->num_id = $request->get('num_id');
         $vacunas->nombre_vacuna = $request->get('nombre_vacuna');
+        $vacunas->cantidad = $request->get('cantidad');
         $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
         //$vacunas->nombre_proximavacuna= $request->get('nombre_proximavacuna');
         //$vacunas->fecha_proximadosis = $request->get('fecha_proximadosis');
@@ -98,17 +98,15 @@ class VacunaController extends Controller
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'nombre_vacuna'=>'required|max:200',
-            'fecha_aplicada'=>'date|max:200',
-            //'nombre_proximavacuna'=>'required|max:200',
-            //'fecha_proximadosis'=>'date|max:200',  
+            'cantidad'=>'required',
+            'fecha_aplicada'=>'date|max:200',  
         ]);
      
         $vacuna = Vacuna::find($id);
         $vacuna->num_id = $request->get('num_id');
         $vacuna->nombre_vacuna = $request->get('nombre_vacuna');
+        $vacuna->cantidad = $request->get('cantidad');
         $vacuna->fecha_aplicada = $request->get('fecha_aplicada');
-        //$vacuna->nombre_proximavacuna= $request->get('nombre_proximavacuna');
-        //$vacuna->fecha_proximadosis = $request->get('fecha_proximadosis');
        
         $vacuna->save();
 

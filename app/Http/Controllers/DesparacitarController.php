@@ -24,17 +24,17 @@ class DesparacitarController extends Controller{
         $maxima = date("Y-m-d",strtotime($max."+ 100 days"));
         $anio = date("Y");
         $this->validate($request,[
-            'antiparacitario'=>'required|max:200',
             'num_id'=>'required|exists:pacientes,id',
-            'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima,
-            'fecha_volverDesparacitar'=>'required|date|before:'.$maxima.'|after:'.$minima,  
+            'antiparacitario'=>'required|max:200',
+            'dosis'=>'required',
+            'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
         ]);
 
         $desparacitars = new Desparacitar();
-        $desparacitars->antiparacitario = $request->get('antiparacitario');
         $desparacitars->num_id = $request->get('num_id');
+        $desparacitars->antiparacitario = $request->get('antiparacitario');
+        $desparacitars->dosis = $request->get('dosis');
         $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
-        $desparacitars->fecha_volverDesparacitar = $request->get('fecha_volverDesparacitar');
 
         $desparacitars->save();
 
@@ -67,19 +67,17 @@ class DesparacitarController extends Controller{
         $maxima = date("Y-m-d",strtotime($max."+ 100 days"));
         $anio = date("Y");
         $this->validate($request,[
-
-            
-            'antiparacitario'=>'required|max:200',
             'num_id'=>'required|exists:pacientes,id',
-            'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima,
-            'fecha_volverDesparacitar'=>'required|date|before:'.$maxima.'|after:'.$minima,  
+            'antiparacitario'=>'required|max:200',
+            
+            'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
         ]);
 
         $desparacitars = Desparacitar::find($id);
-        $desparacitars->antiparacitario = $request->get('antiparacitario');
         $desparacitars->num_id = $request->get('num_id');
+        $desparacitars->antiparacitario = $request->get('antiparacitario');
+        $desparacitars->dosis = $request->get('dosis');
         $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
-        $desparacitars->fecha_volverDesparacitar = $request->get('fecha_volverDesparacitar');
 
         $desparacitars->save();
 
