@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\PropietarioController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\VacunaController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\DesparacitarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Controller;
+
 
 
 
@@ -39,6 +41,13 @@ Route::middleware("auth")->group(function () {
         Route::put('/paciente/{id}/editar', [PacienteController::class, 'update'])
         ->name('paciente.update')->where('id','[0-9]+');
        
+
+        //ruta Medicamentos
+        Route::resource('/medicamento', 'App\Http\Controllers\MedicamentoController');
+
+        Route::put('/medicamento/{id}/editar', [MedicamentoController::class, 'update'])
+        ->name('medicamento.update')->where('id','[0-9]+');
+
         //ruta vacuna
         Route::resource('/vacuna', 'App\Http\Controllers\VacunaController');
 

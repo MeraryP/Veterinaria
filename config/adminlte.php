@@ -344,10 +344,10 @@ return [
 
 
         [
-            'text' => 'Examen físico',
-            'icon'    => '	fas fa-file-alt', 
-            
-            'icon_color'=>'red',  
+            'text' => 'Medicamentos',
+            'icon'    => 'fa fa-medkit', 
+            'route'=>'medicamento.index',
+            'icon_color'=>'yellow',  
         ],
 
         [
