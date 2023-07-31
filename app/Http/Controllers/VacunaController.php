@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vacuna;
 use App\Models\Paciente;
-use App\Models\Medicamento;
 use Illuminate\Support\Facades\DB;
 
 class VacunaController extends Controller
@@ -25,9 +24,8 @@ class VacunaController extends Controller
     public function create()
     {
         //$generos = Genero::all();
-        $medicamentos = Medicamento::all();
        $pacientes = Paciente::all();
-        return view ('vacuna.create',compact('pacientes','medicamentos'));
+        return view ('vacuna.create',compact('pacientes'));
     }
 
     /**
@@ -40,14 +38,14 @@ class VacunaController extends Controller
     {
         $request->validate([
             'num_id'=>'required|exists:pacientes,id',
-            'med_id'=>'required|exists:medicamentos,id',
+            'nombre_vacuna'=>'required|max:200',
             'cantidad'=>'required|numeric|regex:([0-9])',
             'fecha_aplicada'=>'date|max:200',
         ]);
      
         $vacunas = new Vacuna();
         $vacunas->num_id = $request->get('num_id');
-        $vacunas->med_id = $request->get('med_id');
+        $vacunas->nombre_vacuna = $request->get('nombre_vacuna');
         $vacunas->cantidad = $request->get('cantidad');
         $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
         
@@ -81,10 +79,9 @@ class VacunaController extends Controller
     public function edit($id)
     {
         //$generos = Genero::all();
-        $medicamentos = Medicamento::all();
         $pacientes = Paciente::all(); 
         $vacuna = Vacuna::findOrfail($id);
-        return view('vacuna.edit',compact('pacientes','medicamentos'))->with('vacuna', $vacuna);
+        return view('vacuna.edit',compact('pacientes'))->with('vacuna', $vacuna);
     }
 
     /**
@@ -98,14 +95,14 @@ class VacunaController extends Controller
     {
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
-            'med_id'=>'required|exists:medicamentos,id',
+            'nombre_vacuna'=>'required|max:200',
             'cantidad'=>'required|numeric|regex:([0-9])',
             'fecha_aplicada'=>'date|max:200',  
         ]);
      
         $vacuna = Vacuna::find($id);
         $vacuna->num_id = $request->get('num_id');
-        $vacunas->med_id = $request->get('med_id');
+        $vacuna->nombre_vacuna = $request->get('nombre_vacuna');
         $vacuna->cantidad = $request->get('cantidad');
         $vacuna->fecha_aplicada = $request->get('fecha_aplicada');
        

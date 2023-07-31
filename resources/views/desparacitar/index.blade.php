@@ -102,7 +102,7 @@
             @foreach ($desparacitars as $desparacitar)
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$desparacitar->medicamento->nombre_desp}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$desparacitar->antiparacitario}}</td>
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->dosis}}</td>
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->fecha_desparacitacion}}</td>
                     

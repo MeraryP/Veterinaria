@@ -64,8 +64,8 @@ setTimeout(quitarerror, 3000);
 
 
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">No</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Vacunas</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Desparasitante</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Nombre del Medicamento</th>
+            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Categoria</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Dosis</th>
             <th style="font-size:15px;text-align:center;width:0px;"  scope="col">Acciones</th>
             
@@ -80,8 +80,8 @@ setTimeout(quitarerror, 3000);
             
 
             <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$medicamento->nombre_vacuna}}</td>
-            <td class="align-middle" style="font-size:15px" >{{$medicamento->nombre_desp}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$medicamento->nombre_medicamento}}</td>
+            <td class="align-middle" style="font-size:15px" >{{$medicamento->categoria->nombre_cate}}</td>
             <td class="align-middle" style="font-size:15px">{{$medicamento->dosis}}</td>
             
            

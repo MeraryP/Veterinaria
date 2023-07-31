@@ -10,30 +10,31 @@
     @method('put')
     @csrf
 
-  <div class="mb-3">
-        <label for="" class="form-label">Nombre de la vacuna</label>
-        <input type="text" name="nombre_vacuna"  id="nombre_vacuna"  class="form-control @error('nombre_vacuna') is-invalid @enderror"   placeholder="" value="{{ $medicamento->nombre_vacuna }}"
+    <br>
+
+
+<div class="mb-3">
+        <label for="" class="form-label">Nombre del medicamento</label>
+        <input type="text" name="nombre_medicamento"  id="nombre_medicamento"  class="form-control @error('nombre_medicamento') is-invalid @enderror"   placeholder="" value="{{ $medicamento->nombre_medicamento }}"
         title="Ingrese el nombre del medicamento">
-        @error('nombre_vacuna')
+        @error('nombre_medicamento')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-  </div>
+</div>
 
-  <div class="mb-3">
-        <label for="" class="form-label">Nombre del Desparasitante</label>
-        <input type="text" name="nombre_desp"  id="nombre_desp"  class="form-control @error('nombre_desp') is-invalid @enderror"   placeholder="" value="{{ $medicamento->nombre_desp }}"
-        title="Ingrese el nombre del medicamento">
-        @error('nombre_desp')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-  </div>
+<div class="for-group">
+        <label for="">Categoria</label>
+        <select class="form-control" name="cate_id">
+        <option style="display:none" value="{{$medicamento->cate_id}}"> {{$medicamento->categoria->nombre_cate}}</option>    
+        @foreach ($categorias as $categoria)
+        <option value="{{$categoria->id}}">{{$categoria->nombre_cate}}</option>
+        @endforeach      
+      </select>
+      </div>
 
-
- <div class="mb-3">
+<div class="mb-3">
         <label for="" class="form-label">Dosis del medicamento</label>
         <input type="number" name="dosis"  id="dosis"  class="form-control @error('dosis') is-invalid @enderror"   placeholder="" value="{{ $medicamento->dosis }}"
         title="Ingrese la dosis">
