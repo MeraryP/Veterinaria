@@ -52,16 +52,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Vacuna</label> 
-            <select onfocus="this.blur();"value="{{old('nombre_vacuna')}}" name="nombre_vacuna"  id="nombre_vacuna"  
-            class="form-control @error('nombre_vacuna') is-invalid @enderror" placeholder="Ingrese el nombre de la vacuna" 
-                title="Ingrese la nombre de la vacuna" >
-                <option>Rabia</option> 
-                <option>Tos MSD</option> 
-                <option>Quintuple</option>  
-                <option>Helmican Suspension</option> 
-                <option>Cuadruple</option>   
-            </select>
+            <label for="">Nombre de la Vacuna</label>
+            <select class="form-control" name="med_id"> 
+                @foreach ($medicamentos as  $medicamento)
+                    <option value="{{$medicamento->id}}">{{$medicamento->nombre_vacuna}}</option>
+                @endforeach   
+            </select>   
+        </div>
         
             @error('nombre_vacuna')
                 <span class="invalid-feedback" role="alert">

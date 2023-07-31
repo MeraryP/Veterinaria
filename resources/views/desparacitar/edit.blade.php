@@ -55,16 +55,14 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Desparasitante</label>
-            <input type="text" class="form-control @error('antiparacitario') is-invalid @enderror" name="antiparacitario" id="antiparacitario" 
-            value="{{ $desparacitar->antiparacitario }}" title="Ingrese el nombre del Antiparacitario">
-            @error('antiparacitario')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <label for="">Nombre del Desparasitante</label>
+            <select class="form-control" name="med_id"> 
+            <option style="display:none" value="{{$vacuna->med_id}}"> {{$vacuna->medicamento->nombre_desp}} </option>  
+                @foreach ($medicamentos as  $medicamento)
+                    <option value="{{$medicamento->id}}">{{$medicamento->nombre_desp}}</option>
+                @endforeach   
+            </select>   
         </div>
-
         <div class="mb-3">
             <label for="" class="form-label">Dosis de Desparasitante</label>
             <input type="number" value="{{ $desparacitar->dosis }}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  

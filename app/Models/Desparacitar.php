@@ -13,4 +13,12 @@ class Desparacitar extends Model
     {
         return $this->belongsTo( Paciente::class,'num_id',"id");
     }
+
+
+    public function medicamento()
+    {
+        return $this->belongsTo( Medicamento::class,'med_id',"id");
+    }
 }
+
+

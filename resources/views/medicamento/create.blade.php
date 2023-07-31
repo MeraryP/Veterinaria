@@ -14,13 +14,13 @@
    
 
 
-      </div>
+     
       <div class="mb-3">
-        <label for="" class="form-label">Nombre del Medicamento</label>
-        <input type="text"  maxlength="100"   value="{{old('nombre_medicamento')}}"  name="nombre_medicamento"  id="nombre_medicamento"   
-        class="form-control @error('nombre_medicamento') is-invalid @enderror" placeholder="Ingrese el nombre del medicamento "
+        <label for="" class="form-label">Nombre de la vacuna</label>
+        <input type="text"  maxlength="100"   value="{{old('nombre_vacuna')}}"  name="nombre_vacuna"  id="nombre_vacuna"   
+        class="form-control @error('nombre_vacuna') is-invalid @enderror" placeholder="Ingrese el nombre del medicamento "
         title="Ingrese el nombre del medicamento">
-        @error('nombre_medicamento')
+        @error('nombre_vacuna')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -28,16 +28,24 @@
       
       </div>
 
+     
+      
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre del Desparasitante</label>
+        <input type="text"  maxlength="100"   value="{{old('nombre_desp')}}"  name="nombre_desp"  id="nombre_desp"   
+        class="form-control @error('nombre_desp') is-invalid @enderror" placeholder="Ingrese el nombre del medicamento "
+        title="Ingrese el nombre del medicamento">
+        @error('nombre_desp')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+      
+      </div> 
 
-      <div class="for-group">
-        <label for="">Categoria</label>
-        <select class="form-control" name="cate_id">
-        @foreach ($categorias as $categoria)
-        <option value="{{$categoria->id}}">{{$categoria->nombre_cate}}</option>
-        @endforeach      
-      </select>
-      </div>
 
+
+    
      
       <div class="mb-3">
         <label for="" class="form-label">Dosis del medicamento</label>

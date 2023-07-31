@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre_medicamento');
+            $table->string('nombre_vacuna');
+            $table->string('nombre_desp');
             $table->integer('dosis');
             $table->timestamps();
         });

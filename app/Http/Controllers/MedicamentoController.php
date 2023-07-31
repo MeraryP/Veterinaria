@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Medicamento;
-use App\Models\Categoria;
+
 
 
 class MedicamentoController extends Controller
@@ -25,9 +25,9 @@ class MedicamentoController extends Controller
     {
        
        
-        $categorias = Categoria::all();
+        
       
-        return view ('medicamento.create',compact('categorias'));
+        return view ('medicamento.create');
     }
 
     /**
@@ -42,8 +42,8 @@ class MedicamentoController extends Controller
     
         $this->validate($request,[
            
-            'nombre_medicamento'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'cate_id'=>'required|exists:categorias,id',
+            'nombre_vacuna'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'nombre_desp'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'dosis'=>'required|numeric'
            
             
@@ -56,8 +56,8 @@ class MedicamentoController extends Controller
      
         $medicamentos = new Medicamento();
     
-        $medicamentos->nombre_medicamento = $request->get('nombre_medicamento');
-        $medicamentos->cate_id = $request->get('cate_id');
+        $medicamentos->nombre_vacuna = $request->get('nombre_vacuna');
+        $medicamentos->nombre_desp = $request->get('nombre_desp');
         $medicamentos->dosis = $request->get('dosis');
         $medicamentos->save();
 
@@ -88,9 +88,9 @@ class MedicamentoController extends Controller
      */
     public function edit($id)
     {
-        $categorias = Categoria::all();
+
         $medicamento = Medicamento::findOrfail($id);
-        return view('medicamento.edit',compact('categorias'))->with('medicamento', $medicamento);
+        return view('medicamento.edit')->with('medicamento', $medicamento);
     
     }
 
@@ -109,8 +109,9 @@ class MedicamentoController extends Controller
         $this->validate($request,[
             
             
-            'nombre_medicamento'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'cate_id'=>'required|exists:categorias,id',
+            
+            'nombre_vacuna'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
+            'nombre_desp'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'dosis'=>'required|numeric'
            
           
@@ -122,8 +123,9 @@ class MedicamentoController extends Controller
         ]);
      
         $medicamento = Medicamento::find($id);
-        $medicamento->nombre_medicamento = $request->get('nombre_medicamento');
-        $medicamento->cate_id = $request->get('cate_id');
+            
+        $medicamento->nombre_vacuna = $request->get('nombre_vacuna');
+        $medicamento->nombre_desp = $request->get('nombre_desp');
         $medicamento->dosis = $request->get('dosis');
         $medicamento->save();
 

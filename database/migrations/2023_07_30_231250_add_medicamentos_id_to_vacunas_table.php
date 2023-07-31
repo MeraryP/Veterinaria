@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categorias', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre_cate');
-            $table->timestamps();
-            
-         });
+        Schema::table('vacunas', function (Blueprint $table) {
+            $table->unsignedInteger('med_id');
+    
+            $table->foreign('med_id')->references('id')->on('medicamentos')->onDelete('cascade');  
+        });
     }
 
     /**
@@ -28,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias');
+        Schema::table('vacunas', function (Blueprint $table) {
+            //
+        });
     }
 };

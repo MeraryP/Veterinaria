@@ -54,16 +54,15 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="" class="form-label">Desparasitante</label>
-            <input type="text" value="{{old('antiparacitario')}}"  name="antiparacitario" id="antiparacitario"  class="form-control @error('antiparacitario') is-invalid @enderror"  tabindex="1"
-            title="Antiparacitario">
+       
 
-            @error('antiparacitario')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+        <div class="mb-3">
+            <label for="">Nombre del Desparasitante</label>
+            <select class="form-control" name="med_id"> 
+                @foreach ($medicamentos as  $medicamento)
+                    <option value="{{$medicamento->id}}">{{$medicamento->nombre_desp}}</option>
+                @endforeach   
+            </select>   
         </div>
 
         <div class="mb-3">

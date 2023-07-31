@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('medicamentos', function (Blueprint $table) {
-            $table->unsignedInteger('cate_id');
+        Schema::table('desparacitars', function (Blueprint $table) {
+            $table->unsignedInteger('med_id');
     
-            $table->foreign('cate_id')->references('id')->on('categorias')->onDelete('cascade');  
+            $table->foreign('med_id')->references('id')->on('medicamentos')->onDelete('cascade');  
         });
     }
 
@@ -27,7 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('medicamentos', function (Blueprint $table) {
+        Schema::table('desparacitars', function (Blueprint $table) {
             //
         });
     }
