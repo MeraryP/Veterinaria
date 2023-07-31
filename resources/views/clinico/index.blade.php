@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Vacunas')
+@section('title', 'Examen Clinico')
 
 @section('content')
 
@@ -19,7 +19,6 @@
                 </div>
             </a>
         </li>
-
         <li class="nav-item" role="presentation">
             <a href="{{ route('vacuna.index') }}" class="nav-link">
                 <div> 
@@ -36,7 +35,7 @@
             </a>
         </li>
 
-    
+        
         <li class="nav-item" role="presentation">
             <a href="{{ route('clinico.index') }}"class="nav-link">
                 <div> 
@@ -79,7 +78,7 @@
 
     <br>
     <div align="right" style="float:right">
-        <a href="vacuna/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
+        <a href="clinico/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
     </div>
     <br>
     <br>
@@ -89,38 +88,37 @@
 
             <tr>
                 <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
-                <th style="font-size:15px; text-align:center" scope="col">Vacuna</th>
-                <th style="font-size:15px; text-align:center" scope="col">Cantidad</th>
-                <th style="font-size:15px; text-align:center" scope="col">Fecha de aplicación </th>
+                <th style="font-size:15px; text-align:center" scope="col">Sintomas</th>
+                <th style="font-size:15px; text-align:center" scope="col">Enfermedad</th>
+                <th style="font-size:15px; text-align:center" scope="col">Tratamiento </th>
                 <th style="font-size:15px; text-align:center" scope="col">Acciones</th>           
             </tr>
         </thead>
 
         <tbody>
             @php $n=0; @endphp
-            @foreach ($vacunas as  $vacuna)
+            @foreach ($clinicos as  $clinico)
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-                    
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->nombre_vacuna}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->cantidad}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$clinico->sintomas}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$clinico->enfermedad}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$clinico->tratamiento}}</td>
  
                     <td>
-                        <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
+                        <a type="button"  title="Editar registro" href="./clinico/{{$clinico->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
-                        <button type="bottom"  onClick="borrar{{$vacuna->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
+                        <button type="bottom"  onClick="borrar{{$clinico->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{route ('vacuna.destroy',$vacuna->id)}}" method="POST" id="eliminar{{$vacuna->id}}"> 
+                        <form action="{{route ('clinico.destroy',$clinico->id)}}" method="POST" id="eliminar{{$clinico->id}}"> 
                             @csrf
                             @method('DELETE')       
                         
                             <script>
-                                function borrar{{$vacuna->id}}(){
+                                function borrar{{$clinico->id}}(){
                                     Swal.fire({
                                         title: 'Eliminar Registro',
                                         text: '¿Desea eliminar el registro seleccionado?',
@@ -131,7 +129,7 @@
                                     }).then((result) => {
                                         /* Read more about isConfirmed, isDenied below */
                                         if (result.value) {
-                                            document.getElementById('eliminar{{$vacuna->id}}').submit();
+                                            document.getElementById('eliminar{{$clinico->id}}').submit();
                                         } else {   
                                         }
                                     })

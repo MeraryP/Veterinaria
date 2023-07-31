@@ -12,6 +12,13 @@
        </div>
      </a>
   </li>
+  <li class="nav-item" role="presentation">
+  <a href="{{ route('examen.index') }}"class="nav-link">
+     <div> 
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+       </div>
+     </a>
+      </li>
 
   <li class="nav-item" role="presentation">
    <a href="{{ route('vacuna.index') }}" class="nav-link">
@@ -28,13 +35,14 @@
      </a>
       </li>
 
+   
       <li class="nav-item" role="presentation">
-  <a href="{{ route('examen.index') }}"class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
-       </div>
-     </a>
-      </li>
+            <a href="{{ route('clinico.index') }}"class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
+                </div>
+            </a>
+        </li>
   
 </ul>
 

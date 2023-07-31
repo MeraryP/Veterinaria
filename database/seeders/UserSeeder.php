@@ -21,8 +21,8 @@ class UserSeeder extends Seeder
                 'name' => 'Merary Pineda',
                 'correo' => 'patitas@gmail.com',
                 'nacimiento' => '19990909',
-                'identidad' => '0703200004968',
-                'telefono' => '33094090',
+                'identidad' => '070320004968',
+                'telefono' => '3309-4090',
                 'password' => bcrypt('patitas'),
             ]
         );

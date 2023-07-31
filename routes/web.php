@@ -9,6 +9,7 @@ use App\Http\Controllers\ExamenController;
 use App\Http\Controllers\DesparacitarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClinicoController;
 use App\Http\Controllers\Controller;
 
 
@@ -87,6 +88,11 @@ Route::middleware("auth")->group(function () {
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
               
  
+        //ruta EXAMEN CLINICO
+        Route::resource('/clinico', 'App\Http\Controllers\ClinicoController');
+
+        Route::put('/clinico/{id}/editar', [ClinicoController::class, 'update'])
+        ->name('clinico.update')->where('id','[0-9]+');
     
        
 
