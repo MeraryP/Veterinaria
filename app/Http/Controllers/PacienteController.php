@@ -47,7 +47,7 @@ class PacienteController extends Controller
     
         $this->validate($request,[
 
-           'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+           'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'pro_id'=>'required|exists:propietarios,id',
             'especie_id'=>'required|exists:especies,id',
