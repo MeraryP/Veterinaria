@@ -84,7 +84,8 @@ class PropietarioController extends Controller
         $generos = Genero::all();
         
         $propietario = Propietario::findOrfail($id);
-        return view('propietario.edit',compact('generos'))->with('propietario', $propietario);
+        $propietarios = $propietario->nombre;
+        return view('propietario.edit',compact('generos','propietarios'))->with('propietario', $propietario);
     
     }
 

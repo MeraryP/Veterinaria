@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Mascota')
+@section('title', 'Maskotas')
 
 
 @section('content')
@@ -78,7 +78,7 @@ setTimeout(quitarerror, 3000);
         @foreach ($pacientes as  $paciente)
         <tr>
             
-            <td class="align-middle" style="font-size:15px; text-align:right;" scope="row">{{++ $n}}</td>
+            <td class="align-middle" style="font-size:15px; text-align:center;" scope="row">{{++ $n}}</td>
             <td class="align-middle" style="font-size:15px;" >{{$paciente->propietario->nombre}}</td>
             <td class="align-middle" style="font-size:15px;" >{{$paciente->nombre_mascota}}</td>
             <td class="align-middle" style="font-size:15px;" >{{$paciente->especie->nombre_especie}}</td>

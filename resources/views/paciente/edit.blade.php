@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', '')
+@section('title', 'Editar Registro de '.$nombre_mascotas)
 
 
 
@@ -44,14 +44,44 @@
 <br>
 
 
-<form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}">
+<form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}" enctype="multipart/form-data">
     @method('put')
     @csrf
-    
 
-    <br>
     
-   
+    <div class="row" >
+     
+
+     <div class="col" style=" margin-top: 85px;">
+      <label class="form-label" style="margin-left: 0px;">Foto actual:</label>
+         <img src="/image/{{ $paciente->filename }}"  style="max-width: 200px;margin-left: 80px;margin-right: 10px;">
+     </div>
+    
+     <div  style="margin-left: 0px;"class="col">
+         
+         <label for="imagen" class="form-label">Nueva Foto</label>
+         <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror  " style="max-width: 400px;">
+         @error('imagen')
+             <span class="invalid-feedback" role="alert">
+                 <strong>{{ $message }}</strong>
+             </span>
+         @enderror
+         <br>
+         <div class="mb-3">
+         <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
+     </div>
+
+     <div class="col" >
+     <a href="#" id="eliminar-imagen-btn" class="btn btn-outline-danger btn-sm" style="margin-left:150px;margin-right: 20px;">Eliminar nueva Foto</a> 
+     </div>
+     </div>
+ 
+</div> 
+
+    
+    
+ <br>
+ 
 
 
 <div class="mb-3">
@@ -140,6 +170,28 @@
 
 
 </form>
+
+<script>
+    document.getElementById('imagen').addEventListener('change', function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('imagen-preview').setAttribute('src', e.target.result);
+            document.getElementById('imagen-preview').style.display = 'block';
+        }
+
+        var file = this.files[0];
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('eliminar-imagen-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('imagen-preview').style.display = 'none';
+        document.getElementById('imagen').value = '';
+    });
+</script>
 
 
 

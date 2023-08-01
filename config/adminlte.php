@@ -323,7 +323,7 @@ return [
         ],
 
         [
-            'text' => 'Mascota',
+            'text' => 'Maskota',
             'icon'    => '	fas fa-dog', 
             'route'=>'paciente.index',
             'icon_color'=>'green',

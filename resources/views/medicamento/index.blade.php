@@ -37,17 +37,7 @@ setTimeout(quitarerror, 3000);
 </script>
 <br>
 
-<nav class="main-header navbar
-    navbar-expand
-    navbar-white navbar-light">
 
-    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
-        <i class="fas fa-bars"></i>
-        <span class="sr-only">Alternar barra de navegación</span>
-    </a>  
-
-  <h3>Medicamentos</h3>
-  </nav>
 
 <div class="contrainer">
 </div>
@@ -79,7 +69,7 @@ setTimeout(quitarerror, 3000);
         <tr >
             
 
-            <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
+            <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
             <td class="align-middle" style="font-size:15px" >{{$medicamento->nombre_medicamento}}</td>
             <td class="align-middle" style="font-size:15px" >{{$medicamento->categoria->nombre_cate}}</td>
             <td class="align-middle" style="font-size:15px">{{$medicamento->dosis}}</td>

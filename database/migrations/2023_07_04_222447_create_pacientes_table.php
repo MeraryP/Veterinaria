@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('filename');
             $table->string('nombre_mascota');
             $table->string('raza');
             $table->date('fecha_nacimiento');

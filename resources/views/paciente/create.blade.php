@@ -9,11 +9,27 @@
  <br>
  <br> 
 
-   
-
-<form action ="../paciente"  method="POST">
+<form action ="../paciente"  method="POST"enctype="multipart/form-data" >
     @csrf
+    <div>
+        <label for="imagen" class="form-label">Foto</label>
+        <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;">
+        @error('imagen')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
     
+    <div class="mb-3">
+        <br>
+        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
+    </div>
+
+    <br>
+        <a href="#" id="eliminar-imagen-btn" class="btn btn-outline-danger btn-sm"style="margin-left:180px;margin-right: 20px;">Eliminar Foto</a>
+    <br>
     
   <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
@@ -106,6 +122,29 @@
 
 
 </form>
+
+
+<script>
+    document.getElementById('imagen').addEventListener('change', function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('imagen-preview').setAttribute('src', e.target.result);
+            document.getElementById('imagen-preview').style.display = 'block';
+        }
+
+        var file = this.files[0];
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('eliminar-imagen-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('imagen-preview').style.display = 'none';
+        document.getElementById('imagen').value = '';
+    });
+</script>
 
 
 @endsection

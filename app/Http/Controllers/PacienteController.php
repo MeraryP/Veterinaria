@@ -46,7 +46,8 @@ class PacienteController extends Controller
 
     
         $this->validate($request,[
-           
+
+           'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'pro_id'=>'required|exists:propietarios,id',
             'especie_id'=>'required|exists:especies,id',
@@ -70,6 +71,16 @@ class PacienteController extends Controller
         $pacientes->genero_id = $request->get('genero_id');
         $pacientes->raza= $request->get('raza');
         $pacientes->fecha_nacimiento = $request->get('fecha_nacimiento');
+
+        
+           
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $destinacionPath = 'image';
+            $filename = time() . '.' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('imagen')->move($destinacionPath, $filename);
+            $pacientes->filename = $filename;
+        }
         $pacientes->save();
 
         if($pacientes){
@@ -103,7 +114,8 @@ class PacienteController extends Controller
         $propietarios=Propietario::all();
         $genero_mascotas = GeneroMascota::all();
         $paciente = Paciente::findOrfail($id);
-        return view('paciente.edit', compact('genero_mascotas','propietarios','especies'))->with('paciente', $paciente);
+        $nombre_mascotas = $paciente->nombre_mascota;
+        return view('paciente.edit', compact('genero_mascotas','propietarios','especies','nombre_mascotas'))->with('paciente', $paciente);
     
     }
 
@@ -121,7 +133,7 @@ class PacienteController extends Controller
 
         $this->validate($request,[
             
-            
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'nombre_mascota'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'pro_id'=>'required|exists:propietarios,id',
             'especie_id'=>'required|exists:especies,id',
@@ -136,6 +148,8 @@ class PacienteController extends Controller
             
            
         ]);
+
+
      
         $paciente = Paciente::find($id);
         $paciente->nombre_mascota = $request->get('nombre_mascota');
@@ -144,8 +158,32 @@ class PacienteController extends Controller
         $paciente->genero_id = $request->get('genero_id');
         $paciente->raza= $request->get('raza');
         $paciente->fecha_nacimiento = $request->get('fecha_nacimiento');
+
+        if ($request->has('eliminar_imagen')) {
+        
+        if ($paciente->filename && file_exists(public_path('image/' . $paciente->filename))) {
+            unlink(public_path('image/' . $paciente->filename));
+            $paciente->filename = null; 
+        }
+    }
+        
+    
+        
+        if ($request->hasFile('imagen')) {
+            
+            if ($paciente->filename && file_exists(public_path('image/' . $paciente->filename))) {
+                unlink(public_path('image/' . $paciente->filename));
+            }
+    
+            $file = $request->file('imagen');
+            $destinationPath = 'image';
+            $filename = time() . '.' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
+            $paciente->filename = $filename;
+        }
         $paciente->save();
 
+        
         if($paciente){
             return redirect('/paciente')->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{

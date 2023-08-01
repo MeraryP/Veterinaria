@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Editar  Propietario')
+@section('title', 'Editar  Registro de '.$propietarios)
 
 
 @section('content')
