@@ -102,7 +102,7 @@
             @php $n=0; @endphp
             @foreach ($vacunas as  $vacuna)
                 <tr>
-                    <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
+                    <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
                     
                     <td class="align-middle" style="font-size:15px">{{$vacuna->nombre_vacuna}}</td>
                     <td class="align-middle" style="font-size:15px">{{$vacuna->cantidad}}</td>

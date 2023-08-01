@@ -4,15 +4,15 @@
 
 @section('content')
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="{{ URL::previous() }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-  
-  <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation">
+            <a href="{{ URL::previous() }}" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+                </div>
+            </a>
+        </li>
+        
+        <li class="nav-item" role="presentation">
             <a href="{{ route('examen.index') }}"class="nav-link">
                   <div> 
                       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>

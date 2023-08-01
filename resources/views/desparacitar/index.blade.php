@@ -99,8 +99,8 @@
 
         <thead style="width: 100%; border-collapse: collapse; background-color:pink; tabla color ">
             <tr>
-                <th style="font-size:15px;text-align:center; width:45px;"  scope="col">No</th>
-                <th style="font-size:15px; text-align:center" scope="col">Antiparacitario</th>
+                <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
+                <th style="font-size:15px; text-align:center" scope="col">Desparasitante</th>
                 <th style="font-size:15px; text-align:center" scope="col">Dosis</th>
                 <th style="font-size:15px; text-align:center" scope="col">Fecha de desparasitar</th>
                 <th style="font-size:15px; text-align:center" scope="col">Estado </th>
@@ -112,7 +112,7 @@
             @php $n=0; @endphp
             @foreach ($desparacitars as $desparacitar)
                 <tr>
-                    <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
+                    <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->antiparacitario}}</td>
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->dosis}}</td>
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->fecha_desparacitacion}}</td>
