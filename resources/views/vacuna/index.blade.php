@@ -4,15 +4,16 @@
 
 @section('content')
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="{{ URL::previous() }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a href="{{ URL::previous() }}" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item" role="presentation">
             <a href="{{ route('examen.index') }}"class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
@@ -92,6 +93,7 @@
                 <th style="font-size:15px; text-align:center" scope="col">Vacuna</th>
                 <th style="font-size:15px; text-align:center" scope="col">Cantidad</th>
                 <th style="font-size:15px; text-align:center" scope="col">Fecha de aplicación </th>
+                <th style="font-size:15px; text-align:center" scope="col">Estado </th>
                 <th style="font-size:15px; text-align:center" scope="col">Acciones</th>           
             </tr>
         </thead>
@@ -105,7 +107,7 @@
                     <td class="align-middle" style="font-size:15px">{{$vacuna->nombre_vacuna}}</td>
                     <td class="align-middle" style="font-size:15px">{{$vacuna->cantidad}}</td>
                     <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
- 
+                    <td class="align-middle" style="font-size:15px"> Aplicado <i class="fa fa-check-square" aria-hidden="true" style="color:green"><i> </td>
                     <td>
                         <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
