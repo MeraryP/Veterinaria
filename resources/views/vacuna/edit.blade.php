@@ -64,24 +64,12 @@
         </div>        
 
         <div class="mb-3">
-            <label for="" class="form-label">Vacuna</label>
-            <select onfocus="this.blur();"  title="Ingrese el nombre de la vacuna" name="nombre_vacuna" id="nombre_vacuna" 
-            class="form-control @error('nombre_vacuna') is-invalid @enderror"  placeholder="Ingrese el nombre de la vacuna" 
-            value="{{ $vacuna->nombre_vacuna }}"
-            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-            >
-                <option>Rabia</option> 
-                <option>Tos MSD</option> 
-                <option>Quintuple</option>  
-                <option>Helmican Suspension</option> 
-                <option>Cuadruple</option>   
+            <label for="">Nombre del Desparasitante</label>
+            <select class="form-control" name="medi_id">
+                @foreach ($medicamentos as $medicamento)
+                <option value="{{ $medicamento->id }}" @if($medicamento->id == $vacuna->medi_id) selected @endif>{{ $medicamento->nombre_medicamento }}</option> 
+                @endforeach      
             </select>
-
-            @error('nombre_vacuna')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
         </div>
 
         <div class="mb-3">

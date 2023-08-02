@@ -113,7 +113,11 @@
             @foreach ($desparacitars as $desparacitar)
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$desparacitar->antiparacitario}}</td>
+                    <td class="align-middle" style="font-size:15px"> @if ($desparacitar->medicamento)
+                        {{ $desparacitar->medicamento->nombre_medicamento }}
+                    @else
+                        Medicamento no encontrado
+                    @endif</td>
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->dosis}}</td>
                     <td class="align-middle" style="font-size:15px">{{$desparacitar->fecha_desparacitacion}}</td>
                     <td class="align-middle" style="font-size:15px"> Aplicado <i class="fa fa-check-square" aria-hidden="true" style="color:green"><i> </td>  
