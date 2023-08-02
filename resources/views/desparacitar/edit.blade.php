@@ -63,14 +63,12 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Desparasitante</label>
-            <input type="text" class="form-control @error('antiparacitario') is-invalid @enderror" name="antiparacitario" id="antiparacitario" 
-            value="{{ $desparacitar->antiparacitario }}" title="Ingrese el nombre del Antiparacitario">
-            @error('antiparacitario')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+            <label for="">Nombre del Desparasitante</label>
+            <select class="form-control" name="medi_id">
+                @foreach ($medicamentos as $medicamento)
+                <option value="{{ $medicamento->id }}" @if($medicamento->id == $desparacitar->medi_id) selected @endif>{{ $medicamento->nombre_medicamento }}</option> 
+                @endforeach      
+            </select>
         </div>
 
         <div class="mb-3">

@@ -11,9 +11,7 @@
            
    <br> 
    
-   
-
-
+  
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Nombre del Medicamento</label>

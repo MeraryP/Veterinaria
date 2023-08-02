@@ -104,7 +104,7 @@
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
                     
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->nombre_vacuna}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$vacuna->medicamento->nombre_medicamento}}</td>
                     <td class="align-middle" style="font-size:15px">{{$vacuna->cantidad}}</td>
                     <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
                     <td class="align-middle" style="font-size:15px"> Aplicado <i class="fa fa-check-square" aria-hidden="true" style="color:green"><i> </td>

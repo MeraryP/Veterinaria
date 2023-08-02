@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Desparacitar;
 use App\Models\Paciente;
+use App\Models\Categoria;
+use App\Models\Medicamento;
 use Illuminate\Support\Facades\DB;
 
 class DesparacitarController extends Controller{
@@ -13,8 +15,17 @@ class DesparacitarController extends Controller{
     }
 
     public function create(){
+
+        $categoriaDesparasitante = Categoria::where('nombre_cate', 'Desparasitante')->first(); 
+    
+        if ($categoriaDesparasitante) {
+         
+            $medicamentos = Medicamento::where('cate_id', $categoriaDesparasitante->id)->get();
+        } else {
+            $medicamentos = collect(); 
+        }
         $pacientes = Paciente::all(); 
-        return view('desparacitar.create',compact('pacientes'));
+        return view('desparacitar.create',compact('pacientes','medicamentos'));
     }
 
     public function store(Request $request) {
@@ -25,14 +36,14 @@ class DesparacitarController extends Controller{
         $anio = date("Y");
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
-            'antiparacitario'=>'required|max:200',
+            'medi_id'=>'required|exists:medicamentos,id',
             'dosis'=>'required|numeric|regex:([0-9])',
             'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
         ]);
 
         $desparacitars = new Desparacitar();
         $desparacitars->num_id = $request->get('num_id');
-        $desparacitars->antiparacitario = $request->get('antiparacitario');
+        $desparacitars->medi_id = $request->get('medi_id');
         $desparacitars->dosis = $request->get('dosis');
         $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
 
@@ -53,9 +64,17 @@ class DesparacitarController extends Controller{
     
     public function edit($id)
     {
+        $categoriaDesparasitante = Categoria::where('nombre_cate', 'Desparasitante')->first(); 
+    
+        if ($categoriaDesparasitante) {
+         
+            $medicamentos = Medicamento::where('cate_id', $categoriaDesparasitante->id)->get();
+        } else {
+            $medicamentos = collect(); 
+        }
         $pacientes = Paciente::all(); 
         $desparacitar = Desparacitar::findOrfail($id);
-        return view('desparacitar.edit',compact('pacientes'))->with('desparacitar',$desparacitar);
+        return view('desparacitar.edit',compact('pacientes','medicamentos'))->with('desparacitar',$desparacitar);
     }
 
    
@@ -68,14 +87,14 @@ class DesparacitarController extends Controller{
         $anio = date("Y");
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
-            'antiparacitario'=>'required|max:200',
+            'medi_id'=>'required|exists:medicamentos,id',
             'dosis'=>'required|numeric|regex:([0-9])',
             'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
         ]);
 
         $desparacitars = Desparacitar::find($id);
         $desparacitars->num_id = $request->get('num_id');
-        $desparacitars->antiparacitario = $request->get('antiparacitario');
+        $desparacitars->medi_id = $request->get('medi_id');
         $desparacitars->dosis = $request->get('dosis');
         $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
 

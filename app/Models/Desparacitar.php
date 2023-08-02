@@ -9,8 +9,17 @@ class Desparacitar extends Model
 {
     use HasFactory;
 
+   
+
     public function Paciente()
     {
-        return $this->belongsTo( Paciente::class,'num_id',"id");
+        return $this->belongsTo( Paciente::class,'num_id','id');
     }
+
+    public function medicamento()
+    {
+        return $this->belongsTo( Medicamento::class,'medi_id','id');
+    }
+
+   
 }
