@@ -8,7 +8,7 @@
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-<a href="{{ URL::previous() }}" class="nav-link">
+<a  href="{{ route('paciente.edit', ['paciente' => $paciente->id]) }}" class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
        </div>

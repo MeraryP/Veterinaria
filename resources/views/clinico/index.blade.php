@@ -89,7 +89,7 @@
             <tr>
                 <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
                 <th style="font-size:15px; text-align:center" scope="col">Sintomas</th>
-                <th style="font-size:15px; text-align:center" scope="col">Enfermedad</th>
+                <th style="font-size:15px; text-align:center" scope="col">Enfermedad Diagnosticada</th>
                 <th style="font-size:15px; text-align:center" scope="col">Tratamiento </th>
                 <th style="font-size:15px; text-align:center" scope="col">Acciones</th>           
             </tr>
