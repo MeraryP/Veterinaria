@@ -93,7 +93,8 @@
 
 <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
-        <input type="text" name="nombre_mascota"  id="nombre_mascota"  class="form-control @error('nombre_mascota') is-invalid @enderror"   placeholder="Nombre Completo de la Mascota" value="{{ $paciente->nombre_mascota }}"
+        <input type="text" name="nombre_mascota"  id="nombre_mascota"  class="form-control @error('nombre_mascota') is-invalid @enderror"   
+        placeholder="Nombre Completo de la Mascota" value="{{ $paciente->nombre_mascota }}"
         title="Ingrese el nombre de la mascota">
         @error('nombre_mascota')
                 <span class="invalid-feedback" role="alert">

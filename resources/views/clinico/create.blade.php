@@ -52,9 +52,9 @@
         <br>
         <div class="mb-3">
         <label for="" class="form-label">Sintomas de la Mascota</label>
-        <input type="text" maxlength="100" value="{{old('sintomas')}}"  name="sintomas"  id="sintomas"   
+        <textarea type="text" maxlength="1000" value="{{old('sintomas')}}"  name="sintomas"  id="sintomas"   
         class="form-control @error('sintomas') is-invalid @enderror" placeholder="Ingrese los sintomas"
-        title="Ingrese los sintomas">
+        title="Ingrese los sintomas"></textarea>
         @error('sintomas')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -65,9 +65,9 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Enfermedad Diagnosticada</label>
-        <input type="text" maxlength="100" value="{{old('enfermedad')}}"  name="enfermedad"  id="enfermedad"   
+        <textarea type="text" maxlength="1000" value="{{old('enfermedad')}}"  name="enfermedad"  id="enfermedad"   
         class="form-control @error('enfermedad') is-invalid @enderror" placeholder="Ingrese la enfermedad diagnosticada"
-        title="Ingrese la enfermedad diagnosticada">
+        title="Ingrese la enfermedad diagnosticada"></textarea>
         @error('enfermedad')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
 
       <div class="mb-3">
         <label for="" class="form-label">Tratamiento de la Mascota</label>
-        <textarea type="text" maxlength="500" value="{{old('tratamiento')}}"  name="tratamiento"  id="tratamiento"   
+        <textarea type="text" maxlength="1000" value="{{old('tratamiento')}}"  name="tratamiento"  id="tratamiento"   
         class="form-control @error('enfermedad') is-invalid @enderror" placeholder="Ingrese el tratamiento"
         title="Ingrese el tratamiento"></textarea>
         @error('tratamiento')

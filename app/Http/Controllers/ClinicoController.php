@@ -35,9 +35,9 @@ class ClinicoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'sintomas'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'enfermedad'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'tratamiento'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:500',
+            'sintomas'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
+            'enfermedad'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
+            'tratamiento'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
         ]);
      
         $clinicos = new Clinico();
@@ -88,9 +88,9 @@ class ClinicoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'sintomas'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'enfermedad'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
-            'tratamiento'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:500', 
+            'sintomas'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
+            'enfermedad'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
+            'tratamiento'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000', 
         ]);
      
         $clinico = Clinico::find($id);
