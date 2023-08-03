@@ -13,8 +13,8 @@ class VacunaController extends Controller
 {
     public function index(Request $request)
     {
-       $vacunas= Vacuna::all();
-        return view ('vacuna/index',compact('vacunas'));
+       $aplicados= Vacuna::all();
+        return view ('vacuna/index',compact('aplicados'));
     }
 
 
@@ -51,19 +51,19 @@ class VacunaController extends Controller
         $request->validate([
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
-            'cantidad'=>'required|numeric|regex:([0-9])',
+            'dosis'=>'required|numeric|regex:([0-9])',
             'fecha_aplicada'=>'date|max:200',
         ]);
      
-        $vacunas = new Vacuna();
-        $vacunas->num_id = $request->get('num_id');
-        $vacunas->medi_id = $request->get('medi_id');
-        $vacunas->cantidad = $request->get('cantidad');
-        $vacunas->fecha_aplicada = $request->get('fecha_aplicada');
+        $aplicados = new Vacuna();
+        $aplicados->num_id = $request->get('num_id');
+        $aplicados->medi_id = $request->get('medi_id');
+        $aplicados->dosis = $request->get('dosis');
+        $aplicados->fecha_aplicada = $request->get('fecha_aplicada');
         
-        $vacunas->save();
+        $aplicados->save();
 
-        if($vacunas){
+        if($aplicados){
             return redirect('/vacuna')->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
@@ -99,8 +99,8 @@ class VacunaController extends Controller
             $medicamentos = collect();  //manda vacio 
         }
         $pacientes = Paciente::all(); 
-        $vacuna = Vacuna::findOrfail($id);
-        return view('vacuna.edit',compact('pacientes','medicamentos'))->with('vacuna', $vacuna);
+        $aplicado = Vacuna::findOrfail($id);
+        return view('vacuna.edit',compact('pacientes','medicamentos'))->with('aplicado', $aplicado);
     }
 
     /**
@@ -115,19 +115,19 @@ class VacunaController extends Controller
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
-            'cantidad'=>'required|numeric|regex:([0-9])',
+            'dosis'=>'required|numeric|regex:([0-9])',
             'fecha_aplicada'=>'date|max:200',  
         ]);
      
-        $vacuna = Vacuna::find($id);
-        $vacuna->num_id = $request->get('num_id');
-        $vacuna->medi_id = $request->get('medi_id');
-        $vacuna->cantidad = $request->get('cantidad');
-        $vacuna->fecha_aplicada = $request->get('fecha_aplicada');
+        $aplicado = Vacuna::find($id);
+        $aplicado->num_id = $request->get('num_id');
+        $aplicado->medi_id = $request->get('medi_id');
+        $aplicado->dosis = $request->get('dosis');
+        $aplicado->fecha_aplicada = $request->get('fecha_aplicada');
        
-        $vacuna->save();
+        $aplicado->save();
 
-        if($vacuna){
+        if($aplicado){
             return redirect('/vacuna')->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
@@ -143,8 +143,8 @@ class VacunaController extends Controller
      */
     public function destroy($id)
     {
-        $vacuna = Vacuna::find($id);
-        $vacuna->delete();
+        $aplicado = Vacuna::find($id);
+        $aplicado->delete();
         return redirect('/vacuna')->with('mensaje', 'El Registro fue borrado exitosamente');
     }
 }

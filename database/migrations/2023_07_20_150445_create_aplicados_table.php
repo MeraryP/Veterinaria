@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('desparacitars', function (Blueprint $table) {
-            $table->unsignedInteger('num_id');
-    
-            $table->foreign('num_id')->references('id')->on('pacientes')->onDelete('cascade');
+        Schema::create('aplicados', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('dosis');
+            $table->date('fecha_aplicada');
+            $table->timestamps();
         });
     }
 
@@ -27,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('desparacitars', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('aplicados');
     }
 };

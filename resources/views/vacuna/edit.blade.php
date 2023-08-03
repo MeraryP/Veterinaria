@@ -48,7 +48,7 @@
 
 
 
-    <form  method="POST" action="{{ route('vacuna.update',['id'=>$vacuna->id])}}">
+    <form  method="POST" action="{{ route('vacuna.update',['id'=>$aplicado->id])}}">
         @method('put')
         @csrf
 
@@ -56,7 +56,7 @@
         <div class="mb-3">
             <label for="">Nombre de la Maskota</label>
             <select class="form-control" name="num_id">
-                <option style="display:none" value="{{$vacuna->num_id}}"> {{$vacuna->paciente->nombre_mascota}} </option> 
+                <option style="display:none" value="{{$aplicado->num_id}}"> {{$aplicado->paciente->nombre_mascota}} </option> 
                   @foreach ($pacientes as $paciente)
                 <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
                   @endforeach      
@@ -67,18 +67,18 @@
             <label for="">Nombre del Desparasitante</label>
             <select class="form-control" name="medi_id">
                 @foreach ($medicamentos as $medicamento)
-                <option value="{{ $medicamento->id }}" @if($medicamento->id == $vacuna->medi_id) selected @endif>{{ $medicamento->nombre_medicamento }}</option> 
+                <option value="{{ $medicamento->id }}" @if($medicamento->id == $aplicado->medi_id) selected @endif>{{ $medicamento->nombre_medicamento }}</option> 
                 @endforeach      
             </select>
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Cantidad aplicada</label>
-            <input type="number" minlength="4" name="cantidad"  id="cantidad" class="form-control @error('cantidad') is-invalid @enderror"   
-            placeholder="Ingrese la cantidad aplicada de la vacuna" value="{{ $vacuna->cantidad}}"
+            <label for="" class="form-label">Dosis</label>
+            <input type="number" minlength="4" name="dosis"  id="dosis" class="form-control @error('dosis') is-invalid @enderror"   
+            placeholder="Ingrese la cantidad aplicada de la vacuna" value="{{ $aplicado->dosis}}"
             title="Ingrese la cantidad aplicada de la vacuna ">
             
-            @error('cantidad')
+            @error('dosis')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -88,7 +88,7 @@
         <div class="mb-3">
             <label for="" class="form-label">Fecha de Aplicación</label>
             <input type="date" name="fecha_aplicada"  id="fecha_aplicada"  class="form-control @error('fecha_aplicada') is-invalid @enderror"   
-            placeholder="" value="{{ $vacuna->fecha_aplicada }}"
+            placeholder="" value="{{ $aplicado->fecha_aplicada }}"
             title="Ingrese la fecha aplicada">
             @error('fecha_aplicada')
                 <span class="invalid-feedback" role="alert">
