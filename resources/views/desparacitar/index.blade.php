@@ -110,32 +110,36 @@
 
         <tbody>
             @php $n=0; @endphp
-            @foreach ($desparacitars as $desparacitar)
+            @foreach ($aplicados as $aplicado)
+
+            @if($aplicado->medicamento->categoria->nombre_cate === 'Desparasitante') 
+                
+            
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
-                    <td class="align-middle" style="font-size:15px"> @if ($desparacitar->medicamento)
-                        {{ $desparacitar->medicamento->nombre_medicamento }}
+                    <td class="align-middle" style="font-size:15px"> @if ($aplicado->medicamento)
+                        {{ $aplicado->medicamento->nombre_medicamento }}
                     @else
                         Medicamento no encontrado
                     @endif</td>
-                    <td class="align-middle" style="font-size:15px">{{$desparacitar->dosis}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$desparacitar->fecha_desparacitacion}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>
                     <td class="align-middle" style="font-size:15px"> Aplicado <i class="fa fa-check-square" aria-hidden="true" style="color:green"><i> </td>  
                     <td>
-                    <a type="button"  title="Editar registro" href="./desparacitar/{{$desparacitar->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
+                    <a type="button"  title="Editar registro" href="./desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
-                        <button type="bottom"  onClick="borrar{{$desparacitar->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
+                        <button type="bottom"  onClick="borrar{{$aplicado->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{route ('desparacitar.destroy',$desparacitar->id)}}" method="POST" id="eliminar{{$desparacitar->id}}"> 
+                        <form action="{{route ('desparacitar.destroy',$aplicado->id)}}" method="POST" id="eliminar{{$aplicado->id}}"> 
                             @csrf
                             @method('DELETE')       
                         
                             <script>
-                                function borrar{{$desparacitar->id}}(){
+                                function borrar{{$aplicado->id}}(){
                                     Swal.fire({
                                         title: 'Eliminar Registro',
                                         text: '¿Desea eliminar el registro seleccionado?',
@@ -146,7 +150,7 @@
                                     }).then((result) => {
                                         /* Read more about isConfirmed, isDenied below */
                                         if (result.value) {
-                                            document.getElementById('eliminar{{$desparacitar->id}}').submit();
+                                            document.getElementById('eliminar{{$aplicado->id}}').submit();
                                         } else {   
                                         }
                                     })
@@ -155,6 +159,7 @@
                         </form>
                     </td>
                 </tr>
+                @endif
             @endforeach
         </tbody>
     </table>

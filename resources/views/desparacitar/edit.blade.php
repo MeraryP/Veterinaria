@@ -46,7 +46,7 @@
     </ul>
 
 
-    <form method="POST" action ="{{ route('desparacitar.update',['id'=>$desparacitar->id])}}">
+    <form method="POST" action ="{{ route('desparacitar.update',['id'=>$aplicado->id])}}">
         @method('put')
         @csrf
         <br>
@@ -55,7 +55,7 @@
         <div class="mb-3">
             <label for="">Nombre de la Maskota</label>
             <select class="form-control" name="num_id">
-                <option style="display:none" value="{{$desparacitar->num_id}}"> {{$desparacitar->paciente->nombre_mascota}}</option> 
+                <option style="display:none" value="{{$aplicado->num_id}}"> {{$aplicado->paciente->nombre_mascota}}</option> 
                 @foreach ($pacientes as $paciente)
                   <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
                 @endforeach      
@@ -66,14 +66,14 @@
             <label for="">Nombre del Desparasitante</label>
             <select class="form-control" name="medi_id">
                 @foreach ($medicamentos as $medicamento)
-                <option value="{{ $medicamento->id }}" @if($medicamento->id == $desparacitar->medi_id) selected @endif>{{ $medicamento->nombre_medicamento }}</option> 
+                <option value="{{ $medicamento->id }}" @if($medicamento->id == $aplicado->medi_id) selected @endif>{{ $medicamento->nombre_medicamento }}</option> 
                 @endforeach      
             </select>
         </div>
 
         <div class="mb-3">
             <label for="" class="form-label">Dosis de Desparasitante</label>
-            <input type="number" value="{{ $desparacitar->dosis }}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  
+            <input type="number" value="{{ $aplicado->dosis }}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  
             tabindex="1" title="dosis">
 
             @error('dosis')
@@ -85,9 +85,9 @@
         
         <div class="mb-3">
             <label for="" class="form-label">Fecha de desparasitar</label>
-            <input type="date" class="form-control @error('fecha_desparacitacion') is-invalid @enderror" name="fecha_desparacitacion" id="fecha_desparacitacion" 
-            value="{{ $desparacitar->fecha_desparacitacion }}" title="Ingrese Fecha de desparacitacion">
-            @error('fecha_desparacitacion')
+            <input type="date" class="form-control @error('fecha_aplicada') is-invalid @enderror" name="fecha_aplicada" id="fecha_aplicada" 
+            value="{{ $aplicado->fecha_aplicada }}" title="Ingrese Fecha de desparacitacion">
+            @error('fecha_aplicacion')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

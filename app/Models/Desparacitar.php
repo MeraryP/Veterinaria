@@ -9,7 +9,7 @@ class Desparacitar extends Model
 {
     use HasFactory;
 
-   
+    protected $table = 'aplicados';
 
     public function Paciente()
     {

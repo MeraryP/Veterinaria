@@ -68,12 +68,12 @@
         </div>
 
         <div class="mb-3">
-            <label for="">Cantidad aplicada</label>
-            <input type="number" maxlength="4" pattern="[0-9]{4}" value="{{old('cantidad')}}"  name="cantidad"  id="cantidad" 
-            class="form-control @error('cantidad') is-invalid @enderror"   placeholder="Ingrese la cantidad aplicada de la vacuna"
+            <label for="">Dosis</label>
+            <input type="number" maxlength="4" pattern="[0-9]{4}" value="{{old('dosis')}}"  name="dosis"  id="dosis" 
+            class="form-control @error('dosis') is-invalid @enderror"   placeholder="Ingrese la cantidad aplicada de la vacuna"
             title="Ingrese la cantidad aplicada de la vacuna ">
             
-            @error('cantidad')
+            @error('dosis')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

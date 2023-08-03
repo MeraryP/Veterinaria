@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 
 class DesparacitarController extends Controller{
     public function index(Request $request){
-        $desparacitars= Desparacitar::all();
-        return view ('desparacitar/index',compact('desparacitars'));
+        $aplicados= Desparacitar::all();
+        return view ('desparacitar/index',compact('aplicados'));
     }
 
     public function create(){
@@ -38,18 +38,19 @@ class DesparacitarController extends Controller{
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
             'dosis'=>'required|numeric|regex:([0-9])',
-            'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
+            'fecha_aplicada' =>'required|date|before:'.$maxima.'|after:'.$minima, 
+            
         ]);
 
-        $desparacitars = new Desparacitar();
-        $desparacitars->num_id = $request->get('num_id');
-        $desparacitars->medi_id = $request->get('medi_id');
-        $desparacitars->dosis = $request->get('dosis');
-        $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
+        $aplicados = new Desparacitar();
+        $aplicados->num_id = $request->get('num_id');
+        $aplicados->medi_id = $request->get('medi_id');
+        $aplicados->dosis = $request->get('dosis');
+        $aplicados->fecha_aplicada = $request->get('fecha_aplicada');
 
-        $desparacitars->save();
+        $aplicados->save();
 
-        if($desparacitars){
+        if($aplicados){
             return redirect('/desparacitar')->with('mensaje', 'La triada fue creada exitosamente.');
         }else{
             //retornar con un mensaje de error.
@@ -73,8 +74,8 @@ class DesparacitarController extends Controller{
             $medicamentos = collect(); 
         }
         $pacientes = Paciente::all(); 
-        $desparacitar = Desparacitar::findOrfail($id);
-        return view('desparacitar.edit',compact('pacientes','medicamentos'))->with('desparacitar',$desparacitar);
+        $aplicado = Desparacitar::findOrfail($id);
+        return view('desparacitar.edit',compact('pacientes','medicamentos'))->with('aplicado',$aplicado);
     }
 
    
@@ -89,18 +90,18 @@ class DesparacitarController extends Controller{
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
             'dosis'=>'required|numeric|regex:([0-9])',
-            'fecha_desparacitacion'=>'required|date|before:'.$maxima.'|after:'.$minima, 
+            'fecha_aplicada' =>'required|date|before:'.$maxima.'|after:'.$minima, 
         ]);
 
-        $desparacitars = Desparacitar::find($id);
-        $desparacitars->num_id = $request->get('num_id');
-        $desparacitars->medi_id = $request->get('medi_id');
-        $desparacitars->dosis = $request->get('dosis');
-        $desparacitars->fecha_desparacitacion = $request->get('fecha_desparacitacion');
+        $aplicados = Desparacitar::find($id);
+        $aplicados->num_id = $request->get('num_id');
+        $aplicados->medi_id = $request->get('medi_id');
+        $aplicados->dosis = $request->get('dosis');
+        $aplicados->fecha_aplicada = $request->get('fecha_aplicada');
 
-        $desparacitars->save();
+        $aplicados->save();
 
-        if($desparacitars){
+        if($aplicados){
             return redirect('/desparacitar')->with('mensaje', 'La carrera fue Modificada exitosamente.');
         }else{
             //retornar con un mensaje de error.
@@ -109,8 +110,8 @@ class DesparacitarController extends Controller{
 
     public function destroy($id)
     {
-        $desparacitar = Desparacitar::find($id);
-        $desparacitar->delete();
+        $aplicado = Desparacitar::find($id);
+        $aplicado->delete();
         return redirect('/desparacitar')->with('mensaje', 'El Registro fue borrado exitosamente');
     }
     

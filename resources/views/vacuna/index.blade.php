@@ -100,29 +100,31 @@
 
         <tbody>
             @php $n=0; @endphp
-            @foreach ($vacunas as  $vacuna)
+            @foreach ($aplicados as  $aplicado)
+
+            @if($aplicado->medicamento->categoria->nombre_cate === 'Vacuna') 
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
                     
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->medicamento->nombre_medicamento}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->cantidad}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$vacuna->fecha_aplicada}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->medicamento->nombre_medicamento}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>
                     <td class="align-middle" style="font-size:15px"> Aplicado <i class="fa fa-check-square" aria-hidden="true" style="color:green"><i> </td>
                     <td>
-                        <a type="button"  title="Editar registro" href="./vacuna/{{$vacuna->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
+                        <a type="button"  title="Editar registro" href="./vacuna/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
-                        <button type="bottom"  onClick="borrar{{$vacuna->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
+                        <button type="bottom"  onClick="borrar{{$aplicado->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{route ('vacuna.destroy',$vacuna->id)}}" method="POST" id="eliminar{{$vacuna->id}}"> 
+                        <form action="{{route ('vacuna.destroy',$aplicado->id)}}" method="POST" id="eliminar{{$aplicado->id}}"> 
                             @csrf
                             @method('DELETE')       
                         
                             <script>
-                                function borrar{{$vacuna->id}}(){
+                                function borrar{{$aplicado->id}}(){
                                     Swal.fire({
                                         title: 'Eliminar Registro',
                                         text: '¿Desea eliminar el registro seleccionado?',
@@ -133,7 +135,7 @@
                                     }).then((result) => {
                                         /* Read more about isConfirmed, isDenied below */
                                         if (result.value) {
-                                            document.getElementById('eliminar{{$vacuna->id}}').submit();
+                                            document.getElementById('eliminar{{$aplicado->id}}').submit();
                                         } else {   
                                         }
                                     })
@@ -142,6 +144,7 @@
                         </form>
                     </td>
                 </tr>
+                @endif 
             @endforeach
         </tbody>
     </table>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vacuna extends Model
 {
-
+    protected $table = 'aplicados';
     
     use HasFactory;
 

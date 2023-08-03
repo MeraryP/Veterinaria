@@ -84,11 +84,11 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Fecha de desparasitar</label>
-            <input type="date" value="{{old('fecha_desparacitacion')}}"  name="fecha_desparacitacion" id="fecha_desparacitacion"  class="form-control @error('fecha_desparacitacion') is-invalid @enderror"  tabindex="1"
+            <label for="" class="form-label">Fecha de Aplicacion</label>
+            <input type="date" value="{{old('fecha_aplicada')}}"  name="fecha_aplicada" id="fecha_aplicada"  class="form-control @error('fecha_aplicada') is-invalid @enderror"  tabindex="1"
             title="fecha desparacitacion">
 
-            @error('fecha_desparacitacion')
+            @error('fecha_aplicada')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
