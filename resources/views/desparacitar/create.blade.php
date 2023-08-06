@@ -53,7 +53,7 @@
         <br>
 
         <div class="mb-3">
-            <label for="">Nombre de la Maskota</label>
+            <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id"> 
               
             @foreach ($pacientes as  $paciente)
@@ -74,7 +74,7 @@
         <div class="mb-3">
             <label for="" class="form-label">Dosis de Desparasitante</label>
             <input type="number" value="{{old('dosis')}}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  
-            tabindex="1" title="dosis">
+             title="dosis">
 
             @error('dosis')
                 <span class="invalid-feedback" role="alert">
@@ -82,6 +82,39 @@
                 </span>
             @enderror
         </div>
+
+
+
+       <!-- <div class="mb-3">
+            <label for="">Unidad</label>
+            <select name="unidad" id="unidad" class="form-control @error('unidad') is-invalid @enderror">
+                <option value="">Seleccione una opción</option>
+                <option value="mililitros" {{ old('unidad') === 'mililitros' ? 'selected' : '' }}>Mililitros</option>
+                <option value="miligramos" {{ old('unidad') === 'miligramos' ? 'selected' : '' }}>Miligramos</option>
+            </select>
+            @error('unidad')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>-->
+
+
+       <div class="mb-3">
+    <label for="unidad_desparasitante">Unidad Desparasitante </label>
+    <select name="unidad_desparasitante" id="unidad_desparasitante" class="form-control @error('unidad_desparasitante') is-invalid @enderror">
+        <option value="ml">Mililitros</option>
+        <option value="mg">Miligramos</option>
+        <option value="tabletas">Tabletas</option>
+        <option value="cucharaditas">Cucharaditas</option>
+    </select>
+    @error('unidad_desparasitante')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+
+
 
         <div class="mb-3">
             <label for="" class="form-label">Fecha de Aplicacion</label>
@@ -95,6 +128,11 @@
             @enderror
         </div>
         
+        <div class="mb-3">
+        <label for="aplicada">¿Aplicado?</label>
+        <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
+       </div>
+
 
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
         <a href="/desparacitar" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>

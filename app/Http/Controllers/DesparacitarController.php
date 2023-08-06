@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Validation\Rule;
+
 use Illuminate\Http\Request;
 use App\Models\Desparacitar;
 use App\Models\Paciente;
@@ -29,16 +31,22 @@ class DesparacitarController extends Controller{
     }
 
     public function store(Request $request) {
-        $fecha_actual = date("Y-m-d");
-        $max = date('Y-m-d',strtotime($fecha_actual));
-        $minima = date('Y-m-d',strtotime($fecha_actual."- 100 year"));
-        $maxima = date("Y-m-d",strtotime($max."+ 100 days"));
-        $anio = date("Y");
+       
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
-            'dosis'=>'required|numeric|regex:([0-9])',
-            'fecha_aplicada' =>'required|date|before:'.$maxima.'|after:'.$minima, 
+            'dosis'=>'required|numeric|min:0',
+
+            'unidad_desparasitante' => [
+                'required',
+                Rule::in(['ml', 'mg', 'tabletas', 'cucharaditas']),
+            ],
+        /* 'unidad' => [
+                'required',
+                Rule::in(['mililitros', 'miligramos']),
+            ],*/
+            'fecha_aplicada'=>'required|date',
+            'aplicado' => 'boolean',
             
         ]);
 
@@ -46,12 +54,14 @@ class DesparacitarController extends Controller{
         $aplicados->num_id = $request->get('num_id');
         $aplicados->medi_id = $request->get('medi_id');
         $aplicados->dosis = $request->get('dosis');
+        $aplicados->unidad_desparasitante = $request->get('unidad_desparasitante');
         $aplicados->fecha_aplicada = $request->get('fecha_aplicada');
+        $aplicados->aplicada = $request->has('aplicada');
 
         $aplicados->save();
 
         if($aplicados){
-            return redirect('/desparacitar')->with('mensaje', 'La triada fue creada exitosamente.');
+            return redirect('/desparacitar')->with('mensaje', 'El desparacitante fue cread0 exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -81,28 +91,32 @@ class DesparacitarController extends Controller{
    
     public function update(Request $request, $id)
     {
-        $fecha_actual = date("Y-m-d");
-        $max = date('Y-m-d',strtotime($fecha_actual));
-        $minima = date('Y-m-d',strtotime($fecha_actual."- 100 year"));
-        $maxima = date("Y-m-d",strtotime($max."+ 100 days"));
-        $anio = date("Y");
+       
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
-            'dosis'=>'required|numeric|regex:([0-9])',
-            'fecha_aplicada' =>'required|date|before:'.$maxima.'|after:'.$minima, 
+            'dosis'=>'required|numeric|min:0',
+            'unidad_desparasitante' => [
+                'required',
+                Rule::in(['ml', 'mg', 'tabletas', 'cucharaditas']),
+            ],
+            'fecha_aplicada'=>'required|date',
+            'aplicado' => 'boolean',
         ]);
 
         $aplicados = Desparacitar::find($id);
         $aplicados->num_id = $request->get('num_id');
         $aplicados->medi_id = $request->get('medi_id');
         $aplicados->dosis = $request->get('dosis');
+        $aplicados->unidad_desparasitante = $request->get('unidad_desparasitante');
         $aplicados->fecha_aplicada = $request->get('fecha_aplicada');
+        $aplicados->aplicada = $request->has('aplicada');
+
 
         $aplicados->save();
 
         if($aplicados){
-            return redirect('/desparacitar')->with('mensaje', 'La carrera fue Modificada exitosamente.');
+            return redirect('/desparacitar')->with('mensaje', 'El desparacitante fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }

@@ -101,10 +101,9 @@
             <tr>
                 <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
                 <th style="font-size:15px; text-align:center" scope="col">Desparasitante</th>
-                <th style="font-size:15px; text-align:center" scope="col">Dosis</th>
                 <th style="font-size:15px; text-align:center" scope="col">Fecha de desparasitar</th>
-                <th style="font-size:15px; text-align:center" scope="col">Estado </th>
-                <th style="font-size:15px; text-align:center" scope="col">Opciones</th>
+                <th style="font-size:15px; text-align:center" scope="col">Aplicado </th>
+                <th style="font-size:15px; text-align:center" scope="col">Acciones</th>
             </tr>
         </thead>
 
@@ -122,9 +121,11 @@
                     @else
                         Medicamento no encontrado
                     @endif</td>
-                    <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>
-                    <td class="align-middle" style="font-size:15px"> Aplicado <i class="fa fa-check-square" aria-hidden="true" style="color:green"><i> </td>  
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>    
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->aplicada ? 'Sí' : 'No' }}</td>
+
+
+
                     <td>
                     <a type="button"  title="Editar registro" href="./desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>

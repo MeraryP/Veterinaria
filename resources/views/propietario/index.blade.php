@@ -2,8 +2,42 @@
 
 @section('title', 'Propietario')
 
-
 @section('content')
+<style>
+     .range-label{
+        position: absolute !important;
+        margin-top: -52px !important;
+        margin-left: -630% !important;
+        color:black;
+    }
+    .irs--flat{
+        position: absolute !important;
+        margin-top: -102px !important;
+        width: 765% !important;
+        margin-left: -490% !important;
+    }
+       .dt-buttons button{
+        margin-left: 1vh !important;
+        border-radius: 5px 5px 5px 5px !important;
+        border: none !important;
+        width: auto;
+    }
+    .dataTables_length{
+        margin-right: 2vh;
+        margin-bottom: 10vh;
+      
+    }
+    .select-filter{
+        position: absolute;
+        margin-top: -90px;
+        margin-left:-75vh ;
+    }
+   .dataTables_filter
+   {
+    margin-right:-6vh !important;
+}
+</style>
+
 
     <script>
     var msg = '{{Session::get('mensaje')}}';
@@ -115,9 +149,50 @@ setTimeout(quitarerror, 3000);
     </tbody>
 
   </table>
+ 
+  @section('js') 
+ 
+  <script src="https://code.jquery.com/jquery-3.7.0.js"> </script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"> </script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"> </script>
 
+   
+  <script>
+     $(document).ready(function() {
+            $('#mitabla').DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                rowCallback: function(row, data, index) {
+                // Agregue el índice autoincrementable a la primera celda de la fila
+                $('td:eq(0)', row).html(index + 1);
+                },  
+   
+       language: {
+                    "lengthMenu": "Mostrar _MENU_ resultados",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay resultados disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ total registros)",
+                    "search": '<i class="fa fa-search" aria-hidden="true"></i> Buscar',
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
 
+ 
+        });
+            
+    });
+ 
 
+    
+  </script>
+   
+  @endsection 
+
+  
   @endsection 
 
 

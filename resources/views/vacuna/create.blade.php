@@ -50,7 +50,7 @@
     
         <br>
         <div class="mb-3">
-            <label for="">Nombre de la Maskota</label>
+            <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id"> 
                 @foreach ($pacientes as  $paciente)
                     <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
@@ -72,8 +72,22 @@
             <input type="number" maxlength="4" pattern="[0-9]{4}" value="{{old('dosis')}}"  name="dosis"  id="dosis" 
             class="form-control @error('dosis') is-invalid @enderror"   placeholder="Ingrese la cantidad aplicada de la vacuna"
             title="Ingrese la cantidad aplicada de la vacuna ">
-            
             @error('dosis')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+
+        <div class="mb-3">
+            <label for="">Unidad</label>
+            <select name="unidad" id="unidad" class="form-control @error('unidad') is-invalid @enderror">
+                <option value="">Seleccione una opción</option>
+                <option value="mililitros" {{ old('unidad') === 'mililitros' ? 'selected' : '' }}>Mililitros</option>
+                <option value="miligramos" {{ old('unidad') === 'miligramos' ? 'selected' : '' }}>Miligramos</option>
+            </select>
+            @error('unidad')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -92,6 +106,11 @@
                 </span>
             @enderror
         </div>
+        
+        <div class="mb-3">
+        <label for="aplicada">¿Aplicada?</label>
+        <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
+       </div>
  
         <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 

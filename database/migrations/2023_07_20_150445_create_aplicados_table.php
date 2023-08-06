@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('aplicados', function (Blueprint $table) {
             $table->increments('id');
             $table->string('dosis');
+            $table->enum('unidad', ['mililitros', 'miligramos']);
+            $table->enum('unidad_desparasitante', ['ml', 'mg', 'tabletas', 'cucharaditas']);
             $table->date('fecha_aplicada');
+            $table->boolean('aplicada')->default(false);
             $table->timestamps();
         });
     }

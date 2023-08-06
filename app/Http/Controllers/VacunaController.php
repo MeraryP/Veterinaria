@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Http\Request;
 use App\Models\Vacuna;
@@ -8,6 +9,7 @@ use App\Models\Paciente;
 use App\Models\Medicamento;
 use App\Models\Categoria;
 use Illuminate\Support\Facades\DB;
+
 
 class VacunaController extends Controller
 {
@@ -51,16 +53,23 @@ class VacunaController extends Controller
         $request->validate([
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
-            'dosis'=>'required|numeric|regex:([0-9])',
-            'fecha_aplicada'=>'date|max:200',
+            'dosis'=>'required|numeric|min:0',
+            'unidad' => [
+                'required',
+                Rule::in(['mililitros', 'miligramos']),
+            ],
+            'fecha_aplicada'=>'required|date',
+            'aplicada' => 'boolean',
         ]);
      
         $aplicados = new Vacuna();
         $aplicados->num_id = $request->get('num_id');
         $aplicados->medi_id = $request->get('medi_id');
         $aplicados->dosis = $request->get('dosis');
+        $aplicados->unidad = $request->get('unidad');
         $aplicados->fecha_aplicada = $request->get('fecha_aplicada');
-        
+        $aplicados->aplicada = $request->has('aplicada');
+
         $aplicados->save();
 
         if($aplicados){
@@ -115,16 +124,22 @@ class VacunaController extends Controller
         $this->validate($request,[
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
-            'dosis'=>'required|numeric|regex:([0-9])',
+            'dosis'=>'required|numeric|min:0',
+            'unidad' => [
+                'required',
+                Rule::in(['mililitros', 'miligramos']),
+            ],
             'fecha_aplicada'=>'date|max:200',  
+            'aplicada' => 'boolean',
         ]);
      
         $aplicado = Vacuna::find($id);
         $aplicado->num_id = $request->get('num_id');
         $aplicado->medi_id = $request->get('medi_id');
         $aplicado->dosis = $request->get('dosis');
+        $aplicado->unidad = $request->get('unidad');
         $aplicado->fecha_aplicada = $request->get('fecha_aplicada');
-       
+        $aplicado->aplicada = $request->has('aplicada');
         $aplicado->save();
 
         if($aplicado){

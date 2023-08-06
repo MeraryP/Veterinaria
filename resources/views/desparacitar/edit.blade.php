@@ -53,7 +53,7 @@
 
 
         <div class="mb-3">
-            <label for="">Nombre de la Maskota</label>
+            <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id">
                 <option style="display:none" value="{{$aplicado->num_id}}"> {{$aplicado->paciente->nombre_mascota}}</option> 
                 @foreach ($pacientes as $paciente)
@@ -82,6 +82,24 @@
                 </span>
             @enderror
         </div>
+
+
+
+        <div class="mb-3">
+            <label for="unidad_desparasitante">Unidad Desparasitante</label>
+            <select name="unidad_desparasitante" id="unidad_desparasitante" class="form-control @error('unidad_desparasitante') is-invalid @enderror">
+            <option value="ml" {{ old('unidad_desparasitante', $aplicado->unidad_desparasitante) === 'ml' ? 'selected' : '' }}>Mililitros</option>
+            <option value="mg" {{ old('unidad_desparasitante', $aplicado->unidad_desparasitante) === 'mg' ? 'selected' : '' }}>Miligramos</option>
+            <option value="tabletas" {{ old('unidad_desparasitante', $aplicado->unidad_desparasitante) === 'tabletas' ? 'selected' : '' }}>Tabletas</option>
+            <option value="cucharaditas" {{ old('unidad_desparasitante', $aplicado->unidad_desparasitante) === 'cucharaditas' ? 'selected' : '' }}>Cucharaditas</option>
+    </select>
+            @error('unidad_desparasitante')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+
+
         
         <div class="mb-3">
             <label for="" class="form-label">Fecha de desparasitar</label>
@@ -92,6 +110,13 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
+        </div>
+
+        
+
+        <div class="mb-3">
+        <label for="aplicada">¿Aplicado?</label>
+            <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}>
         </div>
 
 

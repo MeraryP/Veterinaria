@@ -54,7 +54,7 @@
 
         <br>
         <div class="mb-3">
-            <label for="">Nombre de la Maskota</label>
+            <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id">
                 <option style="display:none" value="{{$aplicado->num_id}}"> {{$aplicado->paciente->nombre_mascota}} </option> 
                   @foreach ($pacientes as $paciente)
@@ -84,6 +84,21 @@
                 </span>
             @enderror
         </div>
+
+
+        <div class="mb-3">
+            <label for="unidad">Unidad</label>
+            <select name="unidad" id="unidad" class="form-control @error('unidad') is-invalid @enderror">
+        <option value="">Seleccione una opción</option>
+        <option value="mililitros" {{ old('unidad', $aplicado->unidad) === 'mililitros' ? 'selected' : '' }}>Mililitros</option>
+        <option value="miligramos" {{ old('unidad', $aplicado->unidad) === 'miligramos' ? 'selected' : '' }}>Miligramos</option>
+    </select>
+            @error('unidad')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+
             
         <div class="mb-3">
             <label for="" class="form-label">Fecha de Aplicación</label>
@@ -96,6 +111,12 @@
                 </span>
             @enderror
         </div>
+
+        <div class="mb-3">
+        <label for="aplicada">¿Aplicada?</label>
+            <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}>
+        </div>
+
 
         <button type="submit" class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
         <a href="/vacuna" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
