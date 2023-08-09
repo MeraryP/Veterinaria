@@ -1,9 +1,12 @@
 @extends('layouts.madre')
 
-@section('title', 'Examen Físico')
+@section('title', 'Examen Físico' )
+
 
 
 @section('content')
+
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="{{ URL::previous() }}" class="nav-link">
@@ -92,13 +95,13 @@ setTimeout(quitarerror, 3000);
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="examen/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="examen/create"  title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>
 <br>
 <table id="mitabla"  class = "table table-sm table-bordered " style="margin: 0 auto; width: 100%; text-align: center; ">
-<thead  style="width: 100%; border-collapse: collapse; background-color:pink; tabla color ">
+<thead  style="width: 100%; border-collapse: collapse; background-color:LightBlue; tabla color ">
 
 <tr>
 
@@ -128,7 +131,7 @@ setTimeout(quitarerror, 3000);
             <td class="align-middle" style="font-size:15px">{{$examen->frecuencia_respiratoria}}</td>
             <td class="align-middle" style="font-size:15px">{{$examen->peso}}</td>
             <td class="align-middle" style="font-size:15px">{{$examen->pulso}}</td>
-           
+            
            
 
             <td>

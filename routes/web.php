@@ -85,7 +85,9 @@ Route::middleware("auth")->group(function () {
     
         Route::put('/usuario/editar',[UserController::class, 'actualizar'])
         ->name('usuario.actualizar'); 
+        
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+      
               
  
         //ruta EXAMEN CLINICO
@@ -95,7 +97,7 @@ Route::middleware("auth")->group(function () {
         ->name('clinico.update')->where('id','[0-9]+');
     
        
-
+        Route::resource('/clinico', 'App\Http\Controllers\ClinicoController');
 
     });
     

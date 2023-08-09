@@ -58,7 +58,7 @@ setTimeout(quitarerror, 3000);
 <br>
 
 <table id="mitabla"  class = "table table-sm table-bordered border-black" style="margin: 0 auto; width: 100%; text-align: center; ">
-<thead style="width: 100%; border-collapse: collapse; background-color:pink; tabla color ">
+<thead style="width: 100%; border-collapse: collapse; background-color:LightBlue; tabla color ">
 
 <tr>
 

@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Editar Registro de '.$nombre_mascotas)
+@section('title', 'Expediente de '.$nombre_mascotas)
 
 
 

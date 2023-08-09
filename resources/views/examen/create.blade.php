@@ -5,7 +5,7 @@
 
 @section('content')
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="{{ URL::previous() }}" class="nav-link">
      <div> 
@@ -45,12 +45,12 @@
         </li>
       
   
-</ul>
+</ul> -->
 
 
 
   
-<form action ="../examen"  method="POST">
+<form action ="/examen"  method="POST">
     @csrf
            
    <br> 

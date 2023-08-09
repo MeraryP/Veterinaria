@@ -3,7 +3,7 @@
 @section('title', 'Registrar vacuna')
 
 @section('content')
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="{{ URL::previous() }}" class="nav-link">
      <div> 
@@ -42,7 +42,7 @@
                 </div>
             </a>
         </li>
-    </ul>
+    </ul> -->
 
 
     <form action ="../vacuna"  method="POST">
@@ -109,7 +109,8 @@
         
         <div class="mb-3">
         <label for="aplicada">¿Aplicada?</label>
-        <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
+        <br>
+        <input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
        </div>
  
         <link rel="stylesheet" type="text/css" href="css/fonts.css" >      

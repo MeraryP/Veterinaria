@@ -48,7 +48,7 @@ setTimeout(quitarerror, 3000);
 <br>
 <br>
 <table id="mitabla"  class = "table table-sm table-bordered " style="margin: 0 auto; width: 100%; text-align: center; ">
-<thead  style="width: 100%; border-collapse: collapse; background-color:pink; tabla color ">
+<thead  style="width: 100%; border-collapse: collapse; background-color:LightBlue; tabla color ">
 
 <tr>
 
@@ -56,7 +56,7 @@ setTimeout(quitarerror, 3000);
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">No</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Nombre del Medicamento</th>
             <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Categoria</th>
-            <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Dosis</th>
+            <!-- <th style="font-size:15px;text-align:center; width:0px;"  scope="col">Dosis</th> -->
             <th style="font-size:15px;text-align:center;width:0px;"  scope="col">Acciones</th>
             
         </tr>
@@ -72,7 +72,7 @@ setTimeout(quitarerror, 3000);
             <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
             <td class="align-middle" style="font-size:15px" >{{$medicamento->nombre_medicamento}}</td>
             <td class="align-middle" style="font-size:15px" >{{$medicamento->categoria->nombre_cate}}</td>
-            <td class="align-middle" style="font-size:15px">{{$medicamento->dosis}}</td>
+            <!-- <td class="align-middle" style="font-size:15px">{{$medicamento->dosis}}</td> -->
             
            
            

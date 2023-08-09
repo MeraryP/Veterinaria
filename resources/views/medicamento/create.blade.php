@@ -37,7 +37,7 @@
       </div>
 
      
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="" class="form-label">Dosis del medicamento</label>
         <input type="number"    value="{{old('dosis')}}"  name="dosis"  id="dosis"   
         class="form-control @error('dosis') is-invalid @enderror" placeholder="Ingrese la dosis "
@@ -48,9 +48,9 @@
                 </span>
             @enderror
       
-      </div>
+      </div> -->
 
-   
+  <br> 
       
 <link rel="stylesheet" type="text/css" href="css/fonts.css" >     
 <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 

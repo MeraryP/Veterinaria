@@ -62,7 +62,7 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
-    'logo' => '',
+    'logo' => 'Veterinaria Kamaco',
     'logo_img' => 'imagen/Kamaco1.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -311,7 +311,7 @@ return [
       [
         'text' => 'inicio',
         'icon'    => 'fa fa-home', 
-        'route'=>'home',
+        //'route'=>'home',
         'icon_color'=>'orange',
       ],
       
@@ -351,10 +351,13 @@ return [
         ],
 
         [
-            'text' => 'Cambiar Contraseña',
+            'text' => 'Cerrar Sesión',
             'icon'    => 'fa fa-key', 
-            //'route'=>'contrasenia.cambiar',
+            //'route'=>'login',
+            'login_url' => 'login',
+            //'href'=> 'logout',
             'icon_color'=>'red',  
+ 
         ],
 
       
