@@ -28,7 +28,7 @@
      </a>
   </li>
   <li class="nav-item" role="presentation">
-  <a href="{{ route('desparacitar.index') }}"class="nav-link">
+  <a href=""class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
        </div>

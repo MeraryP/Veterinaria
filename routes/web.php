@@ -57,7 +57,7 @@ Route::middleware("auth")->group(function () {
 
 
         //ruta resumen
-        Route::resource('/paciente/{id}/examen', 'App\Http\Controllers\ExamenController');
+        Route::resource('/examen', 'App\Http\Controllers\ExamenController');
 
         Route::put('/examen/{id}/editar', [ExamenController::class, 'update'])
         ->name('examen.update')->where('id','[0-9]+');
