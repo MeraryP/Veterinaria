@@ -146,5 +146,18 @@
     });
 </script>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function scrollPage() {
+                window.scrollBy(0, -10);
+
+                if (window.scrollY > 0) {
+                    requestAnimationFrame(scrollPage);
+                }
+            }
+
+            scrollPage();
+        });
+    </script>
 
 @endsection
