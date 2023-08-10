@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Registrar Examen')
+@section('title', 'Registrar Examen Fisico de '.$nombre_mascotas)
 
 
 @section('content')
@@ -56,7 +56,7 @@
    <br> 
    
    
-      <div class="mb-3">
+      <div class="mb-3" style="display:none !important;" >
       <label for="">Nombre de la Mascota</label>
       <select class="form-control" name="num_id"> 
        @foreach ($pacientes as  $paciente)

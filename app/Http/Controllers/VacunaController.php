@@ -38,9 +38,11 @@ class VacunaController extends Controller
             $medicamentos = collect();  //manda vacio 
         }
     
+       
        $paciente = Paciente::findOrfail($id);
        $pacientes = Paciente::all();
-        return view ('vacuna.create',compact('pacientes','medicamentos','paciente'));
+       $nombre_mascotas = $paciente->nombre_mascota;
+        return view ('vacuna.create',compact('pacientes','medicamentos','paciente','nombre_mascotas'));
     }
 
     /**
@@ -108,10 +110,12 @@ class VacunaController extends Controller
         } else {
             $medicamentos = collect();  //manda vacio 
         }
+        
         $paciente = Paciente::findOrfail($id);
+        $nombre_mascotas = $paciente->nombre_mascota;
         $pacientes = Paciente::all(); 
         $aplicado = Vacuna::findOrfail($id);
-        return view('vacuna.edit',compact('pacientes','medicamentos','paciente'))->with('aplicado', $aplicado);
+        return view('vacuna.edit',compact('pacientes','medicamentos','paciente','nombre_mascotas'))->with('aplicado', $aplicado);
     }
 
     /**

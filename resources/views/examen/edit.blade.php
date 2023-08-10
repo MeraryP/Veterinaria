@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Editar Examen Fisico')
+@section('title', 'Editar Examen Fisico de '.$nombre_mascotas)
 
 
 @section('content')
@@ -56,7 +56,7 @@
    
    
 
-      <div class="mb-3">
+      <div class="mb-3"style="display:none !important;" >
       <label for="">Nombre de la Mascota</label>
       <select class="form-control" name="num_id">
       <option style="display:none" value="{{$examen->num_id}}"> {{$examen->paciente->nombre_mascota}}</option> 

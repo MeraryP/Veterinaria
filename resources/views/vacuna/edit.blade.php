@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Editar Registro de Vacuna')
+@section('title', 'Editar Registro de Vacuna de '.$nombre_mascotas)
 
 @section('content')
 
@@ -53,7 +53,7 @@
         @csrf
 
         <br>
-        <div class="mb-3">
+        <div class="mb-3" style="display:none !important;">
             <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id">
                 <option style="display:none" value="{{$aplicado->num_id}}"> {{$aplicado->paciente->nombre_mascota}} </option> 

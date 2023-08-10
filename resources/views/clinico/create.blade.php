@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Registrar Examen Clinico')
+@section('title', 'Registrar Examen Clinico de ')
 
 @section('content')
 <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -50,7 +50,7 @@
         @csrf
      
 
-        <div class="mb-3">
+        <div class="mb-3"style="display:none !important;">
             <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id"> 
               

@@ -28,9 +28,11 @@ class DesparacitarController extends Controller{
         } else {
             $medicamentos = collect(); 
         }
+        
         $paciente = Paciente::findOrfail($id);
+        $nombre_mascotas = $paciente->nombre_mascota;
         $pacientes = Paciente::all(); 
-        return view('desparacitar.create',compact('pacientes','medicamentos','paciente'));
+        return view('desparacitar.create',compact('pacientes','medicamentos','paciente','nombre_mascotas'));
     }
 
     public function store(Request $request) {
@@ -86,10 +88,12 @@ class DesparacitarController extends Controller{
         } else {
             $medicamentos = collect(); 
         }
+        
         $paciente = Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
+        $nombre_mascotas = $paciente->nombre_mascota;
         $aplicado = Desparacitar::findOrfail($id);
-        return view('desparacitar.edit',compact('pacientes','medicamentos','paciente'))->with('aplicado',$aplicado);
+        return view('desparacitar.edit',compact('pacientes','medicamentos','paciente','nombre_mascotas'))->with('aplicado',$aplicado);
     }
 
    

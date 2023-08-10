@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Editar Registro')
+@section('title', 'Editar Registro de '.$nombre_mascotas)
 
 @section('content')
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -52,7 +52,7 @@
         <br>
 
 
-        <div class="mb-3">
+        <div class="mb-3"style="display:none !important;" >
             <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id">
                 <option style="display:none" value="{{$aplicado->num_id}}"> {{$aplicado->paciente->nombre_mascota}}</option> 

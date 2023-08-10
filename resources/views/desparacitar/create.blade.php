@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Registro de desparasitar')
+@section('title', 'Registro de desparasitar de '.$nombre_mascotas)
 
 @section('content')
 
@@ -52,7 +52,7 @@
         @csrf
         <br>
 
-        <div class="mb-3">
+        <div class="mb-3" style="display:none !important;" >
             <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id"> 
               

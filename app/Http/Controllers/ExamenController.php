@@ -23,10 +23,12 @@ class ExamenController extends Controller
      */
     public function create($id)
     {
+       
         $paciente = Paciente::findOrfail($id);
-        $pacientes = Paciente::all(); 
+        $nombre_mascotas = $paciente->nombre_mascota;
+        $pacientes = Paciente::all();  
         //$generos = Genero::all();
-        return view ('examen.create',compact('pacientes','paciente'));
+        return view ('examen.create',compact('pacientes','paciente','nombre_mascotas'));
     }
 
     /**
@@ -86,10 +88,12 @@ class ExamenController extends Controller
      */
     public function edit($id)
     {
+       
         $paciente = Paciente::findOrfail($id);
+        $nombre_mascotas = $paciente->nombre_mascota;
         $pacientes = Paciente::all(); 
         $examen = Examen::findOrfail($id);
-        return view('examen.edit',compact('pacientes','paciente'))->with('examen', $examen);
+        return view('examen.edit',compact('pacientes','paciente','nombre_mascotas'))->with('examen', $examen);
     }
 
     /**
