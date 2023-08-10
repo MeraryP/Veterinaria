@@ -4,7 +4,7 @@
 
 
 @section('content')
-<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="{{ URL::previous() }}" class="nav-link">
      <div> 
@@ -21,7 +21,7 @@
      </a>
       </li>
   <li class="nav-item" role="presentation">
-   <a href="{{ route('vacuna.index') }}" class="nav-link">
+   <a href="" class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
        </div>
@@ -44,7 +44,7 @@
                 </div>
             </a>
         </li>
-</ul> -->
+</ul>
 
 
 <form  method="POST" action="{{ route('examen.update',['id'=>$examen->id])}}">

@@ -23,7 +23,7 @@
         </li>
 
         <li class="nav-item" role="presentation">
-            <a href="{{ route('vacuna.index') }}" class="nav-link">
+            <a href="{{ route('vacuna.index', ['id' => $paciente->id]) }}" class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
                 </div>
@@ -31,7 +31,7 @@
         </li>
 
         <li class="nav-item" role="presentation">
-            <a href="{{ route('desparacitar.index') }}"class="nav-link">
+            <a href=""class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
                 </div>
@@ -81,7 +81,7 @@
 
     <br>
     <div align="right" style="float:right">
-        <a href="vacuna/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
+        <a href="{{ route('vacuna.create', ['id' => $paciente->id]) }}" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
     </div>
     <br>
     <br>
@@ -120,7 +120,7 @@
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{route ('vacuna.destroy',$aplicado->id)}}" method="POST" id="eliminar{{$aplicado->id}}"> 
+                        <form action="{{ route('vacuna.destroy', ['id' => $paciente->id, 'vacuna' => $aplicado->id]) }}"method="POST" id="eliminar{{$aplicado->id}}"> 
                             @csrf
                             @method('DELETE')       
                         

@@ -3,7 +3,7 @@
 @section('title', 'Registrar vacuna')
 
 @section('content')
-<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+ <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
 <a href="{{ URL::previous() }}" class="nav-link">
      <div> 
@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="nav-item" role="presentation">
-            <a href="{{ route('vacuna.index') }}" class="nav-link">
+            <a href="{{ route('vacuna.index', ['id' => $paciente->id]) }}" class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
                 </div>
@@ -27,7 +27,7 @@
         </li>
 
         <li class="nav-item" role="presentation">
-            <a href="{{ route('desparacitar.index') }}"class="nav-link">
+            <a href=""class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
             </a>
         </li>
-    </ul> -->
+    </ul>
 
 
     <form action ="../vacuna"  method="POST">
@@ -116,7 +116,7 @@
         <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
 
-        <a href="../vacuna" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+        <a href="{{ route('vacuna.index', ['id' => $paciente->id]) }}" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
         <br>
         <br>
 

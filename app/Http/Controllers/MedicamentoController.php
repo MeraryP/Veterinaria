@@ -44,7 +44,7 @@ class MedicamentoController extends Controller
            
             'nombre_medicamento'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'cate_id'=>'required|exists:categorias,id',
-            'dosis'=>'required|numeric'
+            
            
             
             //'gene_id'=>'required|exists:generos,id',
@@ -58,7 +58,6 @@ class MedicamentoController extends Controller
     
         $medicamentos->nombre_medicamento = $request->get('nombre_medicamento');
         $medicamentos->cate_id = $request->get('cate_id');
-        $medicamentos->dosis = $request->get('dosis');
         $medicamentos->save();
 
         if($medicamentos){
@@ -111,7 +110,7 @@ class MedicamentoController extends Controller
             
             'nombre_medicamento'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'cate_id'=>'required|exists:categorias,id',
-            'dosis'=>'required|numeric'
+            
            
           
             //'gene_id'=>'required|exists:generos,id',
@@ -124,7 +123,6 @@ class MedicamentoController extends Controller
         $medicamento = Medicamento::find($id);
         $medicamento->nombre_medicamento = $request->get('nombre_medicamento');
         $medicamento->cate_id = $request->get('cate_id');
-        $medicamento->dosis = $request->get('dosis');
         $medicamento->save();
 
         if($medicamento){

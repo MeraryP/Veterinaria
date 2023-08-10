@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class VacunaController extends Controller
 {
-    public function index(Request $request)
+    public function index($id)
     {
+       $paciente = Paciente::findOrfail($id);
        $aplicados= Vacuna::all();
-        return view ('vacuna/index',compact('aplicados'));
+        return view ('vacuna/index',compact('aplicados','paciente'));
     }
 
 
@@ -25,7 +26,7 @@ class VacunaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
 
         $categoriaVacuna = Categoria::where('nombre_cate', 'Vacuna')->first(); 
@@ -37,9 +38,9 @@ class VacunaController extends Controller
             $medicamentos = collect();  //manda vacio 
         }
     
-       
+       $paciente = Paciente::findOrfail($id);
        $pacientes = Paciente::all();
-        return view ('vacuna.create',compact('pacientes','medicamentos'));
+        return view ('vacuna.create',compact('pacientes','medicamentos','paciente'));
     }
 
     /**
@@ -73,7 +74,7 @@ class VacunaController extends Controller
         $aplicados->save();
 
         if($aplicados){
-            return redirect('/vacuna')->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/vacuna")->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -107,9 +108,10 @@ class VacunaController extends Controller
         } else {
             $medicamentos = collect();  //manda vacio 
         }
+        $paciente = Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
         $aplicado = Vacuna::findOrfail($id);
-        return view('vacuna.edit',compact('pacientes','medicamentos'))->with('aplicado', $aplicado);
+        return view('vacuna.edit',compact('pacientes','medicamentos','paciente'))->with('aplicado', $aplicado);
     }
 
     /**
@@ -143,7 +145,7 @@ class VacunaController extends Controller
         $aplicado->save();
 
         if($aplicado){
-            return redirect('/vacuna')->with('mensaje', 'El registro fue modificado exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/vacuna")->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }

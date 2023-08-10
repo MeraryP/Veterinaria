@@ -50,20 +50,20 @@ Route::middleware("auth")->group(function () {
         ->name('medicamento.update')->where('id','[0-9]+');
 
         //ruta vacuna
-        Route::resource('/vacuna', 'App\Http\Controllers\VacunaController');
+        Route::resource('/paciente/{id}/vacuna', 'App\Http\Controllers\VacunaController');
 
-        Route::put('/vacuna/{id}/editar', [VacunaController::class, 'update'])
+        Route::put('vacuna/{id}/editar', [VacunaController::class, 'update'])
         ->name('vacuna.update')->where('id','[0-9]+');
 
 
         //ruta resumen
-        Route::resource('/examen', 'App\Http\Controllers\ExamenController');
+        Route::resource('/paciente/{id}/examen', 'App\Http\Controllers\ExamenController');
 
         Route::put('/examen/{id}/editar', [ExamenController::class, 'update'])
         ->name('examen.update')->where('id','[0-9]+');
 
         //ruta triadas
-        Route::resource('desparacitar', 'App\Http\Controllers\DesparacitarController');
+        Route::resource('/paciente/{id}/desparacitar', 'App\Http\Controllers\DesparacitarController');
 
         Route::put('/desparacitar/{id}/editar', [DesparacitarController::class, 'update'])
         ->name('desparacitar.update')->where('id','[0-9]+');

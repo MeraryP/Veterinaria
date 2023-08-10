@@ -11,12 +11,14 @@ use App\Models\Medicamento;
 use Illuminate\Support\Facades\DB;
 
 class DesparacitarController extends Controller{
-    public function index(Request $request){
+    public function index($id){
+
+        $paciente= Paciente::findOrfail($id);
         $aplicados= Desparacitar::all();
-        return view ('desparacitar/index',compact('aplicados'));
+        return view ('desparacitar/index',compact('aplicados','paciente'));
     }
 
-    public function create(){
+    public function create($id){
 
         $categoriaDesparasitante = Categoria::where('nombre_cate', 'Desparasitante')->first(); 
     
@@ -26,8 +28,9 @@ class DesparacitarController extends Controller{
         } else {
             $medicamentos = collect(); 
         }
+        $paciente = Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
-        return view('desparacitar.create',compact('pacientes','medicamentos'));
+        return view('desparacitar.create',compact('pacientes','medicamentos','paciente'));
     }
 
     public function store(Request $request) {
@@ -61,7 +64,7 @@ class DesparacitarController extends Controller{
         $aplicados->save();
 
         if($aplicados){
-            return redirect('/desparacitar')->with('mensaje', 'El desparacitante fue cread0 exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/desparacitar")->with('mensaje', 'El desparacitante fue cread0 exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -83,9 +86,10 @@ class DesparacitarController extends Controller{
         } else {
             $medicamentos = collect(); 
         }
+        $paciente = Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
         $aplicado = Desparacitar::findOrfail($id);
-        return view('desparacitar.edit',compact('pacientes','medicamentos'))->with('aplicado',$aplicado);
+        return view('desparacitar.edit',compact('pacientes','medicamentos','paciente'))->with('aplicado',$aplicado);
     }
 
    
@@ -116,7 +120,7 @@ class DesparacitarController extends Controller{
         $aplicados->save();
 
         if($aplicados){
-            return redirect('/desparacitar')->with('mensaje', 'El desparacitante fue modificado exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/desparacitar")->with('mensaje', 'El desparacitante fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }

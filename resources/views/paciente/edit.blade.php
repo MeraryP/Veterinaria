@@ -15,7 +15,7 @@
      </a>
   </li>
   <li class="nav-item" role="presentation">
-  <a href="{{ route('examen.index') }}"class="nav-link">
+  <a href="{{ route('examen.index', ['id' => $paciente->id]) }}"class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
        </div>
@@ -23,14 +23,14 @@
       </li>
   
   <li class="nav-item" role="presentation">
-   <a href="{{ route('vacuna.index') }}" class="nav-link">
+   <a href="{{ route('vacuna.index', ['id' => $paciente->id]) }}" class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
        </div>
      </a>
   </li>
   <li class="nav-item" role="presentation">
-  <a href="{{ route('desparacitar.index') }}"class="nav-link">
+  <a href="{{ route('desparacitar.index', ['id' => $paciente->id]) }}"class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
        </div>
