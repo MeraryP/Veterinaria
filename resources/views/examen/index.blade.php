@@ -16,7 +16,7 @@
      </a>
   </li>
   <li class="nav-item" role="presentation">
-  <a href="{{ route('examen.index') }}"class="nav-link">
+  <a href=""class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
        </div>
@@ -95,7 +95,7 @@ setTimeout(quitarerror, 3000);
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="examen/create"  title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="{{ route('examen.create', ['id' => $paciente->id]) }}"title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>
@@ -140,7 +140,7 @@ setTimeout(quitarerror, 3000);
                 
                 <button type="bottom"  onClick="borrar{{$examen->id}}()" title="Eliminar registro" class="btn btn-danger">
                <i class="fa fa-window-close" aria-hidden="true"></i></button>
-                <form action="{{route ('examen.destroy',$examen->id)}}" method="POST" id="eliminar{{$examen->id}}"> 
+                <form action="{{ route('examen.create', ['id' => $paciente->id]) }}" method="POST" id="eliminar{{$examen->id}}"> 
                 
                 @csrf
                 @method('DELETE')       

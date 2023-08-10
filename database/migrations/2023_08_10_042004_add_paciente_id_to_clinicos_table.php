@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clinicos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('sintomas');
-            $table->string('enfermedad');
-            $table->string('tratamiento');
-            $table->timestamps();
+        Schema::table('clinicos', function (Blueprint $table) {
+            $table->unsignedInteger('num_id');
+    
+            $table->foreign('num_id')->references('id')->on('pacientes')->onDelete('cascade');
         });
     }
 
@@ -29,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clinicos');
+        Schema::table('clinicos', function (Blueprint $table) {
+            
+        });
     }
 };

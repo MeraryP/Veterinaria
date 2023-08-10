@@ -13,7 +13,7 @@
         </li>
         
         <li class="nav-item" role="presentation">
-            <a href="{{ route('examen.index') }}"class="nav-link">
+            <a href=""class="nav-link">
                   <div> 
                       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
                   </div>

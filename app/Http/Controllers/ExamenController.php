@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class ExamenController extends Controller
 {
-    public function index(Request $request)
+    public function index($id)
     {
+        $paciente = Paciente::findOrfail($id);
        $examens= Examen::all();
-        return view ('examen/index',compact('examens'));
+        return view ('examen/index',compact('examens','paciente'));
     }
 
 
@@ -20,11 +21,12 @@ class ExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+        $paciente = Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
         //$generos = Genero::all();
-        return view ('examen.create',compact('pacientes'));
+        return view ('examen.create',compact('pacientes','paciente'));
     }
 
     /**
@@ -58,7 +60,7 @@ class ExamenController extends Controller
         $examens->save();
 
         if($examens){
-            return redirect('/examen')->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/examen")->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -84,9 +86,10 @@ class ExamenController extends Controller
      */
     public function edit($id)
     {
+        $paciente = Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
         $examen = Examen::findOrfail($id);
-        return view('examen.edit',compact('pacientes'))->with('examen', $examen);
+        return view('examen.edit',compact('pacientes','paciente'))->with('examen', $examen);
     }
 
     /**
@@ -123,7 +126,7 @@ class ExamenController extends Controller
         $examen->save();
 
         if($examen){
-            return redirect('/examen')->with('mensaje', 'El registro fue modificado exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/examen")->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }

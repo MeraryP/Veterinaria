@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\clinico;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,8 @@ class ClinicoController extends Controller
      */
     public function create()
     {
-        return view ('clinico.create');
+        $pacientes = Paciente::all(); 
+        return view ('clinico.create',compact('pacientes'));
     }
 
     /**
@@ -35,12 +37,14 @@ class ClinicoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'num_id'=>'required|exists:pacientes,id',
             'sintomas'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
             'enfermedad'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
             'tratamiento'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
         ]);
      
         $clinicos = new Clinico();
+        $clinicos->num_id = $request->get('num_id');
         $clinicos->sintomas = $request->get('sintomas');
         $clinicos->enfermedad = $request->get('enfermedad');
         $clinicos->tratamiento = $request->get('tratamiento');
@@ -73,9 +77,9 @@ class ClinicoController extends Controller
      */
     public function edit($id)
     {
-     
+        $pacientes = Paciente::all(); 
         $clinico = Clinico::findOrfail($id);
-        return view('clinico.edit')->with('clinico', $clinico);
+        return view('clinico.edit',compact('pacientes'))->with('clinico', $clinico);
     }
 
     /**
@@ -88,12 +92,14 @@ class ClinicoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
+            'num_id'=>'required|exists:pacientes,id',
             'sintomas'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
             'enfermedad'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000',
             'tratamiento'=>'required|regex:/^([A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-z.,ÁÉÍÓÚáéíóúñÑ]+)*$/|max:1000', 
         ]);
      
         $clinico = Clinico::find($id);
+        $clinico->num_id = $request->get('num_id');
         $clinico->sintomas = $request->get('sintomas');
         $clinico->enfermedad = $request->get('enfermedad');
         $clinico->tratamiento = $request->get('tratamiento');

@@ -14,7 +14,7 @@
   </li>
 
   <li class="nav-item" role="presentation">
-  <a href="{{ route('examen.index') }}"class="nav-link">
+  <a href=""class="nav-link">
      <div> 
        <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
        </div>
@@ -137,7 +137,7 @@
 
       
 <button type="submit" class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
-<a href="/examen" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+<a href="{{ route('examen.index', ['id' => $paciente->id]) }}" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
 <br>
 <br>
