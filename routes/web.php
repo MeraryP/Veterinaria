@@ -95,13 +95,13 @@ Route::middleware("auth")->group(function () {
               
  
         //ruta EXAMEN CLINICO
-        Route::resource('/clinico', 'App\Http\Controllers\ClinicoController');
+        Route::resource('/paciente/{id}/clinico', 'App\Http\Controllers\ClinicoController');
 
         Route::put('/clinico/{id}/editar', [ClinicoController::class, 'update'])
         ->name('clinico.update')->where('id','[0-9]+');
     
        
-        Route::resource('/clinico', 'App\Http\Controllers\ClinicoController');
+        //Route::resource('/clinico', 'App\Http\Controllers\ClinicoController');
 
     });
     

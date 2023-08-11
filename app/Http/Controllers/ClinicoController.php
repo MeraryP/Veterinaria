@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class ClinicoController extends Controller
 {
-    public function index(Request $request)
+    public function index($id)
     {
+        $paciente= Paciente::findOrfail($id);
        $clinicos= Clinico::all();
-        return view ('clinico/index',compact('clinicos'));
+        return view ('clinico/index',compact('clinicos','paciente'));
     }
 
 
@@ -21,11 +22,11 @@ class ClinicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        
+        $paciente= Paciente::findOrfail($id);
         $pacientes = Paciente::all();
-        return view ('clinico.create',compact('pacientes'));
+        return view ('clinico.create',compact('pacientes','paciente'));
     }
 
     /**
@@ -52,7 +53,7 @@ class ClinicoController extends Controller
         $clinicos->save();
 
         if($clinicos){
-            return redirect('/clinico')->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/clinico")->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -78,9 +79,10 @@ class ClinicoController extends Controller
      */
     public function edit($id)
     {
+        $paciente= Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
         $clinico = Clinico::findOrfail($id);
-        return view('clinico.edit',compact('pacientes'))->with('clinico', $clinico);
+        return view('clinico.edit',compact('pacientes','paciente'))->with('clinico', $clinico);
     }
 
     /**
@@ -108,7 +110,7 @@ class ClinicoController extends Controller
         $clinico->save();
 
         if($clinico){
-            return redirect('/clinico')->with('mensaje', 'El registro fue modificado exitosamente.');
+            return redirect("/paciente/{$request->get('num_id')}/clinico")->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -121,10 +123,13 @@ class ClinicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$clinico)
     {
-        $clinico = Clinico::find($id);
-        $clinico->delete();
-        return redirect('/clinico')->with('mensaje', 'El Registro fue borrado exitosamente');
+        $paciente = Paciente::findOrFail($id);
+        $clinico = Clinico::find($clinico);
+        if ($clinico) {
+            $clinico->delete(); 
+           return redirect("/paciente/{$id}/clinico")->with('mensaje', 'El Registro fue borrado exitosamente');
+        }
     }
 }

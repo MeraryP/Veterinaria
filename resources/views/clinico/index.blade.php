@@ -37,7 +37,7 @@
 
         
         <li class="nav-item" role="presentation">
-            <a href="{{ route('clinico.index') }}"class="nav-link">
+            <a href=""class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
                 </div>
@@ -78,7 +78,7 @@
 
     <br>
     <div align="right" style="float:right">
-        <a href="clinico/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
+        <a href="{{ route('clinico.create', ['id' => $paciente->id]) }}" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
     </div>
     <br>
     <br>
@@ -115,7 +115,7 @@
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{route ('clinico.destroy',$clinico->id)}}" method="POST" id="eliminar{{$clinico->id}}"> 
+                        <form action="{{ route('clinico.destroy', ['id' => $paciente->id, 'clinico' => $clinico->id]) }}"  method="POST" id="eliminar{{$clinico->id}}"> 
                             @csrf
                             @method('DELETE')       
                         

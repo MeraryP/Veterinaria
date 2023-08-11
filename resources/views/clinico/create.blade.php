@@ -104,7 +104,7 @@
         <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
 
-        <a href="../clinico" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+        <a href="{{ route('clinico.index', ['id' => $paciente->id]) }}"  class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
         <br>
         <br>
 
