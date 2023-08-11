@@ -25,8 +25,9 @@ class ClinicoController extends Controller
     public function create($id)
     {
         $paciente= Paciente::findOrfail($id);
+        $nombre_mascotas = $paciente->nombre_mascota;
         $pacientes = Paciente::all();
-        return view ('clinico.create',compact('pacientes','paciente'));
+        return view ('clinico.create',compact('pacientes','paciente','nombre_mascotas'));
     }
 
     /**
@@ -77,12 +78,13 @@ class ClinicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$idc)
     {
         $paciente= Paciente::findOrfail($id);
+        $nombre_mascotas = $paciente->nombre_mascota;
         $pacientes = Paciente::all(); 
-        $clinico = Clinico::findOrfail($id);
-        return view('clinico.edit',compact('pacientes','paciente'))->with('clinico', $clinico);
+        $clinico = Clinico::findOrfail($idc);
+        return view('clinico.edit',compact('pacientes','paciente','nombre_mascotas'))->with('clinico', $clinico);
     }
 
     /**

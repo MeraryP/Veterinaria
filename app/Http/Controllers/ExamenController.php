@@ -86,13 +86,13 @@ class ExamenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$ide)
     {
        
         $paciente = Paciente::findOrfail($id);
         $nombre_mascotas = $paciente->nombre_mascota;
         $pacientes = Paciente::all(); 
-        $examen = Examen::findOrfail($id);
+        $examen = Examen::findOrfail($ide);
         return view('examen.edit',compact('pacientes','paciente','nombre_mascotas'))->with('examen', $examen);
     }
 

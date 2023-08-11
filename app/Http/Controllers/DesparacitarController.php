@@ -78,7 +78,7 @@ class DesparacitarController extends Controller{
     }
 
     
-    public function edit($id)
+    public function edit($id,$idd)
     {
         $categoriaDesparasitante = Categoria::where('nombre_cate', 'Desparasitante')->first(); 
     
@@ -92,7 +92,7 @@ class DesparacitarController extends Controller{
         $paciente = Paciente::findOrfail($id);
         $pacientes = Paciente::all(); 
         $nombre_mascotas = $paciente->nombre_mascota;
-        $aplicado = Desparacitar::findOrfail($id);
+        $aplicado = Desparacitar::findOrfail($idd);
         return view('desparacitar.edit',compact('pacientes','medicamentos','paciente','nombre_mascotas'))->with('aplicado',$aplicado);
     }
 

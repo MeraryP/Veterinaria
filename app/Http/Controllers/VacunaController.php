@@ -100,7 +100,7 @@ class VacunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$idv)
     {
         $categoriaVacuna = Categoria::where('nombre_cate', 'Vacuna')->first(); 
     
@@ -114,7 +114,7 @@ class VacunaController extends Controller
         $paciente = Paciente::findOrfail($id);
         $nombre_mascotas = $paciente->nombre_mascota;
         $pacientes = Paciente::all(); 
-        $aplicado = Vacuna::findOrfail($id);
+        $aplicado = Vacuna::findOrfail($idv);
         return view('vacuna.edit',compact('pacientes','medicamentos','paciente','nombre_mascotas'))->with('aplicado', $aplicado);
     }
 

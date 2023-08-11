@@ -30,7 +30,7 @@
         </li>
 
         <li class="nav-item" role="presentation">
-            <a href="{{ route('desparacitar.index', ['id' => $paciente->id]) }}"class="nav-link">
+            <a href=""class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
                 </div>
@@ -38,7 +38,7 @@
         </li>
 
         <li class="nav-item" role="presentation">
-            <a href="{{ route('clinico.index') }}"class="nav-link">
+            <a href=""class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
                 </div>
@@ -54,8 +54,7 @@
 
         <div class="mb-3" style="display:none !important;" >
             <label for="">Nombre de la Mascota</label>
-            <select class="form-control" name="num_id"> 
-              
+            <select class="form-control" name="num_id">  
             @foreach ($pacientes as  $paciente)
               <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
               @endforeach   

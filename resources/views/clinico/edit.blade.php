@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Editar Registro del Examen Clinico de ')
+@section('title', 'Editar Registro del Examen Clinico de '.$nombre_mascotas)
 
 @section('content')
 
@@ -58,7 +58,7 @@
         <div class="mb-3"style="display:none !important;">
             <label for="">Nombre de la Mascota</label>
             <select class="form-control" name="num_id">
-                <option style="display:none" value="{{$aplicado->num_id}}"> {{$aplicado->paciente->nombre_mascota}}</option> 
+                <option style="display:none" value="{{$clinico->num_id}}"> {{$clinico->paciente->nombre_mascota}}</option> 
                 @foreach ($pacientes as $paciente)
                   <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
                 @endforeach      

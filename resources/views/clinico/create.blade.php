@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Registrar Examen Clinico de ')
+@section('title', 'Registrar Examen Clinico de '.$nombre_mascotas)
 
 @section('content')
 <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
