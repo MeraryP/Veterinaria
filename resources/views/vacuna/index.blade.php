@@ -116,16 +116,16 @@
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
-                        <button type="bottom"  onClick="borrar{{$aplicado->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
+                        <button type="bottom"  onClick= "borrar{{ $aplicado->id }}()"title="Eliminar registro" class="btn btn-outline-danger">
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{ route('vacuna.destroy', ['id' => $paciente->id, 'vacuna' => $aplicado->id]) }}"method="POST" id="eliminar{{$aplicado->id}}"> 
+                        <form action="{{ route('vacuna.destroy', ['id' => $paciente->id, 'vacuna' => $aplicado->id]) }}"method="POST" id="eliminar{{ $aplicado->id }}"> 
                             @csrf
                             @method('DELETE')       
                         
                             <script>
-                                function borrar{{$aplicado->id}}(){
+                                function borrar{{ $aplicado->id }}(){
                                     Swal.fire({
                                         title: 'Eliminar Registro',
                                         text: '¿Desea eliminar el registro seleccionado?',
@@ -136,7 +136,7 @@
                                     }).then((result) => {
                                         /* Read more about isConfirmed, isDenied below */
                                         if (result.value) {
-                                            document.getElementById('eliminar{{$aplicado->id}}').submit();
+                                            document.getElementById('eliminar{{ $aplicado->id }}').submit();
                                         } else {   
                                         }
                                     })

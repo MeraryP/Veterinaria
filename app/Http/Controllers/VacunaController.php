@@ -162,10 +162,13 @@ class VacunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$vacuna)
     {
-        $aplicado = Vacuna::find($id);
-        $aplicado->delete();
-        return redirect('/vacuna')->with('mensaje', 'El Registro fue borrado exitosamente');
+        $paciente = Paciente::findOrFail($id);
+        $aplicado = Vacuna::find($vacuna);
+        if ($aplicado) {
+            $aplicado->delete();
+           return redirect("/paciente/{$id}/vacuna")->with('mensaje', 'El Registro fue borrado exitosamente');
+        }
     }
 }

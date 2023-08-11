@@ -143,10 +143,14 @@ class ExamenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$examen)
     {
-        $examen = Examen::find($id);
-        $examen->delete();
-        return redirect('/examen')->with('mensaje', 'El Registro fue borrado exitosamente');
+
+        $paciente = Paciente::findOrFail($id);
+        $examen = Examen::find($examen);
+        if ($examen) {
+            $examen->delete();
+         return redirect("/paciente/{$id}/examen")->with('mensaje', 'El Registro fue borrado exitosamente');
+        }
     }
 }

@@ -136,7 +136,7 @@
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{ route('desparacitar.create', ['id' => $paciente->id]) }}" method="POST" id="eliminar{{$aplicado->id}}"> 
+                        <form action="{{ route('desparacitar.destroy', ['id' => $paciente->id, 'desparacitar' => $aplicado->id]) }}" method="POST" id="eliminar{{$aplicado->id}}"> 
                             @csrf
                             @method('DELETE')       
                         

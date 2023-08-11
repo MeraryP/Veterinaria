@@ -140,7 +140,7 @@ setTimeout(quitarerror, 3000);
                 
                 <button type="bottom"  onClick="borrar{{$examen->id}}()" title="Eliminar registro" class="btn btn-danger">
                <i class="fa fa-window-close" aria-hidden="true"></i></button>
-                <form action="{{ route('examen.create', ['id' => $paciente->id]) }}" method="POST" id="eliminar{{$examen->id}}"> 
+                <form action="{{ route('examen.destroy', ['id' => $paciente->id, 'examan' => $examen->id]) }}" method="POST" id="eliminar{{$examen->id}}"> 
                 
                 @csrf
                 @method('DELETE')       

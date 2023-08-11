@@ -130,11 +130,15 @@ class DesparacitarController extends Controller{
         }
     }
 
-    public function destroy($id)
+    public function destroy($id,$desparacitar)
     {
-        $aplicado = Desparacitar::find($id);
-        $aplicado->delete();
-        return redirect('/desparacitar')->with('mensaje', 'El Registro fue borrado exitosamente');
+
+        $paciente = Paciente::findOrFail($id);
+        $aplicado = Desparacitar::find($desparacitar);
+        if ($aplicado) {
+            $aplicado->delete(); 
+           return redirect("/paciente/{$id}/desparacitar")->with('mensaje', 'El Registro fue borrado exitosamente');
+        }
     }
     
 }
