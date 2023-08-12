@@ -1,10 +1,10 @@
 @extends('layouts.madre')
 
-@section('title', 'Registro de desparasitar de '.$nombre_mascotas)
+@section('title', 'Registro de desparasitante a '.$nombre_mascotas)
 
 @section('content')
 
-     <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <a href="{{ URL::previous() }}" class="nav-link">
                 <div> 
@@ -82,8 +82,6 @@
             @enderror
         </div>
 
-
-
        <!-- <div class="mb-3">
             <label for="">Unidad</label>
             <select name="unidad" id="unidad" class="form-control @error('unidad') is-invalid @enderror">
@@ -98,22 +96,18 @@
             @enderror
         </div>-->
 
-
        <div class="mb-3">
-    <label for="unidad_desparasitante">Unidad Desparasitante </label>
-    <select name="unidad_desparasitante" id="unidad_desparasitante" class="form-control @error('unidad_desparasitante') is-invalid @enderror">
-        <option value="ml">Mililitros</option>
-        <option value="mg">Miligramos</option>
-        <option value="tabletas">Tabletas</option>
-        <option value="cucharaditas">Cucharaditas</option>
-    </select>
-    @error('unidad_desparasitante')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
-</div>
-
-
-
+            <label for="unidad_desparasitante">Unidad Desparasitante </label>
+            <select name="unidad_desparasitante" id="unidad_desparasitante" class="form-control @error('unidad_desparasitante') is-invalid @enderror">
+                <option value="ml">Mililitros</option>
+                <option value="mg">Miligramos</option>
+                <option value="tabletas">Tabletas</option>
+                <option value="cucharaditas">Cucharaditas</option>
+            </select>
+            @error('unidad_desparasitante')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
         <div class="mb-3">
             <label for="" class="form-label">Fecha de Aplicacion</label>
@@ -128,10 +122,9 @@
         </div>
         
         <div class="mb-3">
-        <label for="aplicada">¿Aplicado?</label>
-        <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
-       </div>
-
+            <label for="aplicada">Estado</label><br>
+            Aplicado<input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
+        </div>
 
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
         <a href="{{ route('desparacitar.index', ['id' => $paciente->id]) }}" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>

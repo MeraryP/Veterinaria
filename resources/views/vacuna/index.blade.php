@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <a href="{{ URL::previous() }}" class="nav-link">
@@ -92,8 +91,9 @@
             <tr>
                 <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
                 <th style="font-size:15px; text-align:center" scope="col">Vacuna</th>
+                <th style="font-size:15px; text-align:center" scope="col">Dosis</th>
                 <th style="font-size:15px; text-align:center" scope="col">Fecha de aplicación </th>
-                <th style="font-size:15px; text-align:center" scope="col">Aplicada </th>
+                <th style="font-size:15px; text-align:center" scope="col">Estado </th>
                 <th style="font-size:15px; text-align:center" scope="col">Acciones</th>           
             </tr>
         </thead>
@@ -105,12 +105,10 @@
             @if($aplicado->medicamento->categoria->nombre_cate === 'Vacuna') 
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
-                    
                     <td class="align-middle" style="font-size:15px">{{$aplicado->medicamento->nombre_medicamento}}</td>
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}} {{$aplicado->unidad}}</td>
                     <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>
-                    <td class="align-middle" style="font-size:15px">{{ $aplicado->aplicada ? 'Sí' : 'No' }}</td>
-        
-
+                    <td class="align-middle" style="font-size:15px">{{ $aplicado->aplicada ? 'Aplicado' : 'Pendiente' }}</td>
                     <td>
                         <a type="button"  title="Editar registro" href="./vacuna/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>

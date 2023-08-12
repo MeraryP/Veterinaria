@@ -1,23 +1,26 @@
 @extends('layouts.madre')
 
-@section('title', 'Registrar vacuna de '.$nombre_mascotas)
+@section('title', 'Registrar vacuna a '.$nombre_mascotas)
 
 @section('content')
- <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="{{ URL::previous() }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
+    
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a href="{{ URL::previous() }}" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item" role="presentation">
             <a href=""class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
                 </div>
             </a>
         </li>
+
         <li class="nav-item" role="presentation">
             <a href="" class="nav-link">
                 <div> 
@@ -33,7 +36,6 @@
                 </div>
             </a>
         </li>
-
     
         <li class="nav-item" role="presentation">
             <a href=""class="nav-link">
@@ -108,10 +110,9 @@
         </div>
         
         <div class="mb-3">
-        <label for="aplicada">¿Aplicada?</label>
-        <br>
-        <input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
-       </div>
+            <label for="aplicada">Estado</label><br>
+            Aplicado<input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
+        </div>
  
         <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
