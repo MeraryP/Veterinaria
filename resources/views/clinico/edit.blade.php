@@ -59,10 +59,10 @@
       </div>
 
         <button type="submit" class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
-        <a href="{{ route('clinicoMascota',['id'=>$clinico->id])}}"  class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+        <a href="{{ route('clinicoMascota',['id'=>$clinico->num_id])}}"  class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
         <br>
         <br>
     </form>
 
-@endsection 
+@endsection
