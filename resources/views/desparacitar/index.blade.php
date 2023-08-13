@@ -93,6 +93,7 @@
             <tr>
                 <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
                 <th style="font-size:15px; text-align:center" scope="col">Desparasitante</th>
+                <th style="font-size:15px; text-align:center" scope="col">Dosis</th>
                 <th style="font-size:15px; text-align:center" scope="col">Fecha de desparasitación</th>
                 <th style="font-size:15px; text-align:center" scope="col">Aplicado </th>
                 <th style="font-size:15px; text-align:center" scope="col">Acciones</th>
@@ -109,17 +110,20 @@
                 <tr>
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
                     <td class="align-middle" style="font-size:15px"> @if ($aplicado->medicamento)
-                        {{ $aplicado->medicamento->nombre_medicamento }}
-                    @else
-                        Medicamento no encontrado
-                    @endif</td>
+                            {{ $aplicado->medicamento->nombre_medicamento }}
+                        @else
+                            Medicamento no encontrado
+                        @endif
+                    </td>
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}} {{$aplicado->unidad_desparasitante}}</td>
                     <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>    
-                    <td class="align-middle" style="font-size:15px">{{$aplicado->aplicada ? 'Sí' : 'No' }}</td>
-
-
-
+                    <td class="align-middle" style="font-size:15px">{{$aplicado->aplicada ? 'Aplicado' : 'Pendiente' }}</td>
                     <td>
+<<<<<<< HEAD
                     <a type="button"  title="Editar registro" href="/desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
+=======
+                        <a type="button"  title="Editar registro" href="./desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
+>>>>>>> d6b8b1f5d96fe8ab90f4b981dbae36fa89dbecc8
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
