@@ -119,11 +119,7 @@
                     <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>    
                     <td class="align-middle" style="font-size:15px">{{$aplicado->aplicada ? 'Aplicado' : 'Pendiente' }}</td>
                     <td>
-<<<<<<< HEAD
                     <a type="button"  title="Editar registro" href="/desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
-=======
-                        <a type="button"  title="Editar registro" href="./desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;" >
->>>>>>> d6b8b1f5d96fe8ab90f4b981dbae36fa89dbecc8
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             

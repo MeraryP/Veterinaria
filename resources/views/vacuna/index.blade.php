@@ -4,13 +4,9 @@
 
 @section('content')
 
-<<<<<<< HEAD
 
  
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-=======
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
->>>>>>> d6b8b1f5d96fe8ab90f4b981dbae36fa89dbecc8
         <li class="nav-item" role="presentation">
             <a href= "/paciente/{{$idMascota}}/edit" class="nav-link">
                 <div> 
@@ -115,12 +111,8 @@
                     <td class="align-middle" style="font-size:15px">{{$aplicado->medicamento->nombre_medicamento}}</td>
                     <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}} {{$aplicado->unidad}}</td>
                     <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>
-                    <td class="align-middle" style="font-size:15px">{{ $aplicado->aplicada ? 'Aplicado' : 'Pendiente' }}</td>
-<<<<<<< HEAD
-        
-
-=======
->>>>>>> d6b8b1f5d96fe8ab90f4b981dbae36fa89dbecc8
+                    <td class="align-middle" style="font-size:15px">{{ $aplicado->aplicada ? 'Aplicado' : 'Pendiente' }}</td> 
+                    
                     <td>
                         <a type="button"  title="Editar registro" href="/vacuna/{{$aplicado->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
