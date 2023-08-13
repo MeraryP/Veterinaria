@@ -1,53 +1,54 @@
 @extends('layouts.madre')
 
-@section('title', 'Examen Físico' )
-
-
+@section('title', 'Examen Físico de ' .App\Models\Paciente::find($idMascota)->nombre_mascota)
 
 @section('content')
 
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="{{ URL::previous() }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-  <a href=""class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
-       </div>
-     </a>
-      </li>
+        <li class="nav-item" role="presentation">
+            <a href= "/paciente/{{$idMascota}}/edit" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+                </div>
+            </a>
+        </li>
 
-  <li class="nav-item" role="presentation">
-   <a href="" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-  <a href=""class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
-       </div>
-     </a>
-      </li>
+        <li class="nav-item" role="presentation">
+            <a href="{{route('examenMascota', ['id'=>$idMascota])}}" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+                </div>
+            </a>
+        </li>
 
-   
-      <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
+        <li class="nav-item" role="presentation">
+            <a href="{{route('vacunaMascota', ['id'=>$idMascota])}}" class="nav-link">
+                <div> 
+     
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <a href="{{route('desparacitacionMascota', ['id'=>$idMascota])}}" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
+                </div>
+            </a>
+        </li>
+
+    
+        <li class="nav-item" role="presentation">
+            <a href="{{route('clinicoMascota', ['id'=>$idMascota])}}" class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
                 </div>
             </a>
         </li>
-  
-</ul>
+    </ul>
+
 
 <script>
     var msg = '{{Session::get('mensaje')}}';
@@ -80,22 +81,12 @@ setTimeout(quitarerror, 3000);
 </script>
 <br>
 
-<nav class="main-header navbar
-    navbar-expand
-    navbar-white navbar-light">
 
-    <a class="nav-link" data-widget="pushmenu" href="#" data-enable-remember="true"style="color: black">
-        <i class="fas fa-bars"></i>
-        <span class="sr-only">Alternar barra de navegación</span>
-    </a>  
-
-  <h3>Examen Físico</h3>
-  </nav>
 
 <div class="contrainer">
 </div>
     <div align="right" style="float:right">
-    <a href="{{ route('examen.create', ['id' => $paciente->id]) }}"title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
+    <a href="{{route('paciente.examen.nuevo', ['id' => $idMascota])}}" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
 <br>
 <br>
@@ -135,12 +126,12 @@ setTimeout(quitarerror, 3000);
            
 
             <td>
-            <a type="button"  title="Editar registro" href="./examen/{{$examen->id}}/edit" class="btn btn-info" >
+            <a type="button"  title="Editar registro" href="/examen/{{$examen->id}}/edit" class="btn btn-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                 
                 <button type="bottom"  onClick="borrar{{$examen->id}}()" title="Eliminar registro" class="btn btn-danger">
                <i class="fa fa-window-close" aria-hidden="true"></i></button>
-                <form action="{{ route('examen.destroy', ['id' => $paciente->id, 'examan' => $examen->id]) }}" method="POST" id="eliminar{{$examen->id}}"> 
+                <form action="{{route ('examen.destroy',$examen->id)}}" method="POST" id="eliminar{{$examen->id}}"> 
                 
                 @csrf
                 @method('DELETE')       

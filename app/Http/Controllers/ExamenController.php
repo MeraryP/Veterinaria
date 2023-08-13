@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class ExamenController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        $paciente = Paciente::findOrfail($id);
+  
        $examens= Examen::all();
-        return view ('examen/index',compact('examens','paciente'));
+        return view ('examen/index',compact('examens'));
     }
 
 
@@ -21,14 +21,23 @@ class ExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
        
-        $paciente = Paciente::findOrfail($id);
-        $nombre_mascotas = $paciente->nombre_mascota;
+     
         $pacientes = Paciente::all();  
         //$generos = Genero::all();
-        return view ('examen.create',compact('pacientes','paciente','nombre_mascotas'));
+        return view ('examen.create',compact('pacientes'));
+    }
+
+
+    public function examenPaciente($id)
+    {
+       
+     
+        $paciente = $id;  
+        //$generos = Genero::all();
+        return view ('examen.create',compact('paciente'));
     }
 
     /**
@@ -62,7 +71,7 @@ class ExamenController extends Controller
         $examens->save();
 
         if($examens){
-            return redirect("/paciente/{$request->get('num_id')}/examen")->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect()->route('examenMascota',['id'=>$request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -86,14 +95,13 @@ class ExamenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id,$ide)
+    public function edit($id)
     {
        
-        $paciente = Paciente::findOrfail($id);
-        $nombre_mascotas = $paciente->nombre_mascota;
+     
         $pacientes = Paciente::all(); 
-        $examen = Examen::findOrfail($ide);
-        return view('examen.edit',compact('pacientes','paciente','nombre_mascotas'))->with('examen', $examen);
+        $examen = Examen::findOrfail($id);
+        return view('examen.edit',compact('pacientes'))->with('examen', $examen);
     }
 
     /**
@@ -130,7 +138,7 @@ class ExamenController extends Controller
         $examen->save();
 
         if($examen){
-            return redirect("/paciente/{$request->get('num_id')}/examen")->with('mensaje', 'El registro fue modificado exitosamente.');
+            return redirect()->route('examenMascota',['id'=>$request->get('num_id')])->with('mensaje', 'El registro fue actualizado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -143,14 +151,11 @@ class ExamenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,$examen)
+    public function destroy($id)
     {
 
-        $paciente = Paciente::findOrFail($id);
-        $examen = Examen::find($examen);
-        if ($examen) {
-            $examen->delete();
-         return redirect("/paciente/{$id}/examen")->with('mensaje', 'El Registro fue borrado exitosamente');
-        }
+        $examen = Examen::find($id);
+        $examen->delete();
+        return redirect()->back()->with('mensaje', 'El registro fue elimainado exitosamente.');
     }
 }

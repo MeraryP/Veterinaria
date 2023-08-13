@@ -1,64 +1,21 @@
 @extends('layouts.madre')
 
-@section('title', 'Registro de desparasitar de '.$nombre_mascotas)
+@section('title', 'Registro de desparasitar de ')
 
 @section('content')
 
-     <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a href="{{ URL::previous() }}" class="nav-link">
-                <div> 
-                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-                </div>
-            </a>
-        </li>
-    
-        <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
-                <div> 
-                    <p style="text-align: center; margin-bottom: 0px;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
-                </div>
-            </a>
-        </li>
-
-        <li class="nav-item" role="presentation">
-            <a href="" class="nav-link">
-                <div> 
-                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
-                </div>
-            </a>
-        </li>
-
-        <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
-                <div> 
-                    <p style="text-align: center; margin-bottom: 0px;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
-                </div>
-            </a>
-        </li>
-
-        <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
-                <div> 
-                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
-                </div>
-            </a>
-        </li>
-    </ul>
+  
 
 
-    <form action ="../desparacitar"  method="POST">
+    <form action ="{{route('desparacitar.store')}}"  method="POST">
     
         @csrf
         <br>
 
         <div class="mb-3" style="display:none !important;" >
             <label for="">Nombre de la Mascota</label>
-            <select class="form-control" name="num_id">  
-            @foreach ($pacientes as  $paciente)
-              <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
-              @endforeach   
-            </select>
+            <input class="form-control" name="num_id" value= "{{$paciente}}">  
+            
         </div>
 
         <div class="mb-3">
@@ -83,20 +40,6 @@
         </div>
 
 
-
-       <!-- <div class="mb-3">
-            <label for="">Unidad</label>
-            <select name="unidad" id="unidad" class="form-control @error('unidad') is-invalid @enderror">
-                <option value="">Seleccione una opción</option>
-                <option value="mililitros" {{ old('unidad') === 'mililitros' ? 'selected' : '' }}>Mililitros</option>
-                <option value="miligramos" {{ old('unidad') === 'miligramos' ? 'selected' : '' }}>Miligramos</option>
-            </select>
-            @error('unidad')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>-->
 
 
        <div class="mb-3">
@@ -134,7 +77,7 @@
 
 
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
-        <a href="{{ route('desparacitar.index', ['id' => $paciente->id]) }}" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+        <a href="{{route('desparacitacionMascota', ['$id'=>$paciente])}}" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
         
         
     </form>

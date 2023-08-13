@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Propietario;
 use App\Models\GeneroMascota;
 use App\Models\Especie;
+use App\Models\Vacuna;
+use App\Models\Examen;
+use App\Models\Desparacitar;
+use App\Models\Clinico;
 
 
 
@@ -115,8 +119,30 @@ class PacienteController extends Controller
         $genero_mascotas = GeneroMascota::all();
         $paciente = Paciente::findOrfail($id);
         $nombre_mascotas = $paciente->nombre_mascota;
-        return view('paciente.edit', compact('genero_mascotas','propietarios','especies','nombre_mascotas'))->with('paciente', $paciente);
+        return view('paciente.edit', compact('genero_mascotas','propietarios','especies','nombre_mascotas'))
+        ->with('paciente', $paciente)
+        ->with('idMascota', $id); 
     
+    }
+
+    public function vacunaMascota($id){
+        $aplicados =  Vacuna::select('*')->where('num_id','=',$id)->get();
+        return view ('vacuna/index')->with('aplicados', $aplicados)->with('idMascota', $id);
+    }
+
+    public function examenMascota($id){
+        $examens =  Examen::select('*')->where('num_id','=',$id)->get();
+        return view ('examen/index')->with('examens', $examens)->with('idMascota', $id);
+    }
+    
+    public function desparacitacionMascota($id){
+        $aplicados =  Desparacitar::select('*')->where('num_id','=',$id)->get();
+        return view ('desparacitar/index')->with('aplicados', $aplicados)->with('idMascota', $id);
+    }
+
+    public function  clinicoMascota($id){
+        $clinicos =  Clinico::select('*')->where('num_id','=',$id)->get();
+        return view ('clinico/index')->with('clinicos', $clinicos)->with('idMascota', $id);
     }
 
     /**

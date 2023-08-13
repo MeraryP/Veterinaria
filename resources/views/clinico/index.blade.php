@@ -1,49 +1,54 @@
 @extends('layouts.madre')
 
-@section('title', 'Examen Clinico')
+@section('title', 'Examen Clinico de ' .App\Models\Paciente::find($idMascota)->nombre_mascota)
 
 @section('content')
 
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="{{ URL::previous() }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
+        <li class="nav-item" role="presentation">
+            <a href= "/paciente/{{$idMascota}}/edit" class="nav-link">
+                <div> 
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <a href="{{route('examenMascota', ['id'=>$idMascota])}}" class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
                 </div>
             </a>
         </li>
+
         <li class="nav-item" role="presentation">
-            <a href="" class="nav-link">
+            <a href="{{route('vacunaMascota', ['id'=>$idMascota])}}" class="nav-link">
                 <div> 
+     
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
                 </div>
             </a>
         </li>
 
         <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
+            <a href="{{route('desparacitacionMascota', ['id'=>$idMascota])}}" class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
                 </div>
             </a>
         </li>
 
-        
+    
         <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
+            <a href="{{route('clinicoMascota', ['id'=>$idMascota])}}" class="nav-link">
                 <div> 
                     <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
                 </div>
             </a>
         </li>
     </ul>
+
 
     <script>
         var msg = '{{Session::get('mensaje')}}';
@@ -78,7 +83,7 @@
 
     <br>
     <div align="right" style="float:right">
-        <a href="{{ route('clinico.create', ['id' => $paciente->id]) }}" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
+        <a href="{{route('paciente.clinico.nuevo', ['id' => $idMascota])}}" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i> Crear</a>
     </div>
     <br>
     <br>
@@ -107,7 +112,7 @@
                     <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: justify'>{{$clinico->tratamiento}}</td>
  
                     <td>
-                        <a type="button"  title="Editar registro" href="./clinico/{{$clinico->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
+                        <a type="button"  title="Editar registro" href="/clinico/{{$clinico->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
@@ -115,7 +120,7 @@
                             <i class="fa fa-window-close" aria-hidden="true"></i>
                         </button>
 
-                        <form action="{{ route('clinico.destroy', ['id' => $paciente->id, 'clinico' => $clinico->id]) }}"  method="POST" id="eliminar{{$clinico->id}}"> 
+                        <form action="{{route ('clinico.destroy',$clinico->id)}}"   method="POST" id="eliminar{{$clinico->id}}"> 
                             @csrf
                             @method('DELETE')       
                         

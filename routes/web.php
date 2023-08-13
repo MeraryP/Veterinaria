@@ -38,7 +38,23 @@ Route::middleware("auth")->group(function () {
         ->name('propietario.update')->where('id','[0-9]+');
         //ruta paciente
         Route::resource('/paciente', 'App\Http\Controllers\PacienteController');
+        
+        //ruta para recuperar los datos de la mascota
+        Route::get('vacunaMascota/{id}', [PacienteController::class, 'vacunaMascota'])->name('vacunaMascota');
+        Route::get('examenMascota/{id}', [PacienteController::class, 'examenMascota'])->name('examenMascota');
+        Route::get('desparacitacionMascota/{id}', [PacienteController::class, 'desparacitacionMascota'])->name('desparacitacionMascota');
+        Route::get('clinicoMascota/{id}', [PacienteController::class, 'clinicoMascota'])->name('clinicoMascota');
 
+        //rutas para guardar especificamente la mascota
+        Route::get('vacuna/{id}/create', [VacunaController::class, 'vacunaPaciente'])->name('paciente.vacuna.nuevo');
+        Route::get('examen/{id}/create', [ExamenController::class, 'examenPaciente'])->name('paciente.examen.nuevo');
+        Route::get('desparacitar/{id}/create', [DesparacitarController::class, 'desparacitarPaciente'])->name('paciente.desparacitar.nuevo');
+        Route::get('clinico/{id}/create', [ClinicoController::class, 'clinicoPaciente'])->name('paciente.clinico.nuevo');
+
+
+        
+        
+        
         Route::put('/paciente/{id}/editar', [PacienteController::class, 'update'])
         ->name('paciente.update')->where('id','[0-9]+');
        
@@ -50,24 +66,20 @@ Route::middleware("auth")->group(function () {
         ->name('medicamento.update')->where('id','[0-9]+');
 
         //ruta vacuna
-        Route::resource('/paciente/{id}/vacuna', 'App\Http\Controllers\VacunaController');
+        Route::resource('/vacuna', 'App\Http\Controllers\VacunaController');
 
         Route::put('/vacuna/{id}/editar', [VacunaController::class, 'update'])
         ->name('vacuna.update')->where('id','[0-9]+');
-       
-
-
 
 
         //ruta resumen
-        Route::resource('/paciente/{id}/examen', 'App\Http\Controllers\ExamenController');
+        Route::resource('/examen', 'App\Http\Controllers\ExamenController');
 
         Route::put('/examen/{id}/editar', [ExamenController::class, 'update'])
         ->name('examen.update')->where('id','[0-9]+');
 
-
         //ruta triadas
-        Route::resource('/paciente/{id}/desparacitar', 'App\Http\Controllers\DesparacitarController');
+        Route::resource('desparacitar', 'App\Http\Controllers\DesparacitarController');
 
         Route::put('/desparacitar/{id}/editar', [DesparacitarController::class, 'update'])
         ->name('desparacitar.update')->where('id','[0-9]+');
@@ -89,22 +101,21 @@ Route::middleware("auth")->group(function () {
     
         Route::put('/usuario/editar',[UserController::class, 'actualizar'])
         ->name('usuario.actualizar'); 
-        
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-      
               
  
         //ruta EXAMEN CLINICO
-        Route::resource('/paciente/{id}/clinico', 'App\Http\Controllers\ClinicoController');
+        Route::resource('/clinico', 'App\Http\Controllers\ClinicoController');
 
         Route::put('/clinico/{id}/editar', [ClinicoController::class, 'update'])
         ->name('clinico.update')->where('id','[0-9]+');
     
        
-        //Route::resource('/clinico', 'App\Http\Controllers\ClinicoController');
+
 
     });
     
 });
 
 Auth::routes(["register" => false]);
+

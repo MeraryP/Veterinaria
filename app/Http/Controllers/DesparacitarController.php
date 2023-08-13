@@ -10,15 +10,33 @@ use App\Models\Categoria;
 use App\Models\Medicamento;
 use Illuminate\Support\Facades\DB;
 
-class DesparacitarController extends Controller{
-    public function index($id){
+class DesparacitarController extends Controller
+{
 
-        $paciente= Paciente::findOrfail($id);
+    public function index(){
+
         $aplicados= Desparacitar::all();
-        return view ('desparacitar/index',compact('aplicados','paciente'));
+        return view ('desparacitar/index',compact('aplicados'));
     }
 
-    public function create($id){
+    public function create()
+    {
+        $categoriaDesparasitante = Categoria::where('nombre_cate', 'Desparasitante')->first(); 
+    
+        if ($categoriaDesparasitante) {
+         
+            $medicamentos = Medicamento::where('cate_id', $categoriaDesparasitante->id)->get();
+        } else {
+            $medicamentos = collect(); 
+        }
+        
+      
+        $pacientes = Paciente::all(); 
+        return view('desparacitar.create', compact('pacientes','medicamentos'));
+    }
+
+    public function desparacitarPaciente($id)
+    {
 
         $categoriaDesparasitante = Categoria::where('nombre_cate', 'Desparasitante')->first(); 
     
@@ -29,15 +47,16 @@ class DesparacitarController extends Controller{
             $medicamentos = collect(); 
         }
         
-        $paciente = Paciente::findOrfail($id);
-        $nombre_mascotas = $paciente->nombre_mascota;
-        $pacientes = Paciente::all(); 
-        return view('desparacitar.create',compact('pacientes','medicamentos','paciente','nombre_mascotas'));
+        $paciente = $id; 
+        return view('desparacitar.create',compact('paciente','medicamentos'));
     }
 
-    public function store(Request $request) {
+
+
+    public function store(Request $request) 
+    {
        
-        $this->validate($request,[
+       $request->validate([
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
             'dosis'=>'required|numeric|min:0',
@@ -46,10 +65,7 @@ class DesparacitarController extends Controller{
                 'required',
                 Rule::in(['ml', 'mg', 'tabletas', 'cucharaditas']),
             ],
-        /* 'unidad' => [
-                'required',
-                Rule::in(['mililitros', 'miligramos']),
-            ],*/
+    
             'fecha_aplicada'=>'required|date',
             'aplicado' => 'boolean',
             
@@ -66,7 +82,7 @@ class DesparacitarController extends Controller{
         $aplicados->save();
 
         if($aplicados){
-            return redirect("/paciente/{$request->get('num_id')}/desparacitar")->with('mensaje', 'El desparacitante fue cread0 exitosamente.');
+            return redirect()->route('desparacitacionMascota', ['id'=>$request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -78,7 +94,7 @@ class DesparacitarController extends Controller{
     }
 
     
-    public function edit($id,$idd)
+    public function edit($idd)
     {
         $categoriaDesparasitante = Categoria::where('nombre_cate', 'Desparasitante')->first(); 
     
@@ -89,11 +105,10 @@ class DesparacitarController extends Controller{
             $medicamentos = collect(); 
         }
         
-        $paciente = Paciente::findOrfail($id);
+       
         $pacientes = Paciente::all(); 
-        $nombre_mascotas = $paciente->nombre_mascota;
         $aplicado = Desparacitar::findOrfail($idd);
-        return view('desparacitar.edit',compact('pacientes','medicamentos','paciente','nombre_mascotas'))->with('aplicado',$aplicado);
+        return view('desparacitar.edit',compact('pacientes','medicamentos'))->with('aplicado',$aplicado);
     }
 
    
@@ -112,33 +127,28 @@ class DesparacitarController extends Controller{
             'aplicado' => 'boolean',
         ]);
 
-        $aplicados = Desparacitar::find($id);
-        $aplicados->num_id = $request->get('num_id');
-        $aplicados->medi_id = $request->get('medi_id');
-        $aplicados->dosis = $request->get('dosis');
-        $aplicados->unidad_desparasitante = $request->get('unidad_desparasitante');
-        $aplicados->fecha_aplicada = $request->get('fecha_aplicada');
-        $aplicados->aplicada = $request->has('aplicada');
+        $aplicado = Desparacitar::find($id);
+        $aplicado->num_id = $request->get('num_id');
+        $aplicado->medi_id = $request->get('medi_id');
+        $aplicado->dosis = $request->get('dosis');
+        $aplicado->unidad_desparasitante = $request->get('unidad_desparasitante');
+        $aplicado->fecha_aplicada = $request->get('fecha_aplicada');
+        $aplicado->aplicada = $request->has('aplicada');
+        $aplicado->save();
 
-
-        $aplicados->save();
-
-        if($aplicados){
-            return redirect("/paciente/{$request->get('num_id')}/desparacitar")->with('mensaje', 'El desparacitante fue modificado exitosamente.');
+        if($aplicado){
+            return redirect()->route('desparacitacionMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
     }
 
-    public function destroy($id,$desparacitar)
+    public function destroy($id)
     {
-
-        $paciente = Paciente::findOrFail($id);
-        $aplicado = Desparacitar::find($desparacitar);
-        if ($aplicado) {
-            $aplicado->delete(); 
-           return redirect("/paciente/{$id}/desparacitar")->with('mensaje', 'El Registro fue borrado exitosamente');
-        }
-    }
-    
+       
+        $aplicado = Desparacitar::find($id);
+        $aplicado->delete();
+        return redirect()->back()->with('mensaje', 'El registro fue eliminado exitosamente.');
 }
+}
+

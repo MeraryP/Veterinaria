@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class VacunaController extends Controller
 {
-    public function index($id)
+    public function index(Request $request)
     {
-       $paciente = Paciente::findOrfail($id);
+       
        $aplicados= Vacuna::all();
-        return view ('vacuna/index',compact('aplicados','paciente'));
+        return view ('vacuna/index',compact('aplicados'));
     }
 
 
@@ -26,7 +26,7 @@ class VacunaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
 
         $categoriaVacuna = Categoria::where('nombre_cate', 'Vacuna')->first(); 
@@ -39,11 +39,27 @@ class VacunaController extends Controller
         }
     
        
-       $paciente = Paciente::findOrfail($id);
+      
        $pacientes = Paciente::all();
-       $nombre_mascotas = $paciente->nombre_mascota;
-        return view ('vacuna.create',compact('pacientes','medicamentos','paciente','nombre_mascotas'));
+        return view ('vacuna.create',compact('pacientes','medicamentos'));
     }
+
+    public function vacunaPaciente($id)
+    {
+
+        $categoriaVacuna = Categoria::where('nombre_cate', 'Vacuna')->first(); 
+    
+        if ($categoriaVacuna) {
+         
+            $medicamentos = Medicamento::where('cate_id', $categoriaVacuna->id)->get();
+        } else {
+            $medicamentos = collect();  //manda vacio 
+        }
+    
+       $paciente = $id;
+        return view ('vacuna.create',compact('paciente','medicamentos'));
+    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -53,6 +69,7 @@ class VacunaController extends Controller
      */
     public function store(Request $request)
     {
+        
         $request->validate([
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
@@ -76,7 +93,7 @@ class VacunaController extends Controller
         $aplicados->save();
 
         if($aplicados){
-            return redirect("/paciente/{$request->get('num_id')}/vacuna")->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect()->route('vacunaMascota',['id'=>$request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -100,7 +117,7 @@ class VacunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id,$idv)
+    public function edit($idv)
     {
         $categoriaVacuna = Categoria::where('nombre_cate', 'Vacuna')->first(); 
     
@@ -111,11 +128,11 @@ class VacunaController extends Controller
             $medicamentos = collect();  //manda vacio 
         }
         
-        $paciente = Paciente::findOrfail($id);
-        $nombre_mascotas = $paciente->nombre_mascota;
+       
+       
         $pacientes = Paciente::all(); 
         $aplicado = Vacuna::findOrfail($idv);
-        return view('vacuna.edit',compact('pacientes','medicamentos','paciente','nombre_mascotas'))->with('aplicado', $aplicado);
+        return view('vacuna.edit',compact('pacientes','medicamentos'))->with('aplicado', $aplicado);
     }
 
     /**
@@ -149,7 +166,7 @@ class VacunaController extends Controller
         $aplicado->save();
 
         if($aplicado){
-            return redirect("/paciente/{$request->get('num_id')}/vacuna")->with('mensaje', 'El registro fue modificado exitosamente.');
+            return redirect()->route('vacunaMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -162,13 +179,10 @@ class VacunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,$vacuna)
+    public function destroy($id)
     {
-        $paciente = Paciente::findOrFail($id);
-        $aplicado = Vacuna::find($vacuna);
-        if ($aplicado) {
-            $aplicado->delete();
-           return redirect("/paciente/{$id}/vacuna")->with('mensaje', 'El Registro fue borrado exitosamente');
-        }
-    }
+        $aplicado = Vacuna::find($id);
+        $aplicado->delete();
+        return redirect()->back()->with('mensaje', 'El registro fue eliminado exitosamente.');
+}
 }

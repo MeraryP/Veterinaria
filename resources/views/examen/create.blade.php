@@ -1,56 +1,16 @@
 @extends('layouts.madre')
 
-@section('title', 'Registrar Examen Fisico de '.$nombre_mascotas)
+@section('title', 'Registrar Examen Fisico de ' .App\Models\Paciente::find($paciente)->nombre_mascota)
+
 
 
 @section('content')
 
-<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-<a href="{{ URL::previous() }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
-       </div>
-     </a>
-  </li>
-
-  <li class="nav-item" role="presentation">
-  <a href=""class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
-       </div>
-     </a>
-      </li>
-  <li class="nav-item" role="presentation">
-   <a href="" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
-       </div>
-     </a>
-  </li>
-  <li class="nav-item" role="presentation">
-  <a href=""class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
-       </div>
-     </a>
-      </li>
-
-      <li class="nav-item" role="presentation">
-            <a href=""class="nav-link">
-                <div> 
-                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
-                </div>
-            </a>
-        </li>
-      
-  
-</ul> -->
 
 
 
   
-<form action ="../examen"  method="POST">
+<form action ="{{route('examen.store')}}"  method="POST">
     @csrf
            
    <br> 
@@ -58,11 +18,8 @@
    
       <div class="mb-3" style="display:none !important;" >
       <label for="">Nombre de la Mascota</label>
-      <select class="form-control" name="num_id"> 
-       @foreach ($pacientes as  $paciente)
-        <option value="{{$paciente->id}}">{{$paciente->nombre_mascota}}</option>
-        @endforeach   
-      </select>
+      <input class="form-control" name="num_id" value= "{{$paciente}}"> 
+      
       </div>
 
     <div class="mb-3">
@@ -140,7 +97,7 @@
 <link rel="stylesheet" type="text/css" href="css/fonts.css" >     
 <button type="submit"class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar</button> 
 
-<a href="{{ route('examen.index', ['id' => $paciente->id]) }}" class="btn btn-outline-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+<a href="{{route('examenMascota', ['id' =>$paciente])}}" class="btn btn-outline-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 <br>
 <br>
 
