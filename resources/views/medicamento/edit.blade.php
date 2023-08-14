@@ -34,16 +34,7 @@
       </select>
       </div>
 
-<div class="mb-3">
-        <label for="" class="form-label">Dosis del medicamento</label>
-        <input type="number" name="dosis"  id="dosis"  class="form-control @error('dosis') is-invalid @enderror"   placeholder="" value="{{ $medicamento->dosis }}"
-        title="Ingrese la dosis">
-        @error('dosis')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-</div>
+
 
 
 
