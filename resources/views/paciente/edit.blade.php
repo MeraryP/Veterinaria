@@ -55,16 +55,15 @@
     @method('put')
     @csrf
 
-    
+    <label class="form-label" style="margin-left: 200px;position: absolute;top: 150px;">Foto actual:</label>
     <div class="row" >
-     
-
-     <div class="col" style=" margin-top: 85px;">
-      <label class="form-label" style="margin-left: 0px;">Foto actual:</label>
-         <img src="/image/{{ $paciente->filename }}"  style="max-width: 200px;margin-left: 80px;margin-right: 10px;">
+   
+     <div class="col" style=" margin-top: 100px;">
+      
+         <img src="/image/{{ $paciente->filename }}"  style="max-width: 200px;margin-left: 150px;margin-right: 10px;">
      </div>
     
-     <div  style="margin-left: 0px;"class="col">
+     <div  class="col" style=" margin-top: 0px;" >
          
          <label for="imagen" class="form-label">Nueva Foto</label>
          <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror  " style="max-width: 400px;">
