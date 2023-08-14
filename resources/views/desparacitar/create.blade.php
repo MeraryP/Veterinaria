@@ -4,9 +4,6 @@
 
 @section('content')
 
-  
-
-
     <form action ="{{route('desparacitar.store')}}"  method="POST">
     
         @csrf
@@ -29,18 +26,14 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Dosis de Desparasitante</label>
-            <input type="number" value="{{old('dosis')}}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  
-             title="dosis">
-
+            <input type="number" value="{{old('dosis')}}"  name="dosis" id="dosis" title="Dosis" 
+            class="form-control @error('dosis') is-invalid @enderror" placeholder="Ingrese la dosis">
             @error('dosis')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
-
-
-
 
        <div class="mb-3">
             <label for="unidad_desparasitante">Unidad Desparasitante </label>
@@ -57,9 +50,9 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Fecha de Aplicacion</label>
-            <input type="date" value="{{old('fecha_aplicada')}}"  name="fecha_aplicada" id="fecha_aplicada"  class="form-control @error('fecha_aplicada') is-invalid @enderror"  tabindex="1"
-            title="fecha desparacitacion">
-
+            <input type="date" value="{{old('fecha_aplicada')}}"  name="fecha_aplicada" id="fecha_aplicada"  
+            class="form-control @error('fecha_aplicada') is-invalid @enderror"  tabindex="1" 
+            title="Ingrese fecha de Desparacitar">
             @error('fecha_aplicada')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -68,13 +61,14 @@
         </div>
         
         <div class="mb-3">
-            <label for="aplicada">Estado</label><br>
-            Aplicado<input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
+            <label>Estado</label><br>
+            <label for="aplicada">Aplicado</label>
+            <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}
+            style="width: 20px; height: 20px; border-radius: 3px; margin-left: 10px;">
         </div>
 
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
         <a href="{{route('desparacitacionMascota', ['id'=>$paciente])}}" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
-        
         
     </form>
 

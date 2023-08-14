@@ -4,8 +4,6 @@
 
 @section('content')
 
- 
-
     <form  method="POST" action="{{ route('vacuna.update',['id'=>$aplicado->id])}}">
         @method('put')
         @csrf
@@ -16,7 +14,6 @@
             <input class="form-control" name="num_id" value= "{{$aplicado->num_id}}"> 
               
                   
-            </select>
         </div>        
 
         <div class="mb-3">
@@ -69,12 +66,14 @@
         </div>
 
         <div class="mb-3">
-        <label for="aplicada">Estado</label><br>
-            Aplicado<input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}>
+            <label>Estado</label><br>
+            <label for="aplicada">Aplicado</label>
+            <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}
+            style="width: 20px; height: 20px; border-radius: 3px; margin-left: 10px;">
         </div>
 
 
-        <button type="submit" class="btn btn-outline-success" tabindex="4"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
+        <button type="submit" class="btn btn-outline-success" tabindex="4" style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
         <a href="{{ route('vacunaMascota',['id'=>$aplicado->num_id])}}"  class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
         <br>
