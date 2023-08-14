@@ -4,9 +4,6 @@
 
 @section('content')
  
-
-
-
     <form action ="{{route('vacuna.store')}}"  method="POST">
         @csrf
     
@@ -29,8 +26,8 @@
 
         <div class="mb-3">
             <label for="">Dosis</label>
-            <input type="number" maxlength="4" pattern="[0-9]{4}" value="{{old('dosis')}}"  name="dosis"  id="dosis" 
-            class="form-control @error('dosis') is-invalid @enderror"   placeholder="Ingrese la cantidad aplicada de la vacuna"
+            <input type="number" maxlength="4" pattern="[0-9]{4}" value="{{old('dosis')}}"  name="dosis"  id="Dosis" 
+            class="form-control @error('dosis') is-invalid @enderror"  placeholder="Ingrese la dosis"
             title="Ingrese la cantidad aplicada de la vacuna ">
             @error('dosis')
                 <span class="invalid-feedback" role="alert">
@@ -38,7 +35,6 @@
                 </span>
             @enderror
         </div>
-
 
         <div class="mb-3">
             <label for="">Unidad</label>
@@ -67,11 +63,13 @@
             @enderror
         </div>
         
-        <div class="mb-3">
-            <label for="aplicada">Estado</label><br>
-            Aplicado<input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
+        <div class="checkbox">
+            <label>Estado</label><br>
+            <label for="aplicada">Aplicado </label>
+            <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}
+            style="width: 20px; height: 20px; border-radius: 3px; margin-left: 10px;">
         </div>
- 
+        
         <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
 

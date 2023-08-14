@@ -4,7 +4,6 @@
 
 @section('content')
     
-
     <form method="POST" action ="{{route('desparacitar.update',['id'=>$aplicado->id])}}">
         @method('put')
         @csrf
@@ -28,7 +27,7 @@
         <div class="mb-3">
             <label for="" class="form-label">Dosis de Desparasitante</label>
             <input type="number" value="{{ $aplicado->dosis }}"  name="dosis" id="dosis"  class="form-control @error('dosis') is-invalid @enderror"  
-            tabindex="1" title="dosis">
+            tabindex="1" title="Dosis">
             @error('dosis')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -52,7 +51,7 @@
         <div class="mb-3">
             <label for="" class="form-label">Fecha de desparasitar</label>
             <input type="date" class="form-control @error('fecha_aplicada') is-invalid @enderror" name="fecha_aplicada" id="fecha_aplicada" 
-            value="{{ $aplicado->fecha_aplicada }}" title="Ingrese Fecha de desparacitacion">
+            value="{{ $aplicado->fecha_aplicada }}" title="Ingrese fecha de desparacitar">
             @error('fecha_aplicacion')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -61,12 +60,15 @@
         </div>
 
         <div class="mb-3">
-            <label for="aplicada">Estado</label><br>
-            Aplicado<input style="width:70px; heigh:40px;" type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}>
+            <label>Estado</label><br>
+            <label for="aplicada">Aplicado</label>
+            <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}
+            style="width: 20px; height: 20px; border-radius: 3px; margin-left: 10px;">
         </div>
 
-
-        <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
+        <button type="submit"class="btn btn-outline-success" tabindex="4" style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button> 
         <a href="{{ route('desparacitacionMascota',['id'=>$aplicado->num_id])}}" class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+    
+    </form>
            
 @endsection
