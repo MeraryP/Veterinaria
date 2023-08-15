@@ -1,36 +1,32 @@
 @extends('layouts.madre')
 
-@section('title', 'Crear paciente')
+@section('title', 'Nuevo paciente')
 
 
 @section('content')
 
 
  <br>
- <br> 
+  
 
 <form action ="../paciente"  method="POST"enctype="multipart/form-data" >
     @csrf
     <div>
-        <label for="imagen" class="form-label">Foto</label>
-        <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;">
+        <label for="imagen" class="form-label"style="margin-left: 120px;">Fotografia</label>
+        <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
+        <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 30px;">Agregar Foto</button>
         @error('imagen')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
     </div>
-
+     <br>
     
-    <div class="mb-3">
-        <br>
+    <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
         <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
     </div>
-
-    <br>
-        <a href="#" id="eliminar-imagen-btn" class="btn btn-outline-danger btn-sm"style="margin-left:180px;margin-right: 20px;">Eliminar Foto</a>
-    <br>
-    
+  
   <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
         <input type="text" maxlength="100" value="{{old('nombre_mascota')}}"  name="nombre_mascota"  id="nombre_mascota"   
@@ -122,6 +118,12 @@
 
 
 </form>
+<script>
+    
+    document.getElementById('cargar-imagen-btn').addEventListener('click', function () {
+        document.getElementById('imagen').click();
+    });
+</script>
 
 
 <script>
@@ -139,12 +141,9 @@
         }
     });
 
-    document.getElementById('eliminar-imagen-btn').addEventListener('click', function (e) {
-        e.preventDefault();
-        document.getElementById('imagen-preview').style.display = 'none';
-        document.getElementById('imagen').value = '';
-    });
+  
 </script>
+
 
 <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -159,5 +158,7 @@
             scrollPage();
         });
     </script>
+
+
 
 @endsection
