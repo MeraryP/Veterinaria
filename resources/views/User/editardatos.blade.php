@@ -83,12 +83,12 @@
 
       
         <br>
-        <button type="submit" class="btn btn-primary" ><span class="fas fa-user-plus"></span>
+        <button type="submit" class="btn btn-outline-success" style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span>
           Guardar Cambios
        </button>
         
        
-       <a type="button" class="btn btn-danger" href="/usuario"><i class="fa fa-times" aria-hidden="true"></i>
+       <a type="button" class="btn btn-outline-danger" href="/usuario"><i class="fa fa-times" aria-hidden="true"></i>
             Cancelar
         </a>
             
