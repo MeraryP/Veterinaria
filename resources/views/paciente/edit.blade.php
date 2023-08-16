@@ -55,40 +55,43 @@
     @method('put')
     @csrf
 
-    <label class="form-label" style="margin-left: 200px;position: absolute;top: 150px;">Foto actual:</label>
-    <div class="row" >
-   
-     <div class="col" style=" margin-top: 100px;">
-      
-         <img src="/image/{{ $paciente->filename }}"  style="max-width: 200px;margin-left: 150px;margin-right: 10px;">
-     </div>
     
-     <div  class="col" style=" margin-top: 0px;" >
-         
-         <label for="imagen" class="form-label">Nueva Foto</label>
-         <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror  " style="max-width: 400px;">
+    
+    <div class="container text-center">
+  <div class="row">
+    <div class="col-6 col-sm-5">
+    <label class="form-label" style="margin-left: 0px;position: absolute;top: 0px;margin-left: 200px;">Foto actual:</label>
+    <img src="/image/{{ $paciente->filename }}"  style="max-width: 200px;margin-left: 150px;margin-right: 90px;margin-top: 50px;">
+    </div>
+    <div class="col-6 col-sm-5">
+    <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 215px;">Agregar Nueva Foto</button> 
+    
+    
+         <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror  " style="max-width: 400px;display:none !important;">
          @error('imagen')
              <span class="invalid-feedback" role="alert">
                  <strong>{{ $message }}</strong>
              </span>
          @enderror
-         <br>
-         <div class="mb-3">
-         <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
-     </div>
+         
+         <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 200px;margin-top: 15px;object-fit: cover;">
+    </div>
 
-     <div class="col" >
-     <a href="#" id="eliminar-imagen-btn" class="btn btn-outline-danger btn-sm" style="margin-left:150px;margin-right: 20px;">Eliminar nueva Foto</a> 
-     </div>
-     </div>
- 
-</div> 
+   
+    <div class="w-100"></div>
+
+    <div class="col-6 col-sm-3">
+        
+   </div>
+    <div class="col-6 col-sm-3"></div>
+  </div>
+</div>
 
     
     
  <br>
  
-
+<br>
 
 <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
@@ -179,6 +182,13 @@
 </form>
 
 <script>
+    
+    document.getElementById('cargar-imagen-btn').addEventListener('click', function () {
+        document.getElementById('imagen').click();
+    });
+</script>
+
+<script>
     document.getElementById('imagen').addEventListener('change', function () {
         var reader = new FileReader();
 
@@ -193,11 +203,7 @@
         }
     });
 
-    document.getElementById('eliminar-imagen-btn').addEventListener('click', function (e) {
-        e.preventDefault();
-        document.getElementById('imagen-preview').style.display = 'none';
-        document.getElementById('imagen').value = '';
-    });
+   
 </script>
 
 

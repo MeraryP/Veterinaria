@@ -95,7 +95,7 @@
                 <th style="font-size:15px; text-align:center" scope="col">Desparasitante</th>
                 <th style="font-size:15px; text-align:center" scope="col">Dosis</th>
                 <th style="font-size:15px; text-align:center" scope="col">Fecha de desparasitación</th>
-                <th style="font-size:15px; text-align:center" scope="col">Aplicado </th>
+                <th style="font-size:15px; text-align:center" scope="col">Estado </th>
                 <th style="font-size:15px; text-align:center" scope="col">Acciones</th>
             </tr>
         </thead>

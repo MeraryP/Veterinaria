@@ -50,19 +50,19 @@
 
 
         <br>
-        <a type="button" class="btn btn-outline-danger" href="/usuario/editar"   ><i class="fas fa-pencil-alt" aria-hidden="true"></i>
+        <a type="button" class="btn btn-outline-info" href="/usuario/editar"  tabindex="4"style="margin-left: 130px;margin-right: 60px;" ><i class="fas fa-pencil-alt" aria-hidden="true"></i>
             Editar Perfil
         </a>
         
         
       
-        <a type="button" class="btn btn-outline-success"href="/contrasenia" ><i class="fa fa-key" aria-hidden="true"></i>
+        <a type="button" class="btn btn-outline-success"href="/contrasenia"tabindex="4"style="margin-left: 100px;margin-right: 60px;" ><i class="fa fa-key" aria-hidden="true"></i>
           Cambiar Contraseña
         </a>
         
        
-       <a type="button" class="btn btn-outline-warning" href="../"   ><i class="fa fa-reply-all" aria-hidden="true"></i>
-            Volver a inicio
+       <a type="button" class="btn btn-outline-danger" href="../"  tabindex="4"style="margin-left: 90px;margin-right: 60px;" ><i class="fa fa-times"  aria-hidden="true"></i>
+            Cancelar
         </a>
 
        
