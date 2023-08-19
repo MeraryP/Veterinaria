@@ -13,16 +13,18 @@
     @csrf
    
     
-    
+    <br>
     
     <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
-        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
-        <img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">
+        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 190px;">
+        <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
     </div>
 
+    
     <div>
+        
     <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
-        <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 150px;">Agregar Foto Nueva</button>
+        <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 210px;">Agregar Foto Nueva</button>
         @error('imagen')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -148,7 +150,7 @@
   
 </script>
 
-<script>
+<!--<script>
     document.addEventListener('DOMContentLoaded', function() {
         const cargarImagenBtn = document.getElementById('cargar-imagen-btn');
         const imagenInput = document.getElementById('imagen');
@@ -179,7 +181,7 @@
             }
         });
     });
-</script>
+</script>-->
 
 
 
