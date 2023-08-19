@@ -11,21 +11,25 @@
 
 <form action ="../paciente"  method="POST"enctype="multipart/form-data" >
     @csrf
+   
+    
+    
+    
+    <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
+        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
+        <img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">
+    </div>
+
     <div>
-        <label for="imagen" class="form-label"style="margin-left: 120px;">Fotografia</label>
-        <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
-        <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 30px;">Agregar Foto</button>
+    <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
+        <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 150px;">Agregar Foto Nueva</button>
         @error('imagen')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
     </div>
-     <br>
-    
-    <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
-        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
-    </div>
+    <br>
   
   <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
@@ -143,6 +147,40 @@
 
   
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cargarImagenBtn = document.getElementById('cargar-imagen-btn');
+        const imagenInput = document.getElementById('imagen');
+        const imagenPreview = document.getElementById('imagen-preview');
+        const iconoImagen = document.querySelector('.icono-imagen'); // Agregamos el icono
+
+        cargarImagenBtn.addEventListener('click', function() {
+            imagenInput.click();
+        });
+
+        imagenInput.addEventListener('change', function() {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                imagenPreview.setAttribute('src', e.target.result);
+                imagenPreview.style.display = 'block';
+                iconoImagen.style.display = 'none'; // Ocultamos el icono
+            };
+
+            const file = this.files[0];
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                imagenPreview.removeAttribute('src');
+                imagenPreview.style.display = 'none';
+                iconoImagen.style.display = 'block'; // Mostramos el icono
+            }
+        });
+    });
+</script>
+
 
 
 <script>
