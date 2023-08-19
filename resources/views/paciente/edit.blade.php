@@ -56,44 +56,23 @@
 <form  method="POST" action="{{ route('paciente.update',['id'=>$paciente->id])}}" enctype="multipart/form-data">
     @method('put')
     @csrf
-
-    
-    
-    <div class="container text-center">
-  <div class="row">
-    <div class="col-6 col-sm-5">
-    <label class="form-label" style="margin-left: 0px;position: absolute;top: 0px;margin-left: 200px;">Foto actual:</label>
-    <img src="/image/{{ $paciente->filename }}"  style="max-width: 200px;margin-left: 150px;margin-right: 90px;margin-top: 50px;">
-    </div>
-    <div class="col-6 col-sm-5">
-    <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 215px;">Agregar Nueva Foto</button> 
-    
-    
-         <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror  " style="max-width: 400px;display:none !important;">
-         @error('imagen')
-             <span class="invalid-feedback" role="alert">
-                 <strong>{{ $message }}</strong>
-             </span>
-         @enderror
-         
-         <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 200px;margin-top: 15px;object-fit: cover;">
+    <br>
+    <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
+        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 130px;">
+        <img src="/image/{{ $paciente->filename }}" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">
     </div>
 
-   
-    <div class="w-100"></div>
-
-    <div class="col-6 col-sm-3">
-        
-   </div>
-    <div class="col-6 col-sm-3"></div>
-  </div>
-</div>
-
-    
-    
- <br>
- 
-<br>
+    <br>
+    <div>
+    <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
+        <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 150px;">Agregar Foto Nueva</button>
+        @error('imagen')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+    <br>
 
 <div class="mb-3">
         <label for="" class="form-label">Nombre de la Mascota</label>
@@ -182,6 +161,39 @@
 
 
 </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cargarImagenBtn = document.getElementById('cargar-imagen-btn');
+        const imagenInput = document.getElementById('imagen');
+        const imagenPreview = document.getElementById('imagen-preview');
+        const iconoImagen = document.querySelector('.icono-imagen'); // Agregamos el icono
+
+        cargarImagenBtn.addEventListener('click', function() {
+            imagenInput.click();
+        });
+
+        imagenInput.addEventListener('change', function() {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                imagenPreview.setAttribute('src', e.target.result);
+                imagenPreview.style.display = 'block';
+                iconoImagen.style.display = 'none'; // Ocultamos el icono
+            };
+
+            const file = this.files[0];
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                imagenPreview.removeAttribute('src');
+                imagenPreview.style.display = 'none';
+                iconoImagen.style.display = 'block'; // Mostramos el icono
+            }
+        });
+    });
+</script>
 
 <script>
     
