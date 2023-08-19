@@ -70,7 +70,7 @@
     </div>
     
     <div align="right" style="float:right">
-        <a href="propietario/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
+        <a href="propietario/create" title="Crear Registro" class="btn btn-outline-primary"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
  
     <br>
@@ -101,7 +101,7 @@
                     <td class="align-middle" style="font-size:15px">{{$propietario->correo}}</td>
                 
                     <td>
-                        <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
+                        <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-outline-success" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             

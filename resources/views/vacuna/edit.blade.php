@@ -64,8 +64,8 @@
         </div>
 
         <div class="mb-3">
-            <label>Estado</label><br>
-            <label for="aplicada">Aplicado</label>
+           
+            <label for="aplicada">Estado</label><br>
             <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}
             style="width: 20px; height: 20px; border-radius: 3px; margin-left: 10px;">
         </div>

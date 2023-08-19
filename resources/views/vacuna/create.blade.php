@@ -64,12 +64,11 @@
         </div>
         
         <div class="checkbox">
-            <label>Estado</label><br>
-            <label for="aplicada">Aplicado </label>
+            <label for="aplicada">Estado </label><br>
             <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}
             style="width: 20px; height: 20px; border-radius: 3px; margin-left: 10px;">
         </div>
-        
+        <br>
         <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
         <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
 

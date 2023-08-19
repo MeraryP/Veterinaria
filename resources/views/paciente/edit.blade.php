@@ -6,18 +6,20 @@
 
 @section('content')
 
+
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
+  <li  class="nav-item" role="presentation">
 <a  href="{{ route('paciente.edit', ['paciente' => $paciente->id]) }}" class="nav-link">
-     <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="margin-right: 5px;"></i>Datos generales</p>
+     <div   > 
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-file-alt" style="color:blue;margin-right: 5px;"></i>Datos generales</p>
        </div>
      </a>
   </li>
   <li class="nav-item" role="presentation">
   <a href="{{ route('examenMascota',['id'=>$idMascota])}}"class="nav-link">
      <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="margin-right: 5px;"></i>Examen Fisico</p>
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="color:green;margin-right: 5px;"></i>Examen Fisico</p>
        </div>
      </a>
       </li>
@@ -25,14 +27,14 @@
   <li class="nav-item" role="presentation">
    <a href="{{ route('vacunaMascota',['id'=>$idMascota])}}" class="nav-link">
      <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="margin-right: 5px;"></i>Vacuna</p>
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fas fa-syringe" style="color:orange;margin-right: 5px;"></i>Vacuna</p>
        </div>
      </a>
   </li>
   <li class="nav-item" role="presentation">
   <a href="{{ route('desparacitacionMascota',['id'=>$idMascota])}}"class="nav-link">
      <div> 
-       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="margin-right: 5px;"></i>Desparacitación</p>
+       <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="nav-icon fa fa-capsules" style="color:purple;margin-right: 5px;"></i>Desparacitación</p>
        </div>
      </a>
       </li>
@@ -40,7 +42,7 @@
       <li class="nav-item" role="presentation">
             <a href="{{ route('clinicoMascota',['id'=>$idMascota])}}"class="nav-link">
                 <div> 
-                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="margin-right: 5px;"></i>Examen Clínico</p>
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fa fa-stethoscope" style="color:red;margin-right: 5px;"></i>Examen Clínico</p>
                 </div>
             </a>
         </li>

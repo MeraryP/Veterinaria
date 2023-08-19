@@ -157,7 +157,7 @@ overflow:-moz-scrollbars-vertical;
         <div class="card bg-gradient-orange">
             <div class="card-body p-1" align ="center">
               <br>
-            <img style="width:75%; height: 105px;" alt="Image placeholder" src="{{asset('imagen/j.png')}}">
+            <img style="width:75%; height: 105px;" alt="Image placeholder" src="{{asset('imagen/per.png')}}">
                 <div class="row"style="justify-content: center;">
                     <div class="col-8">
                         <div class="numbers" style="color: white" >
