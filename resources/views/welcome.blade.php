@@ -124,7 +124,7 @@ overflow:-moz-scrollbars-vertical;
    
   </div>
       <a href= "/contrasenia" style="text-decoration: none"> 
-        <div class="card bg-gradient-purple">
+        <div class="card bg-gradient-orange">
             <div class="card-body p-1"align ="center">
               <br>
             <img style="width:75%; height: 105px;" alt="Image placeholder" src="{{asset('imagen/contrasena.png')}}">
@@ -154,7 +154,7 @@ overflow:-moz-scrollbars-vertical;
   
   </div>
       <a href= "/usuario" style="text-decoration: none"> 
-        <div class="card bg-gradient-orange">
+        <div class="card bg-gradient-purple">
             <div class="card-body p-1" align ="center">
               <br>
             <img style="width:75%; height: 105px;" alt="Image placeholder" src="{{asset('imagen/per.png')}}">
