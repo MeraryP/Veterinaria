@@ -30,7 +30,6 @@
             <input type="number" minlength="4" name="dosis"  id="dosis" class="form-control @error('dosis') is-invalid @enderror"   
             placeholder="Ingrese la cantidad aplicada de la vacuna" value="{{ $aplicado->dosis}}"
             title="Ingrese la cantidad aplicada de la vacuna ">
-            
             @error('dosis')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -38,14 +37,13 @@
             @enderror
         </div>
 
-
         <div class="mb-3">
             <label for="unidad">Unidad</label>
             <select name="unidad" id="unidad" class="form-control @error('unidad') is-invalid @enderror">
-        <option value="">Seleccione una opción</option>
-        <option value="mililitros" {{ old('unidad', $aplicado->unidad) === 'mililitros' ? 'selected' : '' }}>Mililitros</option>
-        <option value="miligramos" {{ old('unidad', $aplicado->unidad) === 'miligramos' ? 'selected' : '' }}>Miligramos</option>
-    </select>
+                <option value="">Seleccione una opción</option>
+                <option value="mililitros" {{ old('unidad', $aplicado->unidad) === 'mililitros' ? 'selected' : '' }}>Mililitros</option>
+                <option value="miligramos" {{ old('unidad', $aplicado->unidad) === 'miligramos' ? 'selected' : '' }}>Miligramos</option>
+            </select>
             @error('unidad')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror

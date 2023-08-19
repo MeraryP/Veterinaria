@@ -4,8 +4,7 @@
 
 @section('content')
 
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <a href= "/paciente/{{$idMascota}}/edit" class="nav-link">
                 <div> 
@@ -49,7 +48,6 @@
         </li>
     </ul>
 
-
     <script>
         var msg = '{{Session::get('mensaje')}}';
         var exist = '{{Session::has('mensaje')}}';
@@ -90,12 +88,11 @@
 
     <table id="mitabla"  class = "table table-sm table-bordered " style="margin: 0 auto; width: 100%; text-align: center; ">
         <thead   style="width: 100%; border-collapse: collapse; background-color:LightBlue; tabla color ">
-
             <tr>
                 <th style="font-size:15px; text-align:center; width:45px;"  scope="col">No</th>
-                <th style="font-size:15px; text-align:center" scope="col">Sintomas</th>
-                <th style="font-size:15px; text-align:center" scope="col">Enfermedad Diagnosticada</th>
-                <th style="font-size:15px; text-align:center" scope="col">Tratamiento </th>
+                <th style="font-size:15px; text-align:center;" scope="col">Sintomas</th>
+                <th style="font-size:15px; text-align:center;" scope="col">Enfermedad Diagnosticada</th>
+                <th style="font-size:15px; text-align:center;" scope="col">Tratamiento </th>
                 <th style="font-size:15px; text-align:center; width:130px" scope="col">Acciones</th>           
             </tr>
         </thead>
@@ -106,10 +103,10 @@
             @php $n=0; @endphp
             @foreach ($clinicos as  $clinico)
                 <tr>
-                    <td class="align-middle" style="font-size:15px; text-align:right" scope="row">{{++ $n}}</td>
-                    <td class="align-middle"style='width: 200px; white-space: initial;font-size:13px;text-align: justify' >{{$clinico->sintomas}}</td>
-                    <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: justify'>{{$clinico->enfermedad}}</td>
-                    <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: justify'>{{$clinico->tratamiento}}</td>
+                    <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
+                    <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: center' >{{$clinico->sintomas}}</td>
+                    <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: center'>{{$clinico->enfermedad}}</td>
+                    <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: center'>{{$clinico->tratamiento}}</td>
  
                     <td>
                         <a type="button"  title="Editar registro" href="/clinico/{{$clinico->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
@@ -149,5 +146,5 @@
         </tbody>
     </table>
     <br>
-        <br>
+    <br>
 @endsection 
