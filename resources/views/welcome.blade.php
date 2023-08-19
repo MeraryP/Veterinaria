@@ -25,7 +25,7 @@ overflow:-moz-scrollbars-vertical;
 }
 </style>
 </head>
-<div style="max-width: 100% !important;margin-left:1.5%">
+<div style="max-width: 100% !important">
 <div class="row justify-content-center">
 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
 <div  >
@@ -117,7 +117,7 @@ overflow:-moz-scrollbars-vertical;
     </div>
 
 
-    <div style="max-width:100% !important;margin-left:1.5%">
+    <div style="max-width:100% !important">
 <div class="row justify-content-center">
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
     <div  align ="center">
