@@ -356,7 +356,7 @@ return [
             'route'=>'logout2',
             'login_url' => 'logout',
             'icon_color'=>'red',  
-            
+            //'method' => 'POST', 
  
         ],
 
