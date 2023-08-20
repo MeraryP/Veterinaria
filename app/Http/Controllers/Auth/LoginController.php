@@ -44,5 +44,12 @@ class LoginController extends Controller
         return 'correo';
     }
 
+    public function logout()
+    {
+        $this->guard()->logout();
+
+        return redirect('/');
+    }
+
 
 }

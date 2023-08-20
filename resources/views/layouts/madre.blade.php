@@ -22,13 +22,15 @@
         height: calc(100vh - 80px) !important;
     }
 
-   
-    
-
-    
 
 
 </style>
+
+<script>
+function salir() {
+    alert('salir');
+}
+    </script>
 
 
 

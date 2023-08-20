@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClinicoController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth\LoginController;
 
 
 
@@ -110,7 +111,8 @@ Route::middleware("auth")->group(function () {
         Route::put('/clinico/{id}/editar', [ClinicoController::class, 'update'])
         ->name('clinico.update')->where('id','[0-9]+');
     
-       
+        
+        Route::get('logout2', [LoginController::class, 'logout'])->name('logout2');
 
 
     });

@@ -86,7 +86,7 @@
     </div>
     <br>
     
-    <table class = "table table-sm table-bordered" style="margin: 0 auto; width: 100%; text-align: center; ">
+    <table  id="mitabla" class = "table table-sm table-bordered" style="margin: 0 auto; width: 100%; text-align: center; ">
 
         <thead style="width: 100%; border-collapse: collapse; background-color:LightBlue; tabla color ">
             <tr>

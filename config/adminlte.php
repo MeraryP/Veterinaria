@@ -323,7 +323,7 @@ return [
         ],
 
         [
-            'text' => 'Maskota',
+            'text' => 'Mascota',
             'icon'    => '	fas fa-dog', 
             'route'=>'paciente.index',
             'icon_color'=>'green',
@@ -353,9 +353,8 @@ return [
         [
             'text' => 'Cerrar Sesión',
             'icon'    => 'fa fa-key', 
-            //'route'=>'login',
-            'login_url' => 'login',
-            //'href'=> 'logout',
+            'route'=>'logout2',
+            'login_url' => 'logout',
             'icon_color'=>'red',  
  
         ],
@@ -408,23 +407,27 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
-                ],
+               
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'asset' => true,
+                    'location' => 'css/jquery.dataTables.min.css',
                 ],
+
+                  [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'JS/tablas.js',
+                ],
+
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'JS/jquery.dataTables.min.js',
+                ],
+
             ],
         ],
         'Select2' => [

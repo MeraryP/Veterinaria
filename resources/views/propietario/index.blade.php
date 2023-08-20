@@ -4,39 +4,6 @@
 
 @section('content')
 
-    <style>
-        .range-label{
-            position: absolute !important;
-            margin-top: -52px !important;
-            margin-left: -630% !important;
-            color:black;
-        }
-        .irs--flat{
-            position: absolute !important;
-            margin-top: -102px !important;
-            width: 765% !important;
-            margin-left: -490% !important;
-        }
-        .dt-buttons button{
-            margin-left: 1vh !important;
-            border-radius: 5px 5px 5px 5px !important;
-            border: none !important;
-            width: auto;
-        }
-        .dataTables_length{
-            margin-right: 2vh;
-            margin-bottom: 10vh;
-        
-        }
-        .select-filter{
-            position: absolute;
-            margin-top: -90px;
-            margin-left:-75vh ;
-        }
-        .dataTables_filter{
-            margin-right:-6vh !important;
-        }
-    </style>
 
     <script>
         var msg = '{{Session::get('mensaje')}}';
@@ -61,16 +28,18 @@
                 elements[0].parentNode.removeChild(elements[0]);
             }
         }
-        tTimeout(quitarerror, 3000);
+        setTimeout(quitarerror, 3000);
     </script>
     <br>
+
+    
 
 
     <div class="contrainer">
     </div>
     
     <div align="right" style="float:right">
-        <a href="propietario/create" title="Crear Registro" class="btn btn-outline-primary"><i class='fas fa-file-medical'></i>  Crear</a>
+        <a href="propietario/create" title="Crear Registro" class="btn btn-outline-info"><i class='fas fa-file-medical'></i>  Crear</a>
     </div>
  
     <br>
@@ -101,7 +70,7 @@
                     <td class="align-middle" style="font-size:15px">{{$propietario->correo}}</td>
                 
                     <td>
-                        <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-outline-success" style="margin-left: 10px;margin-right: 20px;">
+                        <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
@@ -137,13 +106,14 @@
                         </form>
                     </td>
                 </tr>
+
             @endforeach
         </tbody>
     </table>
     
     
     
+ 
 @endsection 
-
 
 
