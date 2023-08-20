@@ -58,14 +58,14 @@
     @csrf
     <br>
     <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
-        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;margin-left: 190px;">
-        <img src="/image/{{ $paciente->filename }}" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 190px;">
+        <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300px;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#DADBDB;">
+        <img src="/image/{{ $paciente->filename }}" class="icono-imagen" alt="Icono de Foto" style="max-width: 250px; max-height: 300px;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#DADBDB;">
     </div>
 
-    <br>
+    
     <div>
     <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
-        <button type="button" id="cargar-imagen-btn" class="btn btn-outline-primary" style="margin-left: 210px;">Agregar Foto Nueva</button>
+        <button type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left: 55px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Editar Foto </button>
         @error('imagen')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -162,6 +162,26 @@
 
 </form>
 
+
+
+<script>
+    document.getElementById('imagen').addEventListener('change', function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('imagen-preview').setAttribute('src', e.target.result);
+            document.getElementById('imagen-preview').style.display = 'block';
+        }
+
+        var file = this.files[0];
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+   
+</script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const cargarImagenBtn = document.getElementById('cargar-imagen-btn');
@@ -193,31 +213,6 @@
             }
         });
     });
-</script>
-
-<script>
-    
-    document.getElementById('cargar-imagen-btn').addEventListener('click', function () {
-        document.getElementById('imagen').click();
-    });
-</script>
-
-<script>
-    document.getElementById('imagen').addEventListener('change', function () {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            document.getElementById('imagen-preview').setAttribute('src', e.target.result);
-            document.getElementById('imagen-preview').style.display = 'block';
-        }
-
-        var file = this.files[0];
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    });
-
-   
 </script>
 
 
