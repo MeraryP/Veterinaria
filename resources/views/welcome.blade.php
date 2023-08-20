@@ -6,7 +6,7 @@
 @section('content')
 <style>
 
-h2{
+h4{
     
   text-align: center!important;
   font-family: Open Sans, sans-serif;
@@ -15,6 +15,15 @@ h2{
    
 }
 
+
+h5{
+    
+    text-align: center!important;
+    font-family: Open Sans, sans-serif;
+    margin-bottom: 15px;
+    
+     
+  }
 </style>
 <head>
 <style>
@@ -72,7 +81,7 @@ overflow:-moz-scrollbars-vertical;
                         <div class="numbers" style="color: white" >
                             <h4  style="color: white" >
                               Mascotas
-                              <h3 style="aling:center;color:white;font-size: 20px;" > Registrados {{$totalpaciente}}</h3>
+                              <h5 style="aling:center;color:white;font-size: 20px;" > Registrados {{$totalpaciente}}</h5>
                             </h4>
                            
                         </div>
@@ -124,7 +133,7 @@ overflow:-moz-scrollbars-vertical;
   </div>
   
       <a href= "/contrasenia" style="text-decoration: none"> 
-        <div class="card bg-gradient-info">
+        <div class="card bg-gradient-orange">
             <div class="card-body p-1"align ="center">
               <br>
             <img style="width:80%; height: 143px;" alt="Image placeholder" src="{{asset('imagen/contrasena.png')}}">

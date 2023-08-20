@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Examen Clinico de ' .App\Models\Paciente::find($idMascota)->nombre_mascota)
+@section('title', 'Examen Clínico de ' .App\Models\Paciente::find($idMascota)->nombre_mascota)
 
 @section('content')
 
@@ -16,7 +16,7 @@
         <li class="nav-item" role="presentation">
             <a href="{{route('examenMascota', ['id'=>$idMascota])}}" class="nav-link">
                 <div> 
-                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="color:green;margin-right: 5px;"></i>Examen Fisico</p>
+                    <p style="text-align: center; margin-bottom: 0px; color:black;"><i class="fas fa-file-signature" style="color:green;margin-right: 5px;"></i>Examen Físico</p>
                 </div>
             </a>
         </li>
