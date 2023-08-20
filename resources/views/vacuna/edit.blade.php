@@ -64,18 +64,71 @@
         </div>
 
         <div class="mb-3">
-           
-            <label for="aplicada">Estado</label><br>
-            <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}
-            style="width: 20px; height: 20px; border-radius: 3px; margin-left: 10px;">
+            <label>Estado </label>
+            <div class="wrapper" style="display: flex; width: 150px;">
+                <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}>
+                <label for="aplicada" class="checkbox">Aplicado</label>
+            </div>
         </div>
 
 
         <button type="submit" class="btn btn-outline-success" tabindex="4" style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
         <a href="{{ route('vacunaMascota',['id'=>$aplicado->num_id])}}"  class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
 
-        <br>
-        <br>
     </form>
+    
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
 
+        .wrapper{
+            height: 50px; 
+            align-items: center; 
+            justify-content: space-around;
+        }
+
+        input[type="checkbox"]{
+            appearance: none;
+            -webkit-appearance: none;
+            height: 35px;
+            width: 35px;
+            background-color: #d5d5d5;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox{
+            color: #4c4c4c;
+            font-size: 20px;
+            font-family: 'Poppins',sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"]:after{
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f00c";
+            font-size: 35px;
+            color: white;
+            display: none;
+        }
+
+        input[type="checkbox"]:hover{
+            background-color: #55a5;
+        }
+
+        input[type="checkbox"]:checked{
+            background-color: #5bcd3e;
+        }
+
+        input[type="checkbox"]:checked:after{
+            display: block;
+        }
+    </style>
 @endsection 

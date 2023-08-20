@@ -353,9 +353,14 @@ return [
         [
             'text' => 'Cerrar Sesión',
             'icon'    => 'fa fa-key', 
+<<<<<<< HEAD
             'route'=>'logout2',
             'login_url' => 'logout',
+=======
+           //'route'=>'auth.login',
+>>>>>>> dcd86bbe367fcb7580b81d204f7aa275b73b5843
             'icon_color'=>'red',  
+            //'method' => 'POST', 
  
         ],
 
