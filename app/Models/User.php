@@ -45,7 +45,12 @@ class User extends Authenticatable
 
     public function adminlte_image()
     {
-        return '/imagen/usuarios.png';
+        if ($this->imagen) {
+            
+            return asset('perfil/' . $this->imagen);
+        }
+
+        return '/imagen/usuarios.png'; 
     }
 
     public function adminlte_desc()

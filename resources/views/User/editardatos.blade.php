@@ -23,11 +23,29 @@
         <center><h1></h1></center>
 
         <br>
-        <br>
+        
 
-        <form action="{{route('usuario.actualizar')}}" method="post">
+        <form action="{{route('usuario.actualizar')}}" method="post"enctype="multipart/form-data" >
             @method("put")
             @csrf
+
+            <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;margin-left: 237px;">
+          <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#E9EEEE;">
+          <img src="/perfil/{{ auth()->user()->imagen }}" class="icono-imagen" alt="Icono de Foto" style="max-width: 250px; max-height: 300px;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#DADBDB;">
+        <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
+         </div>
+
+    
+    <div > 
+    <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
+        <button  type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left: 290px;width: 150px; height: 40px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Agregar Foto</button>
+        @error('imagen')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+    <br>
             <div class="input-group mb-3">
         <label for="" style="width:20%">Nombre Completo:</label>
             <input name="name" type="text"  title="Ingrese su nombre completo" class="form-control @error('name') is-invalid @enderror" value="{{auth()->user()->name}}" >
@@ -94,7 +112,61 @@
             
         </form>
         
-      
+     
+<script>
+    document.getElementById('imagen').addEventListener('change', function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('imagen-preview').setAttribute('src', e.target.result);
+            document.getElementById('imagen-preview').style.display = 'block';
+        }
+
+        var file = this.files[0];
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+   
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cargarImagenBtn = document.getElementById('cargar-imagen-btn');
+        const imagenInput = document.getElementById('imagen');
+        const imagenPreview = document.getElementById('imagen-preview');
+        const iconoImagen = document.querySelector('.icono-imagen'); // Agregamos el icono
+
+        cargarImagenBtn.addEventListener('click', function() {
+            imagenInput.click();
+        });
+
+        imagenInput.addEventListener('change', function() {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                imagenPreview.setAttribute('src', e.target.result);
+                imagenPreview.style.display = 'block';
+                iconoImagen.style.display = 'none'; // Ocultamos el icono
+            };
+
+            const file = this.files[0];
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                imagenPreview.removeAttribute('src');
+                imagenPreview.style.display = 'none';
+                iconoImagen.style.display = 'block'; // Mostramos el icono
+            }
+        });
+    });
+</script>
+
+
+
+
 
        
 
