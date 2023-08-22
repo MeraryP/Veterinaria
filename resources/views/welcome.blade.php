@@ -139,7 +139,7 @@
                     <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#F84C76;"  src="{{asset('imagen/datos.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
-                            <a href= "" class="card_category">
+                            <a href= "/usuario" class="card_category">
                                 <i style="color:#4282F9"  class="fa fa-address-card" aria-hidden="true"></i> Perfil
                             </a>
                         </div>
