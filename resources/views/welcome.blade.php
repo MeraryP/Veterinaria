@@ -66,73 +66,81 @@
             borde-radius: inherit;
             transition: transform 250ms;
         }
+
+
+        h6{
+    font-family: Open Sans, sans-serif;
+    margin-bottom: 15px;
+    
+     
+  }
+
     </style>
 
     </br></br></br></br>
     <div style="max-width: 100% !important;">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" >
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
-                <figure class="card">
-                    <img src="{{asset('imagen/propietario.jpg')}}" alt="" class="card_image">
+                <figure class="card" style="background:#F994AA">
+                    <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#F84C76;"  src="{{asset('imagen/prop.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
                             <a href= "/propietario" class="card_category">
-                                <i style="color:red" class="fas fa-dog" aria-hidden="true"></i> Propietario
-                                <h4> Registrados {{$totalmedicamento}}</h4>
+                                <i  style="color:#0FBC4C;font-size:px" class="fa fa-id-card" aria-hidden="true"></i> Propietarios
+                                <h6> Registrados {{$totalmedicamento}}</h6>
                             </a>
                         </div>
                     </figcaption>
                 </figure>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
-                <figure class="card">
-                    <img src="{{asset('imagen/mascota.jpg')}}" alt="" class="card_image">
+                <figure class="card" style="background:#86F779">
+                    <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#2CF550;"  src="{{asset('imagen/mascota.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
-                            <a href= "/paciente" style="text-decoration: none">
-                                <i style="color:red" class="fas fa-dog" aria-hidden="true"></i> Mascota
-                                <h4 class="card_category"> Registrados {{$totalmedicamento}}</h4>   
+                            <a href= "/paciente" class="card_category">
+                                <i style="color:#AB7A06" class="fas fa-dog" aria-hidden="true"></i> Mascota
+                                <h6 > Registrados {{$totalmedicamento}}</h6>   
                             </a>
                         </div>
                     </figcaption>
                 </figure>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
-                <figure class="card">
-                    <img src="{{asset('imagen/medicamento.jpg')}}" alt="" class="card_image">
+                <figure class="card"   style="background:#F7F771" >
+                    <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#F9FC24;"   src="{{asset('imagen/medicamento.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
-                            <a href= "/medicamento" style="text-decoration: none">
-                                <i style="color:yellow"  class="fa fa-medkit" aria-hidden="true"></i> Medicamentos
-                                <h4 class="card_category"> Registrados {{$totalmedicamento}}</h4>
+                            <a href= "/medicamento" class="card_category">
+                                <i style="color:#D5390C"  class="fa fa-medkit" aria-hidden="true"></i> Medicamentos
+                                <h6> Registrados {{$totalmedicamento}}</h6>
                             </a>
                         </div>
                     </figcaption>
                 </figure>
             </div>
         </div>
+        <br>
         <div class="row justify-content-center">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
-                <figure class="card">
-                    <img src="{{asset('imagen/contrasena.png')}}" alt="" class="card_image">
+                <figure class="card" style="background:#FBA371">
+                    <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#FAC00A;"  src="{{asset('imagen/usuarios.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
-                            <a href= "/contrasenia" style="text-decoration: none">
-                                <i style="color: purple"  class="fa fa-lock" aria-hidden="true"></i> Contrasena
-                                <h4 class="card_category"> Registrados {{$totalmedicamento}}</h4>   
+                            <a href= "/contrasenia"class="card_category">
+                                <i style="color:#F9E542"  class="fa fa-user" aria-hidden="true"></i> Usuarios
                             </a>
                         </div>
                     </figcaption>
                 </figure>
             </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
-                <figure class="card">
-                    <img src="{{asset('imagen/per.png')}}" alt="" class="card_image">
+                <figure class="card"  style="background:#FC95DF">
+                    <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#F84C76;"  src="{{asset('imagen/datos.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
-                            <a href= "/usuario" style="text-decoration: none">
-                                <i style="LightBlue"  class="fa fa-user" aria-hidden="true"></i> Perfil
-                                <h4 class="card_category"> Registrados {{$totalmedicamento}}</h4>
+                            <a href= "" class="card_category">
+                                <i style="color:#4282F9"  class="fa fa-address-card" aria-hidden="true"></i> Perfil
                             </a>
                         </div>
                     </figcaption>
