@@ -61,7 +61,7 @@
 
         <div class="mb-3">
             <label>Estado </label>
-            <div class="wrapper" style="display: flex; width: 150px;">
+            <div class="wrapper" style="display: flex; width: 100px;">
                 <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada', $aplicado->aplicada) ? 'checked' : '' }}>
                 <label for="aplicada" class="checkbox">Aplicado</label>
             </div>
@@ -79,7 +79,7 @@
         }
 
         .wrapper{
-            height: 50px; 
+            height: 40px; 
             align-items: center; 
             justify-content: space-around;
         }
@@ -87,8 +87,8 @@
         input[type="checkbox"]{
             appearance: none;
             -webkit-appearance: none;
-            height: 35px;
-            width: 35px;
+            height: 22px;
+            width: 22px;
             background-color: #d5d5d5;
             border-radius: 5px;
             cursor: pointer;
@@ -99,7 +99,7 @@
 
         .checkbox{
             color: #4c4c4c;
-            font-size: 20px;
+            font-size: 15px;
             font-family: 'Poppins',sans-serif;
             font-weight: 600;
             cursor: pointer;
@@ -109,7 +109,7 @@
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             content: "\f00c";
-            font-size: 35px;
+            font-size: 20px;
             color: white;
             display: none;
         }
