@@ -127,7 +127,7 @@
                     <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#FAC00A;"  src="{{asset('imagen/usuarios.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
-                            <a href= "/contrasenia"class="card_category">
+                            <a href= "/listausuarios"class="card_category">
                                 <i style="color:#F9E542"  class="fa fa-user" aria-hidden="true"></i> Usuarios
                             </a>
                         </div>
