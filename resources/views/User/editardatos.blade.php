@@ -35,10 +35,10 @@
         <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
          </div>
 
-    
+
     <div > 
     <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
-        <button  type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left: 200px;width: 247px; height: 40px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Agregar Foto</button>
+        <button  type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left: 200px;width:250px; height: 40px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Agregar Foto</button>
         @error('imagen')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -78,6 +78,15 @@
         
         </div>
 
+        <div class="input-group mb-3">
+            <label for="" style="width:20%">Fecha de nacimiento:</label>
+            <input name="nacimiento" type="text"  title="Ingresar número de Identidad separado por guiones" maxlength="15" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"  class="form-control @error('nacimiento') is-invalid @enderror"  value="{{auth()->user()->nacimiento}}" >
+            @error('nacimiento')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
 
         <div class="input-group mb-3">
             <label for="" style="width:20%">Identidad:</label>
@@ -113,21 +122,18 @@
         </form>
         
      
-<script>
+        <script>
     document.getElementById('imagen').addEventListener('change', function () {
         var reader = new FileReader();
-
         reader.onload = function (e) {
             document.getElementById('imagen-preview').setAttribute('src', e.target.result);
             document.getElementById('imagen-preview').style.display = 'block';
         }
-
         var file = this.files[0];
         if (file) {
             reader.readAsDataURL(file);
         }
     });
-
    
 </script>
 
@@ -137,22 +143,17 @@
         const imagenInput = document.getElementById('imagen');
         const imagenPreview = document.getElementById('imagen-preview');
         const iconoImagen = document.querySelector('.icono-imagen'); // Agregamos el icono
-
         cargarImagenBtn.addEventListener('click', function() {
             imagenInput.click();
         });
-
         imagenInput.addEventListener('change', function() {
             const reader = new FileReader();
-
             reader.onload = function(e) {
                 imagenPreview.setAttribute('src', e.target.result);
                 imagenPreview.style.display = 'block';
                 iconoImagen.style.display = 'none'; // Ocultamos el icono
             };
-
             const file = this.files[0];
-
             if (file) {
                 reader.readAsDataURL(file);
             } else {
@@ -163,7 +164,6 @@
         });
     });
 </script>
-
 
 
 

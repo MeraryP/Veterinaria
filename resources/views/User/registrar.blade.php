@@ -12,7 +12,6 @@
 
         <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;margin-left: 200px;display:none !important;">
           <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#E9EEEE;">
-          <img src="/perfil/{{ auth()->user()->imagen }}" class="icono-imagen" alt="Icono de Foto" style="max-width: 250px; max-height: 300px;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#DADBDB;">
         <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
          </div>
 
@@ -164,12 +163,12 @@
         <br>
 
         {{-- Register button --}}
-        <button type="submit"  class="btn btn-primary" >
+        <button type="submit"  class="btn btn-outline-primary" style="margin-left: 350px;margin-right: 60px;">
             <span class="fas fa-user-plus"></span>
             Guardar Datos
         </button>
     
-        <a type="button" class="btn btn-danger" href="/listausuarios"  ><i class="fa fa-times" aria-hidden="true"></i>
+        <a type="button" class="btn btn-outline-danger" href="/listausuarios"  ><i class="fa fa-times" aria-hidden="true"></i>
         Cancelar
         </a>
         <br>
@@ -178,57 +177,27 @@
 
 
 
+    <script>
+        document.getElementById('cargar-imagen-btn').addEventListener('click', function () {
+            document.getElementById('imagen').click();
+        });
+    </script>
 
     <script>
-    document.getElementById('imagen').addEventListener('change', function () {
-        var reader = new FileReader();
+        document.getElementById('imagen').addEventListener('change', function () {
+            var reader = new FileReader();
 
-        reader.onload = function (e) {
-            document.getElementById('imagen-preview').setAttribute('src', e.target.result);
-            document.getElementById('imagen-preview').style.display = 'block';
-        }
+            reader.onload = function (e) {
+                document.getElementById('imagen-preview').setAttribute('src', e.target.result);
+                document.getElementById('imagen-preview').style.display = 'block';
+            }
 
-        var file = this.files[0];
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    });
-
-   
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const cargarImagenBtn = document.getElementById('cargar-imagen-btn');
-        const imagenInput = document.getElementById('imagen');
-        const imagenPreview = document.getElementById('imagen-preview');
-        const iconoImagen = document.querySelector('.icono-imagen'); // Agregamos el icono
-
-        cargarImagenBtn.addEventListener('click', function() {
-            imagenInput.click();
-        });
-
-        imagenInput.addEventListener('change', function() {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                imagenPreview.setAttribute('src', e.target.result);
-                imagenPreview.style.display = 'block';
-                iconoImagen.style.display = 'none'; // Ocultamos el icono
-            };
-
-            const file = this.files[0];
-
+            var file = this.files[0];
             if (file) {
                 reader.readAsDataURL(file);
-            } else {
-                imagenPreview.removeAttribute('src');
-                imagenPreview.style.display = 'none';
-                iconoImagen.style.display = 'block'; // Mostramos el icono
             }
         });
-    });
-</script>
+    </script>
 
 
     <script>
