@@ -5,7 +5,7 @@
 @section('content')
 
     <br>
-    <br>
+
 
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
@@ -25,7 +25,6 @@
             </span>
         @enderror
     </div>
-    <br>
 
         {{-- Nombre --}}
         <label for="" class="form-label">Nombre Completo</label>

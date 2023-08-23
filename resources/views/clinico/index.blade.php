@@ -104,7 +104,7 @@
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
                     <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: center' >{{$clinico->sintomas}}</td>
                     <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: center'>{{$clinico->enfermedad}}</td>
-                    <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: center'>{{$clinico->tratamiento}}</td>
+                    <td class="align-middle" style='width: 200px; white-space: initial;font-size:13px;text-align: justify'>{{$clinico->tratamiento}}</td>
  
                     <td>
                         <a type="button"  title="Editar registro" href="/clinico/{{$clinico->id}}/edit" class="btn btn-outline-success" style="margin-left: 10px;margin-right: 20px;">

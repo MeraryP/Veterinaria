@@ -78,6 +78,7 @@
     </style>
 
     </br></br></br></br>
+
     <div style="max-width: 100% !important;">
         <div class="row justify-content-center" >
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
@@ -86,8 +87,8 @@
                     <figcaption class="card_body">
                         <div>
                             <a href= "/propietario" class="card_category">
-                                <i  style="color:#0FBC4C;font-size:px" class="fa fa-id-card" aria-hidden="true"></i> Propietarios
-                                <h6> Registrados {{$totalmedicamento}}</h6>
+                                <i  style="color:white;font-size:px" class="fa fa-id-card" aria-hidden="true"></i> <h7 style="color:white;font-size:px" >Propietarios</h7>
+                                <h6  style="color:white;font-size:px" > Registrados {{$totalmedicamento}}</h6>
                             </a>
                         </div>
                     </figcaption>
@@ -99,8 +100,8 @@
                     <figcaption class="card_body">
                         <div>
                             <a href= "/paciente" class="card_category">
-                                <i style="color:#AB7A06" class="fas fa-dog" aria-hidden="true"></i> Mascota
-                                <h6 > Registrados {{$totalmedicamento}}</h6>   
+                                <i style="color:white;font-size:px" class="fas fa-dog" aria-hidden="true"></i> <h7 style="color:white;font-size:px" >Mascota</h7>
+                                <h6 style="color:white;font-size:px"> Registrados {{$totalmedicamento}}</h6>   
                             </a>
                         </div>
                     </figcaption>
@@ -112,8 +113,8 @@
                     <figcaption class="card_body">
                         <div>
                             <a href= "/medicamento" class="card_category">
-                                <i style="color:#D5390C"  class="fa fa-medkit" aria-hidden="true"></i> Medicamentos
-                                <h6> Registrados {{$totalmedicamento}}</h6>
+                                <i style="color:white"  class="fa fa-medkit" aria-hidden="true"></i> <h7 style="color:white;font-size:px" >Medicamentos</h7>
+                                <h6  style="color:white;font-size:px" > Registrados {{$totalmedicamento}}</h6>
                             </a>
                         </div>
                     </figcaption>
@@ -128,7 +129,7 @@
                     <figcaption class="card_body">
                         <div>
                             <a href= "/usuario" class="card_category">
-                                <i style="color:#4282F9"  class="fa fa-address-card" aria-hidden="true"></i> Perfil
+                                <i style="color:white"  class="fa fa-address-card" aria-hidden="true"></i> <h7 style="color:white;font-size:px" >Perfil</h7>
                             </a>
                         </div>
                     </figcaption>
@@ -143,7 +144,7 @@
                     <figcaption class="card_body" >
                         <div>
                             <a href= "/listausuarios"class="card_category">
-                                <i style="color:#F9E542"  class="fa fa-user" aria-hidden="true"></i> Usuarios
+                                <i style="color:white"  class="fa fa-user" aria-hidden="true"></i><h7 style="color:white;font-size:px" > Usuarios</h7>
                             </a>
                         </div>
                     </figcaption>

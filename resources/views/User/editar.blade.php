@@ -5,7 +5,7 @@
 @section('content')
 
     <br>
-    <br>
+    
     <form action="{{route('usuario.update',['id'=>$user->id])}}" method="post"enctype="multipart/form-data">
 
         @method("put")
