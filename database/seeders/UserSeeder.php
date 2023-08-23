@@ -18,7 +18,6 @@ class UserSeeder extends Seeder
         User::create(
             [
                 'username'=> 'Mera123',
-                'imagen'=>'usuarios.png',
                 'name' => 'Merary Pineda',
                 'correo' => 'patitas@gmail.com',
                 'nacimiento' => '19990909',
@@ -32,7 +31,6 @@ class UserSeeder extends Seeder
         User::create(
             [
                 'username'=> 'Karla21',
-                'imagen'=>'usuarios.png',
                 'name' => 'Karla Galo',
                 'correo' => 'karlagalo@gmail.com',
                 'nacimiento' => '20020625',

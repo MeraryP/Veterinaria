@@ -6,17 +6,18 @@
 
     <br>
     <br>
-    <form action="{{route('usuario.update',['id'=>$user->id])}}" method="post">
+    <form action="{{route('usuario.update',['id'=>$user->id])}}" method="post"enctype="multipart/form-data">
 
         @method("put")
         @csrf
 
-        <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
-            <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#E9EEEE;">
-            <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
+        <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;display:none !important;">
+           <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#E9EEEE;">
+           <img src="/perfil/{{ auth()->user()->imagen }}" class="icono-imagen" alt="Icono de Foto" style="max-width: 250px; max-height: 300px;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#DADBDB;">
+           <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
         </div>
 
-        <div > 
+        <div style="display:none !important;"> 
         <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
             <button  type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left:0px;width: 245px; height: 40px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Agregar Foto</button>
             @error('imagen')
@@ -142,26 +143,55 @@
 
     
     <script>
-        document.getElementById('cargar-imagen-btn').addEventListener('click', function () {
-            document.getElementById('imagen').click();
+    document.getElementById('imagen').addEventListener('change', function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById('imagen-preview').setAttribute('src', e.target.result);
+            document.getElementById('imagen-preview').style.display = 'block';
+        }
+
+        var file = this.files[0];
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+   
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cargarImagenBtn = document.getElementById('cargar-imagen-btn');
+        const imagenInput = document.getElementById('imagen');
+        const imagenPreview = document.getElementById('imagen-preview');
+        const iconoImagen = document.querySelector('.icono-imagen'); // Agregamos el icono
+
+        cargarImagenBtn.addEventListener('click', function() {
+            imagenInput.click();
         });
-    </script>
 
-    <script>
-        document.getElementById('imagen').addEventListener('change', function () {
-            var reader = new FileReader();
+        imagenInput.addEventListener('change', function() {
+            const reader = new FileReader();
 
-            reader.onload = function (e) {
-                document.getElementById('imagen-preview').setAttribute('src', e.target.result);
-                document.getElementById('imagen-preview').style.display = 'block';
-            }
+            reader.onload = function(e) {
+                imagenPreview.setAttribute('src', e.target.result);
+                imagenPreview.style.display = 'block';
+                iconoImagen.style.display = 'none'; // Ocultamos el icono
+            };
 
-            var file = this.files[0];
+            const file = this.files[0];
+
             if (file) {
                 reader.readAsDataURL(file);
+            } else {
+                imagenPreview.removeAttribute('src');
+                imagenPreview.style.display = 'none';
+                iconoImagen.style.display = 'block'; // Mostramos el icono
             }
         });
-    </script>
+    });
+</script>
 
 
     <script>

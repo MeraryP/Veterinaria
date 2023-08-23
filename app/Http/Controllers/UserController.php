@@ -99,7 +99,7 @@ class UserController extends Controller
         $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
 
         $rules=[
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' =>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'username' => 'required|min:8|unique:users,username',
             'correo' => 'required|max:100|email|unique:users,correo',
@@ -111,7 +111,7 @@ class UserController extends Controller
         ];
 
         $mensaje=[
-            'imagen.required'=>'la imagen no puede estar vacia',
+           
             'name.required' => 'El nombre no puede estar vacío',
 
             'username.required' => 'El nombre de usuario no puede estar vacío',
@@ -228,7 +228,7 @@ class UserController extends Controller
         $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
 
         $rules=[
-           
+                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'name' =>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
                 'username' => 'required|min:8|max:50',
                 'correo' => 'required|max:100|email|',
@@ -238,6 +238,7 @@ class UserController extends Controller
         ];
 
         $mensaje=[
+            'imagen.required' => 'la imagen no puede estar vacía',
             'name.required' => 'El nombre no puede estar vacío',
 
             'username.required' => 'El nombre de usuario no puede estar vacío',
@@ -269,6 +270,23 @@ class UserController extends Controller
         $user->identidad = $request->input('identidad');
         $user->telefono = $request->input('telefono');
         $user->username = $request->input('username');
+
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $destinacionPath = 'perfil';
+            $imagen = time() . '.' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('imagen')->move(public_path($destinacionPath), $imagen);
+        
+            // Eliminar la imagen anterior si existe
+            if ($user->imagen) {
+                $rutaImagenAnterior = public_path($destinacionPath . '/' . $user->imagen);
+                if (file_exists($rutaImagenAnterior)) {
+                    unlink($rutaImagenAnterior);
+                }
+            }
+        
+            $user->imagen = $imagen;
+        }
         $user->save();
 
         return redirect('/usuario')->with('mensaje', 'El perfil fue modificado exitosamente');
@@ -296,6 +314,7 @@ class UserController extends Controller
         $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
 
         $rules=[
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' =>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'username' => 'required|min:8|max:30',
             'correo' => 'required|max:100|email',
@@ -347,6 +366,23 @@ class UserController extends Controller
            
         $user->assignRole($request->input('rol'));
         }
+
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $destinacionPath = 'perfil';
+            $imagen = time() . '.' . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('imagen')->move(public_path($destinacionPath), $imagen);
+        
+            // Eliminar la imagen anterior si existe
+            if ($user->imagen) {
+                $rutaImagenAnterior = public_path($destinacionPath . '/' . $user->imagen);
+                if (file_exists($rutaImagenAnterior)) {
+                    unlink($rutaImagenAnterior);
+                }
+            }
+        
+            $user->imagen = $imagen;
+        } 
         $user->save();
 
         if($user){
