@@ -112,6 +112,7 @@ class UserController extends Controller
 
         $mensaje=[
            
+            'imagen.nullable'=> 'puede seleccionar una imagen',
             'name.required' => 'El nombre no puede estar vacío',
 
             'username.required' => 'El nombre de usuario no puede estar vacío',
@@ -228,7 +229,7 @@ class UserController extends Controller
         $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
 
         $rules=[
-                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'name' =>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
                 'username' => 'required|min:8|max:50',
                 'correo' => 'required|max:100|email|',
@@ -238,7 +239,7 @@ class UserController extends Controller
         ];
 
         $mensaje=[
-            'imagen.required' => 'la imagen no puede estar vacía',
+            'imagen.nullable' => 'la imagen no puede estar vacía',
             'name.required' => 'El nombre no puede estar vacío',
 
             'username.required' => 'El nombre de usuario no puede estar vacío',
@@ -386,7 +387,7 @@ class UserController extends Controller
         $user->save();
 
         if($user){
-            return redirect('/listadousuarios')->with('mensaje', 'El usuario fue modificado exitosamente.');
+            return redirect('/listausuarios')->with('mensaje', 'El usuario fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
