@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'telefono' => '3309-4090',
                 'password' => bcrypt('patitas'),
             ]
-        );
+        )->assignRole('Admin');
 
 
         User::create(
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
                 'telefono' => '98764643',
                 'password' => bcrypt('mairena2021'),
             ]
-        );
+            )->assignRole('Digitador');
 
       
 

@@ -355,6 +355,7 @@ return [
             'icon'    => 'fa fa-user', 
             'route'  => 'usuario.listado',
             'icon_color'=>'blue',  
+            'can'=>'index_usuario',  
         ],
 
         [

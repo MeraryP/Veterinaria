@@ -51,7 +51,6 @@
                 <th style="font-size:15px;text-align:center;  width:45px;" scope="col">No</th>
                 <th style="font-size:15px;text-align:center; width:135px;" scope="col">Identidad</th>
                 <th style="font-size:15px;text-align:center; width:250px;" scope="col">Nombre Completo</th>
-                <th style="font-size:15px;text-align:center; width:250px;" scope="col">Nombre de Usuario</th>
                 <th style="font-size:15px;text-align:center;  width:70px;" scope="col">Teléfono</th>
                 <th style="font-size:15px;text-align:center; width:150px;" scope="col">Correo</th>
                 <th style="font-size:15px;text-align:center; width:125px;" scope="col">Acciones</th>
@@ -64,18 +63,79 @@
                     <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
                     <td class="align-middle" style="font-size:15px">{{$users->identidad}}</td>
                     <td class="align-middle" style="font-size:15px">{{$users->name}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$users->username}}</td>
                     <td class="align-middle" style="font-size:15px">{{$users->telefono}}</td>
                     <td class="align-middle" style="font-size:15px">{{$users->correo}}</td>
                     <td>
-                        <div align="center">
-                            <a type="button"  title="Editar registro" href=" /usuario/{{$users->id}}/edit"class="btn btn-info" >
-                                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endsection 
+
+                <div align="center">
+                @if($users->estado == 1)
+                
+                <a type="button"  title="Editar registro" href=" /usuario/{{$users->id}}/edit"class="btn btn-info" >
+                <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+
+                   <button type="bottom"  onClick="desactivar{{$users->id}}()" title="Desactivar Usuario " class="btn btn-success">
+                    <i class="fa fa-eye" aria-hidden="true"></i></button>
+                <form action="{{route('user.desactivar',['id'=>$users->id])}}"  id="desac{{$users->id}}">     
+                </div>
+               <script>
+                function desactivar{{$users->id}}(){
+                    Swal.fire({
+  title: 'Desactivar Usuario',
+  text: '¿Desea desactivar al usuario seleccionado?',
+  icon: 'question',
+  showCancelButton: true,
+  confirmButtonText: 'Si',
+  cancelButtonText: `No`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.value) {
+    document.getElementById('desac{{$users->id}}').submit();
+  } else {
+    
+  }
+})
+                }
+
+                </script>
+
+               </form>
+                @else
+                
+                    <button type="bottom"  onClick="activar{{$users->id}}()" title="Activar Usuario " class="btn btn-primary">
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i> </button>
+                <form action="{{route('user.activar',['id'=>$users->id])}}"  id="act{{$users->id}}">     
+              
+               <script>
+                function activar{{$users->id}}(){
+                    Swal.fire({
+  title: 'Activar Usuario',
+  text: '¿Desea activar al usuario seleccionado?',
+  icon: 'question',
+  showCancelButton: true,
+  confirmButtonText: 'Si',
+  cancelButtonText: `No`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.value) {
+    document.getElementById('act{{$users->id}}').submit();
+  } else {
+    
+  }
+})
+                }
+
+                </script>
+
+               </form>
+                @endif
+
+                
+               </form>
+            </td>
+        </tr>
+     
+        @endforeach
+    </tbody>
+</table>
+{{$usuarios->links()}}
+@stop

@@ -105,7 +105,26 @@
                 </span>
             @enderror
         </div>
-        
+    
+        {{-- Rols --}}
+        <label for="" class="form-label">Cargo</label>
+        <div class="input-group mb-3">
+       
+            <select name="rol" id="rol" class="form-control @error('rol') is-invalid @enderror">
+                    <option  value= "{{$user->roles[0]->name}}"  style="display:none">{{$user->roles[0]->name}}</option>
+                @foreach($roles as $r)
+                    <option  value= "{{ $r->name}}">{{$r->name}}</option>
+                @endforeach
+            </select>
+
+            
+
+            @error('rol')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
         <br>
 
         {{-- Register button --}}

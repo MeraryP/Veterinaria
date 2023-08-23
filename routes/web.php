@@ -114,7 +114,13 @@ Route::middleware("auth")->group(function () {
 
         Route::post('/registrar',[UserController::class, 'guardar'])
         ->name('usuario.guardar');
-
+       
+        Route::get('/usuario/desactivar/{id}',[UserController::class, 'desactivar'])
+        ->name('user.desactivar');
+    
+        Route::get('/usuario/activar/{id}',[UserController::class, 'activar'])
+        ->name('user.activar');
+        
         Route::delete('/usuario/eliminar/{id}',[UserController::class, 'destroy'])
         ->name('user.destroy');
 

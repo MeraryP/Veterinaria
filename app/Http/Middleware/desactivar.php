@@ -17,7 +17,7 @@ class desactivar
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->estado == 1) {
+        if (auth()->user()->estado == 0) {
             Auth::logout();
             return redirect()->route('login')->with('mensaje', 'Su cuenta fue desactivada.');
         }
