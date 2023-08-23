@@ -166,7 +166,7 @@ class VacunaController extends Controller
         $aplicado->save();
 
         if($aplicado){
-            return redirect()->route('vacunaMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect()->route('vacunaMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }

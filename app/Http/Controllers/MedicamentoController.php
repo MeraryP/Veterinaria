@@ -143,7 +143,7 @@ class MedicamentoController extends Controller
     {
         $medicamento = Medicamento::find($id);
         $medicamento->delete();
-        return redirect('/medicamento')->with('mensaje', 'El Registro fue borrado exitosamente');
+        return redirect('/medicamento')->with('mensaje', 'El Registro fue borrado exitosamente.');
     }
 }
 

@@ -228,7 +228,7 @@ class PacienteController extends Controller
     {
         $paciente = Paciente::find($id);
         $paciente->delete();
-        return redirect('/paciente')->with('mensaje', 'El Registro fue borrado exitosamente');
+        return redirect('/paciente')->with('mensaje', 'El Registro fue borrado exitosamente.');
     }
 }
 

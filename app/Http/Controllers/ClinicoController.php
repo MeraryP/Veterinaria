@@ -120,7 +120,7 @@ class ClinicoController extends Controller
         $clinico->save();
 
         if($clinico){
-            return redirect()->route('clinicoMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect()->route('clinicoMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }

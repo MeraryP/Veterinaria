@@ -137,7 +137,7 @@ class DesparacitarController extends Controller
         $aplicado->save();
 
         if($aplicado){
-            return redirect()->route('desparacitacionMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect()->route('desparacitacionMascota',['id'=> $request->get('num_id')])->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }

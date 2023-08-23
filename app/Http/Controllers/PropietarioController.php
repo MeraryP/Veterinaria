@@ -121,7 +121,7 @@ class PropietarioController extends Controller
         $propietario->save();
 
         if($propietario){
-            return redirect('/propietario')->with('mensaje', 'El registro fue creado exitosamente.');
+            return redirect('/propietario')->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
@@ -133,6 +133,6 @@ public function destroy($id)
     {
         $propietario = Propietario::find($id);
         $propietario->delete();
-        return redirect('/propietario')->with('mensaje', 'El Registro fue borrado exitosamente');
+        return redirect('/propietario')->with('mensaje', 'El Registro fue borrado exitosamente.');
     }
 }

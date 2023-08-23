@@ -138,7 +138,7 @@ class ExamenController extends Controller
         $examen->save();
 
         if($examen){
-            return redirect()->route('examenMascota',['id'=>$request->get('num_id')])->with('mensaje', 'El registro fue actualizado exitosamente.');
+            return redirect()->route('examenMascota',['id'=>$request->get('num_id')])->with('mensaje', 'El registro fue modificado exitosamente.');
         }else{
             //retornar con un mensaje de error.
         }
