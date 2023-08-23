@@ -351,6 +351,13 @@ return [
         ],
 
         [
+            'text' => 'Usuarios',
+            'icon'    => 'fa fa-user', 
+            'route'  => 'usuario.listado',
+            'icon_color'=>'blue',  
+        ],
+
+        [
             'text' => 'Cerrar Sesión',
             'icon'    => 'fa fa-key', 
             'route'=>'logout2',

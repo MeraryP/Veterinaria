@@ -79,7 +79,7 @@ Route::middleware("auth")->group(function () {
         Route::put('/examen/{id}/editar', [ExamenController::class, 'update'])
         ->name('examen.update')->where('id','[0-9]+');
 
-        //ruta triadas
+        //ruta desparasitar
         Route::resource('desparacitar', 'App\Http\Controllers\DesparacitarController');
 
         Route::put('/desparacitar/{id}/editar', [DesparacitarController::class, 'update'])
@@ -92,8 +92,9 @@ Route::middleware("auth")->group(function () {
         ->name('contrasenia.cambiar');
         //ruta guardar
         Route::post('/contrasenia',[UserController::class, 'guardarclave'])
-            ->name('contrasenia.cambiada');
+        ->name('contrasenia.cambiada');
     
+        //rutas usuarios
         Route::get('/usuario',[UserController::class, 'usuario'])
         ->name('usuario.datos');
 
@@ -103,6 +104,27 @@ Route::middleware("auth")->group(function () {
         Route::put('/usuario/editar',[UserController::class, 'actualizar'])
         ->name('usuario.actualizar'); 
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+        //ruta  formulario usuarios
+        Route::get('/listausuarios',[UserController::class, 'listado'])
+        ->name('usuario.listado');
+
+        Route::get('/registrar',[UserController::class, 'registrar'])
+        ->name('usuario.registrar');
+
+        Route::post('/registrar',[UserController::class, 'guardar'])
+        ->name('usuario.guardar');
+
+        Route::delete('/usuario/eliminar/{id}',[UserController::class, 'destroy'])
+        ->name('user.destroy');
+
+        Route::put('/usuario/{id}/edit',[UserController::class, 'update'])
+        ->name('usuario.update');
+
+        Route::get('/usuario/{id}/edit',[UserController::class, 'editaru'])
+        ->name('usuario.editaru');
+
+         
               
  
         //ruta EXAMEN CLINICO
@@ -114,6 +136,7 @@ Route::middleware("auth")->group(function () {
         
         Route::get('logout2', [LoginController::class, 'logout'])->name('logout2');
 
+        
 
     });
     
