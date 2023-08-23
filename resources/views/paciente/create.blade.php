@@ -23,7 +23,7 @@
     
     <div > 
     <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
-        <button  type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left: 45px;width: 150px; height: 40px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Agregar Foto</button>
+        <button  type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left:0px;width: 245px; height: 40px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Agregar Foto</button>
         @error('imagen')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

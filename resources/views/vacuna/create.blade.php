@@ -65,18 +65,21 @@
         
         <div class="mb-3">
             <label>Estado </label>
-            <div class="wrapper" style="display: flex; width: 150px;">
+            <div class="wrapper" style="display: flex; width: 100px;">
                 <input type="checkbox" name="aplicada" id="aplicada" value="1" {{ old('aplicada') ? 'checked' : '' }}>
                 <label for="aplicada" class="checkbox">Aplicado</label>
             </div>
         </div>
         <br>
-        <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
-        <button type="submit"class="btn btn-outline-success" tabindex="4"style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
+        <div style="align-items: center; justify-content: center; display: flex;">
+            <link rel="stylesheet" type="text/css" href="css/fonts.css" >      
+            <button type="submit"class="btn btn-outline-success" tabindex="4" style="margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
 
-        <a href="{{route('vacunaMascota', ['id'=>$paciente])}}"  class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
-        <br>
-        <br>
+            <a href="{{route('vacunaMascota', ['id'=>$paciente])}}"  class="btn btn-outline-danger" tabindex="5"style="margin-rigth: 100px;"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+            <br>
+            <br>
+        </div>
+        
 
        
 
@@ -89,7 +92,7 @@
         }
 
         .wrapper{
-            height: 50px; 
+            height: 40px; 
             align-items: center; 
             justify-content: space-around;
         }
@@ -97,8 +100,8 @@
         input[type="checkbox"]{
             appearance: none;
             -webkit-appearance: none;
-            height: 35px;
-            width: 35px;
+            height: 22px;
+            width: 22px;
             background-color: #d5d5d5;
             border-radius: 5px;
             cursor: pointer;
@@ -109,17 +112,19 @@
 
         .checkbox{
             color: #4c4c4c;
-            font-size: 20px;
+            font-size: 15px;
             font-family: 'Poppins',sans-serif;
             font-weight: 600;
             cursor: pointer;
+            align-items: center;
+            justify-content: center;
         }
 
         input[type="checkbox"]:after{
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             content: "\f00c";
-            font-size: 35px;
+            font-size: 20px;
             color: white;
             display: none;
         }
