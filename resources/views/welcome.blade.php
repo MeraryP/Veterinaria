@@ -123,19 +123,7 @@
         <br>
         <div class="row justify-content-center">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
-                <figure class="card" style="background:#FBA371">
-                    <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#FAC00A;"  src="{{asset('imagen/usuarios.jpg')}}" alt="" class="card_image">
-                    <figcaption class="card_body">
-                        <div>
-                            <a href= "/listausuarios"class="card_category">
-                                <i style="color:#F9E542"  class="fa fa-user" aria-hidden="true"></i> Usuarios
-                            </a>
-                        </div>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
-                <figure class="card"  style="background:#FC95DF">
+                <figure class="card"  style="background:#FC95DF"  align ="center">
                     <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#F84C76;"  src="{{asset('imagen/datos.jpg')}}" alt="" class="card_image">
                     <figcaption class="card_body">
                         <div>
@@ -146,6 +134,25 @@
                     </figcaption>
                 </figure>
             </div>
-        </div>
+          
+        @if(Auth::user()->id == 1)
+      
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" >
+                <figure class="card" style="background:#FBA371;width:100% ;height: 170px;">
+                    <img style="width:100% ;height: 170px;border-style:solid;border-width: 3px;border-radius:.375rem;border-color:#FAC00A;"  src="{{asset('imagen/usuarios.jpg')}}" alt="" class="card_image">
+                    <figcaption class="card_body" >
+                        <div>
+                            <a href= "/listausuarios"class="card_category">
+                                <i style="color:#F9E542"  class="fa fa-user" aria-hidden="true"></i> Usuarios
+                            </a>
+                        </div>
+                    </figcaption>
+                </figure>
+                @endif
+            </div>
+  
+        
+            
+       
     </div>
 @endsection 
