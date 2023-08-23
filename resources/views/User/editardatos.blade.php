@@ -78,6 +78,15 @@
         
         </div>
 
+        <div class="input-group mb-3">
+            <label for="" style="width:20%">Fecha de nacimiento:</label>
+            <input name="nacimiento" type="text"  title="Ingresar número de Identidad separado por guiones" maxlength="15" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"  class="form-control @error('nacimiento') is-invalid @enderror"  value="{{auth()->user()->nacimiento}}" >
+            @error('nacimiento')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
 
         <div class="input-group mb-3">
             <label for="" style="width:20%">Identidad:</label>

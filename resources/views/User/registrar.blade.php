@@ -163,12 +163,12 @@
         <br>
 
         {{-- Register button --}}
-        <button type="submit"  class="btn btn-primary" >
+        <button type="submit"  class="btn btn-outline-primary" style="margin-left: 350px;margin-right: 60px;">
             <span class="fas fa-user-plus"></span>
             Guardar Datos
         </button>
     
-        <a type="button" class="btn btn-danger" href="/listausuarios"  ><i class="fa fa-times" aria-hidden="true"></i>
+        <a type="button" class="btn btn-outline-danger" href="/listausuarios"  ><i class="fa fa-times" aria-hidden="true"></i>
         Cancelar
         </a>
         <br>

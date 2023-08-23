@@ -70,10 +70,10 @@
                 <div align="center">
                 @if($users->estado == 1)
                 
-                <a type="button"  title="Editar registro" href=" /usuario/{{$users->id}}/edit"class="btn btn-info" >
+                <a type="button" style="margin-left: 10px;margin-right: 20px;" title="Editar registro" href=" /usuario/{{$users->id}}/edit"class="btn btn-outline-info" >
                 <i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
 
-                   <button type="bottom"  onClick="desactivar{{$users->id}}()" title="Desactivar Usuario " class="btn btn-success">
+                   <button type="bottom"  onClick="desactivar{{$users->id}}()" title="Desactivar Usuario " class="btn btn-outline-success">
                     <i class="fa fa-eye" aria-hidden="true"></i></button>
                 <form action="{{route('user.desactivar',['id'=>$users->id])}}"  id="desac{{$users->id}}">     
                 </div>
@@ -101,7 +101,7 @@
                </form>
                 @else
                 
-                    <button type="bottom"  onClick="activar{{$users->id}}()" title="Activar Usuario " class="btn btn-primary">
+                    <button type="bottom"style="margin-left: 10px;margin-right: 20px;"   onClick="activar{{$users->id}}()" title="Activar Usuario " class="btn btn-outline-primary">
                     <i class="fa fa-eye-slash" aria-hidden="true"></i> </button>
                 <form action="{{route('user.activar',['id'=>$users->id])}}"  id="act{{$users->id}}">     
               

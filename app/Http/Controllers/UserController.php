@@ -223,10 +223,10 @@ class UserController extends Controller
     }
 
     public function actualizar(Request $request){
-        $fecha_actual = date("d-m-Y");
-        $max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
-        $minima = date('d-m-Y',strtotime($fecha_actual."- 65 year"));
-        $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
+         $fecha_actual = date("d-m-Y");
+          $max = date('d-m-Y',strtotime($fecha_actual."- 18 year"));
+          $minima = date('d-m-Y',strtotime($fecha_actual."- 65 year"));
+         $maxima = date("d-m-Y",strtotime($max."+ 1 days"));
 
         $rules=[
                 'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
