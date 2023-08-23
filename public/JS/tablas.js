@@ -3,7 +3,7 @@
 $(document).ready(function() {
     $('#mitabla').DataTable({
         dom: 'lBfrtip',
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+        lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "Todos"]],
         rowCallback: function(row, data, index) {
         // Agregue el índice autoincrementable a la primera celda de la fila
         $('td:eq(0)', row).html(index + 1);
