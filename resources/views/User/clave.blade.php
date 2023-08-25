@@ -14,9 +14,8 @@
         }
     </style>
 
-
     <form action="" method="post">
-            @csrf
+         @csrf
 
         <center><h4></h4></center>
         <br>
@@ -76,15 +75,16 @@
         </div>
 
         {{-- Register button --}}
-        <button type="submit"  class="btn btn-outline-success " style="margin-left: 350px;margin-right: 60px;">
-            <span class="fas fa-user-plus"></span>
-            Guardar cambios
-        </button>
+        <div style="align-items: center; justify-content: center; display: flex;">
+            <button type="submit"  class="btn btn-outline-success " style="margin-right: 60px;">
+                <span class="fas fa-user-plus"></span>
+                Guardar cambios
+            </button>
+            
+            <a type="button" class="btn btn-outline-danger" href="./usuario"><i class="fa fa-times" aria-hidden="true"></i>
+                Cancelar
+            </a>
+        </div>
         
-        <a type="button" class="btn btn-outline-danger" href="./usuario"><i class="fa fa-times" aria-hidden="true"></i>
-            Cancelar
-        </a>
-
     </form>
-
 @stop

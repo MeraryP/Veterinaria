@@ -79,9 +79,10 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-outline-success" tabindex="4" style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
-        <a href="{{ route('examenMascota',['id'=>$examen->num_id])}}" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
-
+        <div style="align-items: center; justify-content: center; display: flex;">
+            <button type="submit" class="btn btn-outline-success" tabindex="4" style="margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar cambios</button>     
+            <a href="{{ route('examenMascota',['id'=>$examen->num_id])}}" class="btn btn-outline-danger" tabindex="5"> <i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+        </div>
         <br>
         <br>
 

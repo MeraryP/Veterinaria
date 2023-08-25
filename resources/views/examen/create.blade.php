@@ -3,7 +3,6 @@
 @section('title', 'Registrar Examen Fisico de ' .App\Models\Paciente::find($paciente)->nombre_mascota)
 
 @section('content')
-
   
     <form action ="{{route('examen.store')}}"  method="POST">
         @csrf
@@ -13,7 +12,6 @@
         <div class="mb-3" style="display:none !important;" >
             <label for="">Nombre de la Mascota</label>
             <input class="form-control" name="num_id" value= "{{$paciente}}"> 
-    
         </div>
 
         <div class="mb-3">
@@ -78,14 +76,11 @@
             @enderror
         </div>
 
+        <div style="align-items: center; justify-content: center; display: flex;">
+            <link rel="stylesheet" type="text/css" href="css/fonts.css" >     
+            <button type="submit"class="btn btn-outline-success" tabindex="4" style="margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
+            <a href="{{route('examenMascota', ['id' =>$paciente])}}" class="btn btn-outline-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
         </div>
-        
-    
-        
-        <link rel="stylesheet" type="text/css" href="css/fonts.css" >     
-        <button type="submit"class="btn btn-outline-success" tabindex="4" style="margin-left: 350px;margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
-
-        <a href="{{route('examenMascota', ['id' =>$paciente])}}" class="btn btn-outline-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
         <br>
         <br>
         

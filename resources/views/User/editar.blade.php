@@ -7,18 +7,16 @@
     <br>
     
     <form action="{{route('usuario.update',['id'=>$user->id])}}" method="post"enctype="multipart/form-data">
-
         @method("put")
         @csrf
 
         <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;display:none !important;">
            <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#E9EEEE;">
-           
            <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
         </div>
 
         <div style="display:none !important;"> 
-        <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
+            <input type="file" name="imagen" id="imagen" class="form-control @error('imagen') is-invalid @enderror"style="max-width: 400px;display:none !important;">
             <button  type="button" id="cargar-imagen-btn" class="btn btn-success" style="margin-left:0px;width: 245px; height: 40px;"><i  style="font-size:20px;" align ="center" class="far fa-image" aria-hidden="true"></i> Agregar Foto</button>
             @error('imagen')
                 <span class="invalid-feedback" role="alert">
@@ -31,8 +29,7 @@
         <label for="" class="form-label">Nombre Completo</label>
         <div class="input-group mb-3">
             <input type="text" style="width:90%" title="Ingrese su nombre completo"   name="name" class="form-control @error('name') is-invalid @enderror"
-                   value= "{{ $user->name }}"  autofocus maxLength="100">
-
+            value= "{{ $user->name }}"  autofocus maxLength="100">
             @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -45,7 +42,6 @@
         <div class="input-group mb-3">
             <input type="text" style="width:90%" title="Ingrese un  username" name="username" class="form-control @error('username') is-invalid @enderror"
             value= "{{ $user->username }}"  autofocus maxLength="25">
-
             @error('username')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -58,7 +54,6 @@
         <div class="input-group mb-3">
             <input type="text" style="width:90%" title="Ingrese el correo electrónico" name="correo" class="form-control @error('correo') is-invalid @enderror"
             value= "{{ $user->correo }}" autofocus maxLength="100">
-
             @error('correo')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -72,7 +67,6 @@
             <input type="text" style="width:90%"   maxlength="15" pattern="[0-9]{4}-[0-9]{4}-[0-9]{5}" title="Ingresar número de Identidad separado por guiones"  name="identidad" class="form-control @error('identidad') is-invalid @enderror" 
             value= "{{ $user->identidad }}" autofocus maxLength="100" placeholder="0000-0000-00000" 
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-
             @error('identidad')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -85,7 +79,6 @@
         <div class="input-group mb-3">
             <input type="text" style="width:90%" title="Ingrese su fecha de nacimiento" name="nacimiento" class="form-control @error('nacimiento') is-invalid @enderror" id="nacimiento"
             value= "{{ $user->nacimiento }}"  autofocus>
-
             @error('nacimiento')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -99,7 +92,6 @@
             <input type="text" style="width:90%" title="Ingrese el número teléfonico" name="telefono" class="form-control @error('telefono') is-invalid @enderror" 
             value= "{{ $user->telefono }}" autofocus maxLength="9" placeholder="0000-0000"
             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-
             @error('telefono')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -110,16 +102,12 @@
         {{-- Rols --}}
         <label for="" class="form-label">Cargo</label>
         <div class="input-group mb-3">
-       
             <select name="rol" id="rol" class="form-control @error('rol') is-invalid @enderror">
                     <option  value= "{{$user->roles[0]->name}}"  style="display:none">{{$user->roles[0]->name}}</option>
                 @foreach($roles as $r)
                     <option  value= "{{ $r->name}}">{{$r->name}}</option>
                 @endforeach
             </select>
-
-            
-
             @error('rol')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -129,14 +117,15 @@
         <br>
 
         {{-- Register button --}}
-        <button type="submit"  class="btn btn-outline-primary"  style="margin-left: 350px;margin-right: 60px; >
-            <span class="fas fa-user-plus"></span>
-            Guardar Datos
-        </button>
-      
-        <a type="button" class="btn btn-outline-danger" href="/listausuarios"  ><i class="fa fa-times" aria-hidden="true"></i>
-           Cancelar
-        </a>
+        <div style="align-items: center; justify-content: center; display: flex;">
+            <button type="submit"  class="btn btn-outline-success"  style="margin-right: 60px; >
+                <span class="fas fa-user-plus"></span>
+                Guardar Datos
+            </button>
+            <a type="button" class="btn btn-outline-danger" href="/listausuarios"  ><i class="fa fa-times" aria-hidden="true"></i>
+            Cancelar
+            </a>
+        </div>
         <br>
         <br>
     </form>
