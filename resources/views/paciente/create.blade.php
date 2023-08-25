@@ -8,12 +8,10 @@
     
     <form action ="../paciente"  method="POST"enctype="multipart/form-data" >
         @csrf
-    
-        <br>
         
         <div class="mb-3"id="imagen-container" style="max-width: 400px; max-height: 200px;overflow: hidden;">
-            <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300;border-style:solid;border-width: 7px;border-radius:.375rem;border-color:#E9EEEE;">
-            <!--<img src="/imagen/usuarios.png" class="icono-imagen" alt="Icono de Foto" style="max-width: 200px; max-height: 200px;margin-left: 130px;">-->
+            <img id="imagen-preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 250px; max-height: 300; border-style:solid; border-width: 7px; border-radius:.375rem;border-color:#E9EEEE;">
+            <img src="/imagen/mascotasFondo2.jpeg" class="icono-imagen" alt="Icono de Foto" style="max-width: 250px; max-height: 300px;">
         </div>
     
         <div> 
