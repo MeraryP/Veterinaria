@@ -70,12 +70,12 @@
                     <td class="align-middle" style="font-size:15px">{{$propietario->correo}}</td>
                 
                     <td>
-                        <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-outline-info" style="margin-left: 10px;margin-right: 20px;">
+                        <a type="button"  title="Editar registro" href="./propietario/{{$propietario->id}}/edit" class="btn btn-outline-success" style="margin-left: 10px;margin-right: 20px;">
                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
                             
                         <button type="bottom"  onClick="borrar{{$propietario->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
-                            <i class="fa fa-window-close" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                             
                         <form action="{{route ('propietario.destroy',$propietario->id)}}" method="POST" id="eliminar{{$propietario->id}}"> 

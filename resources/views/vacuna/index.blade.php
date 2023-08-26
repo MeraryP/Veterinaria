@@ -117,7 +117,7 @@
                         </a>
                             
                         <button type="bottom"  onClick= "borrar{{ $aplicado->id }}()"title="Eliminar registro" class="btn btn-outline-danger">
-                            <i class="fa fa-window-close" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
 
                         <form action="{{route ('vacuna.destroy',$aplicado->id)}}" method="POST" id="eliminar{{ $aplicado->id }}"> 

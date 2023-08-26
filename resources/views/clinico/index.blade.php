@@ -112,7 +112,7 @@
                         </a>
                             
                         <button type="bottom"  onClick="borrar{{$clinico->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
-                            <i class="fa fa-window-close" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
 
                         <form action="{{route ('clinico.destroy',$clinico->id)}}"   method="POST" id="eliminar{{$clinico->id}}"> 

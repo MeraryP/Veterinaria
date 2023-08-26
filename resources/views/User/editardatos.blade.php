@@ -19,7 +19,6 @@
     </style>
 
     <center><h1></h1></center>
-    <br>
     
     <form action="{{route('usuario.actualizar')}}" method="post"enctype="multipart/form-data" >
         @method("put")
@@ -103,7 +102,6 @@
             @enderror
         </div>
 
-        <br>
         <div style="align-items: center; justify-content: center; display: flex;">
             <button type="submit" class="btn btn-outline-success" style="margin-right: 60px;"><span class="fas fa-user-plus"></span>
             Guardar Cambios
@@ -113,6 +111,7 @@
                 Cancelar
             </a>
         </div>
+        <br>
     </form>
         
      
@@ -157,5 +156,4 @@
             });
         });
     </script>
-
 @stop

@@ -103,54 +103,53 @@
             @php $n=0; @endphp
             @foreach ($aplicados as $aplicado)
 
-            @if($aplicado->medicamento->categoria->nombre_cate === 'Desparasitante') 
+                @if($aplicado->medicamento->categoria->nombre_cate === 'Desparasitante') 
                 
-            
-                <tr>
-                    <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
-                    <td class="align-middle" style="font-size:15px"> @if ($aplicado->medicamento)
-                            {{ $aplicado->medicamento->nombre_medicamento }}
-                        @else
-                            Medicamento no encontrado
-                        @endif
-                    </td>
-                    <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}} {{$aplicado->unidad_desparasitante}}</td>
-                    <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>    
-                    <td class="align-middle" style="font-size:15px">{{$aplicado->aplicada ? 'Aplicado' : 'Pendiente' }}</td>
-                    <td>
-                    <a type="button"  title="Editar registro" href="/desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-success" style="margin-left: 10px;margin-right: 20px;" >
-                            <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                        </a>
-                            
-                        <button type="bottom"  onClick="borrar{{$aplicado->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
-                            <i class="fa fa-window-close" aria-hidden="true"></i>
-                        </button>
+                    <tr>
+                        <td class="align-middle" style="font-size:15px; text-align:center" scope="row">{{++ $n}}</td>
+                        <td class="align-middle" style="font-size:15px"> @if ($aplicado->medicamento)
+                                {{ $aplicado->medicamento->nombre_medicamento }}
+                            @else
+                                Medicamento no encontrado
+                            @endif
+                        </td>
+                        <td class="align-middle" style="font-size:15px">{{$aplicado->dosis}} {{$aplicado->unidad_desparasitante}}</td>
+                        <td class="align-middle" style="font-size:15px">{{$aplicado->fecha_aplicada}}</td>    
+                        <td class="align-middle" style="font-size:15px">{{$aplicado->aplicada ? 'Aplicado' : 'Pendiente' }}</td>
+                        <td>
+                            <a type="button"  title="Editar registro" href="/desparacitar/{{$aplicado->id}}/edit" class="btn btn-outline-success" style="margin-left: 10px;margin-right: 20px;" >
+                                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                            </a>
+                                
+                            <button type="bottom"  onClick="borrar{{$aplicado->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
 
-                        <form action="{{route ('desparacitar.destroy',$aplicado->id)}}" method="POST" id="eliminar{{$aplicado->id}}"> 
-                            @csrf
-                            @method('DELETE')       
-                        
-                            <script>
-                                function borrar{{$aplicado->id}}(){
-                                    Swal.fire({
-                                        title: 'Eliminar Registro',
-                                        text: '¿Desea eliminar el registro seleccionado?',
-                                        icon: 'error',
-                                        showCancelButton: true,
-                                        confirmButtonText: 'Si',
-                                        cancelButtonText: `No`,
-                                    }).then((result) => {
-                                        /* Read more about isConfirmed, isDenied below */
-                                        if (result.value) {
-                                            document.getElementById('eliminar{{$aplicado->id}}').submit();
-                                        } else {   
-                                        }
-                                    })
-                                }
-                            </script>
-                        </form>
-                    </td>
-                </tr>
+                            <form action="{{route ('desparacitar.destroy',$aplicado->id)}}" method="POST" id="eliminar{{$aplicado->id}}"> 
+                                @csrf
+                                @method('DELETE')       
+                            
+                                <script>
+                                    function borrar{{$aplicado->id}}(){
+                                        Swal.fire({
+                                            title: 'Eliminar Registro',
+                                            text: '¿Desea eliminar el registro seleccionado?',
+                                            icon: 'error',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Si',
+                                            cancelButtonText: `No`,
+                                        }).then((result) => {
+                                            /* Read more about isConfirmed, isDenied below */
+                                            if (result.value) {
+                                                document.getElementById('eliminar{{$aplicado->id}}').submit();
+                                            } else {   
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </form>
+                        </td>
+                    </tr>
                 @endif
             @endforeach
         </tbody>

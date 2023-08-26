@@ -18,7 +18,7 @@
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
 
-@section('auth_header', __('Ingrese sus datos para iniciar tu sesión'))
+@section('auth_header', __('iniciar sesión'))
 
 @section('auth_body')
     @if(session('mensaje'))
@@ -33,13 +33,11 @@
         <div class="input-group mb-3">
         <input class="form-control{{ $errors->has('correo') ? ' is-invalid' : '' }}" placeholder="{{ __('Correo electrónico') }}" 
         type="email" name="correo" value="{{ old('correo') }}" value="Correo electronico" required autofocus>
-
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-user"></span>
                 </div>
             </div>
-
             @error('username')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -50,14 +48,12 @@
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                   placeholder="Contraseña">
-
+            placeholder="Contraseña">
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
-
             @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -67,15 +63,13 @@
 
         {{-- Login field --}}
         <div class="row">
-
             <div class="col-12">
-                <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
-                    <span class="fas fa-sign-in-alt"></span>
-                    Inicio de Sesion
+                <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}" style="border-radius:0.3rem">
+                    <span class=""></span>
+                    Acceder
                 </button>
             </div>
         </div>
-
     </form>
 @stop
 

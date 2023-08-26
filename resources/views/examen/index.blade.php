@@ -118,7 +118,7 @@
                         </a>
                             
                         <button type="bottom"  onClick="borrar{{$examen->id}}()" title="Eliminar registro" class="btn btn-outline-danger">
-                            <i class="fa fa-window-close" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                         
                         <form action="{{route ('examen.destroy',$examen->id)}}" method="POST" id="eliminar{{$examen->id}}"> 
@@ -145,12 +145,10 @@
                                     })
                                 }
                             </script>
-
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
-
     </table>
 @endsection 
