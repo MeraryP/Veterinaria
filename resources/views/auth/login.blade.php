@@ -51,7 +51,7 @@
             placeholder="Contraseña">
             <div class="input-group-append">
                 <div class="input-group-text">
-                    <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                    <span class="fa fa-key {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
             @error('password')

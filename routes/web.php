@@ -106,10 +106,10 @@ Route::middleware("auth")->group(function () {
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
         //ruta  formulario usuarios
-        Route::get('/listausuarios',[UserController::class, 'listado'])
+        Route::get('/listausuarios',[UserController::class, 'listado'])->middleware('can:index_usuario')
         ->name('usuario.listado');
 
-        Route::get('/registrar',[UserController::class, 'registrar'])
+        Route::get('/registrar',[UserController::class, 'registrar'])->middleware('can:index_usuario')
         ->name('usuario.registrar');
 
         Route::post('/registrar',[UserController::class, 'guardar'])
