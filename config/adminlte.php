@@ -308,12 +308,12 @@ return [
         
         ],
 
-      [
-        'text' => 'inicio',
-        'icon'    => 'fa fa-home', 
-        //'route'=>'home',
-        'icon_color'=>'orange',
-      ],
+        [
+            'text' => 'inicio',
+            'icon'    => 'fa fa-home', 
+            //'route'=>'home',
+            'icon_color'=>'orange',
+        ],
       
         [
             'text' => 'Propietario',
@@ -335,13 +335,13 @@ return [
             
             'icon_color'=>'yellow',  
         ],
+
         [
             'text' => 'Vacuna',
             'icon'    => 'fas fa-syringe', 
             
             'icon_color'=>'purple',  
         ],
-
 
         [
             'text' => 'Medicamentos',
@@ -360,11 +360,10 @@ return [
 
         [
             'text' => 'Cerrar Sesión',
-            'icon'    => 'fa fa-key', 
+            'icon'    => 'fa fa-power-off', 
             'route'=>'logout2',
             'login_url' => 'logout',
             'icon_color'=>'red',  
- 
         ],
 
       
