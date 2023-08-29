@@ -84,7 +84,7 @@
             <link rel="stylesheet" type="text/css" href="css/fonts.css" >     
             <button type="submit"class="btn btn-outline-success" tabindex="4" style="margin-right: 60px;"><span class="fas fa-user-plus"></span> Guardar</button> 
             <a href="../propietario" class="btn btn-outline-danger" tabindex="5"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
-        <</div>
+        </div>
         <br>
         <br>
 
