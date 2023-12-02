@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Categoria;
 use App\Models\Medicamento;
-use App\Models\Aplicado;    // No tienen creado el modelo de Aplicado y en la base de datos si existe la tabla aplicados
+use App\Models\Desparacitar;
 
-class DBMedicamentoCateAplicadoTest extends TestCase
+class DBMedicamentoCateDesparacitarTest extends TestCase
 {
     //Todas las pruebas esten dirigidas a la integrdad de la base de datos, que este normalizada, y pruebas a las relaciones de las tablas
     /**
@@ -25,12 +25,12 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $this->assertEquals($categoria->id, $medicamento->cate_id);
     }
 
-    public function test_creacion_aplicado_con_medicamento_existente()
+    public function test_creacion_Desparacitar_con_medicamento_existente()
     {
         $medicamento = Medicamento::factory()->create();
-        $aplicado = Aplicado::factory()->make(['medi_id' => $medicamento->id]);
+        $Desparacitar = Desparacitar::factory()->make(['medi_id' => $medicamento->id]);
         $this->assertDatabaseHas('medicamentos', ['id' => $medicamento->id]);
-        $this->assertEquals($medicamento->id, $aplicado->medi_id);
+        $this->assertEquals($medicamento->id, $Desparacitar->medi_id);
     }
 
     public function test_eliminacion_categoria_cascada_medicamentos()
@@ -41,12 +41,12 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $this->assertDatabaseMissing('medicamentos', ['id' => $medicamento->id, 'cate_id' => $categoria->id]);
     }
 
-    public function test_eliminacion_medicamento_cascada_aplicados()
+    public function test_eliminacion_medicamento_cascada_Desparacitars()
     {
         $medicamento = Medicamento::factory()->create();
-        $aplicado = Aplicado::factory()->create(['medi_id' => $medicamento->id]);
+        $Desparacitar = Desparacitar::factory()->create(['medi_id' => $medicamento->id]);
         $medicamento->delete();
-        $this->assertDatabaseMissing('aplicados', ['id' => $aplicado->id, 'medi_id' => $medicamento->id]);
+        $this->assertDatabaseMissing('Desparacitars', ['id' => $Desparacitar->id, 'medi_id' => $medicamento->id]);
     }
 
     public function test_creacion_medicamento_sin_categoria()
@@ -56,11 +56,11 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $medicamento->save();
     }
 
-    public function test_creacion_aplicado_sin_medicamento()
+    public function test_creacion_Desparacitar_sin_medicamento()
     {
-        $aplicado = Aplicado::factory()->make();
+        $Desparacitar = Desparacitar::factory()->make();
         $this->expectException(\Illuminate\Database\QueryException::class);
-        $aplicado->save();
+        $Desparacitar->save();
     }
 
     public function test_actualizacion_medicamento_con_categoria_inexistente()
@@ -70,11 +70,11 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $medicamento->update(['cate_id' => 999]);
     }
 
-    public function test_actualizacion_aplicado_con_medicamento_inexistente()
+    public function test_actualizacion_Desparacitar_con_medicamento_inexistente()
     {
-        $aplicado = Aplicado::factory()->create();
+        $Desparacitar = Desparacitar::factory()->create();
         $this->expectException(\Illuminate\Database\QueryException::class);
-        $aplicado->update(['medi_id' => 999]);
+        $Desparacitar->update(['medi_id' => 999]);
     }
 
     public function test_creacion_categoria_con_nombre_duplicado()
@@ -172,11 +172,11 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $medicamento->save();
     }
 
-    public function test_creacion_aplicado_con_medicamento_nulo()
+    public function test_creacion_Desparacitar_con_medicamento_nulo()
     {
-        $aplicado = Aplicado::factory()->make(['medi_id' => null]);
+        $Desparacitar = Desparacitar::factory()->make(['medi_id' => null]);
         $this->expectException(\Illuminate\Database\QueryException::class);
-        $aplicado->save();
+        $Desparacitar->save();
     }
 
     public function test_actualizacion_medicamento_con_categoria_nula()
@@ -186,11 +186,11 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $medicamento->update(['cate_id' => null]);
     }
 
-    public function test_actualizacion_aplicado_con_medicamento_nulo()
+    public function test_actualizacion_Desparacitar_con_medicamento_nulo()
     {
-        $aplicado = Aplicado::factory()->create();
+        $Desparacitar = Desparacitar::factory()->create();
         $this->expectException(\Illuminate\Database\QueryException::class);
-        $aplicado->update(['medi_id' => null]);
+        $Desparacitar->update(['medi_id' => null]);
     }
 
     public function test_creacion_categoria_con_nombre_muy_largo()
@@ -316,26 +316,26 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $categoria->delete();
     }
 
-    public function test_borrado_medicamento_con_aplicados_asociados()
+    public function test_borrado_medicamento_con_Desparacitars_asociados()
     {
-        $medicamento = Medicamento::factory()->has(Aplicado::factory()->count(3))->create();
+        $medicamento = Medicamento::factory()->has(Desparacitar::factory()->count(3))->create();
         $this->expectException(\Illuminate\Database\QueryException::class);
         $medicamento->delete();
     }
 
-    public function test_borrado_categoria_con_medicamentos_y_aplicados_asociados()
+    public function test_borrado_categoria_con_medicamentos_y_Desparacitars_asociados()
     {
-        $categoria = Categoria::factory()->has(Medicamento::factory()->has(Aplicado::factory()->count(3))->count(3))->create();
+        $categoria = Categoria::factory()->has(Medicamento::factory()->has(Desparacitar::factory()->count(3))->count(3))->create();
         $this->expectException(\Illuminate\Database\QueryException::class);
         $categoria->delete();
     }
 
-    public function test_borrado_aplicado_con_medicamento_asociado()
+    public function test_borrado_Desparacitar_con_medicamento_asociado()
     {
-        $aplicado = Aplicado::factory()->for(Medicamento::factory())->create();
-        $this->assertNotNull(Aplicado::find($aplicado->id));
-        $aplicado->delete();
-        $this->assertNull(Aplicado::find($aplicado->id));
+        $Desparacitar = Desparacitar::factory()->for(Medicamento::factory())->create();
+        $this->assertNotNull(Desparacitar::find($Desparacitar->id));
+        $Desparacitar->delete();
+        $this->assertNull(Desparacitar::find($Desparacitar->id));
     }
 
     public function test_borrado_medicamento_con_categoria_asociada()
@@ -354,14 +354,14 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $this->assertNull(Categoria::find($categoria->id));
     }
 
-    public function test_borrado_cascada_medicamento_aplicado()
+    public function test_borrado_cascada_medicamento_Desparacitar()
     {
-        $medicamento = Medicamento::factory()->has(Aplicado::factory()->count(3))->create();
+        $medicamento = Medicamento::factory()->has(Desparacitar::factory()->count(3))->create();
         $this->assertNotNull(Medicamento::find($medicamento->id));
-        $this->assertEquals(3, Aplicado::where('medi_id', $medicamento->id)->count());
+        $this->assertEquals(3, Desparacitar::where('medi_id', $medicamento->id)->count());
         $medicamento->delete();
         $this->assertNull(Medicamento::find($medicamento->id));
-        $this->assertEquals(0, Aplicado::where('medi_id', $medicamento->id)->count());
+        $this->assertEquals(0, Desparacitar::where('medi_id', $medicamento->id)->count());
     }
 
     public function test_borrado_cascada_categoria_medicamento()
@@ -374,16 +374,16 @@ class DBMedicamentoCateAplicadoTest extends TestCase
         $this->assertEquals(0, Medicamento::where('cate_id', $categoria->id)->count());
     }
 
-    public function test_borrado_cascada_categoria_medicamento_aplicado()
+    public function test_borrado_cascada_categoria_medicamento_Desparacitar()
     {
-        $categoria = Categoria::factory()->has(Medicamento::factory()->has(Aplicado::factory()->count(3))->count(3))->create();
+        $categoria = Categoria::factory()->has(Medicamento::factory()->has(Desparacitar::factory()->count(3))->count(3))->create();
         $this->assertNotNull(Categoria::find($categoria->id));
         $this->assertEquals(3, Medicamento::where('cate_id', $categoria->id)->count());
-        $this->assertEquals(9, Aplicado::where('medi_id', Medicamento::where('cate_id', $categoria->id)->pluck('id'))->count());
+        $this->assertEquals(9, Desparacitar::where('medi_id', Medicamento::where('cate_id', $categoria->id)->pluck('id'))->count());
         $categoria->delete();
         $this->assertNull(Categoria::find($categoria->id));
         $this->assertEquals(0, Medicamento::where('cate_id', $categoria->id)->count());
-        $this->assertEquals(0, Aplicado::where('medi_id', Medicamento::where('cate_id', $categoria->id)->pluck('id'))->count());
+        $this->assertEquals(0, Desparacitar::where('medi_id', Medicamento::where('cate_id', $categoria->id)->pluck('id'))->count());
     }
 
     public function test_creacion_categoria_con_nombre_largo()
