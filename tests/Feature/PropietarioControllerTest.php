@@ -20,8 +20,8 @@ class PropietarioControllerTest extends TestCase
 
         // Buscar el usuario en la base de datos por correo electrónico
         $this->user = User::where('correo', 'patitas@gmail.com')
-        ->orWhere('correo', 'karlagalo@gmail.com')
-        ->first();
+            ->orWhere('correo', 'karlagalo@gmail.com')
+            ->first();
 
         // Si no puedes encontrar el usuario, podrías querer lanzar un error para que sepas que algo está mal
         if (!$this->user) {
@@ -41,44 +41,44 @@ class PropietarioControllerTest extends TestCase
     }
 
     public function testCreate()
-{
-    $response = $this->get('/propietario/create');
-    $response->assertStatus(200);
-}
+    {
+        $response = $this->get('/propietario/create');
+        $response->assertStatus(200);
+    }
 
-public function testStore()
-{
-    $this->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
-    $data = [
-        'identidad' => '1234-5678-90123',
-        'nombre' => 'Nombre Apellido',
-        'direccion' => 'Dirección de prueba',
-        'gene_id' => 1, // Reemplaza con el ID válido de un género existente
-        'telefono' => '9876-5432',
-        'correo' => 'correo@example.com',
-    ];
+    public function testStore()
+    {
+        $this->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
+        $data = [
+            'identidad' => '1234-5678-90123',
+            'nombre' => 'Nombre Apellido',
+            'direccion' => 'Dirección de prueba',
+            'gene_id' => 1, // Reemplaza con el ID válido de un género existente
+            'telefono' => '9876-5432',
+            'correo' => 'correo@example.com',
+        ];
 
-    $response = $this->post('/propietario', $data);
-    $response->assertRedirect('/propietario');
-}
-public function testEdit()
+        $response = $this->post('/propietario', $data);
+        $response->assertRedirect('/propietario');
+    }
+    public function testEdit()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Simular solicitud GET a /propietario/{id}/editar
         $response = $this->get("/propietario/{$propietario->id}/editar");
 
         // Verificar que se cargue la vista propietario.edit con el propietario correcto
         $response->assertViewIs('propietario.edit')
-                 ->assertStatus(200)
-                 ->assertSee($propietario->nombre); // Verificar que el nombre del propietario se muestra en la vista
+            ->assertStatus(200)
+            ->assertSee($propietario->nombre); // Verificar que el nombre del propietario se muestra en la vista
     }
 
     public function testUpdate()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Datos válidos para actualizar el propietario
         $data = [
@@ -99,42 +99,42 @@ public function testEdit()
         // Verificar los demás campos actualizados
 
         $response->assertRedirect('/propietario')
-                 ->assertSessionHas('mensaje', 'El registro fue modificado exitosamente.');
+            ->assertSessionHas('mensaje', 'El registro fue modificado exitosamente.');
     }
 
     public function testDestroy()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Simular solicitud DELETE a /propietario/{id}
         $response = $this->delete("/propietario/{$propietario->id}");
 
         // Verificar que se haya eliminado el propietario correctamente
-        $this->assertDeleted($propietario);
+        $this->assertDatabaseMissing('propietarios', ['id' => $propietario->id]);
 
         $response->assertRedirect('/propietario')
-                 ->assertSessionHas('mensaje', 'El Registro fue borrado exitosamente.');
+            ->assertSessionHas('mensaje', 'El Registro fue borrado exitosamente.');
     }
 
     public function testShow()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Simular solicitud GET a /propietario/{id}
         $response = $this->get("/propietario/{$propietario->id}");
 
         // Verificar que se muestre la vista propietario.show con el propietario correcto
         $response->assertViewIs('propietario.show')
-                 ->assertStatus(200)
-                 ->assertSee($propietario->nombre); // Verificar que el nombre del propietario se muestra en la vista
+            ->assertStatus(200)
+            ->assertSee($propietario->nombre); // Verificar que el nombre del propietario se muestra en la vista
     }
 
     public function testInvalidUpdate()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Datos inválidos para actualizar el propietario
         $data = [
@@ -165,7 +165,7 @@ public function testEdit()
     public function testStoreWithDuplicateEmail()
     {
         // Crear un propietario de prueba en la base de datos
-        $existingPropietario = factory(Propietario::class)->create();
+        $existingPropietario = Propietario::factory()->create();
 
         // Datos para crear un nuevo propietario con el mismo correo que el propietario existente
         $data = [
@@ -212,22 +212,22 @@ public function testEdit()
     public function testValidDestroy()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Simular solicitud DELETE a /propietario/{id}
         $response = $this->delete("/propietario/{$propietario->id}");
 
         // Verificar que se haya eliminado el propietario correctamente
-        $this->assertDeleted($propietario);
+        $this->assertDatabaseMissing('propietarios', ['id' => $propietario->id]);
 
         $response->assertRedirect('/propietario')
-                 ->assertSessionHas('mensaje', 'El Registro fue borrado exitosamente.');
+            ->assertSessionHas('mensaje', 'El Registro fue borrado exitosamente.');
     }
 
     public function testValidUpdate()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Datos válidos para actualizar el propietario
         $data = [
@@ -248,7 +248,7 @@ public function testEdit()
         // Verificar los demás campos actualizados
 
         $response->assertRedirect('/propietario')
-                 ->assertSessionHas('mensaje', 'El registro fue modificado exitosamente.');
+            ->assertSessionHas('mensaje', 'El registro fue modificado exitosamente.');
     }
 
     public function testValidStore()
@@ -269,13 +269,12 @@ public function testEdit()
         // Verificar que se haya creado el propietario correctamente
         $this->assertCount(1, Propietario::all()); // Verificar que se haya agregado un propietario a la base de datos
         $response->assertRedirect('/propietario')
-                 ->assertSessionHas('mensaje', 'El registro fue creado exitosamente.');
-   
+            ->assertSessionHas('mensaje', 'El registro fue creado exitosamente.');
     }
     public function testInvalidStore()
     {
         // Crear un propietario de prueba en la base de datos
-        $existingPropietario = factory(Propietario::class)->create();
+        $existingPropietario = Propietario::factory()->create();
 
         // Datos inválidos para crear un nuevo propietario
         $data = [
@@ -292,21 +291,20 @@ public function testEdit()
 
         // Verificar que la creación falle debido a datos inválidos
         $response->assertSessionHasErrors(['identidad', 'nombre', 'direccion', 'gene_id', 'telefono', 'correo']);
-     
     }
 
     public function testValidEdit()
     {
         // Crear un propietario de prueba en la base de datos
-        $propietario = factory(Propietario::class)->create();
+        $propietario = Propietario::factory()->create();
 
         // Simular solicitud GET a /propietario/{id}/editar
         $response = $this->get("/propietario/{$propietario->id}/editar");
 
         // Verificar que se cargue la vista propietario.edit con el propietario correcto
         $response->assertViewIs('propietario.edit')
-                 ->assertStatus(200)
-                 ->assertSee($propietario->nombre); // Verificar que el nombre del propietario se muestra en la vista
+            ->assertStatus(200)
+            ->assertSee($propietario->nombre); // Verificar que el nombre del propietario se muestra en la vista
     }
 
     public function testInvalidEdit()
