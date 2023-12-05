@@ -11,27 +11,19 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariosTest extends TestCase
 {
-    protected $user;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
+       //refrescamos base de datos y logiamos
+       use RefreshDatabase;
 
-        // Buscar el usuario en la base de datos por correo electrónico
-        $this->user = User::where('correo', 'patitas@gmail.com')->first();
-
-        // Si no puedes encontrar el usuario, podrías querer lanzar un error para que sepas que algo está mal
-        if (!$this->user) {
-            $this->fail('Usuario no encontrado');
-        }
-
-        // Actuar como el usuario encontrado
-        $this->actingAs($this->user);
-    }
+       protected $user;
+   
+       protected function setUp(): void
+       {
+           parent::setUp();
+   
+           $this->user = User::factory()->create();
+   
+           $this->actingAs($this->user);
+       }
 
     public function test_formulario_cambiar_clave()
     {

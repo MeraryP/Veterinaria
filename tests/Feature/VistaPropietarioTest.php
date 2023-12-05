@@ -10,25 +10,19 @@ use Tests\TestCase;
 
 class VistaPropietarioTest extends TestCase
 {
-    protected $user;
+   //refrescamos base de datos y logiamos
+   use RefreshDatabase;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+   protected $user;
 
-        // Buscar el usuario en la base de datos por correo electrónico
-        $this->user = User::where('correo', 'patitas@gmail.com')
-        ->orWhere('correo', 'karlagalo@gmail.com')
-        ->first();
+   protected function setUp(): void
+   {
+       parent::setUp();
 
-        // Si no puedes encontrar el usuario, podrías querer lanzar un error para que sepas que algo está mal
-        if (!$this->user) {
-            $this->fail('Usuario no encontrado');
-        }
+       $this->user = User::factory()->create();
 
-        // Actuar como el usuario encontrado
-        $this->actingAs($this->user);
-    }
+       $this->actingAs($this->user);
+   }
 
     
     public function test_VistaPropietarioIndex()
