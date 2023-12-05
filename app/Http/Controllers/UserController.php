@@ -182,7 +182,7 @@ class UserController extends Controller
     }
     public function desactivar($id){
         $user = User::findOrFail($id);
-        $user->estado = 0;
+        $user->estado = 1;
         $user->save();
 
         if($user){
@@ -194,7 +194,7 @@ class UserController extends Controller
 
     public function activar($id){
         $user = User::findOrFail($id);
-        $user->estado = 1;
+        $user->estado = 0;
         $user->save();
 
         if($user){
