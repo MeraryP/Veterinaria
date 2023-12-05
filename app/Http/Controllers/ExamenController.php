@@ -49,17 +49,45 @@ class ExamenController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request,[
+        
+
+       // $this->validate($request,[
            
          
-            'num_id'=>'required|exists:pacientes,id',
-            'temperatura'=>'required|numeric',
-            'frecuencia_cardiaca'=>'required|numeric',
-            'frecuencia_respiratoria'=>'required|numeric',
-            'peso'=>'required|numeric',
-            'pulso'=>'required|numeric',
+           // 'num_id'=>'required|exists:pacientes,id',
+            //'temperatura'=>'required|numeric',
+            //'frecuencia_cardiaca'=>'required|numeric',
+            //'frecuencia_respiratoria'=>'required|numeric',
+            //'peso'=>'required|numeric',
+            //'pulso'=>'required|numeric',
         
-        ]);
+       // ]);
+       $rules = [
+        'num_id' => 'required|exists:pacientes,id|numeric',
+        'temperatura' => 'required|numeric',
+        'frecuencia_cardiaca' => 'required|numeric',
+        'frecuencia_respiratoria' => 'required|numeric',
+        'peso' => 'required|numeric',
+        'pulso' => 'required|numeric',
+    ];
+
+    $messages = [
+        'num_id.required' => 'El campo num id es obligatorio.',
+        'num_id.exists' => 'El campo num id seleccionado no existe.',
+        'num_id.numeric' => 'El campo num id debe ser un valor numérico.',
+        'temperatura.required' => 'El campo temperatura es obligatorio.',
+        'temperatura.numeric' => 'El campo temperatura debe ser un valor numérico.',
+        'frecuencia_cardiaca.required' => 'El campo frecuencia cardiaca es obligatorio.',
+        'frecuencia_cardiaca.numeric' => 'El campo frecuencia cardiaca debe ser un valor numérico.',
+        'frecuencia_respiratoria.required' => 'El campo frecuencia respiratoria es obligatorio.',
+        'frecuencia_respiratoria.numeric' => 'El campo frecuencia respiratoria debe ser un valor numérico.',
+        'peso.required' => 'El campo peso es obligatorio.',
+        'peso.numeric' => 'El campo peso debe ser un valor numérico.',
+        'pulso.required' => 'El campo pulso es obligatorio.',
+        'pulso.numeric' => 'El campo pulso debe ser un valor numérico.',
+    ];
+
+    $this->validate($request, $rules, $messages); 
      
         $examens = new Examen();
         $examens->num_id = $request->get('num_id');
