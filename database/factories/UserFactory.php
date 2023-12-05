@@ -19,7 +19,7 @@ class UserFactory extends Factory
             'password' => bcrypt('password'), 
             'identidad' => $this->faker->unique()->isbn13,
             'telefono' => $this->faker->phoneNumber,
-            'estado' => 1,
+            'estado' => 0,
              
         ];
     }
