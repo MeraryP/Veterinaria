@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class GeneroMascotaFactory extends Factory
 {
-    protected $model = Genero::class;
+    protected $model = GeneroMascota::class;
 
     public function definition()
     {
