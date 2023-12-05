@@ -2,8 +2,9 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+//use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Clinico;
@@ -17,19 +18,16 @@ class ClinicoControllerTest extends TestCase
     {
         parent::setUp();
 
-        // Buscar el usuario en la base de datos por correo electrónico
-        $this->user = User::where('correo', 'patitas@gmail.com')
-        ->orWhere('correo', 'karlagalo@gmail.com')
-        ->first();
-
-        // Si no puedes encontrar el usuario, podrías querer lanzar un error para que sepas que algo está mal
+        // Busqueda de el usuario en la base de datos por medio de correo electrónico
+        $this->user = User::where('correo', 'patitas@gmail.com')->first();
+        // Si  no se encuentra el usuario, debe lanzar un error
         if (!$this->user) {
             $this->fail('Usuario no encontrado');
         }
-
-        // Actuar como el usuario encontrado
+        // Actuando como el usuario encontrado
         $this->actingAs($this->user);
     }
+
 
     public function testIndex()
     {
