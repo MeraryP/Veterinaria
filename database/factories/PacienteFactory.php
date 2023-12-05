@@ -25,7 +25,7 @@ class PacienteFactory extends Factory
     public function definition()
     {
         return [
-            'filename' => $this->faker->word . '.jpg', // Puedes ajustar esto según tus necesidades
+            'filename' => $this->faker->word . '.jpg', 
             'nombre_mascota' => $this->faker->name,
             'pro_id' => function () {
                 return Propietario::inRandomOrder()->first()->id;

@@ -63,7 +63,7 @@ class UserController extends Controller
         if($contra){
             return redirect('/')->with('mensaje', 'La contraseña fue actualizada exitosamente.');
         }else{
-            //retornar con un mensaje de error.
+            return redirect()->back()->with('error', 'La contraseña no pudo ser actualizada.');
         }
 
     }

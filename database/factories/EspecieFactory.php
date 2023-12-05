@@ -22,7 +22,7 @@ class EspecieFactory extends Factory
     public function definition()
     {
         return [
-            'nombre_especie' => $this->faker->word, // Puedes ajustar esto según tus necesidades
+            'nombre_especie' => $this->faker->word, 
         ];
     }
 }

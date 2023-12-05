@@ -32,6 +32,11 @@ use App\Http\Controllers\Auth\LoginController;
 Route::middleware("auth")->group(function () {
     Route::middleware("desactivado")->group(function () {
 
+
+        Route::put('/profile/update',[ProfileController::class, 'update']);
+
+        Route::put('/profile/password',[ProfileController::class, 'password']);
+
         //ruta propietario
         Route::resource('/propietario', 'App\Http\Controllers\PropietarioController');
 
