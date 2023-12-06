@@ -25,9 +25,9 @@ class ExamenController extends Controller
     {
        
      
-        $pacientes = Paciente::all();  
+        $paciente = Paciente::all();  
         //$generos = Genero::all();
-        return view ('examen.create',compact('pacientes'));
+        return view ('examen.create',compact('paciente'));
     }
 
 

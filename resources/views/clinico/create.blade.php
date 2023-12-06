@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Registrar Examen Clinico de '.App\Models\Paciente::find($paciente)->nombre_mascota)
+@section('title', 'Registrar Examen Clinico de ')
 
 @section('content')
 

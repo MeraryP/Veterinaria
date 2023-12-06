@@ -1,6 +1,6 @@
 @extends('layouts.madre')
 
-@section('title', 'Crear Vacunas de ' .App\Models\Paciente::find($paciente)->nombre_mascota)
+@section('title', 'Crear Vacunas de ' )
 
 @section('content')
 

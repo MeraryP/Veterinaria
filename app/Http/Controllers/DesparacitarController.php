@@ -31,8 +31,8 @@ class DesparacitarController extends Controller
         }
         
       
-        $pacientes = Paciente::all(); 
-        return view('desparacitar.create', compact('pacientes','medicamentos'));
+        $paciente = Paciente::all(); 
+        return view('desparacitar.create', compact('paciente','medicamentos'));
     }
 
     public function desparacitarPaciente($id)
@@ -56,7 +56,23 @@ class DesparacitarController extends Controller
     public function store(Request $request) 
     {
        
-       $request->validate([
+       //$request->validate([
+           // 'num_id'=>'required|exists:pacientes,id',
+            //'medi_id'=>'required|exists:medicamentos,id',
+            //'dosis'=>'required|numeric|min:0',
+
+            //'unidad_desparasitante' => [
+              //  'required',
+                //Rule::in(['ml', 'mg', 'tabletas', 'cucharaditas']),
+            //],
+    
+            //'fecha_aplicada'=>'required|date',
+            //'aplicado' => 'boolean',
+            
+        //]);
+
+
+        $rules = [
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
             'dosis'=>'required|numeric|min:0',
@@ -68,8 +84,17 @@ class DesparacitarController extends Controller
     
             'fecha_aplicada'=>'required|date',
             'aplicado' => 'boolean',
-            
-        ]);
+        ];
+    
+        $messages = [
+            'num_id.required' => 'El campo num id es obligatorio.',
+            'medi_id.required' => 'El campo medi id es obligatorio.',
+            'dosis.required' => 'El campo dosis es obligatorio.',
+            'unidad_desparasitante.required' => 'El campo unidad es obligatorio.', 
+            'fecha_aplicada.required' => 'El campo fecha aplicada es obligatorio.',
+        ];
+    
+        $this->validate($request, $rules, $messages); 
 
         $aplicados = new Desparacitar();
         $aplicados->num_id = $request->get('num_id');
@@ -115,17 +140,42 @@ class DesparacitarController extends Controller
     public function update(Request $request, $id)
     {
        
-        $this->validate($request,[
+      //  $this->validate($request,[
+           // 'num_id'=>'required|exists:pacientes,id',
+            //'medi_id'=>'required|exists:medicamentos,id',
+            //'dosis'=>'required|numeric|min:0',
+           // 'unidad_desparasitante' => [
+               // 'required',
+               // Rule::in(['ml', 'mg', 'tabletas', 'cucharaditas']),
+           // ],
+            //'fecha_aplicada'=>'required|date',
+            //'aplicado' => 'boolean',
+          // ]);
+
+          
+        $rules = [
             'num_id'=>'required|exists:pacientes,id',
             'medi_id'=>'required|exists:medicamentos,id',
             'dosis'=>'required|numeric|min:0',
+
             'unidad_desparasitante' => [
                 'required',
                 Rule::in(['ml', 'mg', 'tabletas', 'cucharaditas']),
             ],
+    
             'fecha_aplicada'=>'required|date',
             'aplicado' => 'boolean',
-        ]);
+        ];
+    
+        $messages = [
+            'num_id.required' => 'El campo num id es obligatorio.',
+            'medi_id.required' => 'El campo medi id es obligatorio.',
+            'dosis.required' => 'El campo dosis es obligatorio.',
+            'unidad_desparasitante.required' => 'El campo unidad es obligatorio.', 
+            'fecha_aplicada.required' => 'El campo fecha aplicada es obligatorio.',
+        ];
+    
+        $this->validate($request, $rules, $messages); 
 
         $aplicado = Desparacitar::find($id);
         $aplicado->num_id = $request->get('num_id');
@@ -148,7 +198,7 @@ class DesparacitarController extends Controller
        
         $aplicado = Desparacitar::find($id);
         $aplicado->delete();
-        return redirect()->back()->with('mensaje', 'El registro fue eliminado exitosamente.');
-}
+        return redirect('/desparacitar')->back()->with('mensaje', 'El registro fue eliminado exitosamente.');
+    }
 }
 
