@@ -2,22 +2,35 @@
 
 namespace Database\Factories;
 
-use App\Models\Medicamento;
-use App\Models\Categoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
 class MedicamentoFactory extends Factory
 {
-    protected $model = Medicamento::class;
-
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition()
     {
         return [
-            'nombre_medicamento' => $this->faker->word, // Genera una palabra aleatoria como nombre de medicamento
-            'cate_id' => function () {
-                return  Categoria::inRandomOrder()->first()->id;
-            },
+            'nombre_cate' =>$this->faker->randomElement(['hembra', 'macho']),
         ];
     }
-}
 
+    /**
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return static
+     */
+    public function unverified()
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
+    }
+}

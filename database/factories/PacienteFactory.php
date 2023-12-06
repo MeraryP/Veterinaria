@@ -2,42 +2,45 @@
 
 namespace Database\Factories;
 
-use App\Models\Paciente;
-use App\Models\Propietario;
-use App\Models\GeneroMascota;
 use App\Models\Especie;
+use App\Models\Genero;
+use App\Models\Propietario;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
 class PacienteFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Paciente::class;
-
-    /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function definition()
     {
+
         return [
-            'filename' => $this->faker->word . '.jpg', // Puedes ajustar esto según tus necesidades
-            'nombre_mascota' => $this->faker->name,
-            'pro_id' => function () {
-                return Propietario::inRandomOrder()->first()->id;
-            },
-            'especie_id' => function () {
-                return  Especie::inRandomOrder()->first()->id;
-            },
-            'genero_id' => function () {
-                return GeneroMascota::inRandomOrder()->first()->id;
-            },
+            'filename' => $this->faker->imageUrl(),
+            'nombre_mascota' => $this->faker->firstName(),
             'raza' => $this->faker->word,
-            'fecha_nacimiento' => $this->faker->date,
+            'fecha_nacimiento' => $this->faker->date(),
+            'genero_id' => $this->faker->numberBetween(1,2),
+            'pro_id' => $this->faker->numberBetween(1,10),
+            'especie_id' => $this->faker->numberBetween(1,2),
         ];
+    }
+
+    /**
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return static
+     */
+    public function unverified()
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
     }
 }
