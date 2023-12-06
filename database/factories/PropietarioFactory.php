@@ -21,7 +21,7 @@ class PropietarioFactory extends Factory
             'direccion' => $this->faker->address,
             'telefono' => $this->faker->phoneNumber,
             'correo' => $this->faker->unique()->safeEmail,
-            'gene_id' => $this->faker->numberBetween($min = 1, $max = 2),
+            'gene_id' => $this->faker->unique()->numberBetween($min = 1, $max = 2),
         ];
     }
 

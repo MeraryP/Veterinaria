@@ -21,7 +21,7 @@ class ExamenFactory extends Factory
             'frecuencia_respiratoria' => $this->faker->numberBetween(12, 30), // respiraciones por minuto
             'peso' => $this->faker->randomFloat(2, 1, 100), // peso en kilogramos con 2 decimales
             'pulso' => $this->faker->numberBetween(60, 120), // igual al rango de la frecuencia cardiaca
-            'num_id' => $this->faker->unique()->numberBetween(1, 2),
+            'num_id' =>$this->faker->unique()->randomNumber(9),
         ];
     }
 

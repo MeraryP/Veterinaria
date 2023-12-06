@@ -18,7 +18,8 @@ class MedicamentoFactory extends Factory
     public function definition()
     {
         return [
-            'nombre_cate' =>$this->faker->randomElement(['hembra', 'macho']),
+            'nombre_medicamento' => $this->faker->word,
+            'nombre_cate' =>$this->faker->randomElement(['Vacuna', 'Desparasitante']),
         ];
     }
 

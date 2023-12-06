@@ -26,9 +26,9 @@ class PacienteFactory extends Factory
             'nombre_mascota' => $this->faker->firstName(),
             'raza' => $this->faker->word,
             'fecha_nacimiento' => $this->faker->date(),
-            'genero_id' => $this->faker->numberBetween(1,2),
-            'pro_id' => $this->faker->numberBetween(1,10),
-            'especie_id' => $this->faker->numberBetween(1,2),
+            'genero_id' => $this->faker->unique()->numberBetween($min = 1, $max = 2),
+            'pro_id' => $this->faker->unique()->randomNumber(9),
+            'especie_id'=> $this->faker->unique()->randomNumber(9),
         ];
     }
 

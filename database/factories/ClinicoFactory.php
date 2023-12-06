@@ -21,7 +21,7 @@ class ClinicoFactory extends Factory
             'sintomas' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
         'enfermedad' => $this->faker->word, 
         'tratamiento' => $this->faker->sentence, 
-        'num_id' => $this->faker->unique()->numberBetween(1, 2),
+        'num_id' => $this->faker->unique()->randomNumber(9),
         ];
     }
 

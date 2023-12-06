@@ -23,8 +23,8 @@ class DesparacitarFactory extends Factory
             'unidad_desparasitante' => $this->faker->randomElement(['ml', 'mg', 'tabletas']),
             'fecha_aplicada' => $this->faker->date(), 
             'aplicada' => $this->faker->boolean, 
-            'num_id' => $this->faker->randomNumber(9), 
-            'medi_id' => $this->faker->randomNumber(9),
+            'num_id' => $this->faker->unique()->randomNumber(9),
+            'medi_id'=> $this->faker->unique()->randomNumber(9),
         ];
     }
 
