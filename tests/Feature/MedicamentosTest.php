@@ -7,9 +7,25 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Medicamento;
 use App\Models\Categoria;
+use App\Models\User;
 
 class MedicamentosTest extends TestCase
 {
+
+
+    use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
+
     /**
      * Ejemplo de prueba de característica básica.
      *

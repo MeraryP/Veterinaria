@@ -6,10 +6,25 @@ use App\Models\Paciente;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
 use Illuminate\Http\UploadedFile;
 
 class MascotaStoreTest extends TestCase
 {
+
+
+    use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
     /**
      * A basic feature test example.
      *

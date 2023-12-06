@@ -6,10 +6,24 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Propietario;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class PropietarioUpdateTest extends TestCase
 {
+
+    use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
     /**
      * A basic feature test example.
      *

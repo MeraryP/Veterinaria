@@ -25,11 +25,11 @@ class ClinicoController extends Controller
     public function create()
     {
        
-        $pacientes = Paciente::all();
-        return view ('clinico.create',compact('pacientes'));
+        $paciente = Paciente::all();
+        return view ('clinico.create',compact('paciente'));
     }
 
-        public function clinicoPaciente($id)
+    public function clinicoPaciente($id)
     {
        
         $paciente = $id;

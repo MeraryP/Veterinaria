@@ -22,7 +22,7 @@ class CategoriaFactory extends Factory
     public function definition()
     {
         return [
-            'nombre_cate' => $this->faker->word, // Puedes ajustar esto según tus necesidades
+            'nombre_cate' => $this->faker->word, 
         ];
     }
 }

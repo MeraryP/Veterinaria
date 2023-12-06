@@ -41,11 +41,11 @@ class PropietarioController extends Controller
            
           
            
-            'identidad'=>'unique:propietarios,identidad|max:15|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
+            'identidad'=>'unique:propietarios,identidad|max:15|numeric|regex:([0-9]{4}-[0-9]{4}-[0-9]{5})',
             'nombre'=>'required|regex:/^([A-Za-zÁÉÍÓÚáéíóúñÑ]+)(\s[A-Za-zÁÉÍÓÚáéíóúñÑ]+)*$/|max:100',
             'direccion'=>'required|max:300',
             'gene_id'=>'required|exists:generos,id',
-            'telefono'=>'required|max:9|regex:([0-9]{4}-[0-9]{4})',
+            'telefono'=>'required|numeric|max:9|regex:([0-9]{4}-[0-9]{4})',
             'correo'=>'required|max:100|email|unique:propietarios,correo',    
            
         ]);

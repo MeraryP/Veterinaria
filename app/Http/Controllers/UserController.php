@@ -46,10 +46,10 @@ class UserController extends Controller
 
         $mensaje=[
             'viejapassword.required' => 'La contraseña no puede estar vacío',
-            'viejapassword.Contractual' => 'La contraseña no coincide',
+            'viejapassword.Contractual' => 'La contraseña es incorrecta',
             'password.required' => 'La contraseña no puede estar vacío',
             'password.min' => 'La contraseña debe de tener mas de 8 caracteres',
-            'password.confirmed' => 'La contraseña no coinciden',
+            'password.confirmed' => 'La contraseña es incorrecta',
         ];
 
         $this->validate($request,$rules,$mensaje);
@@ -63,7 +63,7 @@ class UserController extends Controller
         if($contra){
             return redirect('/')->with('mensaje', 'La contraseña fue actualizada exitosamente.');
         }else{
-            //retornar con un mensaje de error.
+            return redirect()->back()->with('error', 'La contraseña es incorrecta.');
         }
 
     }
@@ -136,7 +136,7 @@ class UserController extends Controller
 
             'password.required' => 'La contraseña no puede estar vacío',
             'password.min' => 'La contraseña debe de tener mas de 8 caracteres',
-            'password.confirmed' => 'La contraseña no coinciden',
+            'password.confirmed' => 'La contraseña es incorrecta',
 
             'rol.required' => 'El cargo no puede estar vacío',
             'rol.exists' => 'El cargo no es valido',

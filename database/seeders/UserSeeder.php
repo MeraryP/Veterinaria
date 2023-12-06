@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             ]
             )->assignRole('Digitador');
 
-      
+            \App\Models\User::factory(50)->create();
 
 
     }

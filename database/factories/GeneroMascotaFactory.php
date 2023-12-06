@@ -10,11 +10,16 @@ use Illuminate\Support\Str;
  */
 class GeneroMascotaFactory extends Factory
 {
+<<<<<<< HEAD
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
+=======
+    protected $model = GeneroMascota::class;
+
+>>>>>>> 125a16ae94a73d7a2c1eace0bd5d71f82ed10f2f
     public function definition()
     {
         return [
