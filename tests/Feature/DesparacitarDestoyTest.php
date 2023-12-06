@@ -10,8 +10,6 @@ use App\Models\User;
 
 class DesparacitarDestoyTest extends TestCase
 {
-
-    
     /**
      * A basic feature test example.
      *
