@@ -2,28 +2,41 @@
 
 namespace Database\Factories;
 
-use App\Models\Desparacitar;
-use App\Models\Paciente;
-use App\Models\Medicamento;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
 class DesparacitarFactory extends Factory
 {
-    protected $model = Desparacitar::class;
-
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition()
     {
         return [
-            'num_id' => function () {
-                return Paciente::inRandomOrder()->first()->id;
-            },
-            'medi_id' => function () {
-                return  Medicamento::inRandomOrder()->first()->id;
-            },
-            'dosis' => $this->faker->randomNumber(2), // Genera un número aleatorio de dos cifras como dosis
-            'unidad_desparasitante' => $this->faker->randomElement(['ml', 'mg', 'tabletas', 'cucharaditas']),
-            'fecha_aplicada' => $this->faker->date,
-            'aplicada' => $this->faker->boolean,
+            'dosis' => $this->faker->randomNumber(2), 
+            'unidad' => $this->faker->randomElement(['mililitros', 'miligramos']),
+            'unidad_desparasitante' => $this->faker->randomElement(['ml', 'mg', 'tabletas']),
+            'fecha_aplicada' => $this->faker->date(), 
+            'aplicada' => $this->faker->boolean, 
+            'num_id' => $this->faker->randomNumber(9), 
+            'medi_id' => $this->faker->randomNumber(9),
         ];
+    }
+
+    /**
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return static
+     */
+    public function unverified()
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
     }
 }

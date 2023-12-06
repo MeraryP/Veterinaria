@@ -2,24 +2,38 @@
 
 namespace Database\Factories;
 
-use App\Models\Clinico;
-use App\Models\Paciente;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
 class ClinicoFactory extends Factory
 {
-    protected $model = Clinico::class;
-
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition()
     {
         return [
-            'num_id' => function () {
-                return Paciente::inRandomOrder()->first()->id;
-            },
-            'sintomas' => $this->faker->sentence,
-            'enfermedad' => $this->faker->word,
-            'tratamiento' => $this->faker->sentence,
+            'sintomas' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+        'enfermedad' => $this->faker->word, 
+        'tratamiento' => $this->faker->sentence, 
+        'num_id' => $this->faker->unique()->numberBetween(1, 2),
         ];
     }
-}
 
+    /**
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return static
+     */
+    public function unverified()
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
+    }
+}

@@ -2,26 +2,38 @@
 
 namespace Database\Factories;
 
-use App\Models\Examen;
-use App\Models\Paciente;
+use App\Models\Genero;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ExamenFactory extends Factory
 {
-    protected $model = Examen::class;
-
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition()
     {
         return [
-            'num_id' => function () {
-                return Paciente::inRandomOrder()->first()->id;
-            },
-            'temperatura' => $this->faker->numberBetween(36, 39), // Genera una temperatura aleatoria entre 36 y 39 grados Celsius
-            'frecuencia_cardiaca' => $this->faker->numberBetween(60, 100), // Genera una frecuencia cardíaca aleatoria entre 60 y 100 latidos por minuto
-            'frecuencia_respiratoria' => $this->faker->numberBetween(12, 20), // Genera una frecuencia respiratoria aleatoria entre 12 y 20 respiraciones por minuto
-            'peso' => $this->faker->numberBetween(1, 30), // Genera un peso aleatorio entre 1 y 30 kilogramos
-            'pulso' => $this->faker->numberBetween(60, 100), // Genera un pulso aleatorio entre 60 y 100 pulsos por minuto
+            'temperatura' => $this->faker->numberBetween(35, 42), // rango de temperatura en grados Celsius
+            'frecuencia_cardiaca' => $this->faker->numberBetween(60, 120), // rango de pulsaciones por minuto
+            'frecuencia_respiratoria' => $this->faker->numberBetween(12, 30), // respiraciones por minuto
+            'peso' => $this->faker->randomFloat(2, 1, 100), // peso en kilogramos con 2 decimales
+            'pulso' => $this->faker->numberBetween(60, 120), // igual al rango de la frecuencia cardiaca
+            'num_id' => $this->faker->unique()->numberBetween(1, 2),
         ];
     }
-}
 
+    /**
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return static
+     */
+    public function unverified()
+    {
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
+    }
+}
