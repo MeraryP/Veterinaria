@@ -7,9 +7,22 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Paciente;
 use App\Models\Examen;
-
+use App\Models\User;
 class ClinicoUpdateTest extends TestCase
 {
+
+    use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
     /**
      * A basic feature test example.
      *

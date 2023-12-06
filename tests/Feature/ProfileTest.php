@@ -11,27 +11,20 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileTest extends TestCase
 {
+    use RefreshDatabase;
 
-        protected $user;
+    protected $user;
 
-        protected function setUp(): void
-        {
-            parent::setUp();
-    
-            // Buscar el usuario en la base de datos por correo electrónico
-            $this->user = User::where('correo', 'patitas@gmail.com')
-            ->orWhere('correo', 'karlagalo@gmail.com')
-            ->first();
-    
-            // Si no puedes encontrar el usuario, podrías querer lanzar un error para que sepas que algo está mal
-            if (!$this->user) {
-                $this->fail('Usuario no encontrado');
-            }
-    
-            // Actuar como el usuario encontrado
-            $this->actingAs($this->user);
-        }
+    protected function setUp(): void
+    {
+        parent::setUp();
 
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
+
+        
     //Esta es una prueba que verifica si la página que contiene el formulario de editar perfil está disponible y devuelve un 
     //código de estado HTTP 200.
     public function testEditFormIsAvailable()

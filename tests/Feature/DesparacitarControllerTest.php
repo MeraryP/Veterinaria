@@ -13,25 +13,18 @@ use Tests\TestCase;
 
 class DesparacitarControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected $user;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        // Buscar el usuario en la base de datos por correo electrónico
-        $this->user = User::where('correo', 'patitas@gmail.com')
-        ->orWhere('correo', 'karlagalo@gmail.com')
-        ->first();
+        $this->user = User::factory()->create();
 
-        // Si no puedes encontrar el usuario, podrías querer lanzar un error para que sepas que algo está mal
-        if (!$this->user) {
-            $this->fail('Usuario no encontrado');
-        }
-
-        // Actuar como el usuario encontrado
         $this->actingAs($this->user);
-    }
+    }  
     
 /** @test  Prueba para metodo index */
 public function test_metodoIndex()

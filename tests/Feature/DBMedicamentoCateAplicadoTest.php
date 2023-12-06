@@ -8,9 +8,24 @@ use Tests\TestCase;
 use App\Models\Categoria;
 use App\Models\Medicamento;
 use App\Models\Desparacitar;
+use App\Models\User;
 
 class DBMedicamentoCateDesparacitarTest extends TestCase
+
 {
+
+    use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
     //Todas las pruebas esten dirigidas a la integrdad de la base de datos, que este normalizada, y pruebas a las relaciones de las tablas
     /**
      * A basic feature test example.

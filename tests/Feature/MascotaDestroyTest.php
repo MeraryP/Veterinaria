@@ -14,6 +14,19 @@ use App\Models\User;
 
 class MascotaDestroyTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
+
     /**
      * A basic feature test example.
      *

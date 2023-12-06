@@ -11,26 +11,18 @@ use Tests\TestCase;
 
 class PropietarioCreateTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected $user;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        // Buscar el usuario en la base de datos por correo electrónico
-        $this->user = User::where('correo', 'patitas@gmail.com')
-        ->orWhere('correo', 'karlagalo@gmail.com')
-        ->first();
+        $this->user = User::factory()->create();
 
-        // Si no puedes encontrar el usuario, podrías querer lanzar un error para que sepas que algo está mal
-        if (!$this->user) {
-            $this->fail('Usuario no encontrado');
-        }
-
-        // Actuar como el usuario encontrado
         $this->actingAs($this->user);
     }
-
     //Esta es una prueba que verifica si la página que contiene el formulario de crear propietario está disponible y devuelve un 
     //código de estado HTTP 200.
     public function testCreatePropietarioFormIsAvailable()

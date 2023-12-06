@@ -9,10 +9,22 @@ use App\Models\Vacuna;
 use App\Models\Paciente;
 use App\Models\Medicamento;
 use App\Models\Categoria;
+use App\Models\User;
 
 class VacunaControllerTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
 
     public function test_vacunaPaciente_carga_correctamente_con_categoria_vacuna()
     {
