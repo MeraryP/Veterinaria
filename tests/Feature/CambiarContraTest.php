@@ -13,6 +13,15 @@ class CambiarContraTest extends TestCase
 {
 
     use RefreshDatabase;
+    
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+
+        $this->actingAs($this->user);
+    }
 
     public function testChangePassword()
     {
